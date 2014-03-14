@@ -6,7 +6,7 @@ $(document).ready(function() {
   var popCount = 0;
 
   $("button").click(function() {
-    console.log("Your popularity is " + popCount++);
+    console.log("Your popularity is " + (++popCount));
   });
 
 });
@@ -25,7 +25,8 @@ function refreshBucket() {
   // loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
     // console.log($("#" + bucketArray[i])[0]);
-    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div><br>';
+    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
+    bucketContent += '<button ng-click="makePopular()">Read</button>';
     // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
 
@@ -50,6 +51,7 @@ function drop(ev) {
   var id = ev.dataTransfer.getData("article_id");
   bucketArray.push(id);
   $("#" + id).parent().addClass("article_in_bucket");
+  $("#" + id).attr({"draggable": false });
   // Increase popularity of ID HERE ****************
   refreshBucket();
 }
