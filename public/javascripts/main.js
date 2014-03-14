@@ -27,7 +27,9 @@ $(document).ready(function() {
     console.log("Your popularity is " + (++popCount));
   });
 
+  // ------------------------------------------
   // Double click article to add to bucket
+  // ------------------------------------------
   $(document.body).on('dblclick', '.article' ,function(){
     // THIS IS TOO MESSY!!!
     var article_id = $($(this).first()).children()[0].id;
@@ -39,11 +41,15 @@ $(document).ready(function() {
       // Adjust DOM, make article not draggable and gray out
       $("#" + article_id).parent().addClass("article_in_bucket");
       $("#" + article_id).attr({"draggable": false });
+
+      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
     }
   });
 
+  // ------------------------------------------
   // Double click article to remove from bucket
+  // ------------------------------------------
   $(document.body).on('dblclick', '.bucket_item' ,function(){
     // MESSY!!!!!
     var article_id = $($(this).first()).attr("data-id");
@@ -54,6 +60,8 @@ $(document).ready(function() {
     // Adjust DOM, make article draggable
     $("#" + article_id).parent().removeClass("article_in_bucket");
     $("#" + article_id).attr({"draggable": true });
+
+    // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
     refreshBucket();
   });
 
