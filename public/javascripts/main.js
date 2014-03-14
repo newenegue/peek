@@ -48,3 +48,13 @@ function drop(ev) {
   var data = ev.dataTransfer.getData("Text");
   ev.target.appendChild(document.getElementById(data));
 };
+
+var i = 0;
+
+function duplicate(ev) {
+  var data = ev.dataTransfer.getData("Text");
+  var original = document.getElementById(data);
+  var clone = original.cloneNode(true);
+  clone.id = "box" + ++i;
+  clone.
+}
