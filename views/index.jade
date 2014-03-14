@@ -4,3 +4,12 @@ block content
   h1.test= title
   p Welcome to #{title}
   button Test
+
+  div(class="board")
+    div(ng-app="", ng-controller="generateGrid")
+      div(ng-repeat="row in boxes track by $index", ng-class="row")
+        div(ng-repeat="box in row", id="box", draggable="true", ondragstart="drag(event)")
+          {{box}}
+
+  div(id="bucket", ondrop="drop(event)", ondragover="allowDrop(event)")
+    h2= "Bucket"

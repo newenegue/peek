@@ -22,3 +22,29 @@ peekApp.controller('PeekCtrl', function($scope) {
   $scope.articles = [];
 });
 
+// ------------------------------------------
+// Ellie add
+// ------------------------------------------
+
+function generateGrid($scope) {
+	$scope.boxes = [
+	['item1', 'item2', 'item3'], 
+	['item4', 'item5', 'item6'],
+  ['item7', 'item8', 'item9']
+	];
+
+};
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("Text");
+  ev.target.appendChild(document.getElementById(data));
+};
