@@ -28,4 +28,10 @@ a {
   top: 0;
   width: 15%;
   height: 70%;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.bucket_item {
+  border: 2px solid blue;
+  cursor: pointer;
 }
