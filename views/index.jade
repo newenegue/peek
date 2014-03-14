@@ -5,8 +5,9 @@ block content
   p Welcome to #{title}
   button Test
   div.bucket BUCKET
-  div.article(ng-repeat="article in articles", ng-click="makePopular()")
-    div 
-      b {{article.title}}
-    br
-    div {{article.text}}
+  div.article(draggable="true" ng-repeat="article in articles", ng-click="makePopular()")
+    div(id='{{article.id}}')
+      div 
+        b {{article.title}}
+      br
+      div {{article.text}}

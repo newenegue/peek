@@ -18,6 +18,7 @@ var artArray = [];
 for(var i = 0; i < 50; i++){
   artArray.push({
     'title': 'title' + i,
+    'id': i,
     'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
   });
 }

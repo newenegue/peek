@@ -8,9 +8,17 @@ a {
 }
 
 .article {
-  border: 2px solid black;
+  border: 2px solid rgba(150,0,255,0.4);
   cursor: pointer;
   padding: 5px;
+}
+
+.article:hover {
+  border: 2px solid rgba(0,0,0,1);
+}
+
+.article_in_bucket {
+  border: 2px solid rgba(0,0,0,0.2);
 }
 
 .bucket {
