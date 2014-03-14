@@ -49,6 +49,7 @@ function drop(ev) {
   ev.preventDefault();
   var id = ev.dataTransfer.getData("article_id");
   bucketArray.push(id);
+  $("#" + id).parent().addClass("article_in_bucket");
   // Increase popularity of ID HERE ****************
   refreshBucket();
 }
