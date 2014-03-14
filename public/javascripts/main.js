@@ -11,20 +11,33 @@ $(document).ready(function() {
 
 });
 
+// ------------------------------------------
+// Updating bucket list
+// ------------------------------------------
+// Global bucketArray
 var bucketArray = [];
 
+// Refresh the bucket without refreshing the entire page
 function refreshBucket() {
+  // Reinitialize bucket content
   var bucketContent = '';
 
+  // loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
-    
-    bucketContent += '<div>' + bucketArray[i] + '</div><br>';
+    // console.log($("#" + bucketArray[i])[0]);
+    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div><br>';
+    // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
 
+  // inject html with new bucket content
   $(".bucket").html(bucketContent);
 }
 
+// ------------------------------------------
+// Drag and Drop handlers
+// ------------------------------------------
 function onDragStart(ev) {
+  // track article id
   ev.dataTransfer.setData("article_id",ev.target.id);
 }
 
@@ -35,12 +48,9 @@ function allowDrop(ev) {
 function drop(ev) {
   ev.preventDefault();
   var id = ev.dataTransfer.getData("article_id");
-  // console.log(id);
-  // console.log($("#" + id)[0]);
-  // console.log(ev.target);
   bucketArray.push(id);
+  // Increase popularity of ID HERE ****************
   refreshBucket();
-  // ev.target.appendChild(document.getElementById(data));
 }
 
 // ------------------------------------------
