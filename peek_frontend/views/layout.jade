@@ -1,0 +1,11 @@
+doctype html
+html(ng-app="PeekApp")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+    //- script(src="http://code.jquery.com/jquery-migrate-1.2.1.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js")
+    script(src="/javascripts/main.js")
+  body(ng-controller="PeekCtrl")
+    block content
