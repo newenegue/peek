@@ -4,6 +4,7 @@ block content
   h1.test= title
   p Welcome to #{title}
   button Test
+  div.bucket BUCKET
   div.article(ng-repeat="article in articles", ng-click="makePopular()")
     div 
       b {{article.title}}
