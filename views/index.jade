@@ -4,10 +4,12 @@ block content
   h1.test= title
   p Welcome to #{title}
   button Test
-  div.bucket BUCKET
-  div.article(draggable="true" ng-repeat="article in articles", ng-click="makePopular()")
-    div(id='{{article.id}}')
-      div 
-        b {{article.title}}
-      br
-      div {{article.text}}
+  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") BUCKET
+    div.bucket
+  div.articles
+    div.article(ng-repeat="article in articles", ng-click="makePopular()")
+      div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
+        div.title 
+          b {{article.title}}
+        br
+        div.text {{article.text}}

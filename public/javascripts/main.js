@@ -11,6 +11,38 @@ $(document).ready(function() {
 
 });
 
+var bucketArray = [];
+
+function refreshBucket() {
+  var bucketContent = '';
+
+  for(var i = 0; i < bucketArray.length; i++) {
+    
+    bucketContent += '<div>' + bucketArray[i] + '</div><br>';
+  }
+
+  $(".bucket").html(bucketContent);
+}
+
+function onDragStart(ev) {
+  ev.dataTransfer.setData("article_id",ev.target.id);
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var id = ev.dataTransfer.getData("article_id");
+  // console.log(id);
+  // console.log($("#" + id)[0]);
+  // console.log(ev.target);
+  bucketArray.push(id);
+  refreshBucket();
+  // ev.target.appendChild(document.getElementById(data));
+}
+
 // ------------------------------------------
 // Create articles for development
 // ------------------------------------------
@@ -29,7 +61,6 @@ for(var i = 0; i < 50; i++){
 var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope) {
-  // console.log('Inside PeekCtrl');
   $scope.articles = artArray;
   var popularity = 0;
 
