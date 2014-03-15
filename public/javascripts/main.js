@@ -1,4 +1,7 @@
 // =================================================================================
+// BUGS:
+// sometimes the article grays out and thinks it is in the bucket, but the bucket doesnt show anything.
+// 
 // ------------------------------------------
 // Create articles for development
 // ------------------------------------------
@@ -21,16 +24,9 @@ var bucketArray = [];
 // ------------------------------------------
 $(document).ready(function() {
 
-  $(".collapse").click(function(){
-    if ($(".articles .article div").is(":hidden")) {
-      $(".article").show("slow");
-    } else {
-      $(".article").slideUp();
-    }
-  });
 
   $(document.body).on('click', '.read', function() {
-    if ($(".articles .article div").is(":hidden")) {
+    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
     } else {
       $(".article").slideUp();
@@ -71,6 +67,10 @@ $(document).ready(function() {
     $("#" + article_id).parent().removeClass("article_in_bucket");
     $("#" + article_id).attr({"draggable": true });
 
+    if(bucketArray.length === 0){
+      $(".article").show("slow");
+    }
+
     // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
     refreshBucket();
   });
@@ -90,7 +90,7 @@ function refreshBucket() {
     // console.log($("#" + bucketArray[i])[0]);
     bucketContent += '<div class="bucket_item" data-id="' + bucketArray[i] + '">';
     bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
-    bucketContent += '<button class="read" ng-click="makePopular()">Read</button>';
+    bucketContent += '<button class="read btn btn-default" ng-click="makePopular()">Read</button>';
     bucketContent += '</div>';
     // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
