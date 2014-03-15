@@ -1,20 +1,78 @@
+// =================================================================================
+// BUGS:
+// sometimes the article grays out and thinks it is in the bucket, but the bucket doesnt show anything.
+// 
+// ------------------------------------------
+// Create articles for development
+// ------------------------------------------
+var artArray = [];
+for(var i = 0; i < 50; i++){
+  artArray.push({
+    'title': 'title' + i,
+    'id': i,
+    'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
+  });
+}
+
+// =================================================================================
+
+// Global bucketArray
+var bucketArray = [];
+
 // ------------------------------------------
 // jQuery
 // ------------------------------------------
 $(document).ready(function() {
 
-  var popCount = 0;
 
-  $(".test").click(function() {
-    console.log("Your popularity is " + (++popCount));
-  });
-
-  $(".collapse").click(function(){
-    if ($("#0").is(":hidden")) {
+  $(document.body).on('click', '.read', function() {
+    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
     } else {
       $(".article").slideUp();
     }
+  });
+
+  // ------------------------------------------
+  // Double click article to add to bucket
+  // ------------------------------------------
+  $(document.body).on('dblclick', '.article' ,function(){
+    // THIS IS TOO MESSY!!!
+    var article_id = $($(this).first()).children()[0].id;
+
+    // Check if article exists in bucket, if not, add it
+    if(bucketArray.indexOf(article_id) == -1){
+
+      bucketArray.push(article_id);
+      // Adjust DOM, make article not draggable and gray out
+      $("#" + article_id).parent().addClass("article_in_bucket");
+      $("#" + article_id).attr({"draggable": false });
+
+      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
+      refreshBucket();
+    }
+  });
+
+  // ------------------------------------------
+  // Double click article to remove from bucket
+  // ------------------------------------------
+  $(document.body).on('dblclick', '.bucket_item' ,function(){
+    // MESSY!!!!!
+    var article_id = $($(this).first()).attr("data-id");
+
+    // Find article and remove it from bucketArray
+    var index = bucketArray.indexOf(article_id);
+    bucketArray.splice(index,1);
+    // Adjust DOM, make article draggable
+    $("#" + article_id).parent().removeClass("article_in_bucket");
+    $("#" + article_id).attr({"draggable": true });
+
+    if(bucketArray.length === 0){
+      $(".article").show("slow");
+    }
+
+    // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
+    refreshBucket();
   });
 
 });
@@ -22,22 +80,22 @@ $(document).ready(function() {
 // ------------------------------------------
 // Updating bucket list
 // ------------------------------------------
-// Global bucketArray
-var bucketArray = [];
-
 // Refresh the bucket without refreshing the entire page
 function refreshBucket() {
   // Reinitialize bucket content
   var bucketContent = '';
 
-  // loop through new bucket array and add content
+  // Loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
     // console.log($("#" + bucketArray[i])[0]);
+    bucketContent += '<div class="bucket_item" data-id="' + bucketArray[i] + '">';
     bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
+    bucketContent += '<button class="read btn btn-default" ng-click="makePopular()">Read</button>';
+    bucketContent += '</div>';
     // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
 
-  // inject html with new bucket content
+  // Inject html with new bucket content
   $(".bucket").html(bucketContent);
 }
 
@@ -55,38 +113,17 @@ function allowDrop(ev) {
 
 function drop(ev) {
   ev.preventDefault();
-  var id = ev.dataTransfer.getData("article_id");
-  bucketArray.push(id);
-  $("#" + id).parent().addClass("article_in_bucket");
-  $("#" + id).attr({"draggable": false });
+  var article_id = ev.dataTransfer.getData("article_id");
+  // Add to bucket
+  bucketArray.push(article_id);
+  // Adjust DOM, make article not draggable and gray out
+  $("#" + article_id).parent().addClass("article_in_bucket");
+  $("#" + article_id).attr({"draggable": false });
+
   // Increase popularity of ID HERE ****************
+  // Notify database to increase popularity of article with article_id
+  
   refreshBucket();
-}
-
-// ------------------------------------------
-// Collapse
-// ------------------------------------------
-
-
-// function collapse(article) {
-//   var articlesArray = document.getElementsByClassName('article');
-//   for(var i = 0; i < articlesArray.length; i++) {
-//     var eachArticle = document.getElementById(articlesArray[i].id);
-//     eachArticle.style.background = "red";
-//   }
-// }
-
-
-// ------------------------------------------
-// Create articles for development
-// ------------------------------------------
-var artArray = [];
-for(var i = 0; i < 50; i++){
-  artArray.push({
-    'title': 'title' + i,
-    'id': i,
-    'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
-  });
 }
 
 // ------------------------------------------
@@ -96,11 +133,12 @@ var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope) {
   $scope.articles = artArray;
-  var popularity = 0;
+  // $scope.popularity;
+  // var popularity = 0;
 
-  $scope.makePopular = function() {
-    popularity++;
-    console.log(popularity);
-  };
+  // $scope.makePopular = function() {
+  //   popularity++;
+  //   console.log(popularity);
+  // };
 });
 
