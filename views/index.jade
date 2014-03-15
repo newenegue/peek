@@ -4,7 +4,8 @@ block content
   h1.test= title
   p Welcome to #{title}
   //- Bucket for reading articles
-  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") BUCKET
+  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") 
+    h4 BUCKET
     div.bucket
   //- Articles list
   div.articles
@@ -14,3 +15,5 @@ block content
           b {{article.title}}
         br
         div.text {{article.text}}
+
+  div.bubble

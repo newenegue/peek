@@ -24,14 +24,44 @@ a {
 }
 
 .bucket_container {
-  border: 5px solid red;
-  background-color: white;
   position: fixed;
-  right: 0;
-  top: 0;
+  text-align: center;
   width: 15%;
   height: 70%;
+  padding: 0px;
+  background: white;
+  border-radius: 10px;
+  border: gray solid 4px;
+  right: 0;
+  top: 0;
 }
+
+.bucket_container:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: white transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -15px;
+  left: 50%;
+}
+
+.bucket_container:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 18px 18px 0;
+  border-color: gray transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -22px;
+  left: 49%;
+}
+
 
 .bucket {
   border: 1px solid green;
