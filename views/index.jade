@@ -3,7 +3,8 @@ extends layout
 block content
   h1.test= title
   p Welcome to #{title}
-  button Test
+  button.test test
+  button.collapse collapse
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") BUCKET
     div.bucket
   div.articles

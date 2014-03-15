@@ -5,8 +5,16 @@ $(document).ready(function() {
 
   var popCount = 0;
 
-  $("button").click(function() {
-    console.log("Your popularity is " + popCount++);
+  $(".test").click(function() {
+    console.log("Your popularity is " + (++popCount));
+  });
+
+  $(".collapse").click(function(){
+    if ($("#0").is(":hidden")) {
+      $(".article").show("slow");
+    } else {
+      $(".article").slideUp();
+    }
   });
 
 });
@@ -25,7 +33,7 @@ function refreshBucket() {
   // loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
     // console.log($("#" + bucketArray[i])[0]);
-    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div><br>';
+    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
     // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
 
@@ -50,9 +58,24 @@ function drop(ev) {
   var id = ev.dataTransfer.getData("article_id");
   bucketArray.push(id);
   $("#" + id).parent().addClass("article_in_bucket");
+  $("#" + id).attr({"draggable": false });
   // Increase popularity of ID HERE ****************
   refreshBucket();
 }
+
+// ------------------------------------------
+// Collapse
+// ------------------------------------------
+
+
+// function collapse(article) {
+//   var articlesArray = document.getElementsByClassName('article');
+//   for(var i = 0; i < articlesArray.length; i++) {
+//     var eachArticle = document.getElementById(articlesArray[i].id);
+//     eachArticle.style.background = "red";
+//   }
+// }
+
 
 // ------------------------------------------
 // Create articles for development

@@ -23,9 +23,14 @@ a {
 
 .bucket_container {
   border: 5px solid red;
+  background-color: white;
   position: fixed;
   right: 0;
   top: 0;
   width: 15%;
   height: 70%;
+}
+
+.bucket {
+  border: 1px solid green;
 }
