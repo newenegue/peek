@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------
+// =================================================================================
 // ------------------------------------------
 // Create articles for development
 // ------------------------------------------
@@ -11,7 +11,7 @@ for(var i = 0; i < 50; i++){
   });
 }
 
-// ---------------------------------------------------------------------------
+// =================================================================================
 
 // Global bucketArray
 var bucketArray = [];
@@ -21,10 +21,20 @@ var bucketArray = [];
 // ------------------------------------------
 $(document).ready(function() {
 
-  var popCount = 0;
+  $(".collapse").click(function(){
+    if ($(".articles .article div").is(":hidden")) {
+      $(".article").show("slow");
+    } else {
+      $(".article").slideUp();
+    }
+  });
 
-  $("button").click(function() {
-    console.log("Your popularity is " + (++popCount));
+  $(document.body).on('click', '.read', function() {
+    if ($(".articles .article div").is(":hidden")) {
+      $(".article").show("slow");
+    } else {
+      $(".article").slideUp();
+    }
   });
 
   // ------------------------------------------
@@ -80,7 +90,7 @@ function refreshBucket() {
     // console.log($("#" + bucketArray[i])[0]);
     bucketContent += '<div class="bucket_item" data-id="' + bucketArray[i] + '">';
     bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
-    bucketContent += '<button ng-click="makePopular()">Read</button>';
+    bucketContent += '<button class="read" ng-click="makePopular()">Read</button>';
     bucketContent += '</div>';
     // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
   }
@@ -124,11 +134,11 @@ var peekApp = angular.module('PeekApp', []);
 peekApp.controller('PeekCtrl', function($scope) {
   $scope.articles = artArray;
   // $scope.popularity;
-  var popularity = 0;
+  // var popularity = 0;
 
-  $scope.makePopular = function() {
-    popularity++;
-    console.log(popularity);
-  };
+  // $scope.makePopular = function() {
+  //   popularity++;
+  //   console.log(popularity);
+  // };
 });
 
