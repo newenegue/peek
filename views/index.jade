@@ -6,6 +6,6 @@ block content
   button Test
   div.article(ng-repeat="article in articles", ng-click="makePopular()")
     div 
-      b {{article.title}}
+      b {{article.title.$text}}
     br
-    div {{article.text}}
+    div {{article.teaser.$text}}

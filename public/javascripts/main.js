@@ -27,9 +27,15 @@ for(var i = 0; i < 50; i++){
 // ------------------------------------------
 var peekApp = angular.module('PeekApp', []);
 
-peekApp.controller('PeekCtrl', function($scope) {
-  // console.log('Inside PeekCtrl');
-  $scope.articles = artArray;
+peekApp.controller('PeekCtrl', function($scope, $http) {
+
+  //this pulls in the NPR api 
+  $http.get('//api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&numResults=&requiredAssets=text&format=json')
+    .then(function(res){
+      //this targets the stories from the NPR JSON list
+      $scope.articles = res.data.list.story;                
+    });
+    
   var popularity = 0;
 
   $scope.makePopular = function() {
