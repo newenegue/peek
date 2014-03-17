@@ -104,7 +104,10 @@ function refreshBucket() {
 // ------------------------------------------
 function onDragStart(ev) {
   // track article id
+  console.log(ev);
+  console.log(ev.target);
   ev.dataTransfer.setData("article_id",ev.target.id);
+  console.log("drag start: " + ev.target.id);
 }
 
 function allowDrop(ev) {
