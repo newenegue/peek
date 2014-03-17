@@ -15,14 +15,14 @@ for(var i = 0; i < 50; i++){
 
 // Global bucketArray
 var bucketArray = [];
-// var bucketArray = [0,1,2,3]; //TESTING
+// var bucketArray = ['0','1','2','3']; //TESTING
 
 // ------------------------------------------
 // jQuery
 // ------------------------------------------
 $(document).ready(function() {
 
-  refreshBucket(); // TESTING
+  // refreshBucket(); // TESTING
 
   // ------------------------------------------
   // Collapse articles toggle
