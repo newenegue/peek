@@ -75,7 +75,23 @@ $(document).ready(function() {
     refreshBucket();
   });
 
+
+
+  // ------------------------------------------
+  // Animated bucket
+  // ------------------------------------------   
+  $("#stage").load('images/peek_bin.svg',function(response){
+
+      $(this).addClass("svgLoaded");
+       
+      if(!response){
+        console.log("Error loading SVG!");
+      }
+
+  });
+
 });
+
 
 // ------------------------------------------
 // Updating bucket list
@@ -122,6 +138,14 @@ function drop(ev) {
   // Adjust DOM, make article not draggable and gray out
   $("#" + article_id).parent().addClass("article_in_bucket");
   $("#" + article_id).attr({"draggable": false });
+  // add heart animation to bucket
+  console.log("heart animation");
+  var heart = document.getElementById("heart");
+  heart.style.opacity = "1";
+  $(heart).fadeTo("slow", 0.0, function(){
+
+  });
+  
 
   // Increase popularity of ID HERE ****************
   // Notify database to increase popularity of article with article_id

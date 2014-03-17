@@ -1,3 +1,8 @@
+/*-----------------------------------------
+Fonts
+-----------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -7,10 +12,16 @@ a {
   color: #00B7FF;
 }
 
+/*-----------------------------------------
+Newsfeed
+-----------------------------------------*/
+
 .article {
   border: 2px solid rgba(150,0,255,0.4);
   cursor: pointer;
   padding: 5px;
+  margin-bottom: 10px;
+  width: 80%;
 }
 
 .article:hover {
@@ -21,30 +32,62 @@ a {
   border: 2px solid rgba(0,0,0,0.2);
 }
 
+/*-----------------------------------------
+Bucket: Content
+-----------------------------------------*/
+
 .bucket_container {
-  z-index: 100;
-  border: 5px solid red;
   position: fixed;
-  right: 0;
-  top: 0;
+  text-align: center;
+  z-index: 3;
+  font-family: 'Quicksand';
   width: 15%;
   height: 70%;
-  background-color: rgba(255,255,255,0.9);
+  padding: 0px;
+  background: white;
+  border-radius: 10px;
+  border: gray solid 4px;
+  right: 3%;
+  top: 5%;
+}
+
+.bucket_container:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: white transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -15px;
+  left: 50%;
+}
+
+.bucket_container:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 18px 18px 0;
+  border-color: gray transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -22px;
+  left: 48.5%;
+}
+
+.bucket {
+  width: 100%;
+  height: 90%;
+  overflow: scroll;
 }
 
 .bucket_item {
-  border: 2px solid blue;
+  margin: 2%;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-bottom: 2%;
   cursor: pointer;
-}
-
-.drag {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,0,0,0.2);
-  z-index: 100;
 }
 
 [draggable] {
@@ -55,4 +98,102 @@ a {
   /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
+/*-----------------------------------------
+Bucket: Animated
+-----------------------------------------*/
+
+.animation_container {
+  position: fixed;
+  width: 15%;
+  height: 30%;
+  right: 3%;
+  bottom: 5%;
+  /*border: 1px solid red;*/
+}
+
+#stage {
+  position: relative;
+  height: 100%;
+  /*border: 1px solid black;*/
+}
+
+#Layer_1 {
+  height: 100%;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}
+
+#wholeBucket {
+  -webkit-animation: float 3s ease-out infinite;
+  -moz-animation: float 3s ease-out infinite;
+  animation: float 3s ease-out infinite;
+}
+
+  @-webkit-keyframes float { 
+    50% { 
+      -webkit-transform: translate(0, 10px); 
+    } 
+  }
+
+  @keyframes float {
+    50% {
+       transform: translate(0, 10px);
+    }
+  }
+
+#openEyes:hover { 
+  opacity: 0;
+}
+
+#openEyes {
+-webkit-animation: blink 4s steps(30, start) infinite;
+}
+
+  @-webkit-keyframes blink {
+    to { visibility: hidden; }
+  }
+
+#leftPupil {
+  -webkit-animation:spin .5s alternate infinite;
+  -moz-animation:spin .5s alternate infinite;
+  animation:spin .5s alternate infinite;
+}
+
+#rightPupil {
+  -webkit-animation:spin .5s alternate infinite;
+  -moz-animation:spin .5s alternate infinite;
+  animation:spin .5s alternate infinite;
+}
+
+  @-moz-keyframes spin { 
+    100% { 
+      -moz-transform: rotate(-.2deg); 
+    } 
+  }
+
+  @-webkit-keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(-.2deg); 
+    }
+  }
+
+  @keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(-.2deg); 
+      transform:rotate(-.2deg); 
+    } 
+  }
+
+/*-----------------------------------------
+Heart: Animated
+-----------------------------------------*/
+
+#heart {
+  position: fixed;
+  width: 2%;
+  height: 9%;
+  right: 17%;
+  bottom: 16%;
+  opacity: 0;
 }

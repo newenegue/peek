@@ -4,8 +4,13 @@ block content
   h1.test= title
   p Welcome to #{title}
   //- Bucket for reading articles
-  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") BUCKET
+  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") 
+    h4 BUCKET
     div.bucket
+  //- Animated Bucket
+  div.animation_container
+    div(id="stage")
+    img(id='heart' src='images/heart.svg')
   //- Articles list
   div.articles
     div.article(ng-repeat="article in articles track by $index" class="col-lg-4")
@@ -14,4 +19,3 @@ block content
           b {{article.title}}
         br
         div.text {{article.text}}
-        div.drag(data-id='{{article.id}}')
