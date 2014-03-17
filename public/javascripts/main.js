@@ -75,8 +75,6 @@ $(document).ready(function() {
     refreshBucket();
   });
 
-
-
   // ------------------------------------------
   // Animated bucket
   // ------------------------------------------   
@@ -87,7 +85,6 @@ $(document).ready(function() {
       if(!response){
         console.log("Error loading SVG!");
       }
-
   });
 
 });
