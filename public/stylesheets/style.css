@@ -98,6 +98,7 @@ Bucket: Content
   /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
+}
 /*-----------------------------------------
 Bucket: Animated
 -----------------------------------------*/

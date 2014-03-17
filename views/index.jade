@@ -13,7 +13,7 @@ block content
     img(id='heart' src='images/heart.svg')
   //- Articles list
   div.articles
-    div.article(ng-repeat="article in articles track by $index" class="col-lg-4")
+    div.article(ng-repeat="article in articles track by $index")
       div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
         div.title 
           b {{article.title}}
