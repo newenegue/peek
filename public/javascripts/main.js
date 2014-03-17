@@ -1,7 +1,4 @@
 // =================================================================================
-// BUGS:
-// sometimes the article grays out and thinks it is in the bucket, but the bucket doesnt show anything.
-// 
 // ------------------------------------------
 // Create articles for development
 // ------------------------------------------
@@ -18,13 +15,18 @@ for(var i = 0; i < 50; i++){
 
 // Global bucketArray
 var bucketArray = [];
+// var bucketArray = ['0','1','2','3']; //TESTING
 
 // ------------------------------------------
 // jQuery
 // ------------------------------------------
 $(document).ready(function() {
 
+  // refreshBucket(); // TESTING
 
+  // ------------------------------------------
+  // Collapse articles toggle
+  // ------------------------------------------
   $(document.body).on('click', '.read', function() {
     if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
@@ -88,64 +90,6 @@ $(document).ready(function() {
   });
 
 });
-
-
-// ------------------------------------------
-// Updating bucket list
-// ------------------------------------------
-// Refresh the bucket without refreshing the entire page
-function refreshBucket() {
-  // Reinitialize bucket content
-  var bucketContent = '';
-
-  // Loop through new bucket array and add content
-  for(var i = 0; i < bucketArray.length; i++) {
-    // console.log($("#" + bucketArray[i])[0]);
-    bucketContent += '<div class="bucket_item" data-id="' + bucketArray[i] + '">';
-    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
-    bucketContent += '<button class="read btn btn-default" ng-click="makePopular()">Read</button>';
-    bucketContent += '</div>';
-    // bucketContent += '<div>' + bucketArray[i] + '</div><br>';
-  }
-
-  // Inject html with new bucket content
-  $(".bucket").html(bucketContent);
-}
-
-// ------------------------------------------
-// Drag and Drop handlers
-// ------------------------------------------
-function onDragStart(ev) {
-  // track article id
-  ev.dataTransfer.setData("article_id",ev.target.id);
-}
-
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drop(ev) {
-  ev.preventDefault();
-  var article_id = ev.dataTransfer.getData("article_id");
-  // Add to bucket
-  bucketArray.push(article_id);
-  // Adjust DOM, make article not draggable and gray out
-  $("#" + article_id).parent().addClass("article_in_bucket");
-  $("#" + article_id).attr({"draggable": false });
-  // add heart animation to bucket
-  console.log("heart animation");
-  var heart = document.getElementById("heart");
-  heart.style.opacity = "1";
-  $(heart).fadeTo("slow", 0.0, function(){
-
-  });
-  
-
-  // Increase popularity of ID HERE ****************
-  // Notify database to increase popularity of article with article_id
-  
-  refreshBucket();
-}
 
 // ------------------------------------------
 // Angular

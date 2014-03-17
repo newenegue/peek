@@ -81,6 +81,8 @@ Bucket: Content
   width: 100%;
   height: 90%;
   overflow: scroll;
+  list-style-type: none;
+  padding: 0;
 }
 
 .bucket_item {
@@ -88,6 +90,32 @@ Bucket: Content
   background-color: rgba(0, 0, 0, 0.2);
   padding-bottom: 2%;
   cursor: pointer;
+  width: 95%;
+  height: 60px;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+/*-----------------------------------------
+Drag placeholder and selector
+-----------------------------------------*/
+.sortable-dragging {
+  background-color: rgba(0,255,0,0.2);
+}
+.sortable-placeholder {
+  margin: 2%;
+  padding-bottom: 2%;
+  border: 2px dashed red;
+  width: 95%;
+  height: 60px;
 }
 
 /*-----------------------------------------
