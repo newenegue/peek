@@ -79,16 +79,13 @@ $(document).ready(function() {
 
   // ------------------------------------------
   // Animated bucket
-  // ------------------------------------------
-
-   
+  // ------------------------------------------   
   $("#stage").load('images/peek_bin.svg',function(response){
 
       $(this).addClass("svgLoaded");
        
       if(!response){
-          // Error loading SVG!
-          // Make absolutely sure you are running this on a web server or localhost!
+        console.log("Error loading SVG!");
       }
 
   });
