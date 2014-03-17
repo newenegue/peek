@@ -39,6 +39,7 @@ Bucket: Content
 .bucket_container {
   position: fixed;
   text-align: center;
+  z-index: 3;
   font-family: 'Quicksand';
   width: 15%;
   height: 70%;
@@ -46,8 +47,8 @@ Bucket: Content
   background: white;
   border-radius: 10px;
   border: gray solid 4px;
-  right: 0;
-  top: 0;
+  right: 3%;
+  top: 5%;
 }
 
 .bucket_container:after {
@@ -90,10 +91,45 @@ Bucket: Content
 Bucket: Animated
 -----------------------------------------*/
 
-#stage {
-  width: 590px;
-  height: 450px;
+.animation_container {
+  position: fixed;
+  width: 15%;
+  height: 30%;
+  right: 3%;
+  bottom: 5%;
+  /*border: 1px solid red;*/
 }
+
+#stage {
+  position: relative;
+  height: 100%;
+  /*border: 1px solid black;*/
+}
+
+#Layer_1 {
+  height: 100%;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}
+
+#wholeBucket {
+  -webkit-animation: float 3s ease-out infinite;
+  -moz-animation: float 3s ease-out infinite;
+  animation: float 3s ease-out infinite;
+}
+
+  @-webkit-keyframes float { 
+    50% { 
+      -webkit-transform: translate(0, 10px); 
+    } 
+  }
+
+  @keyframes float {
+    50% {
+       transform: translate(0, 10px);
+    }
+  }
 
 #openEyes:hover { 
   opacity: 0;
@@ -108,15 +144,15 @@ Bucket: Animated
   }
 
 #leftPupil {
-  -webkit-animation:spin 1s alternate infinite;
-  -moz-animation:spin 1s alternate infinite;
-  animation:spin 1s alternate infinite;
+  -webkit-animation:spin .5s alternate infinite;
+  -moz-animation:spin .5s alternate infinite;
+  animation:spin .5s alternate infinite;
 }
 
 #rightPupil {
-  -webkit-animation:spin 1s alternate infinite;
-  -moz-animation:spin 1s alternate infinite;
-  animation:spin 1s alternate infinite;
+  -webkit-animation:spin .5s alternate infinite;
+  -moz-animation:spin .5s alternate infinite;
+  animation:spin .5s alternate infinite;
 }
 
   @-moz-keyframes spin { 
@@ -136,22 +172,4 @@ Bucket: Animated
       -webkit-transform: rotate(-.2deg); 
       transform:rotate(-.2deg); 
     } 
-  }
-
-#wholeBucket {
-  -webkit-animation: float 3s ease-out infinite;
-  -moz-animation: float 3s ease-out infinite;
-  animation: float 3s ease-out infinite;
-}
-
-  @-webkit-keyframes float { 
-    50% { 
-      -webkit-transform: translate(0, 10px); 
-    } 
-  }
-
-  @keyframes float {
-    50% {
-       transform: translate(0, 10px);
-    }
   }

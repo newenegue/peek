@@ -7,7 +7,8 @@ block content
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") 
     h4 BUCKET
     div.bucket
-  div(id="stage")
+  div.animation_container
+    div(id="stage")
   //- Articles list
   div.articles
     div.article(ng-repeat="article in articles")
