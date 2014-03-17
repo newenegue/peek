@@ -1,3 +1,8 @@
+/*-----------------------------------------
+Fonts
+-----------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -6,6 +11,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+/*-----------------------------------------
+Newsfeed
+-----------------------------------------*/
 
 .article {
   border: 2px solid rgba(150,0,255,0.4);
@@ -19,6 +28,10 @@ a {
   border: 2px solid rgba(0,0,0,1);
 }
 
+/*-----------------------------------------
+Bucket: Content
+-----------------------------------------*/
+
 .article_in_bucket {
   border: 2px solid rgba(0,0,0,0.2);
 }
@@ -26,6 +39,7 @@ a {
 .bucket_container {
   position: fixed;
   text-align: center;
+  font-family: 'Quicksand';
   width: 15%;
   height: 70%;
   padding: 0px;
@@ -59,9 +73,8 @@ a {
   width: 0;
   z-index: 0;
   bottom: -22px;
-  left: 49%;
+  left: 48.5%;
 }
-
 
 .bucket {
   border: 1px solid green;
@@ -72,3 +85,73 @@ a {
   border: 2px solid blue;
   cursor: pointer;
 }
+
+/*-----------------------------------------
+Bucket: Animated
+-----------------------------------------*/
+
+#stage {
+  width: 590px;
+  height: 450px;
+}
+
+#openEyes:hover { 
+  opacity: 0;
+}
+
+#openEyes {
+-webkit-animation: blink 6s steps(30, start) infinite;
+}
+
+  @-webkit-keyframes blink {
+    to { visibility: hidden; }
+  }
+
+#leftPupil {
+  -webkit-animation:spin 1s alternate infinite;
+  -moz-animation:spin 1s alternate infinite;
+  animation:spin 1s alternate infinite;
+}
+
+#rightPupil {
+  -webkit-animation:spin 1s alternate infinite;
+  -moz-animation:spin 1s alternate infinite;
+  animation:spin 1s alternate infinite;
+}
+
+  @-moz-keyframes spin { 
+    100% { 
+      -moz-transform: rotate(-.2deg); 
+    } 
+  }
+
+  @-webkit-keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(-.2deg); 
+    }
+  }
+
+  @keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(-.2deg); 
+      transform:rotate(-.2deg); 
+    } 
+  }
+
+#wholeBucket {
+  -webkit-animation: float 3s ease-out infinite;
+  -moz-animation: float 3s ease-out infinite;
+  animation: float 3s ease-out infinite;
+}
+
+  @-webkit-keyframes float { 
+    50% { 
+      -webkit-transform: translate(0, 10px); 
+    } 
+  }
+
+  @keyframes float {
+    50% {
+       transform: translate(0, 10px);
+    }
+  }
