@@ -2,27 +2,24 @@
 // ------------------------------------------
 // Create articles for development
 // ------------------------------------------
-var artArray = [];
-for(var i = 0; i < 50; i++){
-  artArray.push({
-    'title': 'title' + i,
-    'id': i,
-    'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
-  });
-}
+// var artArray = [];
+// for(var i = 0; i < 50; i++){
+//   artArray.push({
+//     'title': 'title' + i,
+//     'id': i,
+//     'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
+//   });
+// }
 
 // =================================================================================
 
 // Global bucketArray
 var bucketArray = [];
-// var bucketArray = ['0','1','2','3']; //TESTING
 
 // ------------------------------------------
-// jQuery
+// jQuery - on load
 // ------------------------------------------
 $(document).ready(function() {
-
-  // refreshBucket(); // TESTING
 
   // ------------------------------------------
   // Collapse articles toggle
@@ -130,26 +127,29 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   var pageNum = ($scope.pageNum + 1) * 9;
   var oldArray = [];
   if ($scope.articles != null) {
-    oldArray = $scope.articles
+    oldArray = $scope.articles;
   }
-  //this pulls in the NPR api 
+
+  // ------------------------------------------
+  // this pulls in the NPR api 
+  // ------------------------------------------
   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + pageNum + '&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
       //this targets the stories from the NPR JSON list
 
       $scope.articles = res.data.list.story;
       //loop through each new article
-      for(article in $scope.articles){
+      for(var article in $scope.articles){
         //check to see if the id of the new article is in the old array of articles
         var index = oldArray.indexOf($scope.articles[article].id);
         //if the id is in the oldArray remove it from the new articles
         if(index > -1){
           $scope.articles[article].splice(index, 1);
-          console.log("IT WORKS!!!!!!")
+          console.log("IT WORKS!!!!!!");
         }
-        var text = $scope.articles[article].teaser.$text
+        var text = $scope.articles[article].teaser.$text;
         $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
-      }           
+      }
       //return only 9 articles to the scope
       $scope.articles = $scope.articles.slice(0, 14);
     });
@@ -161,4 +161,13 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   //   console.log(popularity);
   // };
 });
+
+// ------------------------------------------
+// Image filter
+// ------------------------------------------
+// peekApp.filter('hasImage', function() {
+//   return function(input) {
+//     return true;
+//   };
+// });
 

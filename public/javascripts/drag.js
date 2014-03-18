@@ -5,12 +5,25 @@
 function refreshBucket() {
   // Reinitialize bucket content
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
+  var title, thumbnail, article_id;
 
   // Loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
-    // console.log($("#" + bucketArray[i])[0]);
-    bucketContent += '<div class="bucket_item" data-id="' + bucketArray[i] + '">';
-    bucketContent += '<div>' + $("#" + bucketArray[i] + " .title b")[0].innerHTML + '</div>';
+
+    // Set local variables
+    article_id = bucketArray[i];
+    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
+    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
+    if(thumbnail === null || thumbnail === '') {
+      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
+    }
+
+    // Inject HTML to update bucket
+    bucketContent += '<div class="bucket_item" data-id="' + article_id + '">';
+    if(thumbnail){
+      bucketContent += '<img class="thumb" src="'+ thumbnail +'" height="50">';
+    }
+    bucketContent += '<div>' + title + '</div>';
     bucketContent += '<button class="read btn btn-default" ng-click="makePopular()">Read</button>';
     bucketContent += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     bucketContent += '</div>';
@@ -19,8 +32,10 @@ function refreshBucket() {
   // Inject html with new bucket content
   $(".bucket").html(bucketContent);
 
+  // Make new list sortable
   $('.bucket').sortable({
     handle: '.handle',
+    forcePlaceholderSize: true,
     items: ':not(.bucket_name)'
   });
 }
@@ -28,11 +43,19 @@ function refreshBucket() {
 // ------------------------------------------
 // Drag and Drop handlers
 // ------------------------------------------
+// ------------------------------------------
+// onDragStart()
+//  pass article id to bucket
+// ------------------------------------------
 function onDragStart(ev) {
   // track article id
   ev.dataTransfer.setData("article_id",ev.target.id);
 }
 
+// ------------------------------------------
+// allowDrop()
+//  when article is hovering over bucket
+// ------------------------------------------
 function allowDrop(ev) {
   ev.preventDefault();
   $(".bucket_container").addClass("bucket_selected");
@@ -49,6 +72,10 @@ function allowDrop(ev) {
   closedEyes.style.opacity = "0";
 }
 
+// ------------------------------------------
+// drop()
+//  when article is dropped into bucket
+// ------------------------------------------
 function drop(ev) {
 
   ev.preventDefault();
@@ -89,6 +116,10 @@ function drop(ev) {
 
 }
 
+// ------------------------------------------
+// onLeave()
+//  toggles for when article is outside bucket
+// ------------------------------------------
 function onLeave() {
   $(".bucket_container").removeClass("bucket_selected");
 

@@ -5,7 +5,7 @@ block content
   p Welcome to #{title}
   //- Bucket for reading articles
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
-    div.bucket.connected
+    div.bucket
       h4.bucket_name BUCKET
   //- Animated Bucket
   div.animation_container
@@ -14,9 +14,10 @@ block content
     div(id="shadowStage")
     img(id='heart' src='images/heart.svg')
   //- Articles list
-  div.articles.connected
+  div.articles
     div.article(ng-repeat="article in articles track by $index")
       div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
+        img.main_image(ng-show="article.image != null" height="100" src="{{article.image[0].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
         div.title 
           b {{article.title.$text}}
         br
