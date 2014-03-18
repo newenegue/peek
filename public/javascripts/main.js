@@ -15,6 +15,7 @@
 
 // Global bucketArray
 var bucketArray = [];
+// haha delete me please
 
 // ------------------------------------------
 // jQuery - on load
