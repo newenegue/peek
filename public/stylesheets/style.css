@@ -8,8 +8,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+body.main {
+  background-color: #eee;
+}
+
 a {
   color: #00B7FF;
+}
+
+.test {
+  color: #999;
 }
 
 /*-----------------------------------------
@@ -17,10 +25,12 @@ Newsfeed
 -----------------------------------------*/
 
 .article {
-  border: 2px solid rgba(150,0,255,0.4);
+  border: 2px solid #ddd;
+  background-color: white;
   cursor: pointer;
   padding: 5px;
   margin-bottom: 10px;
+  border-radius: 2px;
   width: 80%;
 }
 
@@ -29,7 +39,8 @@ Newsfeed
 }
 
 .article_in_bucket {
-  border: 2px solid rgba(0,0,0,0.2);
+  border: none;
+  background-color: #e0e0e0;
 }
 
 /*-----------------------------------------
@@ -129,8 +140,6 @@ Article peek
   display: block;
   z-index: 100;
 }
-
-
 
 
 /*-----------------------------------------
