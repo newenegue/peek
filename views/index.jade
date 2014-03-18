@@ -5,8 +5,8 @@ block content
   p Welcome to #{title}
   //- Bucket for reading articles
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") 
-    h4 BUCKET
     div.bucket.connected
+      h4.bucket_name BUCKET
   //- Animated Bucket
   div.animation_container
     div(id="stage")
