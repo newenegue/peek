@@ -349,3 +349,8 @@ Reader Page
 .close {
   margin: 5%;
 }
+
+.readerIpsum {
+  text-align: center;
+  margin: 5%;
+}

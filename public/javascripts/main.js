@@ -115,6 +115,20 @@ $(document).ready(function() {
       }
   });
 
+
+  // ------------------------------------------
+  // Infinite scroll
+  // ------------------------------------------
+  $('.articles').jscroll({
+    debug: true,
+    autoTrigger: true,
+    loadingHtml: '<small>Loading...</small>',
+    padding: 50,
+    nextSelector: 'peekApp'
+    // contentSelector: 'li'
+
+  }); 
+
 });
 
 // ------------------------------------------
