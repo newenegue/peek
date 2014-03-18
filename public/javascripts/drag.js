@@ -21,6 +21,7 @@ function refreshBucket() {
 
   $('.bucket').sortable({
     handle: '.handle',
+    forcePlaceholderSize: true,
     items: ':not(.bucket_name)'
   });
 }
@@ -28,11 +29,19 @@ function refreshBucket() {
 // ------------------------------------------
 // Drag and Drop handlers
 // ------------------------------------------
+// ------------------------------------------
+// onDragStart()
+//  pass article id to bucket
+// ------------------------------------------
 function onDragStart(ev) {
   // track article id
   ev.dataTransfer.setData("article_id",ev.target.id);
 }
 
+// ------------------------------------------
+// allowDrop()
+//  when article is hovering over bucket
+// ------------------------------------------
 function allowDrop(ev) {
   ev.preventDefault();
   $(".bucket_container").addClass("bucket_selected");
@@ -49,6 +58,10 @@ function allowDrop(ev) {
   closedEyes.style.opacity = "0";
 }
 
+// ------------------------------------------
+// drop()
+//  when article is dropped into bucket
+// ------------------------------------------
 function drop(ev) {
 
   ev.preventDefault();
@@ -89,6 +102,10 @@ function drop(ev) {
 
 }
 
+// ------------------------------------------
+// onLeave()
+//  toggles for when article is outside bucket
+// ------------------------------------------
 function onLeave() {
   $(".bucket_container").removeClass("bucket_selected");
 
