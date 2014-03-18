@@ -49,25 +49,7 @@ $(document).ready(function() {
     $(".article_container").removeClass("peek_article");
   });
 
-  // ------------------------------------------
-  // Double click article to add to bucket
-  // ------------------------------------------
-  $(document.body).on('dblclick', '.article' ,function(){
-    // THIS IS TOO MESSY!!!
-    var article_id = $($(this).first()).children()[0].id;
-
-    // Check if article exists in bucket, if not, add it
-    if(bucketArray.indexOf(article_id) == -1){
-
-      bucketArray.push(article_id);
-      // Adjust DOM, make article not draggable and gray out
-      $("#" + article_id).parent().addClass("article_in_bucket");
-      $("#" + article_id).attr({"draggable": false });
-
-      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
-      refreshBucket();
-    }
-  });
+  
 
   // ------------------------------------------
   // Double click article to remove from bucket
@@ -141,8 +123,28 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       //return only 9 articles to the scope
       $scope.articles = $scope.articles.slice(0, 14);
     });
-    
+
   var popularity = 0;
+
+  // ------------------------------------------
+  // Double click article to add to bucket
+  // ------------------------------------------
+  $scope.addToBucket = function(article) {
+    // console.log(article);
+    var article_id = article.id;
+
+    // Check if article exists in bucket, if not, add it
+    if(bucketArray.indexOf(article_id) == -1 && article_id != ''){
+
+      bucketArray.push(article_id);
+      // Adjust DOM, make article not draggable and gray out
+      $("#" + article_id).parent().addClass("article_in_bucket");
+      $("#" + article_id).attr({"draggable": false });
+
+      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
+      refreshBucket();
+    }
+  };
 
   // $scope.makePopular = function() {
   //   popularity++;

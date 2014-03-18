@@ -7,6 +7,8 @@ function refreshBucket() {
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
   var title, thumbnail, article_id;
 
+  console.log(bucketArray);
+
   // Loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
 
@@ -24,9 +26,13 @@ function refreshBucket() {
       bucketContent += '<img class="thumb" src="'+ thumbnail +'" height="50">';
     }
     bucketContent += '<div>' + title + '</div>';
-    bucketContent += '<button class="read btn btn-default" ng-click="makePopular()">Read</button>';
+    bucketContent += '<button class="read btn btn-default">Read</button>';
     bucketContent += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     bucketContent += '</div>';
+  }
+
+  if(bucketArray.length == 0) {
+    bucketContent += '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>';
   }
 
   // Inject html with new bucket content
@@ -49,7 +55,8 @@ function refreshBucket() {
 // ------------------------------------------
 function onDragStart(ev) {
   // track article id
-  ev.dataTransfer.setData("article_id",ev.target.id);
+  var article_id = $(ev.target).children()[0].id;
+  ev.dataTransfer.setData("article_id",article_id);
 }
 
 // ------------------------------------------
@@ -81,7 +88,7 @@ function drop(ev) {
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
   // Add to bucket
-  if(bucketArray.indexOf(article_id) == -1){
+  if(bucketArray.indexOf(article_id) == -1 && article_id != ''){
     bucketArray.push(article_id);
     // Adjust DOM, make article not draggable and gray out
     $("#" + article_id).parent().addClass("article_in_bucket");

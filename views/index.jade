@@ -7,18 +7,21 @@ block content
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     div.bucket
       h4.bucket_name BUCKET
+      div.bucket_item_holder 
+        strong Drag to add article
   //- Animated Bucket
   div.animation_container
     div(id="stage")
     img(id='heart' src='images/heart.svg')
   //- Articles list
   div.articles
-    div.article(ng-repeat="article in articles track by $index")
-      div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
-        img.main_image(ng-show="article.image != null" height="100" src="{{article.image[0].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
-        div.title 
-          b {{article.title.$text}}
-        br
-        div.text(ng-bind-html="article.teaser.$text")
+    div.article(ng-repeat="article in articles track by $index" draggable="true" ondragstart="onDragStart(event)" ng-dblclick="addToBucket(article, $event)")
+      div(id='{{article.id}}')
+        img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
+        div.article_content
+          div.title 
+            b {{article.title.$text}}
+          br
+          div.text(ng-bind-html="article.teaser.$text")
   div.article_container
     button.close(class="glyphicon glyphicon-remove")
