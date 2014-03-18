@@ -4,7 +4,7 @@
 // Refresh the bucket without refreshing the entire page
 function refreshBucket() {
   // Reinitialize bucket content
-  var bucketContent = '';
+  var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
 
   // Loop through new bucket array and add content
   for(var i = 0; i < bucketArray.length; i++) {
@@ -20,7 +20,8 @@ function refreshBucket() {
   $(".bucket").html(bucketContent);
 
   $('.bucket').sortable({
-    handle: '.handle'
+    handle: '.handle',
+    items: ':not(.bucket_name)'
   });
 }
 
