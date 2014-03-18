@@ -15,6 +15,7 @@ block content
   div.articles
     div.article(ng-repeat="article in articles track by $index")
       div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
+        img.main_image(ng-show="article.image != null" height="100" src="{{article.image[0].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
         div.title 
           b {{article.title.$text}}
         br

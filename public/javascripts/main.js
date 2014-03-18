@@ -117,7 +117,10 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   if ($scope.articles != null) {
     oldArray = $scope.articles;
   }
-  //this pulls in the NPR api 
+
+  // ------------------------------------------
+  // this pulls in the NPR api 
+  // ------------------------------------------
   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + pageNum + '&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
       //this targets the stories from the NPR JSON list
@@ -146,4 +149,13 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   //   console.log(popularity);
   // };
 });
+
+// ------------------------------------------
+// Image filter
+// ------------------------------------------
+// peekApp.filter('hasImage', function() {
+//   return function(input) {
+//     return true;
+//   };
+// });
 
