@@ -27,12 +27,15 @@ $(document).ready(function() {
   // ------------------------------------------
   // Collapse articles toggle
   // ------------------------------------------
-  $(document.body).on('click', '.read', function() {
-    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-      $(".article").show("slow");
-    } else {
-      $(".article").slideUp();
-    }
+  $(document.body).on('click', '.read', function(data) {
+    var article_id = $($(this).parent()).attr('data-id');
+    console.log(article_id);
+    // console.log(data);
+    // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+    //   $(".article").show("slow");
+    // } else {
+    //   $(".article").slideUp();
+    // }
   });
 
   // ------------------------------------------
