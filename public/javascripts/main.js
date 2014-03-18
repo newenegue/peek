@@ -85,6 +85,32 @@ $(document).ready(function() {
       }
   });
 
+  // ------------------------------------------
+  // Animated bucket: shadow
+  // ------------------------------------------   
+  $("#shadowStage").load('images/shadow_bucket.svg',function(response){
+
+      $(this).addClass("svgLoaded");
+       
+      if(!response){
+        console.log("Error loading SVG!");
+      }
+  });
+
+
+  // ------------------------------------------
+  // Infinite scroll
+  // ------------------------------------------
+  $('.articles').jscroll({
+    debug: true,
+    autoTrigger: true,
+    loadingHtml: '<small>Loading...</small>',
+    padding: 50,
+    nextSelector: 'peekApp'
+    // contentSelector: 'li'
+
+  }); 
+
 });
 
 // ------------------------------------------

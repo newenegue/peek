@@ -12,6 +12,8 @@ block content
   //- Animated Bucket
   div.animation_container
     div(id="stage")
+  div.shadow_container
+    div(id="shadowStage")
     img(id='heart' src='images/heart.svg')
   //- Articles list
   div.articles
@@ -25,3 +27,4 @@ block content
           div.text(ng-bind-html="article.teaser.$text")
   div.article_container
     button.close(class="glyphicon glyphicon-remove")
+    h3.readerIpsum Peek Reader will go Here
