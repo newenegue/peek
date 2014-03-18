@@ -52,7 +52,9 @@ Bucket: Content
 }
 
 .bucket_selected {
-  border: gold solid 4px;
+  /*border: gold solid 4px;*/
+  border-radius: 10px;
+  box-shadow: 0 0 5px 5px rgba(218, 165, 32, 0.4);
 }
 
 .bucket_container:after {
@@ -243,4 +245,11 @@ Heart: Animated
   right: 17%;
   bottom: 16%;
   opacity: 0;
+}
+
+/*-----------------------------------------
+Reader Page
+-----------------------------------------*/
+.close {
+  margin: 5%;
 }
