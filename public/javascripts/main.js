@@ -29,13 +29,27 @@ $(document).ready(function() {
   // ------------------------------------------
   $(document.body).on('click', '.read', function(data) {
     var article_id = $($(this).parent()).attr('data-id');
-    console.log(article_id);
-    // console.log(data);
-    // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-    //   $(".article").show("slow");
-    // } else {
-    //   $(".article").slideUp();
-    // }
+    console.log("you want to read article " + article_id);
+
+    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+      $(".article").show("slow");
+      // $(".article_container").removeClass("peek_article");
+    } else {
+      $(".article").slideUp("slow", function(){
+        // console.log("OPEN READ DIV");
+        $(".article_container").addClass("peek_article");
+      });
+    }
+  });
+
+  // ------------------------------------------
+  // Close Peek reader
+  // ------------------------------------------
+  $(document.body).on('click', '.close', function() {
+    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+      $(".article").show("slow");
+    }
+    $(".article_container").removeClass("peek_article");
   });
 
   // ------------------------------------------
