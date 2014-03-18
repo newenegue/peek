@@ -179,13 +179,13 @@ Bucket: Animated
 
   @-webkit-keyframes float { 
     50% { 
-      -webkit-transform: translate(0, 10px); 
+      -webkit-transform: translate(0, 20px); 
     } 
   }
 
   @keyframes float {
     50% {
-       transform: translate(0, 10px);
+       transform: translate(0, 20px);
     }
   }
 
