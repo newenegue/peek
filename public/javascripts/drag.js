@@ -36,6 +36,7 @@ function onDragStart(ev) {
 function allowDrop(ev) {
   ev.preventDefault();
   $(".bucket_container").addClass("bucket_selected");
+  $(".bucket_container:before").addClass("bucket_selected");
 }
 
 function drop(ev) {
