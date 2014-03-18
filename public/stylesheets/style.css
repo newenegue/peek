@@ -51,6 +51,10 @@ Bucket: Content
   top: 5%;
 }
 
+.bucket_selected {
+  border: gold solid 4px;
+}
+
 .bucket_container:after {
   content: '';
   position: absolute;

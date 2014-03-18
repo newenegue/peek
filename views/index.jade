@@ -4,7 +4,7 @@ block content
   h1.test= title
   p Welcome to #{title}
   //- Bucket for reading articles
-  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)") 
+  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     div.bucket.connected
       h4.bucket_name BUCKET
   //- Animated Bucket
