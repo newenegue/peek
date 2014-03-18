@@ -37,6 +37,16 @@ function allowDrop(ev) {
   ev.preventDefault();
   $(".bucket_container").addClass("bucket_selected");
   // $(".bucket_container:before").addClass("bucket_selected:before");
+
+  // REFACTOR THIS
+  var happyEyes = document.getElementById("happy");
+  happyEyes.style.opacity = "1";
+
+  var openEyes = document.getElementById("openEyes");
+  openEyes.style.opacity = "0";
+
+  var closedEyes = document.getElementById("closedEyes");
+  closedEyes.style.opacity = "0";
 }
 
 function drop(ev) {
@@ -57,14 +67,15 @@ function drop(ev) {
 
     });
 
+    // REFACTOR THIS
     var happyEyes = document.getElementById("happy");
-    happyEyes.style.opacity = "1";
+    happyEyes.style.opacity = "0";
 
     var openEyes = document.getElementById("openEyes");
-    openEyes.style.opacity = "0";
+    openEyes.style.opacity = "1";
 
     var closedEyes = document.getElementById("closedEyes");
-    closedEyes.style.opacity = "0";
+    closedEyes.style.opacity = "1";
 
     // // Increase popularity of ID HERE ****************
     // // Notify database to increase popularity of article with article_id
@@ -80,4 +91,14 @@ function drop(ev) {
 
 function onLeave() {
   $(".bucket_container").removeClass("bucket_selected");
+
+  // REFACTOR THIS
+  var happyEyes = document.getElementById("happy");
+  happyEyes.style.opacity = "0";
+
+  var openEyes = document.getElementById("openEyes");
+  openEyes.style.opacity = "1";
+
+  var closedEyes = document.getElementById("closedEyes");
+  closedEyes.style.opacity = "1";
 }
