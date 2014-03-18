@@ -21,8 +21,6 @@ var bucketArray = [];
 // ------------------------------------------
 $(document).ready(function() {
 
-  // refreshBucket(); // TESTING
-
   // ------------------------------------------
   // Collapse articles toggle
   // ------------------------------------------
@@ -40,8 +38,6 @@ $(document).ready(function() {
       });
     }
   });
-
-
 
   // ------------------------------------------
   // Close Peek reader

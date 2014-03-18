@@ -39,8 +39,13 @@ Newsfeed
 }
 
 .article_in_bucket {
-  border: none;
+  border: 2px solid #e0e0e0;
   background-color: #e0e0e0;
+}
+
+.article_in_bucket:hover {
+  border: 2px solid #e0e0e0;
+  cursor: auto;
 }
 
 /*-----------------------------------------
