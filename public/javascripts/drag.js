@@ -57,6 +57,15 @@ function drop(ev) {
 
     });
 
+    var happyEyes = document.getElementById("happy");
+    happyEyes.style.opacity = "1";
+
+    var openEyes = document.getElementById("openEyes");
+    openEyes.style.opacity = "0";
+
+    var closedEyes = document.getElementById("closedEyes");
+    closedEyes.style.opacity = "0";
+
     // // Increase popularity of ID HERE ****************
     // // Notify database to increase popularity of article with article_id
     

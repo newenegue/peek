@@ -113,10 +113,36 @@ $(document).ready(function() {
 // ------------------------------------------
 var peekApp = angular.module('PeekApp', []);
 
-peekApp.controller('PeekCtrl', function($scope) {
-  $scope.articles = artArray;
-  // $scope.popularity;
-  // var popularity = 0;
+peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
+  // $scope.pageNum = 0;
+  var pageNum = ($scope.pageNum + 1) * 9;
+  var oldArray = [];
+  if ($scope.articles != null) {
+    oldArray = $scope.articles
+  }
+  //this pulls in the NPR api 
+  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + pageNum + '&numResults=15&requiredAssets=text&format=json')
+    .then(function(res){
+      //this targets the stories from the NPR JSON list
+
+      $scope.articles = res.data.list.story;
+      //loop through each new article
+      for(article in $scope.articles){
+        //check to see if the id of the new article is in the old array of articles
+        var index = oldArray.indexOf($scope.articles[article].id);
+        //if the id is in the oldArray remove it from the new articles
+        if(index > -1){
+          $scope.articles[article].splice(index, 1);
+          console.log("IT WORKS!!!!!!")
+        }
+        var text = $scope.articles[article].teaser.$text
+        $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
+      }           
+      //return only 9 articles to the scope
+      $scope.articles = $scope.articles.slice(0, 14);
+    });
+    
+  var popularity = 0;
 
   // $scope.makePopular = function() {
   //   popularity++;

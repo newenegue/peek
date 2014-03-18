@@ -16,8 +16,8 @@ block content
     div.article(ng-repeat="article in articles track by $index")
       div(id='{{article.id}}' draggable="true" ondragstart="onDragStart(event)")
         div.title 
-          b {{article.title}}
+          b {{article.title.$text}}
         br
-        div.text {{article.text}}
+        div.text(ng-bind-html="article.teaser.$text")
   div.article_container
     button.close(class="glyphicon glyphicon-remove")
