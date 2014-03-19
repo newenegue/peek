@@ -28,7 +28,6 @@ function readArticle() {
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   read(paragraph);
 
-
   $(".article_container").addClass("peek_article");
 
   // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
