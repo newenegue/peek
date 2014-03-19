@@ -372,7 +372,7 @@ Bucket: Animated
   width: 15%;
   height: 30%;
   right: 3%;
-  bottom: -3%;
+  bottom: -.2%;
   /*border: 1px solid green;*/
   z-index: -5;
 }
@@ -396,25 +396,28 @@ Bucket: Animated
 }
 
 #shadow {
-  /*this isnt working*/
-  -webkit-animation:shrink 1s ease-out infinite;
-  -moz-animation:shrink 1s ease-out infinite;
-  animation: shrink 1s ease-out infinite;
-  transform-origin: center center;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation: shrink 3s ease-out infinite;
+  -moz-animation: shrink 3s ease-out infinite;
+  animation: shrink 3s ease-out infinite;
 }
 
-@keyframes shrink {
+.pause {
+  -webkit-animation-play-state:paused;
+}
+
+@-webkit-keyframes shrink {
   0% {
-    width: 90%;
-    margin: 0 5%;
+    -webkit-transform: scale(.8);
+    
   }
   50% {
-    width: 30%;
-    margin: 0 18%;
+    -webkit-transform: scale(1.2);
+    
   }
   100% {
-    width: 90%;
-    margin: 0 5%;
+    -webkit-transform: scale(.8);
+    
   }
 }
 
