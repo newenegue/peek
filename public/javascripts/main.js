@@ -1,116 +1,76 @@
-// =================================================================================
 // ------------------------------------------
-// Create articles for development
-// ------------------------------------------
-// var artArray = [];
-// for(var i = 0; i < 50; i++){
-//   artArray.push({
-//     'title': 'title' + i,
-//     'id': i,
-//     'text': 'Of course I peed my pants, everyone my age pees their pants. I ate some Triscuit crackers in the car, you should have had some. Knibb High football rules! This guy can stay in my room, I can tell you that much. I thought I was your snack-pack? When I graduated first grade, all my dad did was tell me to get a job.'
-//   });
-// }
-
-// =================================================================================
-
-// Global bucketArray
-var bucketArray = [];
-// haha delete me please
-
-// ------------------------------------------
-// jQuery - on load
+// jQuery - on page load
 // ------------------------------------------
 $(document).ready(function() {
 
-  // ------------------------------------------
   // Collapse articles toggle
-  // ------------------------------------------
-  $(document.body).on('click', '.read', function(data) {
-    var article_id = $($(this).parent()).attr('data-id');
-    var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
-    // console.log(paragraph);
-    // console.log("you want to read article " + article_id);
-    read(paragraph);
+  $(document.body).on('click', '.read', readArticle);
 
-    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-      $(".article").show("slow");
-      // $(".article_container").removeClass("peek_article");
-    } else {
-      $(".article").slideUp("slow", function(){
-        // console.log("OPEN READ DIV");
-        $(".article_container").addClass("peek_article");
-      });
-    }
-  });
-
-  // ------------------------------------------
   // Close Peek reader
-  // ------------------------------------------
-  $(document.body).on('click', '.close', function() {
-    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-      $(".article").show("slow");
-    }
-    $(".article_container").removeClass("peek_article");
-  });
+  $(document.body).on('click', '.close', closeArticle);
 
-  
-
-  // ------------------------------------------
   // Double click article to remove from bucket
-  // ------------------------------------------
-  $(document.body).on('dblclick', '.bucket_item' ,function(){
-    // MESSY!!!!!
-    var article_id = $($(this).first()).attr("data-id");
+  $(document.body).on('dblclick', '.bucket_item', removeSelectedItem);
 
-    removeItemFromBucket(article_id);
-
-    if(bucketArray.length === 0){
-      $(".article").show("slow");
-    }
-
-    // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
-    refreshBucket();
-  });
-
-  // ------------------------------------------
   // Animated bucket
-  // ------------------------------------------   
-  $("#stage").load('images/peek_bin.svg',function(response){
+  $("#stage").load('images/peek_bin.svg', svgLoaded);
 
-      $(this).addClass("svgLoaded");
-       
-      if(!response){
-        console.log("Error loading SVG!");
-      }
-  });
-
-  // ------------------------------------------
   // Animated bucket: shadow
-  // ------------------------------------------   
-  $("#shadowStage").load('images/shadow_bucket.svg',function(response){
-
-      $(this).addClass("svgLoaded");
-       
-      if(!response){
-        console.log("Error loading SVG!");
-      }
-  });
-
-
-  // ------------------------------------------
-  // Infinite scroll
-  // ------------------------------------------
-  $('.articles').jscroll({
-    debug: true,
-    autoTrigger: true,
-    loadingHtml: '<small>Loading...</small>',
-    padding: 50,
-    nextSelector: 'peekApp'
-    // contentSelector: 'li'
-
-  });
+  $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
 });
+
+// ------------------------------------------
+// Open PEEK to read article
+// ------------------------------------------
+function readArticle() {
+  var article_id = $($(this).parent()).attr('data-id');
+  var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+  read(paragraph);
+
+  $(".article_container").addClass("peek_article");
+
+  // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+  //   $(".article").show("slow");
+  //   // $(".article_container").removeClass("peek_article");
+  // } else {
+  //   $(".article").slideUp("slow", function(){
+  //     // console.log("OPEN READ DIV");
+      
+  //   });
+  // }
+}
+
+// ------------------------------------------
+// Close article
+// ------------------------------------------
+function closeArticle() {
+  // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+  //   $(".article").show("slow");
+  // }
+  $(".article_container").removeClass("peek_article");
+}
+
+// ------------------------------------------
+// Loads SVG
+// ------------------------------------------
+function svgLoaded(response) {
+  $(this).addClass("svgLoaded");
+  if(!response){
+    console.log("Error loading SVG!");
+  }
+}
+
+// ------------------------------------------
+// Locates article id from DOM and removes it from bucket
+// ------------------------------------------
+function removeSelectedItem() {
+  var article_id = $($(this).first()).attr("data-id");
+  removeItemFromBucket(article_id);
+
+  // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
+  refreshBucket();
+}
 
 // ------------------------------------------
 // Angular
@@ -158,10 +118,8 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // Double click article to add to bucket
   // ------------------------------------------
   $scope.addToBucket = function(article) {
-    var article_id = article.id;
-
-    if(validId(article_id)){
-      addItemToBucket(article_id);
+    if(validId(article.id)){
+      addItemToBucket(article.id);
 
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
@@ -177,13 +135,4 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   //   console.log(popularity);
   // };
 });
-
-// ------------------------------------------
-// Image filter
-// ------------------------------------------
-// peekApp.filter('hasImage', function() {
-//   return function(input) {
-//     return true;
-//   };
-// });
 

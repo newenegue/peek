@@ -1,3 +1,8 @@
+// ===========================================================
+// Update bucket functions
+// ===========================================================
+// Global bucketArray
+var bucketArray = [];
 // ------------------------------------------
 // Refresh bucket list
 // ------------------------------------------
@@ -21,13 +26,7 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
 
-  if(bucketArray.length == 0) {
-    bucketContent += '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>';
-  }
-  else {
-    bucketContent += updateItemsInBucket();
-    // Loop through new bucket array and add content
-  }
+  bucketContent = bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
 
   return bucketContent;
 }
@@ -39,37 +38,36 @@ function updateItemsInBucket() {
   var title, thumbnail, article_id, items;
   for(var i = 0; i < bucketArray.length; i++) {
 
-      // Set local variables
-      article_id = bucketArray[i];
-      title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
-      thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
-      if(thumbnail === null || thumbnail === '') {
-        thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
-      }
-
-      // Inject HTML to update bucket
-      items += '<div class="bucket_item" data-id="' + article_id + '">';
-      if(thumbnail){
-        items += '<img class="thumb" src="'+ thumbnail +'" height="50">';
-      }
-      items += '<div>' + title + '</div>';
-      items += '<button class="read btn btn-default" ng-click="clickRead()">Read</button>';
-      items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
-      items += '</div>';
+    // Set local variables
+    article_id = bucketArray[i];
+    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
+    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
+    if(thumbnail === null || thumbnail === '') {
+      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
     }
 
-    return items;
+    // Inject HTML to update bucket
+    items += '<div class="bucket_item" data-id="' + article_id + '">';
+    if(thumbnail){
+      items += '<img class="thumb" src="'+ thumbnail +'" height="50">';
+    }
+    items += '<div>' + title + '</div>';
+    items += '<button class="read btn btn-default" ng-click="clickRead()">Read</button>';
+    items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
+    items += '</div>';
+  }
+
+  return items;
 }
 
-// ------------------------------------------
-// Drag and Drop handlers
-// ------------------------------------------
+// ===========================================================
+// Drag and Drop functions
+// ===========================================================
 // ------------------------------------------
 // onDragStart()
 //  pass article id to bucket
 // ------------------------------------------
 function onDragStart(ev) {
-  // track article id
   var article_id = $(ev.target).children()[0].id;
   ev.dataTransfer.setData("article_id",article_id);
 }
@@ -136,37 +134,6 @@ function drop(ev) {
 }
 
 // ------------------------------------------
-// Check that article id is valid
-// ------------------------------------------
-function validId(id) {
-  return (bucketArray.indexOf(id) == -1 && id != '') ? true : false;
-}
-
-// ------------------------------------------
-// Add article to bucket
-// ------------------------------------------
-function addItemToBucket(id) {
-  bucketArray.push(id);
-  // Adjust DOM, make article not draggable and gray out
-  $("#" + id).parent().addClass("article_in_bucket");
-  $("#" + id).attr({"draggable": false });
-  return true;
-}
-
-// ------------------------------------------
-// Remove article from bucket
-// ------------------------------------------
-function removeItemFromBucket(id) {
-  // Find article and remove it from bucketArray
-  var index = bucketArray.indexOf(id);
-  bucketArray.splice(index,1);
-  // Adjust DOM, make article draggable
-  $("#" + id).parent().removeClass("article_in_bucket");
-  $("#" + id).attr({"draggable": true });
-  return true;
-}
-
-// ------------------------------------------
 // onLeave()
 //  toggles for when article is outside bucket
 // ------------------------------------------
@@ -182,4 +149,34 @@ function onLeave() {
 
   var closedEyes = document.getElementById("closedEyes");
   closedEyes.style.opacity = "1";
+}
+
+// ===========================================================
+// Bucket control functions
+// ===========================================================
+// ------------------------------------------
+// Check that article id is valid
+// ------------------------------------------
+function validId(id) {
+  return (bucketArray.indexOf(id) == -1 && id != '') ? true : false;
+}
+
+// ------------------------------------------
+// Add article to bucket
+// ------------------------------------------
+function addItemToBucket(id) {
+  bucketArray.push(id);
+  $("#" + id).parent().addClass("article_in_bucket");
+  return true;
+}
+
+// ------------------------------------------
+// Remove article from bucket
+// ------------------------------------------
+function removeItemFromBucket(id) {
+  // Find article and remove it from bucketArray
+  var index = bucketArray.indexOf(id);
+  bucketArray.splice(index,1);
+  $("#" + id).parent().removeClass("article_in_bucket");
+  return true;
 }
