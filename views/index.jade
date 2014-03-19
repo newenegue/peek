@@ -31,16 +31,16 @@ block content
   button(onclick='addArticles()') Add
   div.article_container
     button.close.glyphicon.glyphicon-remove
-    h3.readerIpsum Peek Reader will go Here
     button#restart(onclick='restart()') Restart
     button#rewind(onclick='rewind()') Rewind
     button#submit(onclick='read()') Play
     button#forward(onclick='forward()') FastForward
     br
-    #reader(style='font-size: 36; width: 300px; border: 1px solid black; height: 50px;')
-      span#front(style='position: absolute;') {{front}}
-      span#center(style='color: red; position: absolute; left: 100px;') {{center}}
-      span#back(style='position: absolute;') {{back}}
+    #reader
+      div.verticalLine
+        span#front {{front}}
+        span#center {{center}}
+        span#back {{back}}
     
     select#wpm
       option(value='100') 100 WPM
