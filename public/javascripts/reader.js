@@ -39,10 +39,15 @@ var printWord = function(words, i) {
   $('#front').html(words.frontPart[i]);
   $('#center').html(words.centerPart[i]);
   $('#back').html(words.backPart[i]);
+  
+  //this combines the letters in the correct position
+  $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
+  $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
 
   if(i >= words.frontPart.length) {
     clearInterval(readerTimer);
   }
+  
 }
 
 
@@ -58,12 +63,15 @@ var combineParagraphs = function(paragraph) {
 
 var read = function(paragraph) {
   var text = combineParagraphs(paragraph);
+  console.log(text);
   var words = breakUpWord(makeToChars(text));
+  console.log(words);
     i =0;
     readerTimer = setInterval(function(){
       printWord(words, i);
       i++;
-    }, 500);
+      console.log(i)
+    }, 100);
 // popularity++;
 // console.log(popularity);
 }
