@@ -18,7 +18,7 @@ block content
   //- Articles list
   div.articles
     div.article(ng-repeat="article in articles track by $index" draggable="true" ondragstart="onDragStart(event)" ng-dblclick="addToBucket(article, $event)")
-      div(id='{{article.id}}')
+      div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}')
         img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
         div.article_content
           div.title 
@@ -28,3 +28,23 @@ block content
   div.article_container
     button.close(class="glyphicon glyphicon-remove")
     h3.readerIpsum Peek Reader will go Here
+    button#restart(onclick='restart()') Restart
+    button#rewind(onclick='rewind()') Rewind
+    button#submit(onclick='read()') Play
+    button#forward(onclick='forward()') FastForward
+    br
+    #reader(style='font-size: 36; width: 300px; border: 1px solid black; height: 50px;')
+      span#front(style='position: absolute;') {{front}}
+      span#center(style='color: red; position: absolute; left: 100px;') {{center}}
+      span#back(style='position: absolute;') {{back}}
+    
+    select#wpm
+      option(value='100') 100 WPM
+      option(value='200') 200 WPM
+      option(value='300') 300 WPM
+      option(value='400') 400 WPM
+      option(value='500') 500 WPM
+      option(value='600') 600 WPM
+      option(value='700') 700 WPM
+      option(value='800') 800 WPM
+      option(value='900') 900 WPM
