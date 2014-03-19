@@ -27,7 +27,10 @@ $(document).ready(function() {
   // ------------------------------------------
   $(document.body).on('click', '.read', function(data) {
     var article_id = $($(this).parent()).attr('data-id');
-    console.log("you want to read article " + article_id);
+    var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+    // console.log(paragraph);
+    // console.log("you want to read article " + article_id);
+    read(paragraph);
 
     if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
@@ -132,6 +135,9 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
         }
         var text = $scope.articles[article].teaser.$text;
         $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
+        for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
+          $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
+        }
       }
       //return only 9 articles to the scope
       $scope.articles = $scope.articles.slice(0, 14);
