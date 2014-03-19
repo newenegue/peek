@@ -28,9 +28,10 @@ $(document).ready(function() {
   $(document.body).on('click', '.read', function(data) {
     var article_id = $($(this).parent()).attr('data-id');
     var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
-    // console.log(paragraph);
+    console.log(paragraph);
     // console.log("you want to read article " + article_id);
     read(paragraph);
+
 
     if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
@@ -123,13 +124,7 @@ $(document).ready(function() {
 var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
-  $scope.pageNum = 0;
-  var pageNum = ($scope.pageNum + 1) * 9;
-  var oldArray = [];
-  if ($scope.articles != null) {
-    oldArray = $scope.articles;
-  }
-
+  
   // ------------------------------------------
   // this pulls in the first set of articles
   // ------------------------------------------
@@ -139,13 +134,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       $scope.articles = res.data.list.story;
       //loop through each new article
       for(var article in $scope.articles){
-        //check to see if the id of the new article is in the old array of articles
-        var index = oldArray.indexOf($scope.articles[article].id);
-        //if the id is in the oldArray remove it from the new articles
-        if(index > -1){
-          $scope.articles[article].splice(index, 1);
-          console.log("IT WORKS!!!!!!");
-        }
         var text = $scope.articles[article].teaser.$text;
         $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
         for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
@@ -153,37 +141,46 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
         }
       }
       //return only 9 articles to the scope
-      $scope.articles = $scope.articles.slice(0, 14);
+      $scope.articles = $scope.articles.slice(0, 8);
     });
 
-  var popularity = 0;
+  // var popularity = 0;
 
   // ------------------------------------------
   // this adds more articles for infinite scroll 
   // ------------------------------------------
+
+  pageNum = 0;
+
+  window.addArticles = function() {
+  var oldArray = $scope.articles;
+  pageNum = (pageNum + 1) * 9;
+
   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + pageNum + '&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
-      //this targets the stories from the NPR JSON list
-
-      $scope.articles = res.data.list.story;
+      //this targets the new stories from the NPR JSON list
+      articles = res.data.list.story;
       //loop through each new article
-      for(var article in $scope.articles){
+      for(var i=0; i < articles.length; i++){
         //check to see if the id of the new article is in the old array of articles
-        var index = oldArray.indexOf($scope.articles[article].id);
+        var index = oldArray.indexOf(articles[i].id);
         //if the id is in the oldArray remove it from the new articles
         if(index > -1){
-          $scope.articles[article].splice(index, 1);
-          console.log("IT WORKS!!!!!!");
+          articles[i].splice(index, 1);
         }
-        var text = $scope.articles[article].teaser.$text;
-        $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
-        for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
-          $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
+        var text = articles[i].teaser.$text;
+        articles[i].teaser.$text = $sce.trustAsHtml(text);
+        for(var j=0; j < articles[i].text.paragraph.length; j++){
+          articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
         }
       }
-      //return only 9 articles to the scope
-      $scope.articles = $scope.articles.slice(0, 14);
+      for(var i=0; i < 10; i++){
+        $scope.articles.push(articles[i]);
+      }
+      
     });
+
+  };
 
 
 

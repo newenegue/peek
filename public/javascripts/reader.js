@@ -39,10 +39,15 @@ var printWord = function(words, i) {
   $('#front').html(words.frontPart[i]);
   $('#center').html(words.centerPart[i]);
   $('#back').html(words.backPart[i]);
+  
+  //this combines the letters in the correct position
+  $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
+  $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
 
   if(i >= words.frontPart.length) {
     clearInterval(readerTimer);
   }
+  
 }
 
 
