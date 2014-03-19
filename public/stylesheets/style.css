@@ -54,7 +54,7 @@ Newsfeed
 }
 
 .title {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 .article_content {
@@ -62,7 +62,7 @@ Newsfeed
   padding: 30px 10px 10px 10px;
   width: 80%;
   height: 100%;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .main_image {
@@ -254,6 +254,51 @@ Bucket: Animated
 }
 
 /*
+* === Bucket Bounce ===
+*/
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  60% {
+    -webkit-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+}
+/*
 * === Bucket Eyes ===
 */
 
@@ -303,6 +348,20 @@ Bucket: Animated
       transform:rotate(-.5deg); 
     } 
   }
+
+#grin {
+  opacity: 0;
+}
+
+.excited {
+  -webkit-transform-origin: 50% 50%;
+  -webkit-transform: scale(1.5);
+}
+
+.default_eyes {
+  -webkit-transform-origin: 50% 50%;
+  -webkit-transform: scale(1);  
+}
 
 /*
 * === Bucket Shadow ===
