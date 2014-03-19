@@ -349,8 +349,8 @@ Bucket: Animated
     } 
   }
 
-#leftEyeFull {
-
+#grin {
+  opacity: 0;
 }
 
 .excited {

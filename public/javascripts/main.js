@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     
     $(".article").addClass("animated fadeOutLeft");
-    setTimeout( function() {$(".article_container").addClass("peek_article")}, 2000 );
+    setTimeout( function() {$(".article_container").addClass("peek_article")}, 1000 );
     // ;
 
 

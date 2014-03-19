@@ -72,6 +72,8 @@ function allowDrop(ev) {
   // HAPPY EYES - REFACTOR THIS
   $("#leftEyeFull").attr("class", "excited");
   $("#rightEyeFull").attr("class", "excited");
+  document.getElementById("grin").style.opacity = "1";
+
   // var happyEyes = document.getElementById("happy");
   // happyEyes.style.opacity = "1";
 
@@ -90,6 +92,7 @@ function drop(ev) {
 
   $("#leftEyeFull").attr("class", "default_eyes");
   $("#rightEyeFull").attr("class", "default_eyes");
+  document.getElementById("grin").style.opacity = "0";
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
   // Add to bucket
@@ -138,6 +141,8 @@ function drop(ev) {
 function onLeave() {
   $(".bucket_container").removeClass("bucket_selected");
   $("#leftEyeFull").attr("class", "default_eyes");
+  $("#rightEyeFull").attr("class", "default_eyes");
+  document.getElementById("grin").style.opacity = "0";
 
   // REFACTOR THIS
   // var happyEyes = document.getElementById("happy");
