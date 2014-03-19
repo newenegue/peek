@@ -26,7 +26,7 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
 
-  bucketContent = bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
+  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
 
   return bucketContent;
 }
@@ -35,7 +35,8 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  var title, thumbnail, article_id, items;
+  var title, thumbnail, article_id, items="";
+
   for(var i = 0; i < bucketArray.length; i++) {
 
     // Set local variables
@@ -56,7 +57,7 @@ function updateItemsInBucket() {
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     items += '</div>';
   }
-
+  
   return items;
 }
 
@@ -70,6 +71,7 @@ function updateItemsInBucket() {
 function onDragStart(ev) {
   var article_id = $(ev.target).children()[0].id;
   ev.dataTransfer.setData("article_id",article_id);
+  dropFace("");
 }
 
 // ------------------------------------------
@@ -78,18 +80,7 @@ function onDragStart(ev) {
 // ------------------------------------------
 function allowDrop(ev) {
   ev.preventDefault();
-  $(".bucket_container").addClass("bucket_selected");
-  // $(".bucket_container:before").addClass("bucket_selected:before");
-
-  // REFACTOR THIS
-  var happyEyes = document.getElementById("happy");
-  happyEyes.style.opacity = "1";
-
-  var openEyes = document.getElementById("openEyes");
-  openEyes.style.opacity = "0";
-
-  var closedEyes = document.getElementById("closedEyes");
-  closedEyes.style.opacity = "0";
+  bucketFace('excited', '1');
 }
 
 // ------------------------------------------
@@ -97,13 +88,11 @@ function allowDrop(ev) {
 //  when article is dropped into bucket
 // ------------------------------------------
 function drop(ev) {
-
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
   // Add to bucket
   if(validId(article_id)) {
     addItemToBucket(article_id);
-
     console.log("heart animation");
     var heart = document.getElementById("heart");
     heart.style.opacity = "1";
@@ -111,15 +100,7 @@ function drop(ev) {
 
     });
 
-    // REFACTOR THIS
-    var happyEyes = document.getElementById("happy");
-    happyEyes.style.opacity = "0";
-
-    var openEyes = document.getElementById("openEyes");
-    openEyes.style.opacity = "1";
-
-    var closedEyes = document.getElementById("closedEyes");
-    closedEyes.style.opacity = "1";
+    dropFace("animated bounce");
 
     // // Increase popularity of ID HERE ****************
     // // Notify database to increase popularity of article with article_id
@@ -129,7 +110,7 @@ function drop(ev) {
   else {
     console.log("article is already in bucket");
   }
-  $(".bucket_container").removeClass("bucket_selected");
+  bucketFace('default_eyes', '0');
 
 }
 
@@ -138,18 +119,43 @@ function drop(ev) {
 //  toggles for when article is outside bucket
 // ------------------------------------------
 function onLeave() {
-  $(".bucket_container").removeClass("bucket_selected");
-
-  // REFACTOR THIS
-  var happyEyes = document.getElementById("happy");
-  happyEyes.style.opacity = "0";
-
-  var openEyes = document.getElementById("openEyes");
-  openEyes.style.opacity = "1";
-
-  var closedEyes = document.getElementById("closedEyes");
-  closedEyes.style.opacity = "1";
+  bucketFace('default_eyes', '0');
 }
+
+// ===========================================================
+// Bucket animations
+// ===========================================================
+
+
+// ------------------------------------------
+// Change bucket face
+// ------------------------------------------
+
+function bucketFace(face, opc) {
+  // controls scale of eyes depending on mood
+  $("#leftEyeFull").attr("class", face);
+  $("#rightEyeFull").attr("class", face);
+  // controls mouth depending on mood
+  document.getElementById("grin").style.opacity = opc;
+
+  if(opc == "0"){
+    // removes bucket container outer glow
+    $(".bucket_container").removeClass("bucket_selected");
+  }
+  else {
+    // adds bucket container outer glow
+    $(".bucket_container").addClass("bucket_selected");
+  }
+}
+
+// ------------------------------------------
+// Reset drop animation
+// ------------------------------------------
+
+function dropFace(face) {
+  $("#Layer_1").attr("class", face);
+}
+
 
 // ===========================================================
 // Bucket control functions

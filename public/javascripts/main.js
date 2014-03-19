@@ -17,38 +17,29 @@ $(document).ready(function() {
 
   // Animated bucket: shadow
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
-
 });
 
 // ------------------------------------------
 // Open PEEK to read article
 // ------------------------------------------
 function readArticle() {
+
   var article_id = $($(this).parent()).attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+
   read(paragraph);
 
-  $(".article_container").addClass("peek_article");
-
-  // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-  //   $(".article").show("slow");
-  //   // $(".article_container").removeClass("peek_article");
-  // } else {
-  //   $(".article").slideUp("slow", function(){
-  //     // console.log("OPEN READ DIV");
-      
-  //   });
-  // }
+  $(".article").addClass("animated fadeOutLeft");
+  setTimeout( function() {$(".article_container").addClass("peek_article")}, 1000 );
 }
 
 // ------------------------------------------
 // Close article
 // ------------------------------------------
 function closeArticle() {
-  // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-  //   $(".article").show("slow");
-  // }
   $(".article_container").removeClass("peek_article");
+  $(".article").removeClass("fadeOutLeft");
+  $(".article").addClass("fadeInLeft");
 }
 
 // ------------------------------------------
@@ -75,11 +66,12 @@ function removeSelectedItem() {
 // ------------------------------------------
 // Angular
 // ------------------------------------------
-var peekApp = angular.module('PeekApp', []);
+var peekApp = angular.module('PeekApp', ['infinite-scroll']);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // $scope.pageNum = 0;
   var pageNum = ($scope.pageNum + 1) * 9;
+  console.log($scope.pageNum);
   var oldArray = [];
   if ($scope.articles != null) {
     oldArray = $scope.articles;
@@ -124,10 +116,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
     }
-  };
-
-  $scope.clickRead = function () {
-    console.log("clicked READ in angular");
   };
 
   // $scope.makePopular = function() {
