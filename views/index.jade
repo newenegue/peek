@@ -25,7 +25,10 @@ block content
             b {{article.title.$text}}
           br
           div.text(ng-bind-html="article.teaser.$text")
+
   //- Reader
+
+  button(onclick='addArticles()') Add
   div.article_container
     button.close.glyphicon.glyphicon-remove
     h3.readerIpsum Peek Reader will go Here
