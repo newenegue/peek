@@ -100,31 +100,17 @@ $(document).ready(function() {
         console.log("Error loading SVG!");
       }
   });
-
-
-  // ------------------------------------------
-  // Infinite scroll
-  // ------------------------------------------
-  $('.articles').jscroll({
-    debug: true,
-    autoTrigger: true,
-    loadingHtml: '<small>Loading...</small>',
-    padding: 50,
-    nextSelector: 'peekApp'
-    // contentSelector: 'li'
-
-  });
-
 });
 
 // ------------------------------------------
 // Angular
 // ------------------------------------------
-var peekApp = angular.module('PeekApp', []);
+var peekApp = angular.module('PeekApp', ['infinite-scroll']);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // $scope.pageNum = 0;
   var pageNum = ($scope.pageNum + 1) * 9;
+  console.log($scope.pageNum);
   var oldArray = [];
   if ($scope.articles != null) {
     oldArray = $scope.articles;
@@ -177,10 +163,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
     }
-  };
-
-  $scope.clickRead = function () {
-    console.log("clicked READ in angular");
   };
 
   // $scope.makePopular = function() {
