@@ -43,11 +43,10 @@ var printWord = function(words, i) {
   //this combines the letters in the correct position
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
-
+  debugger;
   if(i >= words.frontPart.length) {
     clearInterval(readerTimer);
   }
-  
 }
 
 

@@ -156,10 +156,6 @@ function dropFace(face) {
   $("#Layer_1").attr("class", face);
 }
 
-// function pauseShadow(movement) {
-//   $(".shadow").addClass("pause");
-// }
-
 // ===========================================================
 // Bucket control functions
 // ===========================================================
