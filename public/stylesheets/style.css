@@ -54,7 +54,7 @@ Newsfeed
 }
 
 .title {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 .article_content {
@@ -62,7 +62,7 @@ Newsfeed
   padding: 30px 10px 10px 10px;
   width: 80%;
   height: 100%;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .main_image {

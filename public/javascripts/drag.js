@@ -1,39 +1,13 @@
+// ===========================================================
+// Update bucket functions
+// ===========================================================
+// Global bucketArray
+var bucketArray = [];
 // ------------------------------------------
-// Updating bucket list
+// Refresh bucket list
 // ------------------------------------------
-// Refresh the bucket without refreshing the entire page
 function refreshBucket() {
-  // Reinitialize bucket content
-  var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
-  var title, thumbnail, article_id;
-
-  console.log(bucketArray);
-
-  // Loop through new bucket array and add content
-  for(var i = 0; i < bucketArray.length; i++) {
-
-    // Set local variables
-    article_id = bucketArray[i];
-    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
-    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
-    if(thumbnail === null || thumbnail === '') {
-      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
-    }
-
-    // Inject HTML to update bucket
-    bucketContent += '<div class="bucket_item" data-id="' + article_id + '">';
-    if(thumbnail){
-      bucketContent += '<img class="thumb" src="'+ thumbnail +'" height="50">';
-    }
-    bucketContent += '<div>' + title + '</div>';
-    bucketContent += '<button class="read btn btn-default">Read</button>';
-    bucketContent += '<div class="handle glyphicon glyphicon-align-justify"></div>';
-    bucketContent += '</div>';
-  }
-
-  if(bucketArray.length == 0) {
-    bucketContent += '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>';
-  }
+  var bucketContent = updateBucketContent();
 
   // Inject html with new bucket content
   $(".bucket").html(bucketContent);
@@ -47,17 +21,57 @@ function refreshBucket() {
 }
 
 // ------------------------------------------
-// Drag and Drop handlers
+// Update bucket content
 // ------------------------------------------
+function updateBucketContent() {
+  var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
+
+  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
+
+  return bucketContent;
+}
+
+// ------------------------------------------
+// Update items of bucket
+// ------------------------------------------
+function updateItemsInBucket() {
+  var title, thumbnail, article_id, items="";
+
+  for(var i = 0; i < bucketArray.length; i++) {
+
+    // Set local variables
+    article_id = bucketArray[i];
+    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
+    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
+    if(thumbnail === null || thumbnail === '') {
+      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
+    }
+
+    // Inject HTML to update bucket
+    items += '<div class="bucket_item" data-id="' + article_id + '">';
+    if(thumbnail){
+      items += '<img class="thumb" src="'+ thumbnail +'" height="50">';
+    }
+    items += '<div>' + title + '</div>';
+    items += '<button class="read btn btn-default" ng-click="clickRead()">Read</button>';
+    items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
+    items += '</div>';
+  }
+  
+  return items;
+}
+
+// ===========================================================
+// Drag and Drop functions
+// ===========================================================
 // ------------------------------------------
 // onDragStart()
 //  pass article id to bucket
 // ------------------------------------------
 function onDragStart(ev) {
-  // track article id
   var article_id = $(ev.target).children()[0].id;
   ev.dataTransfer.setData("article_id",article_id);
-  $("#Layer_1").attr("class", "");
+  dropFace("");
 }
 
 // ------------------------------------------
@@ -66,22 +80,7 @@ function onDragStart(ev) {
 // ------------------------------------------
 function allowDrop(ev) {
   ev.preventDefault();
-  $(".bucket_container").addClass("bucket_selected");
-  // $(".bucket_container:before").addClass("bucket_selected:before");
-
-  // HAPPY EYES - REFACTOR THIS
-  $("#leftEyeFull").attr("class", "excited");
-  $("#rightEyeFull").attr("class", "excited");
-  document.getElementById("grin").style.opacity = "1";
-
-  // var happyEyes = document.getElementById("happy");
-  // happyEyes.style.opacity = "1";
-
-  // var openEyes = document.getElementById("openEyes");
-  // openEyes.style.opacity = "0";
-
-  // var closedEyes = document.getElementById("closedEyes");
-  // closedEyes.style.opacity = "0";
+  bucketFace('excited', '1');
 }
 
 // ------------------------------------------
@@ -89,19 +88,11 @@ function allowDrop(ev) {
 //  when article is dropped into bucket
 // ------------------------------------------
 function drop(ev) {
-
-  $("#leftEyeFull").attr("class", "default_eyes");
-  $("#rightEyeFull").attr("class", "default_eyes");
-  document.getElementById("grin").style.opacity = "0";
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
   // Add to bucket
-  if(bucketArray.indexOf(article_id) == -1 && article_id != ''){
-    bucketArray.push(article_id);
-    // Adjust DOM, make article not draggable and gray out
-    $("#" + article_id).parent().addClass("article_in_bucket");
-    $("#" + article_id).attr({"draggable": false });
-    // add heart animation to bucket
+  if(validId(article_id)) {
+    addItemToBucket(article_id);
     console.log("heart animation");
     var heart = document.getElementById("heart");
     heart.style.opacity = "1";
@@ -109,18 +100,7 @@ function drop(ev) {
 
     });
 
-    $("#Layer_1").attr("class", "animated bounce");
-
-
-    // HAPPY EYES - REFACTOR THIS
-    // var happyEyes = document.getElementById("happy");
-    // happyEyes.style.opacity = "0";
-
-    // var openEyes = document.getElementById("openEyes");
-    // openEyes.style.opacity = "1";
-
-    // var closedEyes = document.getElementById("closedEyes");
-    // closedEyes.style.opacity = "1";
+    dropFace("animated bounce");
 
     // // Increase popularity of ID HERE ****************
     // // Notify database to increase popularity of article with article_id
@@ -130,7 +110,7 @@ function drop(ev) {
   else {
     console.log("article is already in bucket");
   }
-  $(".bucket_container").removeClass("bucket_selected");
+  bucketFace('default_eyes', '0');
 
 }
 
@@ -139,18 +119,70 @@ function drop(ev) {
 //  toggles for when article is outside bucket
 // ------------------------------------------
 function onLeave() {
-  $(".bucket_container").removeClass("bucket_selected");
-  $("#leftEyeFull").attr("class", "default_eyes");
-  $("#rightEyeFull").attr("class", "default_eyes");
-  document.getElementById("grin").style.opacity = "0";
+  bucketFace('default_eyes', '0');
+}
 
-  // REFACTOR THIS
-  // var happyEyes = document.getElementById("happy");
-  // happyEyes.style.opacity = "0";
+// ===========================================================
+// Bucket animations
+// ===========================================================
 
-  // var openEyes = document.getElementById("openEyes");
-  // openEyes.style.opacity = "1";
 
-  // var closedEyes = document.getElementById("closedEyes");
-  // closedEyes.style.opacity = "1";
+// ------------------------------------------
+// Change bucket face
+// ------------------------------------------
+
+function bucketFace(face, opc) {
+  // controls scale of eyes depending on mood
+  $("#leftEyeFull").attr("class", face);
+  $("#rightEyeFull").attr("class", face);
+  // controls mouth depending on mood
+  document.getElementById("grin").style.opacity = opc;
+
+  if(opc == "0"){
+    // removes bucket container outer glow
+    $(".bucket_container").removeClass("bucket_selected");
+  }
+  else {
+    // adds bucket container outer glow
+    $(".bucket_container").addClass("bucket_selected");
+  }
+}
+
+// ------------------------------------------
+// Reset drop animation
+// ------------------------------------------
+
+function dropFace(face) {
+  $("#Layer_1").attr("class", face);
+}
+
+
+// ===========================================================
+// Bucket control functions
+// ===========================================================
+// ------------------------------------------
+// Check that article id is valid
+// ------------------------------------------
+function validId(id) {
+  return (bucketArray.indexOf(id) == -1 && id != '') ? true : false;
+}
+
+// ------------------------------------------
+// Add article to bucket
+// ------------------------------------------
+function addItemToBucket(id) {
+  bucketArray.push(id);
+  $("#" + id).parent().addClass("article_in_bucket");
+  return true;
+}
+
+// ------------------------------------------
+// Remove article from bucket
+// ------------------------------------------
+function removeItemFromBucket(id) {
+  // Find article and remove it from bucketArray
+  var index = bucketArray.indexOf(id);
+  bucketArray.splice(index,1);
+  $("#" + id).parent().removeClass("article_in_bucket");
+  return true;
 }
