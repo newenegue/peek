@@ -32,15 +32,15 @@ $(document).ready(function() {
     // console.log("you want to read article " + article_id);
     read(paragraph);
 
-    // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-    //   $(".article").show("slow");
-    //   // $(".article_container").removeClass("peek_article");
-    // } else {
-    //   $(".article").slideUp("slow", function(){
-    //     // console.log("OPEN READ DIV");
-    //     $(".article_container").addClass("peek_article");
-    //   });
-    // }
+    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+      $(".article").show("slow");
+      // $(".article_container").removeClass("peek_article");
+    } else {
+      $(".article").slideUp("slow", function(){
+        // console.log("OPEN READ DIV");
+        $(".article_container").addClass("peek_article");
+      });
+    }
   });
 
   // ------------------------------------------
@@ -62,12 +62,7 @@ $(document).ready(function() {
     // MESSY!!!!!
     var article_id = $($(this).first()).attr("data-id");
 
-    // Find article and remove it from bucketArray
-    var index = bucketArray.indexOf(article_id);
-    bucketArray.splice(index,1);
-    // Adjust DOM, make article draggable
-    $("#" + article_id).parent().removeClass("article_in_bucket");
-    $("#" + article_id).attr({"draggable": true });
+    removeItemFromBucket(article_id);
 
     if(bucketArray.length === 0){
       $(".article").show("slow");
@@ -163,16 +158,10 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // Double click article to add to bucket
   // ------------------------------------------
   $scope.addToBucket = function(article) {
-    // console.log(article);
     var article_id = article.id;
 
-    // Check if article exists in bucket, if not, add it
-    if(bucketArray.indexOf(article_id) == -1 && article_id != ''){
-
-      bucketArray.push(article_id);
-      // Adjust DOM, make article not draggable and gray out
-      $("#" + article_id).parent().addClass("article_in_bucket");
-      $("#" + article_id).attr({"draggable": false });
+    if(validId(article_id)){
+      addItemToBucket(article_id);
 
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
