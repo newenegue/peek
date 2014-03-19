@@ -53,7 +53,8 @@ function updateItemsInBucket() {
       items += '<img class="thumb" src="'+ thumbnail +'" height="50">';
     }
     items += '<div>' + title + '</div>';
-    items += '<button class="read btn btn-default" ng-click="clickRead()">Read</button>';
+    items += '<button class="remove_bucket_item">Remove</button>';
+    items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     items += '</div>';
   }

@@ -10,8 +10,8 @@ $(document).ready(function() {
   // Close Peek reader
   $(document.body).on('click', '.close', closeArticle);
 
-  // Double click article to remove from bucket
-  $(document.body).on('dblclick', '.bucket_item', removeSelectedItem);
+  // Click remove button
+  $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
 
   // Animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
@@ -27,6 +27,7 @@ function readArticle() {
 
   var article_id = $($(this).parent()).attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+  var link = $("#" + article_id).attr('data-article-link');
 
   read(paragraph);
 
