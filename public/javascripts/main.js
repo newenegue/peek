@@ -29,15 +29,15 @@ $(document).ready(function() {
     var article_id = $($(this).parent()).attr('data-id');
     console.log("you want to read article " + article_id);
 
-    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-      $(".article").show("slow");
-      // $(".article_container").removeClass("peek_article");
-    } else {
-      $(".article").slideUp("slow", function(){
-        // console.log("OPEN READ DIV");
-        $(".article_container").addClass("peek_article");
-      });
-    }
+    // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+    //   $(".article").show("slow");
+    //   // $(".article_container").removeClass("peek_article");
+    // } else {
+    //   $(".article").slideUp("slow", function(){
+    //     // console.log("OPEN READ DIV");
+    //     $(".article_container").addClass("peek_article");
+    //   });
+    // }
   });
 
   // ------------------------------------------
@@ -110,7 +110,7 @@ $(document).ready(function() {
     nextSelector: 'peekApp'
     // contentSelector: 'li'
 
-  }); 
+  });
 
 });
 
@@ -171,6 +171,10 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
     }
+  };
+
+  $scope.clickRead = function () {
+    console.log("clicked READ in angular");
   };
 
   // $scope.makePopular = function() {

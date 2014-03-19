@@ -26,7 +26,7 @@ function refreshBucket() {
       bucketContent += '<img class="thumb" src="'+ thumbnail +'" height="50">';
     }
     bucketContent += '<div>' + title + '</div>';
-    bucketContent += '<button class="read btn btn-default">Read</button>';
+    bucketContent += '<button class="read btn btn-default" ng-click="clickRead()">Read</button>';
     bucketContent += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     bucketContent += '</div>';
   }
@@ -36,7 +36,7 @@ function refreshBucket() {
   }
 
   // Inject html with new bucket content
-  $(".bucket").html(bucketContent);
+  $(".bucket").html($compile(bucketContent));
 
   // Make new list sortable
   $('.bucket').sortable({
