@@ -11,6 +11,7 @@ $(document).ready(function() {
 
   // Double click article to remove from bucket
   $(document.body).on('dblclick', '.bucket_item', removeSelectedItem);
+  $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
 
   // Animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
