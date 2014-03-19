@@ -63,12 +63,15 @@ var combineParagraphs = function(paragraph) {
 
 var read = function(paragraph) {
   var text = combineParagraphs(paragraph);
+  console.log(text);
   var words = breakUpWord(makeToChars(text));
+  console.log(words);
     i =0;
     readerTimer = setInterval(function(){
       printWord(words, i);
       i++;
-    }, 500);
+      console.log(i)
+    }, 100);
 // popularity++;
 // console.log(popularity);
 }

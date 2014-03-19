@@ -52,6 +52,8 @@ $(document).ready(function() {
       $(".article").show("slow");
     }
     $(".article_container").removeClass("peek_article");
+    //this stops previous story from being read
+    clearInterval(readerTimer);
   });
 
   
@@ -126,7 +128,7 @@ var peekApp = angular.module('PeekApp', []);
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   
   // ------------------------------------------
-  // this pulls in the first set of articles
+  // this pulls in the first set of articles REFACTOR!!!
   // ------------------------------------------
   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
@@ -147,7 +149,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // var popularity = 0;
 
   // ------------------------------------------
-  // this adds more articles for infinite scroll 
+  // this adds more articles for infinite scroll REFACTOR!!!
   // ------------------------------------------
 
   pageNum = 0;
