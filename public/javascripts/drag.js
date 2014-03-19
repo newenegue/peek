@@ -57,6 +57,7 @@ function onDragStart(ev) {
   // track article id
   var article_id = $(ev.target).children()[0].id;
   ev.dataTransfer.setData("article_id",article_id);
+  $("#Layer_1").attr("class", "");
 }
 
 // ------------------------------------------
@@ -68,15 +69,17 @@ function allowDrop(ev) {
   $(".bucket_container").addClass("bucket_selected");
   // $(".bucket_container:before").addClass("bucket_selected:before");
 
-  // REFACTOR THIS
-  var happyEyes = document.getElementById("happy");
-  happyEyes.style.opacity = "1";
+  // HAPPY EYES - REFACTOR THIS
+  $("#leftEyeFull").attr("class", "excited");
+  $("#rightEyeFull").attr("class", "excited");
+  // var happyEyes = document.getElementById("happy");
+  // happyEyes.style.opacity = "1";
 
-  var openEyes = document.getElementById("openEyes");
-  openEyes.style.opacity = "0";
+  // var openEyes = document.getElementById("openEyes");
+  // openEyes.style.opacity = "0";
 
-  var closedEyes = document.getElementById("closedEyes");
-  closedEyes.style.opacity = "0";
+  // var closedEyes = document.getElementById("closedEyes");
+  // closedEyes.style.opacity = "0";
 }
 
 // ------------------------------------------
@@ -85,6 +88,8 @@ function allowDrop(ev) {
 // ------------------------------------------
 function drop(ev) {
 
+  $("#leftEyeFull").attr("class", "default_eyes");
+  $("#rightEyeFull").attr("class", "default_eyes");
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
   // Add to bucket
@@ -101,15 +106,18 @@ function drop(ev) {
 
     });
 
-    // REFACTOR THIS
-    var happyEyes = document.getElementById("happy");
-    happyEyes.style.opacity = "0";
+    $("#Layer_1").attr("class", "animated bounce");
 
-    var openEyes = document.getElementById("openEyes");
-    openEyes.style.opacity = "1";
 
-    var closedEyes = document.getElementById("closedEyes");
-    closedEyes.style.opacity = "1";
+    // HAPPY EYES - REFACTOR THIS
+    // var happyEyes = document.getElementById("happy");
+    // happyEyes.style.opacity = "0";
+
+    // var openEyes = document.getElementById("openEyes");
+    // openEyes.style.opacity = "1";
+
+    // var closedEyes = document.getElementById("closedEyes");
+    // closedEyes.style.opacity = "1";
 
     // // Increase popularity of ID HERE ****************
     // // Notify database to increase popularity of article with article_id
@@ -129,14 +137,15 @@ function drop(ev) {
 // ------------------------------------------
 function onLeave() {
   $(".bucket_container").removeClass("bucket_selected");
+  $("#leftEyeFull").attr("class", "default_eyes");
 
   // REFACTOR THIS
-  var happyEyes = document.getElementById("happy");
-  happyEyes.style.opacity = "0";
+  // var happyEyes = document.getElementById("happy");
+  // happyEyes.style.opacity = "0";
 
-  var openEyes = document.getElementById("openEyes");
-  openEyes.style.opacity = "1";
+  // var openEyes = document.getElementById("openEyes");
+  // openEyes.style.opacity = "1";
 
-  var closedEyes = document.getElementById("closedEyes");
-  closedEyes.style.opacity = "1";
+  // var closedEyes = document.getElementById("closedEyes");
+  // closedEyes.style.opacity = "1";
 }

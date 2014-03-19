@@ -32,15 +32,22 @@ $(document).ready(function() {
     // console.log("you want to read article " + article_id);
     read(paragraph);
 
-    if ($(".articles .article div").is(":hidden") || bucketArray === []) {
-      $(".article").show("slow");
-      // $(".article_container").removeClass("peek_article");
-    } else {
-      $(".article").slideUp("slow", function(){
-        // console.log("OPEN READ DIV");
-        $(".article_container").addClass("peek_article");
-      });
-    }
+    
+    $(".article").addClass("animated fadeOutLeft");
+    setTimeout( function() {$(".article_container").addClass("peek_article")}, 2000 );
+    // ;
+
+
+
+    // if ($(".articles .article div").is(":hidden") || bucketArray === []) {
+    //   $(".article").show("slow");
+    //   // $(".article_container").removeClass("peek_article");
+    // } else {
+    //   $(".article").slideUp("slow", function(){
+    //     // console.log("OPEN READ DIV");
+    //     $(".article_container").addClass("peek_article");
+    //   });
+    // }
   });
 
   // ------------------------------------------
@@ -50,7 +57,10 @@ $(document).ready(function() {
     if ($(".articles .article div").is(":hidden") || bucketArray === []) {
       $(".article").show("slow");
     }
+    // window.clearInterval();
     $(".article_container").removeClass("peek_article");
+    $(".article").removeClass("fadeOutLeft");
+    $(".article").addClass("fadeInLeft");
   });
 
   
