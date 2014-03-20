@@ -22,6 +22,25 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.cookieParser());
+app.use(function(req, res, next) {
+  var cookie = req.cookies.session_id;
+
+  if (cookie === undefined) {
+    //set new cookie
+    var randomNumber = Math.random().toString();
+    randomNumber = randomNumber.substring(2, randomNumber.length);
+    res.cookie("session_id", randomNumber, {maxAge: 900000, httpOnly: true});
+
+    console.log("cookie created successfully")
+  }
+  else {
+    //cookie was already present
+    console.log("cookie exists", cookie);
+  }
+
+  next();
+});
 
 // development only
 if ('development' == app.get('env')) {
