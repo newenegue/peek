@@ -71,3 +71,12 @@ var read = function(paragraph) {
 // popularity++;
 // console.log(popularity);
 }
+
+
+exports._tests = {
+  makeToChars: makeToChars,
+  breakUpWord: breakUpWord,
+  printWord: printWord,
+  combineParagraphs: combineParagraphs,
+  read: read
+}
