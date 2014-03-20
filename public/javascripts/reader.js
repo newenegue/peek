@@ -51,6 +51,9 @@ var printWord = function(words, i) {
 }
 
 
+setTimeout(function(){ window.onscroll=triggerInfinite;}, 100);
+
+
 
 var combineParagraphs = function(paragraph) {
   var text = ""
@@ -74,4 +77,13 @@ var read = function(paragraph) {
     }, 100);
 // popularity++;
 // console.log(popularity);
+}
+
+
+exports._tests = {
+  makeToChars: makeToChars,
+  breakUpWord: breakUpWord,
+  printWord: printWord,
+  combineParagraphs: combineParagraphs,
+  read: read
 }
