@@ -5,7 +5,7 @@ var makeToChars = function(paragraph) {
     words[i] = wordArray[i].split("");
   }
   return words;
-}
+};
 
 var breakUpWord = function(words) {
   var frontPart = [],
@@ -32,7 +32,7 @@ var breakUpWord = function(words) {
     backPart: backPart
   };
 
-}
+};
 
 
 var printWord = function(words, i) {
@@ -43,22 +43,21 @@ var printWord = function(words, i) {
   //this combines the letters in the correct position
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
-
+  // debugger;
   if(i >= words.frontPart.length) {
     clearInterval(readerTimer);
   }
-  
-}
+};
 
 
 
 var combineParagraphs = function(paragraph) {
-  var text = ""
+  var text = "";
   for(var i=0; i < paragraph.length; i++){
     text += " " + paragraph[i].text;
   }
   return text;
-}
+};
 
 var read = function(paragraph) {
   var text = combineParagraphs(paragraph);
@@ -68,6 +67,7 @@ var read = function(paragraph) {
       printWord(words, i);
       i++;
     }, 100);
+      console.log(i);
 // popularity++;
 // console.log(popularity);
-}
+};

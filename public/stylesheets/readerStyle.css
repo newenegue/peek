@@ -1,0 +1,67 @@
+/*-----------------------------------------
+Reader alignment
+-----------------------------------------*/
+
+/*-----------------------------------------
+Article peek
+-----------------------------------------*/
+.article_container {
+  position: fixed;
+  background-color: rgba(255,255,255,0.95);
+  top: 0;
+  left: 0;
+  /*left: 2%;*/
+  /*top: 10%;*/
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: -50;
+}
+
+.peek_article {
+  display: block;
+  z-index: 100;
+  text-align: center;
+}
+
+#reader {
+  font-size: 6em;
+  width: 1000px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+#front {
+  position: absolute;
+  margin-top: 2%;
+  background-color: white;
+}
+
+#center {
+  color: red;
+  position: absolute;
+  left: 47%;
+  margin-top: 2%;
+  background-color: white;
+}
+
+.verticalLine {
+  width: 47%;
+  height: 197px;
+  border-right: 3px solid black;
+  z-index: -47;
+  overflow: visible;
+}
+
+#back {
+  position: absolute;
+  margin-top: 2%;
+  background-color: white;
+}
+
+.close {
+  margin: 5%;
+}

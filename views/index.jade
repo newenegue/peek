@@ -19,7 +19,7 @@ block content
   div.articles
     div.article(ng-repeat="article in articles track by $index" draggable="true" ondragstart="onDragStart(event)" ng-dblclick="addToBucket(article, $event)")
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
-        img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.thumbnail.medium.$text}}")
+        img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.image[0].crop[2].src}}")
         div.article_content
           div.title 
             b {{article.title.$text}}
@@ -31,16 +31,17 @@ block content
 
   div.article_container
     button.close.glyphicon.glyphicon-remove
-    h3.readerIpsum Peek Reader will go Here
+    #reader
+      div.verticalLine
+        span#front {{front}}
+        span#center {{center}}
+        span#back {{back}}
+    br
     button#restart(onclick='restart()') Restart
     button#rewind(onclick='rewind()') Rewind
     button#submit(onclick='read()') Play
+    h2.glyphicon.glyphicon-play(id='submit', onclick='read()')
     button#forward(onclick='forward()') FastForward
-    br
-    #reader(style='font-size: 36; width: 300px; border: 1px solid black; height: 50px;')
-      span#front(style='position: absolute;') {{front}}
-      span#center(style='color: red; position: absolute; left: 100px;') {{center}}
-      span#back(style='position: absolute;') {{back}}
     
     select#wpm
       option(value='100') 100 WPM
