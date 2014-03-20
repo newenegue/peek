@@ -150,15 +150,11 @@ function bucketFace(face, opc) {
 
   if(opc == "0"){
     // removes bucket container outer glow
-    // if(bucketArray.length !== 0)
     $(".bucket_container").removeClass("bucket_selected");
-    // $(".bucket_item_holder").removeClass("item_holder_hover");
   }
   else {
     // adds bucket container outer glow
-    // if(bucketArray.length !== 0)
     $(".bucket_container").addClass("bucket_selected");
-    // $(".bucket_item_holder").addClass("item_holder_hover");
   }
 }
 

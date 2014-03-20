@@ -41,7 +41,7 @@ function readArticle() {
   var article_id = $($(this).parent().parent().parent()).attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var link = $("#" + article_id).attr('data-article-link');
-  
+
   read(paragraph);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
