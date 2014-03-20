@@ -24,12 +24,12 @@ $(document).ready(function() {
 });
 
 function showMoreInfo() {
-  $($(this)).children().children().last().addClass("showMoreInfo");
+  $(this).find(".moreInfo").addClass("showMoreInfo");
 
 }
 
 function hideMoreInfo() {
-  $($(this)).children().children().last().removeClass("showMoreInfo");
+  $(this).find(".moreInfo").removeClass("showMoreInfo");
 
 }
 
@@ -38,7 +38,7 @@ function hideMoreInfo() {
 // ------------------------------------------
 function readArticle() {
 
-  var article_id = $($(this).parent().parent().parent()).attr('data-id');
+  var article_id = $(this).parents(".bucket_item").attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var link = $("#" + article_id).attr('data-article-link');
 
@@ -74,7 +74,7 @@ function svgLoaded(response) {
 // Locates article id from DOM and removes it from bucket
 // ------------------------------------------
 function removeSelectedItem() {
-  var article_id = $($(this).first()).parent().parent().attr("data-id");
+  var article_id = $(this).parents(".bucket_item").attr("data-id");
   console.log(article_id);
   removeItemFromBucket(article_id);
 
