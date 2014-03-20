@@ -35,13 +35,14 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  var title, thumbnail, article_id, items="";
+  var title, thumbnail, article_id, teaser, items="";
 
   for(var i = 0; i < bucketArray.length; i++) {
 
     // Set local variables
     article_id = bucketArray[i];
     title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
+    teaser = $("#" + bucketArray[i] + " .text")[0].innerHTML;
     thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
     if(thumbnail === null || thumbnail === '') {
       thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
@@ -49,14 +50,22 @@ function updateItemsInBucket() {
 
     // Inject HTML to update bucket
     items += '<div class="bucket_item" data-id="' + article_id + '">';
+    items += '<div class="bucket_img">';
     if(thumbnail){
-      items += '<img class="thumb" src="'+ thumbnail +'" height="50">';
+
+      items += '<div class="white_overlay"></div><img class="thumb" src="'+ thumbnail +'" height="50">';
+      items += '<div class="bucket_title">' + title + '</div>';
     }
-    items += '<div>' + title + '</div>';
-    items += '<button class="remove_bucket_item">Remove</button>';
+    else {
+      
+      items += '<div class="bucket_title" style="position: initial;">' + title + '</div>';
+    }
+    items += '<div class="moreInfo">';
+    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
-    items += '</div>';
+    items += '<div class="bucket_teaser">' + teaser + '</div>';
+    items += '</div></div></div>';
   }
   
   return items;
@@ -141,11 +150,15 @@ function bucketFace(face, opc) {
 
   if(opc == "0"){
     // removes bucket container outer glow
+    // if(bucketArray.length !== 0)
     $(".bucket_container").removeClass("bucket_selected");
+    // $(".bucket_item_holder").removeClass("item_holder_hover");
   }
   else {
     // adds bucket container outer glow
+    // if(bucketArray.length !== 0)
     $(".bucket_container").addClass("bucket_selected");
+    // $(".bucket_item_holder").addClass("item_holder_hover");
   }
 }
 
@@ -183,6 +196,7 @@ function removeItemFromBucket(id) {
   // Find article and remove it from bucketArray
   var index = bucketArray.indexOf(id);
   bucketArray.splice(index,1);
+  console.log(id);
   $("#" + id).parent().removeClass("article_in_bucket");
   return true;
 }
