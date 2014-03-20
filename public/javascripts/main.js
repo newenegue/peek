@@ -68,7 +68,7 @@ function removeSelectedItem() {
 // ------------------------------------------
 // Angular
 // ------------------------------------------
-var peekApp = angular.module('PeekApp', ['infinite-scroll']);
+var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
