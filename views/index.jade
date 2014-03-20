@@ -19,7 +19,8 @@ block content
   div.articles
     div.article(ng-repeat="article in articles track by $index" draggable="true" ondragstart="onDragStart(event)" ng-dblclick="addToBucket(article, $event)")
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
-        img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.image[0].crop[2].src}}")
+        //- find primary image and show those images.  only show src if it exists?  what is the main error?
+        img.main_image(ng-show="article.image != null" src="{{article.image[0].crop[1].src}}" data-thumb="{{article.image[0].src}}") 
         div.article_content
           div.title 
             b {{article.title.$text}}
