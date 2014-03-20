@@ -24,12 +24,12 @@ $(document).ready(function() {
 });
 
 function showMoreInfo() {
-  $($(this)).children().children().last().addClass("showMoreInfo");
+  $(this).find(".moreInfo").addClass("showMoreInfo");
 
 }
 
 function hideMoreInfo() {
-  $($(this)).children().children().last().removeClass("showMoreInfo");
+  $(this).find(".moreInfo").removeClass("showMoreInfo");
 
 }
 
@@ -38,7 +38,7 @@ function hideMoreInfo() {
 // ------------------------------------------
 function readArticle() {
 
-  var article_id = $($(this).parent().parent().parent()).attr('data-id');
+  var article_id = $(this).parents(".bucket_item").attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var link = $("#" + article_id).attr('data-article-link');
 
@@ -74,7 +74,7 @@ function svgLoaded(response) {
 // Locates article id from DOM and removes it from bucket
 // ------------------------------------------
 function removeSelectedItem() {
-  var article_id = $($(this).first()).parent().parent().attr("data-id");
+  var article_id = $(this).parents(".bucket_item").attr("data-id");
   console.log(article_id);
   removeItemFromBucket(article_id);
 
@@ -85,7 +85,7 @@ function removeSelectedItem() {
 // ------------------------------------------
 // Angular
 // ------------------------------------------
-var peekApp = angular.module('PeekApp', ['infinite-scroll']);
+var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
@@ -118,9 +118,9 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
   window.addArticles = function() {
   var oldArray = $scope.articles;
-  pageNum = (pageNum + 1) * 9;
-
-  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + pageNum + '&numResults=15&requiredAssets=text&format=json')
+  pageNum++;
+  articleNum = ((pageNum + 1) * 9);
+  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
       //this targets the new stories from the NPR JSON list
       articles = res.data.list.story;
@@ -132,13 +132,15 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
         if(index > -1){
           articles[i].splice(index, 1);
         }
+        //this makes the teaser text html safe
         var text = articles[i].teaser.$text;
         articles[i].teaser.$text = $sce.trustAsHtml(text);
         for(var j=0; j < articles[i].text.paragraph.length; j++){
           articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
         }
       }
-      for(var i=0; i < 10; i++){
+      //this pushes only 9 articles to the full articles array
+      for(var i=0; i < 9; i++){
         $scope.articles.push(articles[i]);
       }
       
