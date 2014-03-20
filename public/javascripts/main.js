@@ -18,19 +18,33 @@ $(document).ready(function() {
 
   // Animated bucket: shadow
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
+
+  $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
+  $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 });
+
+function showMoreInfo() {
+  $($(this)).children().children().last().addClass("showMoreInfo");
+
+}
+
+function hideMoreInfo() {
+  $($(this)).children().children().last().removeClass("showMoreInfo");
+
+}
 
 // ------------------------------------------
 // Open PEEK to read article
 // ------------------------------------------
 function readArticle() {
 
-  var article_id = $($(this).parent()).attr('data-id');
+  var article_id = $($(this).parent().parent().parent()).attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var link = $("#" + article_id).attr('data-article-link');
 
   read(paragraph);
 
+  $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
   setTimeout( function() {$(".article_container").addClass("peek_article")}, 1000 );
 }
@@ -39,6 +53,7 @@ function readArticle() {
 // Close article
 // ------------------------------------------
 function closeArticle() {
+  $(".wholeBucket").attr("class", "wholeBucket");
   $(".article_container").removeClass("peek_article");
   $(".article").removeClass("fadeOutLeft");
   $(".article").addClass("fadeInLeft");
@@ -59,7 +74,8 @@ function svgLoaded(response) {
 // Locates article id from DOM and removes it from bucket
 // ------------------------------------------
 function removeSelectedItem() {
-  var article_id = $($(this).first()).attr("data-id");
+  var article_id = $($(this).first()).parent().parent().attr("data-id");
+  console.log(article_id);
   removeItemFromBucket(article_id);
 
   // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID

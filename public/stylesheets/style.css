@@ -131,10 +131,7 @@ Bucket: Content
 .bucket_item {
   background-color: rgba(0, 0, 0, 0.2);
   margin-bottom: 3px;
-  cursor: pointer;
   width: 100%;
-  padding-bottom: 5px;
-  /*height: 60px;*/
 }
 
 .bucket_item_holder {
@@ -146,6 +143,11 @@ Bucket: Content
   padding: 8%;
 }
 
+.item_holder_hover {
+  color: rgba(218, 165, 32, 0.4);
+  border: 2px dotted rgba(218, 165, 32, 0.4);
+}
+
 [draggable] {
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -154,6 +156,50 @@ Bucket: Content
   /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.remove_bucket_item {
+  top: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.bucket_img {
+  position: relative;
+}
+
+.bucket_title {
+  position: absolute;
+  bottom: 0;
+}
+
+.white_overlay {
+  position: absolute;
+  background-color: rgba(255,255,255,0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.moreInfo {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+.showMoreInfo {
+  display: block;
+
 }
 
 /*-----------------------------------------
@@ -209,7 +255,7 @@ Bucket: Animated
   width: 100%;
 }
 
-#wholeBucket {
+.wholeBucket {
   -webkit-animation: float 3s ease-out infinite;
   -moz-animation: float 3s ease-out infinite;
   animation: float 3s ease-out infinite;
