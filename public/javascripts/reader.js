@@ -70,7 +70,7 @@ var read = function(paragraph) {
       printWord(words, i);
       i++;
       console.log(i)
-    }, 100);
+    }, 1000);
 // popularity++;
 // console.log(popularity);
 }

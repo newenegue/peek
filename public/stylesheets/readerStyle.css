@@ -31,6 +31,7 @@ Article peek
   border-bottom: 3px solid black;
   height: 200px;
   margin: 0 auto;
+  margin-top: 10%;
 }
 
 #front {
@@ -49,7 +50,7 @@ Article peek
 
 .verticalLine {
   width: 47%;
-  height: 199px;
+  height: 197px;
   border-right: 3px solid black;
   z-index: -47;
   overflow: visible;
