@@ -56,21 +56,17 @@ var combineParagraphs = function(paragraph) {
   var text = ""
   for(var i=0; i < paragraph.length; i++){
     text += " " + paragraph[i].text;
-    // console.log(text)
   }
   return text;
 }
 
 var read = function(paragraph) {
   var text = combineParagraphs(paragraph);
-  console.log(text);
   var words = breakUpWord(makeToChars(text));
-  console.log(words);
     i =0;
     readerTimer = setInterval(function(){
       printWord(words, i);
       i++;
-      console.log(i)
     }, 100);
 // popularity++;
 // console.log(popularity);
