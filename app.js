@@ -55,8 +55,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/bucketlist', bucket.getBucket(db));
+app.get('/articles', bucket.getArticles(db));
 app.post('/bucketlist/add', bucket.addBucket(db));
-app.put('/bucketlist/:id', bucket.updateBucket(db));
+app.post('/article/add/:id', bucket.addArticle(db));
+app.del('/article/del/:id', bucket.removeArticle(db));
 
 
 http.createServer(app).listen(app.get('port'), function(){

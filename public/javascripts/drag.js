@@ -183,6 +183,7 @@ function validId(id) {
 // Add article to bucket
 // ------------------------------------------
 function addItemToBucket(id) {
+  addArticleToDatabase(id);
   bucketArray.push(id);
   $("#" + id).parent(".article").addClass("article_in_bucket");
   return true;
@@ -193,6 +194,7 @@ function addItemToBucket(id) {
 // ------------------------------------------
 function removeItemFromBucket(id) {
   // Find article and remove it from bucketArray
+  removeArticleFromBucket(id)
   var index = bucketArray.indexOf(id);
   bucketArray.splice(index,1);
   console.log(id);

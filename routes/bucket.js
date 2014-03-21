@@ -25,7 +25,7 @@ exports.getBucket = function(db) {
 exports.addBucket = function(db) {
   return function(req, res) {
     var collection = db.get('buckets');
-    collection.insert({"articles": [{id: 1},{id:2},{id:3}]}, function (err, doc) {
+    collection.insert({}, function (err, doc) {
       if (err) {
           res.send("There was a problem adding the information to the database.");
       }
@@ -45,27 +45,92 @@ exports.addBucket = function(db) {
   }
 }
 
-exports.updateBucket = function(db, articleId) {
+exports.getArticles = function(db) {
   return function(req, res) {
-    var collection = db.get('bucketarticle');
-    var collection2 = db.get('articles');
+    var collection = db.get('articlebucket');
+    var bucketID = parseCookies(req.headers.cookie);
+    bucketID = decodeURI(bucketID).trim();
+    bucketID = bucketID.substr(3,(bucketID.length - 4));
+    console.log("made it into getArticles function");
 
+    collection.find({bucket_id: bucketID},{},function(err, docs){
+      if(err){
+        console.log("could not find that bucket")
+      }
+      else {
+        console.log("found it " + docs);
+      }
+    });
 
+  }
+}
 
-
-    // collection.update({"articles": articles}, function (err, doc) {
-    //   if (err) {
-    //       // If it failed, return error
-    //       res.send("There was a problem adding the information to the database.");
-    //   }
-    //   else {
-    //       // If it worked, set the header so the address bar doesn't still say /adduser
-    //       res.location("/");
-    //       // And forward to success page
-    //       res.redirect("/");
-    //   }
-    // });
+exports.addArticle = function(db) {
+  return function(req, res) {
+    var articleID = req.params.id
+    var collection = db.get('articles');
+    console.log("made it into the addArticle function")
+    collection.findById(articleID,function(err, docs){
+      //console.log("found the article by id " + docs._id);
+      if (!docs) {
+        console.log("the article was not able to be found, so lets add one")
+        collection.insert({"_id": articleID, "popularity" : 0}, function (err, doc) {
+          if (err) {
+            console.log("article was not able to be added to the db");
+            res.end("could not add article to db");
+          }
+        } );
+      }
+      else {
+        console.log("thats weird, we somehow found the article");
+      }
+      //call add join table function
+      addArticleToBucket(articleID, req, db);
+    });
+    console.log(req.params.id);
+    res.end(req.params.id);
   }
 }
 
 
+function addArticleToBucket(articleID, req, db) {
+  var collection2 = db.get('articlebucket');
+  var bucketID = parseCookies(req.headers.cookie);
+  bucketID = decodeURI(bucketID).trim();
+  bucketID = bucketID.substr(3,(bucketID.length - 4));
+
+  console.log("made it into addArticleToBucket");
+  collection2.findOne({bucket_id: bucketID, article_id: articleID},{}, function(err, docs){
+    if (!docs) {
+      console.log("the relationship was not able to be found, so lets add one")
+      collection2.insert({bucket_id: bucketID, article_id: articleID}, function(err, doc) {
+        if (err) {
+          console.log('could not add relationship')
+        }
+      });
+    }
+    else {
+      console.log("the relationship already exists");
+    }
+  });
+}
+
+exports.removeArticle = function(db) {
+  return function(req, res) {
+    var collection = db.get('articlebucket');
+    var articleID = req.params.id
+    var bucketID = parseCookies(req.headers.cookie);
+    bucketID = decodeURI(bucketID).trim();
+    bucketID = bucketID.substr(3,(bucketID.length - 4));
+    console.log("made it into removeArticle in node's controller");
+
+    collection.remove({bucket_id: bucketID, article_id: articleID}, function(err){
+      if(err) {
+        console.log("could not remove relationship");
+      }
+      else {
+        console.log("relationship removed")
+      }
+    }); 
+  }
+}

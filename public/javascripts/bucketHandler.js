@@ -3,23 +3,42 @@ function setCookie() {
     console.log(response);
   }});
 }
-$(document).ready(function(){
-  setCookie().done(function(){
-    $.ajax({type: 'GET', url: '/bucketlist', success: function(response){
+
+function getBucket() {
+    return $.ajax({type: 'GET', url: '/bucketlist', success: function(response){
       console.log(response);
-      //call add existing articles(response)
     }});
-  });
+}
+
+function getArticles() {
+  return $.ajax({type: 'GET', url: '/articles', success: function(response){
+    console.log(response);
+    //existing articles(response)
+    //parse the json(response)
+    //pull out the article ids
+    //find an article by its id
+    //load it in the bucket
+  }});
+}
+
+$(document).ready(function(){
+  setCookie().done(getBucket().done(getArticles()));
 });
 
-//existing articles(response)
-//parse the json(response)
-//pull out the article ids
-//find an article by its id
-//load it in the bucket
 
 
-//addArticle(id)
-//when an article is dropped into the bucket
-//grab article id from the dom
-//run an ajax call while passing in the article id
+function addArticleToDatabase(id) {
+  //run an ajax call while passing in the article id
+  console.log(id);
+  $.ajax({type: 'POST', url: '/article/add/' + id, success: function(response){
+    console.log(response);
+  }});
+}
+
+function removeArticleFromBucket(id) {
+  //run an ajax call while passing in the article id
+  console.log(id);
+  $.ajax({type: 'DELETE', url: '/article/del/' + id, success: function(response){
+    console.log(response);
+  }});
+}
