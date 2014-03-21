@@ -27,10 +27,10 @@ $(document).ready(function(){
 
 
 
-function addArticleToDatabase(id) {
+function addArticleToDatabase(article) {
   //run an ajax call while passing in the article id
-  console.log(id);
-  $.ajax({type: 'POST', url: '/article/add/' + id, success: function(response){
+  console.log(article);
+  $.ajax({type: 'POST', url: '/article/add/' + article["id"], data: {id: article["id"], title: article["title"], teaser: article["teaser"], thumbnail: article["thumbnail"], paragraph: article["paragraph"]}, success: function(response){
     console.log(response);
   }});
 }
