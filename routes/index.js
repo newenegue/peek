@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'PEEK Frontend Development' });
+  res.render('index', { title: 'PEEK' });
 };

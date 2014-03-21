@@ -47,6 +47,9 @@ function updateItemsInBucket() {
     if(thumbnail === null || thumbnail === '') {
       thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
     }
+    
+    
+    
 
     // Inject HTML to update bucket
     items += '<div class="bucket_item" data-id="' + article_id + '">';
@@ -181,7 +184,7 @@ function validId(id) {
 // ------------------------------------------
 function addItemToBucket(id) {
   bucketArray.push(id);
-  $("#" + id).parent().addClass("article_in_bucket");
+  $("#" + id).parent(".article").addClass("article_in_bucket");
   return true;
 }
 
@@ -193,6 +196,6 @@ function removeItemFromBucket(id) {
   var index = bucketArray.indexOf(id);
   bucketArray.splice(index,1);
   console.log(id);
-  $("#" + id).parent().removeClass("article_in_bucket");
+  $("#" + id).parent(".article").removeClass("article_in_bucket");
   return true;
 }

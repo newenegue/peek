@@ -43,13 +43,12 @@ var printWord = function(words, i) {
   //this combines the letters in the correct position
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
-  // debugger;
+
   if(i >= words.frontPart.length) {
     clearInterval(readerTimer);
   }
+
 };
-
-
 
 var combineParagraphs = function(paragraph) {
   var text = ""
@@ -71,3 +70,11 @@ var read = function(paragraph) {
 // popularity++;
 // console.log(popularity);
 };
+
+exports._tests = {
+  makeToChars: makeToChars,
+  breakUpWord: breakUpWord,
+  printWord: printWord,
+  combineParagraphs: combineParagraphs,
+  read: read
+}
