@@ -37,7 +37,8 @@ function updateBucketContent() {
 function updateItemsInBucket() {
   var items = "";
 
-  for(var i = 0; i < bucketArray.length; i++) {
+  // Show latest bucket article
+  for(var i = bucketArray.length - 1; i >= 0; i--) {
 
     // Inject HTML to update bucket
     items += '<div class="bucket_item" data-id="' + bucketArray[i].id + '">';
