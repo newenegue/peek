@@ -48,7 +48,12 @@ var printWord = function(words, i) {
     clearInterval(readerTimer);
   }
 
-};
+}
+
+
+setTimeout(function(){ window.onscroll=triggerInfinite;}, 100);
+
+
 
 var combineParagraphs = function(paragraph) {
   var text = ""
@@ -71,10 +76,10 @@ var read = function(paragraph) {
 // console.log(popularity);
 };
 
-// exports._tests = {
-//   makeToChars: makeToChars,
-//   breakUpWord: breakUpWord,
-//   printWord: printWord,
-//   combineParagraphs: combineParagraphs,
-//   read: read
-// }
+exports._tests = {
+  makeToChars: makeToChars,
+  breakUpWord: breakUpWord,
+  printWord: printWord,
+  combineParagraphs: combineParagraphs,
+  read: read
+}

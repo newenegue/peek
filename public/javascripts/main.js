@@ -6,7 +6,6 @@ $(document).ready(function() {
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
 
-
   // Close Peek reader
   $(document.body).on('click', '.close', closeArticle);
 
@@ -19,15 +18,22 @@ $(document).ready(function() {
   // Animated bucket: shadow
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
+  // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 });
 
+// ------------------------------------------
+// Show more info about article in bucket
+// ------------------------------------------
 function showMoreInfo() {
   $(this).find(".moreInfo").addClass("showMoreInfo");
 
 }
 
+// ------------------------------------------
+// Hide the info about article in bucket
+// ------------------------------------------
 function hideMoreInfo() {
   $(this).find(".moreInfo").removeClass("showMoreInfo");
 
@@ -41,12 +47,13 @@ function readArticle() {
   var article_id = $(this).parents(".bucket_item").attr('data-id');
   var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var link = $("#" + article_id).attr('data-article-link');
+  $("a.link_to_article").attr("href", link);
 
   read(paragraph);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
-  setTimeout( function() {$(".article_container").addClass("peek_article")}, 1000 );
+  setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
 }
 
 // ------------------------------------------
@@ -75,7 +82,6 @@ function svgLoaded(response) {
 // ------------------------------------------
 function removeSelectedItem() {
   var article_id = $(this).parents(".bucket_item").attr("data-id");
-  console.log(article_id);
   removeItemFromBucket(article_id);
 
   // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
@@ -106,12 +112,15 @@ function findImageIndex(txt) {
 // Use square crop image if it exists
 // ------------------------------------------
 function findSquareImage(img) {
-  // If there is a square version, then use it
+  // Search through all crop versions
   for(var i = 0; i < img.crop.length; i++){
+    // If there is a square version, then use it
     if(img.crop[i].type == "square") {
+      // Switch image to square version
       return img.crop[i];
     }
   }
+  // Use original image, if not square found
   return img;
 }
 
@@ -124,6 +133,7 @@ var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.articles = [];
+  $scope.loading = false;
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
@@ -153,38 +163,53 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   pageNum = 0;
 
   window.addArticles = function() {
-  var oldArray = $scope.articles;
-  pageNum++;
-  articleNum = ((pageNum + 1) * 9);
-  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
-    .then(function(res){
-      //this targets the new stories from the NPR JSON list
-      articles = res.data.list.story;
-      //loop through each new article
-      for(var i=0; i < articles.length; i++){
-        //check to see if the id of the new article is in the old array of articles
-        var index = oldArray.indexOf(articles[i].id);
-        //if the id is in the oldArray remove it from the new articles
-        if(index > -1){
-          articles[i].splice(index, 1);
+    // show loading img
+    $scope.loading = true;
+
+    var oldArray = $scope.articles;
+    pageNum++;
+    articleNum = ((pageNum + 1) * 9);
+    $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
+      .then(function(res){
+        //this targets the new stories from the NPR JSON list
+        articles = res.data.list.story;
+        //loop through each new article
+        for(var i=0; i < articles.length; i++){
+          //check to see if the id of the new article is in the old array of articles
+          var index = oldArray.indexOf(articles[i].id);
+          //if the id is in the oldArray remove it from the new articles
+          if(index > -1){
+            articles[i].splice(index, 1);
+          }
+          //this makes the teaser text html safe
+          var text = articles[i].teaser.$text;
+          articles[i].teaser.$text = $sce.trustAsHtml(text);
+          for(var j=0; j < articles[i].text.paragraph.length; j++){
+            articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
+          }
         }
-        //this makes the teaser text html safe
-        var text = articles[i].teaser.$text;
-        articles[i].teaser.$text = $sce.trustAsHtml(text);
-        for(var j=0; j < articles[i].text.paragraph.length; j++){
-          articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
+        //this pushes only 9 articles to the full articles array
+        for(var i=0; i < 9; i++){
+          $scope.articles.push(articles[i]);
         }
-      }
-      //this pushes only 9 articles to the full articles array
-      for(var i=0; i < 9; i++){
-        $scope.articles.push(articles[i]);
-      }
-      
-    });
+        // hide loading img
+        $scope.loading = false;
+      });
+
+    
 
   };
 
-
+  // ------------------------------------------
+  // Find if article is in bucket
+  // ------------------------------------------
+  $scope.inBucket = function(article) {
+    var isInBucket = false;
+    for(var i = 0; i < bucketArray.length; i++){
+      if(bucketArray[i].id == article.id) { isInBucket = true; }
+    }
+    return isInBucket;
+  };
 
   // ------------------------------------------
   // Double click article to add to bucket
@@ -216,19 +241,32 @@ peekApp.filter('getMainImage', function(){
     if(input.image){
       // Local variables
       var images = input.image;
-      var mainImage;
-
-      // Loop through all the images of article
-      for(var i = 0; i < images.length; i++){
-        // The article has a primary image
-        if(images[i].type == "primary") {
-          mainImage = findSquareImage(images[i]);
-        }
-        // No primary image exists, so use the first available image
-        if(i === 0) {
-          mainImage = findSquareImage(images[i]);
+      var mainImage = images[0];
+      if(mainImage.type != "primary") {
+        for(var i = 0; i < images.length; i++){
+          // The article has a primary image
+          if(images[i].type == "primary") {
+            mainImage = findSquareImage(images[i]);
+          }
         }
       }
+      else {
+        mainImage = findSquareImage(mainImage);
+      }
+
+      
+
+      // // Loop through all the images of article
+      // for(var i = 0; i < images.length; i++){
+      //   // The article has a primary image
+      //   if(images[i].type == "primary") {
+      //     mainImage = findSquareImage(images[i]);
+      //   }
+      //   // No primary image exists, so use the first available image
+      //   if(i === 0) {
+      //     mainImage = findSquareImage(images[i]);
+      //   }
+      // }
       return mainImage.src;
     }
     // If the NPR doesn't have images, look through the html, use the first image
@@ -251,6 +289,27 @@ peekApp.filter('getMainImage', function(){
   };
 });
 
+peekApp.filter("getThumbnail", function() {
+  return function(input) {
+    if(input.image){
+      // Local variables
+      var images = input.image;
+      var thumb = images[0];
+
+      if(thumb.type != "primary"){
+        // Loop through all the images of article
+        for(var i = 1; i < images.length; i++){
+          // The article has a primary image
+          if(images[i].type == "primary") {
+            thumb = images[i];
+          }
+        }
+      }
+      return thumb.src;
+    }
+  };
+});
+
 // ------------------------------------------
 // Remove all stories listed as:
 // - Top Stories
@@ -259,9 +318,11 @@ peekApp.filter('getMainImage', function(){
 peekApp.filter("removeTopStories", function() {
   return function(input) {
     for(var i = 0; i < input.length; i++){
+      // Remove all Top Stories article
       if(input[i].title.$text.indexOf("Top Stories:") >= 0){
         input.splice(i,1);
       }
+      // Remove articles that are not from npr.org
       if(input[i].link[0].$text.indexOf("npr.org") == -1){
         input.splice(i,1);
       }

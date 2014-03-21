@@ -23,7 +23,9 @@ a {
 /*-----------------------------------------
 Newsfeed
 -----------------------------------------*/
-
+.articles {
+  width: 80%;
+}
 .article {
   border: 2px solid #ddd;
   background-color: white;
@@ -31,7 +33,7 @@ Newsfeed
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 2px;
-  width: 80%;
+  width: 100%;
   overflow: auto;
 }
 
@@ -68,6 +70,38 @@ Newsfeed
 .main_image {
   float: left;
   width: 20%;
+}
+
+p.search {
+  position: fixed;
+  left: 40%;
+  top: 10px;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loading {
+  background-image: url(../images/loading.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  left: 50%;
+  position: relative;
+  -webkit-transform-origin: 50% 50%;
+
+  -webkit-animation-name:             rotate; 
+  -webkit-animation-duration:         1.5s; 
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-animation-timing-function: linear;
 }
 
 /*-----------------------------------------

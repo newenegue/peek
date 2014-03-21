@@ -1,80 +1,4 @@
 // ===========================================================
-// Update bucket functions
-// ===========================================================
-// Global bucketArray
-var bucketArray = [];
-// ------------------------------------------
-// Refresh bucket list
-// ------------------------------------------
-function refreshBucket() {
-  var bucketContent = updateBucketContent();
-
-  // Inject html with new bucket content
-  $(".bucket").html(bucketContent);
-
-  // Make new list sortable
-  $('.bucket').sortable({
-    handle: '.handle',
-    forcePlaceholderSize: true,
-    items: ':not(.bucket_name)'
-  });
-}
-
-// ------------------------------------------
-// Update bucket content
-// ------------------------------------------
-function updateBucketContent() {
-  var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
-
-  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
-
-  return bucketContent;
-}
-
-// ------------------------------------------
-// Update items of bucket
-// ------------------------------------------
-function updateItemsInBucket() {
-  var title, thumbnail, article_id, teaser, items="";
-
-  for(var i = 0; i < bucketArray.length; i++) {
-
-    // Set local variables
-    article_id = bucketArray[i];
-    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
-    teaser = $("#" + bucketArray[i] + " .text")[0].innerHTML;
-    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
-    if(thumbnail === null || thumbnail === '') {
-      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
-    }
-    
-    
-    
-
-    // Inject HTML to update bucket
-    items += '<div class="bucket_item" data-id="' + article_id + '">';
-    items += '<div class="bucket_img">';
-    if(thumbnail){
-
-      items += '<div class="white_overlay"></div><img class="thumb" src="'+ thumbnail +'" height="50">';
-      items += '<div class="bucket_title">' + title + '</div>';
-    }
-    else {
-      
-      items += '<div class="bucket_title" style="position: initial;">' + title + '</div>';
-    }
-    items += '<div class="moreInfo">';
-    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
-    items += '<button class="read btn btn-default">Read</button>';
-    items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
-    items += '<div class="bucket_teaser">' + teaser + '</div>';
-    items += '</div></div></div>';
-  }
-  
-  return items;
-}
-
-// ===========================================================
 // Drag and Drop functions
 // ===========================================================
 // ------------------------------------------
@@ -143,7 +67,6 @@ function onLeave() {
 // ------------------------------------------
 // Change bucket face
 // ------------------------------------------
-
 function bucketFace(face, opc) {
   // controls scale of eyes depending on mood
   $("#leftEyeFull").attr("class", face);
@@ -164,38 +87,6 @@ function bucketFace(face, opc) {
 // ------------------------------------------
 // Reset drop animation
 // ------------------------------------------
-
 function dropFace(face) {
   $("#Layer_1").attr("class", face);
-}
-
-// ===========================================================
-// Bucket control functions
-// ===========================================================
-// ------------------------------------------
-// Check that article id is valid
-// ------------------------------------------
-function validId(id) {
-  return (bucketArray.indexOf(id) == -1 && id != '') ? true : false;
-}
-
-// ------------------------------------------
-// Add article to bucket
-// ------------------------------------------
-function addItemToBucket(id) {
-  bucketArray.push(id);
-  $("#" + id).parent(".article").addClass("article_in_bucket");
-  return true;
-}
-
-// ------------------------------------------
-// Remove article from bucket
-// ------------------------------------------
-function removeItemFromBucket(id) {
-  // Find article and remove it from bucketArray
-  var index = bucketArray.indexOf(id);
-  bucketArray.splice(index,1);
-  console.log(id);
-  $("#" + id).parent(".article").removeClass("article_in_bucket");
-  return true;
 }
