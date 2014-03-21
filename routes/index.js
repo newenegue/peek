@@ -4,5 +4,14 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'PEEK Frontend Development' });
+  // checkforCookie(req, res);
+  console.log(req.cookies)
+  res.render('index', { title: 'PEEK' });
 };
+
+var checkforCookie = function() {
+  // if(cookie) 
+
+
+  
+}

@@ -51,6 +51,9 @@ var printWord = function(words, i) {
 }
 
 
+setTimeout(function(){ window.onscroll=triggerInfinite;}, 100);
+
+
 
 var combineParagraphs = function(paragraph) {
   var text = ""
