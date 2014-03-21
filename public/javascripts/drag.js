@@ -1,7 +1,7 @@
 // ===========================================================
 // Update bucket functions
 // ===========================================================
-// Global bucketArray
+// Global bucketArray contains objects with article data
 var bucketArray = [];
 // ------------------------------------------
 // Refresh bucket list
@@ -35,39 +35,27 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  var title, thumbnail, article_id, teaser, items="";
+  var items = "";
 
   for(var i = 0; i < bucketArray.length; i++) {
 
-    // Set local variables
-    article_id = bucketArray[i];
-    title = $("#" + bucketArray[i] + " .title b")[0].innerHTML;
-    teaser = $("#" + bucketArray[i] + " .text")[0].innerHTML;
-    thumbnail = $("#" + bucketArray[i] +" img").first().data("thumb");
-    if(thumbnail === null || thumbnail === '') {
-      thumbnail = $("#" + bucketArray[i] +" img").first().attr("src");
-    }
-    
-    
-    
-
     // Inject HTML to update bucket
-    items += '<div class="bucket_item" data-id="' + article_id + '">';
+    items += '<div class="bucket_item" data-id="' + bucketArray[i].id + '">';
     items += '<div class="bucket_img">';
-    if(thumbnail){
+    if(bucketArray[i].thumbnail){
 
-      items += '<div class="white_overlay"></div><img class="thumb" src="'+ thumbnail +'" height="50">';
-      items += '<div class="bucket_title">' + title + '</div>';
+      items += '<div class="white_overlay"></div><img class="thumb" src="'+ bucketArray[i].thumbnail +'" height="50">';
+      items += '<div class="bucket_title">' + bucketArray[i].title + '</div>';
     }
     else {
       
-      items += '<div class="bucket_title" style="position: initial;">' + title + '</div>';
+      items += '<div class="bucket_title" style="position: initial;">' + bucketArray[i].title + '</div>';
     }
     items += '<div class="moreInfo">';
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
-    items += '<div class="bucket_teaser">' + teaser + '</div>';
+    items += '<div class="bucket_teaser">' + bucketArray[i].teaser + '</div>';
     items += '</div></div></div>';
   }
   
@@ -176,16 +164,36 @@ function dropFace(face) {
 // Check that article id is valid
 // ------------------------------------------
 function validId(id) {
-  return (bucketArray.indexOf(id) == -1 && id != '') ? true : false;
+  return (bucketArray.indexOf(id) == -1 && id !== '') ? true : false;
 }
 
 // ------------------------------------------
 // Add article to bucket
 // ------------------------------------------
 function addItemToBucket(id) {
-  bucketArray.push(id);
-  $("#" + id).parent(".article").addClass("article_in_bucket");
+
+  bucketArray.push(createItem(id));
+  // $("#" + id).parent(".article").addClass("article_in_bucket");
+
   return true;
+}
+
+// ------------------------------------------
+// Create item object for bucket
+// ------------------------------------------
+function createItem(id) {
+  // Set local variables
+  var title, thumbnail, article_id, teaser, item;
+
+  title = $("#" + id + " .title b")[0].innerHTML;
+  teaser = $("#" + id + " .text")[0].innerHTML;
+  thumbnail = $("#" + id +" img").first().data("thumb");
+  if(thumbnail === null || thumbnail === '') {
+    thumbnail = $("#" + id +" img").first().attr("src");
+  }
+
+  // Return article object
+  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail};
 }
 
 // ------------------------------------------
@@ -195,7 +203,6 @@ function removeItemFromBucket(id) {
   // Find article and remove it from bucketArray
   var index = bucketArray.indexOf(id);
   bucketArray.splice(index,1);
-  console.log(id);
   $("#" + id).parent(".article").removeClass("article_in_bucket");
   return true;
 }

@@ -3,6 +3,8 @@ extends layout
 block content
   h1.test= title
   p Welcome to #{title}
+  p.search Search: 
+    input(ng-model="search")
   //- Bucket for reading articles
   div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     div.bucket
@@ -17,7 +19,7 @@ block content
     img(id='heart' src='images/heart.svg')
   //- Articles list
   div.articles
-    div.article(ng-repeat="article in articles | removeTopStories" draggable="true" ondragstart="onDragStart(event)" ng-dblclick="addToBucket(article, $event)")   
+    div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
         img.main_image(src="{{article | getMainImage}}" data-thumb="{{article.image[0].src}}") 

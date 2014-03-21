@@ -75,7 +75,6 @@ function svgLoaded(response) {
 // ------------------------------------------
 function removeSelectedItem() {
   var article_id = $(this).parents(".bucket_item").attr("data-id");
-  console.log(article_id);
   removeItemFromBucket(article_id);
 
   // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
@@ -184,7 +183,21 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
   };
 
-
+  // ------------------------------------------
+  // Double click article to add to bucket
+  // ------------------------------------------
+  $scope.inBucket = function(article) {
+    console.log("check if article is in bucket");
+    // for(var i = 0; i < bucketArray.length; i++){
+    //   console.log(bucketArray[i].id);
+    //   console.log(article.id);
+    //   if(bucketArray[i].id == article.id)
+    //     return true;
+    //   else
+    //     return false;
+    // }
+    return false;
+  };
 
   // ------------------------------------------
   // Double click article to add to bucket
