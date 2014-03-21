@@ -71,10 +71,10 @@ var read = function(paragraph) {
 // console.log(popularity);
 };
 
-exports._tests = {
-  makeToChars: makeToChars,
-  breakUpWord: breakUpWord,
-  printWord: printWord,
-  combineParagraphs: combineParagraphs,
-  read: read
-}
+// exports._tests = {
+//   makeToChars: makeToChars,
+//   breakUpWord: breakUpWord,
+//   printWord: printWord,
+//   combineParagraphs: combineParagraphs,
+//   read: read
+// }

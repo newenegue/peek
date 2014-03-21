@@ -9,7 +9,7 @@ body {
 }
 
 body.main {
-  background-color: #eee;
+  background-color: rgba(218, 237, 238, 1);
 }
 
 a {
@@ -322,6 +322,7 @@ Bucket: Animated
 .bounce {
   -webkit-animation-name: bounce;
   animation-name: bounce;
+  3s ease-out infinite
 }
 /*
 * === Bucket Eyes ===
