@@ -162,7 +162,7 @@ function dropFace(face) {
 // Check that article id is valid
 // ------------------------------------------
 function validId(id) {
-  return (bucketArray.indexOf(id) == -1 && id !== '') ? true : false;
+  return (locateItem(id) == -1 && id !== '') ? true : false;
 }
 
 // ------------------------------------------
@@ -188,11 +188,11 @@ function createItem(id) {
 // ------------------------------------------
 // Find article to delete by ID
 // ------------------------------------------
-function deleteItem(id) {
+function locateItem(id) {
   // Locate object in bucket by ID
-  var item_to_remove = $.grep(bucketArray, function(e){ return e.id == id; });
+  var item = $.grep(bucketArray, function(e){ return e.id == id; });
   // Return the array index of found object
-  return bucketArray.indexOf(item_to_remove[0]);
+  return bucketArray.indexOf(item[0]);
 }
 
 // ------------------------------------------
@@ -210,7 +210,7 @@ function addItemToBucket(id) {
 // ------------------------------------------
 function removeItemFromBucket(id) {
   // Remove from bucketArray
-  bucketArray.splice(deleteItem(id),1);
+  bucketArray.splice(locateItem(id),1);
   $("#" + id).parent(".article").removeClass("article_in_bucket");
 
   return true;

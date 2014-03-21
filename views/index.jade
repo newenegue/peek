@@ -22,7 +22,8 @@ block content
     div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        img.main_image(src="{{article | getMainImage}}" data-thumb="{{article.image[0].src}}") 
+        //- {{article.image[0].src}}
+        img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         div.article_content
           div.title 
             b {{article.title.$text}}

@@ -233,19 +233,32 @@ peekApp.filter('getMainImage', function(){
     if(input.image){
       // Local variables
       var images = input.image;
-      var mainImage;
-
-      // Loop through all the images of article
-      for(var i = 0; i < images.length; i++){
-        // The article has a primary image
-        if(images[i].type == "primary") {
-          mainImage = findSquareImage(images[i]);
-        }
-        // No primary image exists, so use the first available image
-        if(i === 0) {
-          mainImage = findSquareImage(images[i]);
+      var mainImage = images[0];
+      if(mainImage.type != "primary") {
+        for(var i = 0; i < images.length; i++){
+          // The article has a primary image
+          if(images[i].type == "primary") {
+            mainImage = findSquareImage(images[i]);
+          }
         }
       }
+      else {
+        mainImage = findSquareImage(mainImage);
+      }
+
+      
+
+      // // Loop through all the images of article
+      // for(var i = 0; i < images.length; i++){
+      //   // The article has a primary image
+      //   if(images[i].type == "primary") {
+      //     mainImage = findSquareImage(images[i]);
+      //   }
+      //   // No primary image exists, so use the first available image
+      //   if(i === 0) {
+      //     mainImage = findSquareImage(images[i]);
+      //   }
+      // }
       return mainImage.src;
     }
     // If the NPR doesn't have images, look through the html, use the first image
@@ -264,6 +277,27 @@ peekApp.filter('getMainImage', function(){
       else {
         return npr_logo;
       }
+    }
+  };
+});
+
+peekApp.filter("getThumbnail", function() {
+  return function(input) {
+    if(input.image){
+      // Local variables
+      var images = input.image;
+      var thumb = images[0];
+
+      if(thumb.type != "primary"){
+        // Loop through all the images of article
+        for(var i = 1; i < images.length; i++){
+          // The article has a primary image
+          if(images[i].type == "primary") {
+            thumb = images[i];
+          }
+        }
+      }
+      return thumb.src;
     }
   };
 });
