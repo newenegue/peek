@@ -83,11 +83,47 @@ function removeSelectedItem() {
 }
 
 // ------------------------------------------
+// Extract image url given index's
+// ------------------------------------------
+function extractImageUrl(txt, index) {
+  return txt.slice(index[0],index[1]);
+}
+
+// ------------------------------------------
+// Find the index of image in fullText
+// ------------------------------------------
+function findImageIndex(txt) {
+  var index = [];
+
+  // Get start and end index of some image
+  index.push(txt.indexOf("http://media.npr.org/assets/img"));
+  index.push(txt.indexOf(".jpg") + 4);
+
+  return index;
+}
+
+// ------------------------------------------
+// Use square crop image if it exists
+// ------------------------------------------
+function findSquareImage(img) {
+  // If there is a square version, then use it
+  for(var i = 0; i < img.crop.length; i++){
+    if(img.crop[i].type == "square") {
+      return img.crop[i];
+    }
+  }
+  return img;
+}
+
+
+
+// ------------------------------------------
 // Angular
 // ------------------------------------------
 var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
+  $scope.articles = [];
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
@@ -166,5 +202,71 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   //   popularity++;
   //   console.log(popularity);
   // };
+});
+
+// ------------------------------------------
+// Main image filter
+// - searches through APR JSON
+// - returns the primary image/square image
+// ------------------------------------------
+peekApp.filter('getMainImage', function(){
+  return function(input){
+    
+    // If NPR article has images
+    if(input.image){
+      // Local variables
+      var images = input.image;
+      var mainImage;
+
+      // Loop through all the images of article
+      for(var i = 0; i < images.length; i++){
+        // The article has a primary image
+        if(images[i].type == "primary") {
+          mainImage = findSquareImage(images[i]);
+        }
+        // No primary image exists, so use the first available image
+        if(i === 0) {
+          mainImage = findSquareImage(images[i]);
+        }
+      }
+      return mainImage.src;
+    }
+    // If the NPR doesn't have images, look through the html, use the first image
+    else {
+      var npr_logo = "http://media.npr.org/chrome/news/npr-home.png";
+      // If JSON has fullText, we will use that
+      if(input.fullText){
+        // Initialize local variables
+        var text = input.fullText.$text;
+        var image_index = findImageIndex(text);
+
+        // If index's are valid, we found an image, otherwise just use NPR logo
+        return (image_index[0] == -1 || image_index[1] == -1) ? npr_logo : extractImageUrl(text, image_index);
+      }
+      // If JSON doesn't have fullText, use NPR logo
+      else {
+        return npr_logo;
+      }
+    }
+  };
+});
+
+// ------------------------------------------
+// Remove all stories listed as:
+// - Top Stories
+// - linked from sites other than npr.org
+// ------------------------------------------
+peekApp.filter("removeTopStories", function() {
+  return function(input) {
+    for(var i = 0; i < input.length; i++){
+      if(input[i].title.$text.indexOf("Top Stories:") >= 0){
+        input.splice(i,1);
+      }
+      if(input[i].link[0].$text.indexOf("npr.org") == -1){
+        input.splice(i,1);
+      }
+    }
+    return input;
+  };
 });
 
