@@ -131,7 +131,6 @@ function onLeave() {
 // ------------------------------------------
 // Change bucket face
 // ------------------------------------------
-
 function bucketFace(face, opc) {
   // controls scale of eyes depending on mood
   $("#leftEyeFull").attr("class", face);
@@ -152,7 +151,6 @@ function bucketFace(face, opc) {
 // ------------------------------------------
 // Reset drop animation
 // ------------------------------------------
-
 function dropFace(face) {
   $("#Layer_1").attr("class", face);
 }
@@ -168,26 +166,17 @@ function validId(id) {
 }
 
 // ------------------------------------------
-// Add article to bucket
-// ------------------------------------------
-function addItemToBucket(id) {
-
-  bucketArray.push(createItem(id));
-  // $("#" + id).parent(".article").addClass("article_in_bucket");
-
-  return true;
-}
-
-// ------------------------------------------
 // Create item object for bucket
 // ------------------------------------------
 function createItem(id) {
   // Set local variables
   var title, thumbnail, article_id, teaser, item;
 
+  // Extract data from DOM by id
   title = $("#" + id + " .title b")[0].innerHTML;
   teaser = $("#" + id + " .text")[0].innerHTML;
   thumbnail = $("#" + id +" img").first().data("thumb");
+  // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
   }
@@ -197,12 +186,32 @@ function createItem(id) {
 }
 
 // ------------------------------------------
+// Find article to delete by ID
+// ------------------------------------------
+function deleteItem(id) {
+  // Locate object in bucket by ID
+  var item_to_remove = $.grep(bucketArray, function(e){ return e.id == id; });
+  // Return the array index of found object
+  return bucketArray.indexOf(item_to_remove[0]);
+}
+
+// ------------------------------------------
+// Add article to bucket
+// ------------------------------------------
+function addItemToBucket(id) {
+  bucketArray.push(createItem(id));
+  $("#" + id).parent(".article").addClass("article_in_bucket");
+
+  return true;
+}
+
+// ------------------------------------------
 // Remove article from bucket
 // ------------------------------------------
 function removeItemFromBucket(id) {
-  // Find article and remove it from bucketArray
-  var index = bucketArray.indexOf(id);
-  bucketArray.splice(index,1);
+  // Remove from bucketArray
+  bucketArray.splice(deleteItem(id),1);
   $("#" + id).parent(".article").removeClass("article_in_bucket");
+
   return true;
 }

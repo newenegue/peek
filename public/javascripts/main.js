@@ -6,7 +6,6 @@ $(document).ready(function() {
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
 
-
   // Close Peek reader
   $(document.body).on('click', '.close', closeArticle);
 
@@ -19,15 +18,22 @@ $(document).ready(function() {
   // Animated bucket: shadow
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
+  // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 });
 
+// ------------------------------------------
+// Show more info about article in bucket
+// ------------------------------------------
 function showMoreInfo() {
   $(this).find(".moreInfo").addClass("showMoreInfo");
 
 }
 
+// ------------------------------------------
+// Hide the info about article in bucket
+// ------------------------------------------
 function hideMoreInfo() {
   $(this).find(".moreInfo").removeClass("showMoreInfo");
 
@@ -46,7 +52,7 @@ function readArticle() {
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
-  setTimeout( function() {$(".article_container").addClass("peek_article")}, 1000 );
+  setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
 }
 
 // ------------------------------------------
@@ -105,12 +111,15 @@ function findImageIndex(txt) {
 // Use square crop image if it exists
 // ------------------------------------------
 function findSquareImage(img) {
-  // If there is a square version, then use it
+  // Search through all crop versions
   for(var i = 0; i < img.crop.length; i++){
+    // If there is a square version, then use it
     if(img.crop[i].type == "square") {
+      // Switch image to square version
       return img.crop[i];
     }
   }
+  // Use original image, if not square found
   return img;
 }
 
@@ -184,19 +193,14 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   };
 
   // ------------------------------------------
-  // Double click article to add to bucket
+  // Find if article is in bucket
   // ------------------------------------------
   $scope.inBucket = function(article) {
-    console.log("check if article is in bucket");
-    // for(var i = 0; i < bucketArray.length; i++){
-    //   console.log(bucketArray[i].id);
-    //   console.log(article.id);
-    //   if(bucketArray[i].id == article.id)
-    //     return true;
-    //   else
-    //     return false;
-    // }
-    return false;
+    var isInBucket = false;
+    for(var i = 0; i < bucketArray.length; i++){
+      if(bucketArray[i].id == article.id) { isInBucket = true; }
+    }
+    return isInBucket;
   };
 
   // ------------------------------------------
@@ -272,9 +276,11 @@ peekApp.filter('getMainImage', function(){
 peekApp.filter("removeTopStories", function() {
   return function(input) {
     for(var i = 0; i < input.length; i++){
+      // Remove all Top Stories article
       if(input[i].title.$text.indexOf("Top Stories:") >= 0){
         input.splice(i,1);
       }
+      // Remove articles that are not from npr.org
       if(input[i].link[0].$text.indexOf("npr.org") == -1){
         input.splice(i,1);
       }
