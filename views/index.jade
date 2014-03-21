@@ -6,29 +6,30 @@ block content
   p.search Search: 
     input(ng-model="search")
   //- Bucket for reading articles
-  div.bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
-    div.bucket
+  .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
+    .bucket
       h4.bucket_name BUCKET
-      div.bucket_item_holder 
+      .bucket_item_holder 
         strong Drag to add article
   //- Animated Bucket
-  div.animation_container
+  .animation_container
     div(id="stage")
-  div.shadow_container
+  .shadow_container
     div(id="shadowStage")
     img(id='heart' src='images/heart.svg')
   //- Articles list
-  div.articles
+  .articles
     div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
         //- {{article.image[0].src}}
         img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
-        div.article_content
-          div.title 
+        .article_content
+          .title 
             b {{article.title.$text}}
           br
           div.text(ng-bind-html="article.teaser.$text")
+    .loading(ng-show="loading")
 
   
   //- Reader

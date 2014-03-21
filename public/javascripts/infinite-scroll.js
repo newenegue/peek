@@ -12,10 +12,10 @@ function triggerInfinite() {
     trigger = true;
     //this activates function to add articles once you reach the bottom on the page
     if((elemBottom <= docViewBottom) && trigger == true) {
-      addArticles(); 
+      addArticles();
     }
     //this prevents the function being called too quickly
-    setTimeout(function(){ 
+    setTimeout(function(){
         trigger=false; }, 500);
   }
 }

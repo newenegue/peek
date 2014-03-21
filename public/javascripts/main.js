@@ -133,6 +133,7 @@ var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.articles = [];
+  $scope.loading = false;
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
@@ -162,34 +163,40 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   pageNum = 0;
 
   window.addArticles = function() {
-  var oldArray = $scope.articles;
-  pageNum++;
-  articleNum = ((pageNum + 1) * 9);
-  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
-    .then(function(res){
-      //this targets the new stories from the NPR JSON list
-      articles = res.data.list.story;
-      //loop through each new article
-      for(var i=0; i < articles.length; i++){
-        //check to see if the id of the new article is in the old array of articles
-        var index = oldArray.indexOf(articles[i].id);
-        //if the id is in the oldArray remove it from the new articles
-        if(index > -1){
-          articles[i].splice(index, 1);
+    // show loading img
+    $scope.loading = true;
+
+    var oldArray = $scope.articles;
+    pageNum++;
+    articleNum = ((pageNum + 1) * 9);
+    $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
+      .then(function(res){
+        //this targets the new stories from the NPR JSON list
+        articles = res.data.list.story;
+        //loop through each new article
+        for(var i=0; i < articles.length; i++){
+          //check to see if the id of the new article is in the old array of articles
+          var index = oldArray.indexOf(articles[i].id);
+          //if the id is in the oldArray remove it from the new articles
+          if(index > -1){
+            articles[i].splice(index, 1);
+          }
+          //this makes the teaser text html safe
+          var text = articles[i].teaser.$text;
+          articles[i].teaser.$text = $sce.trustAsHtml(text);
+          for(var j=0; j < articles[i].text.paragraph.length; j++){
+            articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
+          }
         }
-        //this makes the teaser text html safe
-        var text = articles[i].teaser.$text;
-        articles[i].teaser.$text = $sce.trustAsHtml(text);
-        for(var j=0; j < articles[i].text.paragraph.length; j++){
-          articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
+        //this pushes only 9 articles to the full articles array
+        for(var i=0; i < 9; i++){
+          $scope.articles.push(articles[i]);
         }
-      }
-      //this pushes only 9 articles to the full articles array
-      for(var i=0; i < 9; i++){
-        $scope.articles.push(articles[i]);
-      }
-      
-    });
+        // hide loading img
+        $scope.loading = false;
+      });
+
+    
 
   };
 
