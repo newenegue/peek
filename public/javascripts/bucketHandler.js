@@ -12,7 +12,16 @@ function getBucket() {
 
 function getArticles() {
   return $.ajax({type: 'GET', url: '/articles', success: function(response){
-    console.log(response);
+    console.log(response.bucket[0].article);
+    var persistedBucket = [];
+    
+    for(var i=0; i < response.bucket.length; i++){
+      persistedBucket.push(response.bucket[i].article);
+    }
+    bucketArray = bucketArray.concat(persistedBucket);
+    console.log(bucketArray)
+    // console.log(bucketArray);
+    refreshBucket();
     //existing articles(response)
     //parse the json(response)
     //pull out the article ids

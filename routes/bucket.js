@@ -62,12 +62,25 @@ exports.getArticles = function(db) {
       }
       else {
         //got a bunch of articles id's 
-        console.log("found it " + docs[0]);
+        console.log("found it " + docs);
+        var articleArray = [];
+        for(var i=0; i < docs.length; i++) {
+          articleArray.push(docs[i].article_id);
+        }
+        // console.log(articleArray)
+        var collection = db.get("articles");
+        collection.find({_id: {$in:articleArray}}, function(err, docs) {
+          res.json("test", {
+             bucket: docs
+           });
+        });
+    
       }
-    });
-
-  }
+    }
+  )}
 }
+
+
 
 exports.addArticle = function(db) {
   return function(req, res) {
