@@ -120,153 +120,156 @@ function findSquareImage(img) {
 // ------------------------------------------
 // Angular
 // ------------------------------------------
-var peekApp = angular.module('PeekApp', []);
+// var peekApp = angular.module('PeekApp', []);
 
-peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
-  $scope.articles = [];
+// peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
+//   $scope.articles = [];
 
-  // ------------------------------------------
-  // this pulls in the first set of articles REFACTOR!!!
-  // ------------------------------------------
-  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
-    .then(function(res){
-      //this targets the stories from the NPR JSON list
-      $scope.articles = res.data.list.story;
-      //loop through each new article
-      for(var article in $scope.articles){
-        var text = $scope.articles[article].teaser.$text;
-        $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
-        for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
-          $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
-        }
-      }
-      //return only 9 articles to the scope
-      $scope.articles = $scope.articles.slice(0, 8);
-    });
+//   // ------------------------------------------
+//   // this pulls in the first set of articles REFACTOR!!!
+//   // ------------------------------------------
+//   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
+//     .then(function(res){
+//       //this targets the stories from the NPR JSON list
+//       $scope.articles = res.data.list.story;
+//       //loop through each new article
+//       for(var article in $scope.articles){
+//         var text = $scope.articles[article].teaser.$text;
+//         $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
+//         for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
+//           $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
+//         }
+//       }
+//       //return only 9 articles to the scope
+//       $scope.articles = $scope.articles.slice(0, 8);
+//     });
 
-  // var popularity = 0;
+//   // var popularity = 0;
 
-  // ------------------------------------------
-  // this adds more articles for infinite scroll REFACTOR!!!
-  // ------------------------------------------
+//   // ------------------------------------------
+//   // this adds more articles for infinite scroll REFACTOR!!!
+//   // ------------------------------------------
 
-  pageNum = 0;
+//   pageNum = 0;
 
-  window.addArticles = function() {
-  var oldArray = $scope.articles;
-  pageNum++;
-  articleNum = ((pageNum + 1) * 9);
-  $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
-    .then(function(res){
-      //this targets the new stories from the NPR JSON list
-      articles = res.data.list.story;
-      //loop through each new article
-      for(var i=0; i < articles.length; i++){
-        //check to see if the id of the new article is in the old array of articles
-        var index = oldArray.indexOf(articles[i].id);
-        //if the id is in the oldArray remove it from the new articles
-        if(index > -1){
-          articles[i].splice(index, 1);
-        }
-        //this makes the teaser text html safe
-        var text = articles[i].teaser.$text;
-        articles[i].teaser.$text = $sce.trustAsHtml(text);
-        for(var j=0; j < articles[i].text.paragraph.length; j++){
-          articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
-        }
-      }
-      //this pushes only 9 articles to the full articles array
-      for(var i=0; i < 9; i++){
-        $scope.articles.push(articles[i]);
-      }
+//   window.addArticles = function() {
+//   var oldArray = $scope.articles;
+//   pageNum++;
+//   articleNum = ((pageNum + 1) * 9);
+//   $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=' + articleNum + '&numResults=15&requiredAssets=text&format=json')
+//     .then(function(res){
+//       //this targets the new stories from the NPR JSON list
+//       articles = res.data.list.story;
+//       //loop through each new article
+//       for(var i=0; i < articles.length; i++){
+//         //check to see if the id of the new article is in the old array of articles
+//         var index = oldArray.indexOf(articles[i].id);
+//         //if the id is in the oldArray remove it from the new articles
+//         if(index > -1){
+//           articles[i].splice(index, 1);
+//         }
+//         //this makes the teaser text html safe
+//         var text = articles[i].teaser.$text;
+//         articles[i].teaser.$text = $sce.trustAsHtml(text);
+//         for(var j=0; j < articles[i].text.paragraph.length; j++){
+//           articles[i].text.paragraph[j].text = articles[i].text.paragraph[j].$text;
+//         }
+//       }
+//       //this pushes only 9 articles to the full articles array
+//       for(var i=0; i < 9; i++){
+//         $scope.articles.push(articles[i]);
+//       }
       
-    });
+//     });
 
-  };
+//   };
 
 
 
-  // ------------------------------------------
-  // Double click article to add to bucket
-  // ------------------------------------------
-  $scope.addToBucket = function(article) {
-    if(validId(article.id)){
-      addItemToBucket(article.id);
+//   // ------------------------------------------
+//   // Double click article to add to bucket
+//   // ------------------------------------------
+//   $scope.addToBucket = function(article) {
+//     if(validId(article.id)){
+//       addItemToBucket(article.id);
 
-      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
-      refreshBucket();
-    }
-  };
+//       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
+//       refreshBucket();
+//     }
+//   };
 
-  // $scope.makePopular = function() {
-  //   popularity++;
-  //   console.log(popularity);
-  // };
-});
+//   // $scope.makePopular = function() {
+//   //   popularity++;
+//   //   console.log(popularity);
+//   // };
+// });
 
-// ------------------------------------------
-// Main image filter
-// - searches through APR JSON
-// - returns the primary image/square image
-// ------------------------------------------
-peekApp.filter('getMainImage', function(){
-  return function(input){
+// // ------------------------------------------
+// // Main image filter
+// // - searches through APR JSON
+// // - returns the primary image/square image
+// // ------------------------------------------
+// peekApp.filter('getMainImage', function(){
+//   return function(input){
     
-    // If NPR article has images
-    if(input.image){
-      // Local variables
-      var images = input.image;
-      var mainImage;
+//     // If NPR article has images
+//     if(input.image){
+//       // Local variables
+//       var images = input.image;
+//       var mainImage;
 
-      // Loop through all the images of article
-      for(var i = 0; i < images.length; i++){
-        // The article has a primary image
-        if(images[i].type == "primary") {
-          mainImage = findSquareImage(images[i]);
-        }
-        // No primary image exists, so use the first available image
-        if(i === 0) {
-          mainImage = findSquareImage(images[i]);
-        }
-      }
-      return mainImage.src;
-    }
-    // If the NPR doesn't have images, look through the html, use the first image
-    else {
-      var npr_logo = "http://media.npr.org/chrome/news/npr-home.png";
-      // If JSON has fullText, we will use that
-      if(input.fullText){
-        // Initialize local variables
-        var text = input.fullText.$text;
-        var image_index = findImageIndex(text);
+//       // Loop through all the images of article
+//       for(var i = 0; i < images.length; i++){
+//         // The article has a primary image
+//         if(images[i].type == "primary") {
+//           mainImage = findSquareImage(images[i]);
+//         }
+//         // No primary image exists, so use the first available image
+//         if(i === 0) {
+//           mainImage = findSquareImage(images[i]);
+//         }
+//       }
+//       return mainImage.src;
+//     }
+//     // If the NPR doesn't have images, look through the html, use the first image
+//     else {
+//       var npr_logo = "http://media.npr.org/chrome/news/npr-home.png";
+//       // If JSON has fullText, we will use that
+//       if(input.fullText){
+//         // Initialize local variables
+//         var text = input.fullText.$text;
+//         var image_index = findImageIndex(text);
 
-        // If index's are valid, we found an image, otherwise just use NPR logo
-        return (image_index[0] == -1 || image_index[1] == -1) ? npr_logo : extractImageUrl(text, image_index);
-      }
-      // If JSON doesn't have fullText, use NPR logo
-      else {
-        return npr_logo;
-      }
-    }
-  };
-});
+//         // If index's are valid, we found an image, otherwise just use NPR logo
+//         return (image_index[0] == -1 || image_index[1] == -1) ? npr_logo : extractImageUrl(text, image_index);
+//       }
+//       // If JSON doesn't have fullText, use NPR logo
+//       else {
+//         return npr_logo;
+//       }
+//     }
+//   };
+// });
 
-// ------------------------------------------
-// Remove all stories listed as:
-// - Top Stories
-// - linked from sites other than npr.org
-// ------------------------------------------
-peekApp.filter("removeTopStories", function() {
-  return function(input) {
-    for(var i = 0; i < input.length; i++){
-      if(input[i].title.$text.indexOf("Top Stories:") >= 0){
-        input.splice(i,1);
-      }
-      if(input[i].link[0].$text.indexOf("npr.org") == -1){
-        input.splice(i,1);
-      }
-    }
-    return input;
-  };
-});
+// // ------------------------------------------
+// // Remove all stories listed as:
+// // - Top Stories
+// // - linked from sites other than npr.org
+// // ------------------------------------------
+// peekApp.filter("removeTopStories", function() {
+//   return function(input) {
+//     for(var i = 0; i < input.length; i++){
+//       if(input[i].title.$text.indexOf("Top Stories:") >= 0){
+//         input.splice(i,1);
+//       }
+//       if(input[i].link[0].$text.indexOf("npr.org") == -1){
+//         input.splice(i,1);
+//       }
+//     }
+//     return input;
+//   };
+// });
 
+exports._tests = {
+  showMoreInfo: showMoreInfo
+}

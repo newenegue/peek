@@ -9,6 +9,9 @@
     "express": "3.4.8",
     "jade": "*",
     "mocha": "*",
-    "chai": "*"
+    "chai": "*", 
+    "chai-jquery": "*",
+    "jsdom": "*",
+    "jquery": "*",
   }
 }
