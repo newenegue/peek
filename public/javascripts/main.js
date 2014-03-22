@@ -3,6 +3,9 @@
 // ------------------------------------------
 $(document).ready(function() {
 
+  // Close intro
+  $(document.body).on('click', '.closeIntroButton', closeIntro);
+
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
 
@@ -22,6 +25,14 @@ $(document).ready(function() {
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 });
+
+// ------------------------------------------
+// Close intro
+// ------------------------------------------
+function closeIntro() {
+  console.log("tried to close intro");
+  $(".intro_animation").addClass("end_intro");
+}
 
 // ------------------------------------------
 // Show more info about article in bucket

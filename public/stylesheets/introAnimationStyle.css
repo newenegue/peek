@@ -1,0 +1,113 @@
+/*-----------------------------------------
+Intro Animation
+-----------------------------------------*/
+.intro_animation {
+  position: fixed;
+  background-color: rgba(255,255,255,0.95);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 200;
+  text-align: center;
+}
+
+.end_intro {
+  display: none;
+  z-index: -50;
+}
+
+.animationContainer {
+  height: 500px;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  overflow: hidden;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,255,255,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
+  background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
+  background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+}
+
+#staticArticle {
+  height: 75px;
+  width: 260px;
+  border-radius: 3px;
+  background-color: rgba(148,0,211,.7);
+  margin: 0 auto; 
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 5%;
+  padding-left: 40px;
+  font-size: 2em;
+}
+
+#staticArticle2 {
+  height: 75px;
+  width: 260px;
+  border-radius: 3px;
+  background-color: rgba(148,0,211,.7);
+  margin: 0 auto; 
+  position: relative;
+  padding-top: 5%;
+  padding-left: 40px;
+  font-size: 2em;
+}
+
+#movingRect {
+  height: 75px;
+  width: 300px;
+  border-radius: 3px;
+  background-color: rgba(148,0,211,1);
+  margin: 0 auto;
+  margin-bottom: 10px;
+  z-index: 1; 
+  position: relative;
+  text-align: center;
+  padding-top: 5%;
+  font-size: 2em;
+}
+
+#bucketYo {
+  height: 200px;
+  width: 600px;
+  margin: 0 auto;
+  background-image: url(images/peek_bin.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bucketHappy {
+  height: 200px;
+  width: 600px;
+  margin: 0 auto;
+  background-image: url(images/happy_peek_bin.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#pointer {
+/*  border: 1px solid black;*/
+  height: 40px;
+  float: right;
+  margin: 20px;
+  -webkit-transform:rotate(-30deg);
+}
+
+#merp {
+  font-size: 6em;
+  width: 1000px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
