@@ -6,8 +6,14 @@
 //  pass article id to bucket
 // ------------------------------------------
 function onDragStart(ev) {
-  var article_id = $(ev.target).children()[0].id;
-  ev.dataTransfer.setData("article_id",article_id);
+  var article = $(ev.target).children()[0];
+
+  ev.dataTransfer.setData("article_id",article.id);
+
+  // Use article main image for drag image
+  var dragImage = $(article).children(".main_image")[0];
+  ev.dataTransfer.setDragImage(dragImage, 180, 10);
+  
   dropFace("");
 }
 
@@ -27,6 +33,8 @@ function allowDrop(ev) {
 function drop(ev) {
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
+  // var dragIcon;
+  // ev.dataTransfer.setDragImage(dragIcon, 10, 10);
   // Add to bucket
   if(validId(article_id)) {
     addItemToBucket(article_id);
