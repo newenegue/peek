@@ -84,13 +84,14 @@ function createItem(id) {
   title = $("#" + id + " .title b")[0].innerHTML;
   teaser = $("#" + id + " .text")[0].innerHTML;
   thumbnail = $("#" + id +" img").first().data("thumb");
+  paragraph = $("#" + id).first().data("paragraph");
   // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
   }
 
   // Return article object
-  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail};
+  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph};
 }
 
 // ------------------------------------------
@@ -108,7 +109,7 @@ function locateItem(id) {
 // ------------------------------------------
 function addItemToBucket(id) {
   bucketArray.push(createItem(id));
-  addArticleToDatabase(id);
+  addArticleToDatabase(bucketArray[locateItem(id)]);
   $("#" + id).parent(".article").addClass("article_in_bucket");
 
   return true;

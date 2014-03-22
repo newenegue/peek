@@ -97,4 +97,5 @@ function bucketFace(face, opc) {
 // ------------------------------------------
 function dropFace(face) {
   $("#Layer_1").attr("class", face);
+
 }
