@@ -12,8 +12,8 @@ Intro Animation
   z-index: 200;
   text-align: center;
   margin: 0 auto;
-  padding-top: 10%;
-  padding-bottom: 5%;
+  padding-top: 5%;
+  /*padding-bottom: 5%;*/
 }
 
 .end_intro {
@@ -28,6 +28,8 @@ Intro div shot positioning
   /*position: relative;*/
   overflow: hidden;
   margin: 0 auto;
+  /*width: 100%;
+  height: 100%;*/
 }
 
 .newIntroShot {
@@ -38,6 +40,7 @@ Intro div shot positioning
   left: 0;
   right: 0;
   margin: 0 auto;
+  /*overflow: hidden;*/
 }
 
 #shot1 {
@@ -88,25 +91,20 @@ Bucket
 -----------------------------------------*/
 
 .intro_bucket {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: relative;
   margin: 0 auto;
   border: 1px solid black;
 }
 
 #introBucketStage {
-  /*border: 1px solid black;*/
-  overflow: auto;
   position: relative;
-  height: 100%;
+  margin: 0 auto;
 }
 
 #IntroLayer_1 {
-  height: 100%;
-  /*position: absolute;*/
-  /*top: 20%;*/
-  width: 100%;
+  height: 25%;
+  width: 260px;
+  margin: 0 auto;
 }
 
 #introMouth {
