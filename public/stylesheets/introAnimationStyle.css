@@ -1,16 +1,8 @@
 /*-----------------------------------------
 Intro Animation
 -----------------------------------------*/
-.intro_animation {
+.intro_animation_screen {
   position: fixed;
-  /*
-  background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ff3.6+ */
-  /* background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(118,194,187,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
-  /* background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
-  /* background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
-  /* background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
-  /* background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
   background-color: white;
   top: 0;
   left: 0;
@@ -27,6 +19,29 @@ Intro Animation
 .end_intro {
   display: none;
   z-index: -50;
+}
+
+/*-----------------------------------------
+Intro div shot positioning
+-----------------------------------------*/
+.introAnimationStage {
+  /*position: relative;*/
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.newIntroShot {
+  /*height: 500px;*/
+  /*width: 500px;*/
+  border: 1px solid pink;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+#shot1 {
+
 }
 
 /*-----------------------------------------
@@ -72,32 +87,12 @@ Articles
 Bucket
 -----------------------------------------*/
 
-#bucketYo {
-  height: 200px;
-  width: 600px;
-  margin: 0 auto;
-  background-image: url(images/peek_bin.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.bucketHappy {
-  height: 200px;
-  width: 600px;
-  margin: 0 auto;
-  background-image: url(images/happy_peek_bin.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-
 .intro_bucket {
-  position: relative;
-  width: 16%;
-  height: 42%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
+  border: 1px solid black;
 }
 
 #introBucketStage {

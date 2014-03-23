@@ -2,17 +2,20 @@ extends layout
 
 block content
   //- Intro Animation
-  div.intro_animation
-    div.staticRectangles(id='staticArticle')
-    div(id='movingRect')
-      img(id='pointer' src='images/pointer.png')
-    div.staticRectangles(id='staticArticle2')
-    .intro_bucket
-      div(id="introBucketStage")
-    //- .intro_shadow_bucket
-    //-   div(id="introShadowStage")
-      //- img(id='heart' src='images/heart.svg')
-    div.closeIntroButton Enter
+  div.intro_animation_screen
+    div.introAnimationStage
+      div.newIntroShot(id='shot1')
+        div.staticRectangles(id='staticArticle')
+        div(id='movingRect')
+          img(id='pointer' src='images/pointer.png')
+        div.staticRectangles(id='staticArticle2')
+        .intro_bucket
+          div(id="introBucketStage")
+        //- .intro_shadow_bucket
+        //-   div(id="introShadowStage")
+          //- img(id='heart' src='images/heart.svg')
+      //- div.newIntroShot(id='shot2')
+      //-   div.closeIntroButton Enter
   h1.test= title
   p Welcome to #{title}
   p.search Search: 
