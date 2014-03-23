@@ -124,6 +124,7 @@ Intro Animation
 
 #introBucketStage {
   border: 1px solid black;
+  overflow: auto;
   position: relative;
   height: 100%;
 }

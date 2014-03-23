@@ -59,6 +59,7 @@ window.onload = function(){
 
   //Figure out how to fade in and move to the left to select article
   tl.from(pointer, 3, {autoAlpha:0}, "+=.5");
+  
   debugger;
   //Select Rectangle
   tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.5"); 
