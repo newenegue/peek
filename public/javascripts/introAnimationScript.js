@@ -53,35 +53,35 @@ window.onload = function(){
 // Append action to Static Rectangles
 // ------------------------------------------
   
-  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.3");
-  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.3");
-  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.3");
+  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.1");
+  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");
+  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.1");
   // tl.to(pointer, .5, {left: "300px", scale:0, autoAlpha:0}, "+=.5");
 
   //Figure out how to fade in and move to the left to select article
-  tl.from(pointer, 1, {right:-200, autoAlpha:0}, "+=.5");
+  tl.from(pointer, 1, {right:-400, autoAlpha:0}, "+=.5");
   
   debugger;
   //Select Rectangle
-  tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.5"); 
+  tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.2"); 
 
   //Shift Static Rects Diagonally (down/left)
   tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
 
   //Drift Static Rects to the Left
-  tl.to(bothStaticRectangles, 2, {right:"600px", ease:Circ.easeIn}, "+=.3");
+  tl.to(bothStaticRectangles, 1.5, {right:"600px", ease:Circ.easeIn}, "+=.3");
   
   //Make Static Rects Fade Away
-  tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=1.5" );
+  tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=.5" );
 
   //Shift Selected Rectangle Back
-  tl.to(selectedRectang, 1, {scaleX: 0.6, scaleY: 0.6}, "+=.2");
+  tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "+=.2");
 
   //Drop Selected Rectangle
-  tl.to(selectedRectang, .5, {top:150, autoAlpha:0}, "+=1");
+  tl.to(selectedRectang, 1, {top:150, autoAlpha:0}, "+=1");
 
   //Bucket Appears
-  tl.from(introBucketStage, .5, {right:-200, autoAlpha:0}, "-=1");
+  tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
   tl.to(introBucketEyes, .2, {autoAlpha:0}, "+=.2");
   // tl.to()
 

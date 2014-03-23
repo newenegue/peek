@@ -157,9 +157,5 @@ Intro Animation
 }
 
 #openEyesIntro {
--webkit-animation: happyTrans 4s steps(30, start);
+  opacity: 1;
 }
-
-  @-webkit-keyframes happyTrans {
-    to { visibility: hidden; }
-  }
