@@ -44,6 +44,7 @@ window.onload = function(){
     staticArticle2 = document.getElementById("staticArticle2"),
     selectedRectang = document.getElementById("movingRect"),
     pointer = document.getElementById("pointer"),
+    introBucketStage = document.getElementById("introBucketStage");
     enterButton = document.getElementsByClassName("closeIntroButton");
 
 
@@ -77,7 +78,12 @@ window.onload = function(){
   //Drop Selected Rectangle
   tl.to(selectedRectang, .5, {top:150, autoAlpha:0}, "+=1");
 
+  //FIX THIS SHIT
+  tl.from(introBucketStage, .5, {scale:0, autoAlpha:0}, "-=1");
+
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
+
+  //TO DO: Time bucket so that it becomes happy the exact fraction of a second that the article is dropped into it. Similar to blinking, but only 1x at the precise time instead of every 4 seconds x infinitely
 
 };

@@ -15,11 +15,17 @@ $(document).ready(function() {
   // Click remove button
   $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
 
-  // Animated bucket
+  // Main animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
 
-  // Animated bucket: shadow
+  // Main animated bucket: shadow
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
+
+  // Intro Animated bucket
+  $("#introBucketStage").load('images/peek_bin_intro.svg', svgLoaded);
+
+  // Intro Animated bucket: shadow
+  // $("#introShadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
   // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);

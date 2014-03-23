@@ -114,3 +114,16 @@ Intro Animation
   margin-bottom: 20%;
   border-radius: 10px;
 }
+
+.intro_bucket {
+  position: relative;
+  width: 16%;
+  height: 42%;
+  margin: 0 auto;
+}
+
+#introBucketStage {
+  border: 1px solid black;
+  position: relative;
+  height: 100%;
+}

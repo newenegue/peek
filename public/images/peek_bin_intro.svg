@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="576px" height="432px" viewBox="0 0 576 432" enable-background="new 0 0 576 432" xml:space="preserve">
+<g class="wholeBucket">
+	<g id="XMLID_1_">
+		<g id="body">
+			
+				<radialGradient id="topHole_1_" cx="348.5" cy="967.5" r="292.438" gradientTransform="matrix(1 0 0 1 -72 -718)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0.3158" style="stop-color:#575455"/>
+				<stop  offset="0.8337" style="stop-color:#000000"/>
+			</radialGradient>
+			<path id="topHole" fill="url(#topHole_1_)" d="M511.233,65.256c10.221,4.737,24.312,13.527,14.566,24.433
+				c-0.314,0.363-0.686,0.746-1.062,1.109c-10.12,9.838-27.337,14.071-39.795,17.317c-26.752,6.955-53.745,10.463-81.146,13.144
+				c-41.951,4.092-83.803,5.423-125.916,4.899c-42.073-0.544-83.823-2.863-125.573-8.387c-18.527-2.439-36.872-5.463-55.056-9.938
+				c-12.277-3.044-24.211-6.371-35.602-12.237c-4.637-2.399-9.536-5.544-12.358-9.273c-3.226-4.274-3.729-9.293,1.996-14.817
+				c4.415-4.253,9.516-6.713,14.979-9.072c8.467-3.669,17.196-6.249,26.086-8.527c26.308-6.693,52.858-10.181,79.751-12.801
+				c41.952-4.092,83.803-5.443,125.936-4.898c42.094,0.524,83.844,2.862,125.635,8.366C451.299,48.241,485.188,53.18,511.233,65.256
+				z"/>
+			<path id="bucket" fill="#BBBDC0" d="M529.034,89.85c-4.576,81.303-9.133,162.626-13.709,243.951
+				c-0.504,8.869-4.597,14.514-10.584,20.482c-9.396,9.373-20.32,14.998-32.275,20.18c-19.292,8.365-39.17,13.566-59.729,17.68
+				c-41.271,8.271-82.331,11.127-124.323,10.744s-82.977-3.971-124.102-12.941c-20.482-4.477-40.278-10-59.45-18.688
+				c-11.753-5.301-22.538-11.088-31.812-20.398c-5.987-6.008-10.181-11.729-10.745-20.664
+				c-5.121-80.84-10.221-161.633-15.341-242.458l2.338-1.411c2.822,3.729,7.721,6.875,12.358,9.273
+				c11.39,5.866,23.324,9.193,35.602,12.237c18.184,4.476,36.529,7.5,55.056,9.938c41.75,5.524,83.5,7.842,125.573,8.387
+				c42.113,0.524,83.965-0.807,125.916-4.899c27.397-2.681,54.396-6.188,81.146-13.144c12.458-3.246,29.675-7.479,39.795-17.317
+				c0.383-0.363,0.745-0.746,1.068-1.109L529.034,89.85z"/>
+		</g>
+	</g>
+	<path id="mouth" fill="none" stroke="#010101" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="
+		M269.855,290.908c6.048,19.152,33.264,21.168,39.312,2.016"/>
+	
+		<path id="grin" fill="#58585B" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M266.275,286.208c8.598,30.54,39.415,32.021,44.426,0.692L266.275,286.208z"/>
+	<g id="closedEyes">
+		<path fill="none" stroke="#010101" stroke-width="7.4393" stroke-linecap="round" stroke-linejoin="round" d="M158.865,237.852
+			c7.81,16.828,42.958,18.604,50.768,1.771"/>
+		<path fill="none" stroke="#010101" stroke-width="7.4393" stroke-linecap="round" stroke-linejoin="round" d="M372.641,236.916
+			c7.765,19.152,42.683,21.168,50.438,2.016"/>
+	</g>
+	<g id="happy">
+		
+			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="163.5" y1="246.999" x2="183.75" y2="222.001"/>
+		
+			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="204" y1="246.999" x2="183.75" y2="222.001"/>
+		
+			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="377.5" y1="246.999" x2="397.75" y2="222.001"/>
+		
+			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="418" y1="246.999" x2="397.75" y2="222.001"/>
+	</g>
+	<g id="openEyes">
+		<g id="leftEyeFull">
+			<circle id="leftCircle" fill="#010101" cx="184.177" cy="239.922" r="29.231"/>
+			<g id="leftPupil">
+				<path id="bottomLeft" fill="#FFFFFF" d="M169.416,227.779c1.63,4.145,6.619,1.723,11.58-0.23
+					c4.961-1.957,8.017-2.705,6.384-6.85c-1.632-4.143-6.979-5.917-11.94-3.963C170.479,218.693,167.782,223.635,169.416,227.779z"
+					/>
+				<circle id="topLeft" fill="#FFFFFF" cx="178.634" cy="236.898" r="3.78"/>
+			</g>
+		</g>
+		<g id="rightEyeFull">
+			<circle id="rightCircle" fill="#010101" cx="397.621" cy="239.922" r="29.231"/>
+			<g id="rightPupil">
+				<path id="bottomRight" fill="#FFFFFF" d="M382.855,227.779c1.634,4.145,6.614,1.723,11.571-0.23
+					c4.97-1.957,8.021-2.705,6.396-6.85c-1.644-4.143-6.979-5.917-11.938-3.963C383.923,218.693,381.222,223.635,382.855,227.779z"
+					/>
+				<circle id="topRight" fill="#FFFFFF" cx="392.077" cy="236.898" r="3.78"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
