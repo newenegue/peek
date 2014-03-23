@@ -25,23 +25,26 @@ exports.getBucket = function(db) {
 exports.addBucket = function(db) {
   return function(req, res) {
     var collection = db.get('buckets');
-    collection.insert({}, function (err, doc) {
-      if (err) {
-          res.send("There was a problem adding the information to the database.");
-      }
-      else {
-        var cookie = parseCookies(req.headers.cookie);
-        if (cookie === undefined) {
-          res.cookie("session_id", doc._id, {maxAge: 2100000000});
-          res.end("cookie created");
+    var cookie = parseCookies(req.headers.cookie);
+    if (cookie === undefined) {
+      collection.insert({}, function (err, doc) {
+        if (err) {
+            res.send("There was a problem adding the information to the database.");
         }
         else {
-          cookie = decodeURI(cookie).trim();
-          cookie = cookie.substr(3,(cookie.length - 4));
-          res.end("cookie exists = " + cookie);
+          res.cookie("session_id", doc._id, {maxAge: 2100000000});
+          res.end("cookie created" + doc._id);
         }
-      }
-    });
+      });
+    }
+    else {
+      collection.findOne({_id: cookie},{}, function(err, docs){
+        console.log("user exists");
+        cookie = decodeURI(cookie).trim();
+        cookie = cookie.substr(3,(cookie.length - 4));
+        res.end("cookie exists = " + cookie);
+      });
+    }
   }
 }
 
@@ -58,23 +61,37 @@ exports.getArticles = function(db) {
         console.log("could not find that bucket")
       }
       else {
+        //got a bunch of articles id's 
         console.log("found it " + docs);
+        var articleArray = [];
+        for(var i=0; i < docs.length; i++) {
+          articleArray.push(docs[i].article_id);
+        }
+        // console.log(articleArray)
+        var collection = db.get("articles");
+        collection.find({_id: {$in:articleArray}}, function(err, docs) {
+          res.json("test", {
+             bucket: docs
+           });
+        });
+    
       }
-    });
-
-  }
+    }
+  )}
 }
+
+
 
 exports.addArticle = function(db) {
   return function(req, res) {
-    var articleID = req.params.id
+    var article = req.body
     var collection = db.get('articles');
-    console.log("made it into the addArticle function")
-    collection.findById(articleID,function(err, docs){
+    console.log("made it into the addArticle function" + article)
+    collection.findById(article["id"],function(err, docs){
       //console.log("found the article by id " + docs._id);
       if (!docs) {
         console.log("the article was not able to be found, so lets add one")
-        collection.insert({"_id": articleID, "popularity" : 0}, function (err, doc) {
+        collection.insert({"_id": article["id"], "article": article, "popularity" : 0}, function (err, doc) {
           if (err) {
             console.log("article was not able to be added to the db");
             res.end("could not add article to db");
@@ -82,13 +99,12 @@ exports.addArticle = function(db) {
         } );
       }
       else {
-        console.log("thats weird, we somehow found the article");
+        console.log("found the article");
       }
       //call add join table function
-      addArticleToBucket(articleID, req, db);
+      addArticleToBucket(article["id"], req, db);
     });
-    console.log(req.params.id);
-    res.end(req.params.id);
+    res.end("added article");
   }
 }
 
