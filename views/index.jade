@@ -3,12 +3,12 @@ extends layout
 block content
   //- Intro Animation
   div.intro_animation
-    button.closeIntroButton X
-    div(id='staticArticle')
+    div.staticRectangles(id='staticArticle')
     div(id='movingRect')
       img(id='heart' src='images/pointer.png')
-    div(id='staticArticle2')
+    div.staticRectangles(id='staticArticle2')
     div(id='bucketYo')
+    div.closeIntroButton Enter
   h1.test= title
   p Welcome to #{title}
   p.search Search: 

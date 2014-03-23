@@ -3,7 +3,13 @@ Intro Animation
 -----------------------------------------*/
 .intro_animation {
   position: fixed;
-  background-color: rgba(255,255,255,0.95);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(118,194,187,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
+  background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
+  background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
   top: 0;
   left: 0;
   width: 100%;
@@ -11,6 +17,9 @@ Intro Animation
   display: block;
   z-index: 200;
   text-align: center;
+  margin: 0 auto;
+  padding-top: 10%;
+  padding-bottom: 5%;
 }
 
 .end_intro {
@@ -18,24 +27,7 @@ Intro Animation
   z-index: -50;
 }
 
-.animationContainer {
-  height: 500px;
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  overflow: hidden;
-  background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,255,255,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
-  background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
-  background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
-  background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
-}
-
-#staticArticle {
+.staticRectangles {
   height: 75px;
   width: 260px;
   border-radius: 3px;
@@ -48,21 +40,17 @@ Intro Animation
   font-size: 2em;
 }
 
+#staticArticle {
+  margin-bottom: 10px;
+}
+
 #staticArticle2 {
-  height: 75px;
-  width: 260px;
-  border-radius: 3px;
-  background-color: rgba(148,0,211,.7);
-  margin: 0 auto; 
-  position: relative;
-  padding-top: 5%;
-  padding-left: 40px;
-  font-size: 2em;
 }
 
 #movingRect {
   height: 75px;
-  width: 300px;
+  width: 260px;
+  /*width: 300px;*/
   border-radius: 3px;
   background-color: rgba(148,0,211,1);
   margin: 0 auto;
@@ -110,4 +98,28 @@ Intro Animation
   height: 200px;
   margin: 0 auto;
   margin-top: 10%;
+}
+
+.closeIntroButton {
+  height: 50px;
+  width: 100px;
+  background-color: yellow;
+  padding-top: 1%;
+  cursor: pointer;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/*bezier test*/
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #91e600;
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+body {
+  background-color: black;
 }
