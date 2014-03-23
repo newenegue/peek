@@ -91,6 +91,7 @@ Intro Animation
   float: right;
   margin-top: -40px;
   margin-right: 20px;
+  position: relative;
   -webkit-transform:rotate(-30deg);
 }
 

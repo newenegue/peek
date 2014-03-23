@@ -53,13 +53,13 @@ window.onload = function(){
 // Append action to Static Rectangles
 // ------------------------------------------
   
-  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.5");
-  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.5");
-  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.5");
+  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.3");
+  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.3");
+  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.3");
   // tl.to(pointer, .5, {left: "300px", scale:0, autoAlpha:0}, "+=.5");
 
   //Figure out how to fade in and move to the left to select article
-  tl.from(pointer, 3, {autoAlpha:0}, "+=.5");
+  tl.from(pointer, 1, {right:-200, autoAlpha:0}, "+=.5");
   
   debugger;
   //Select Rectangle
@@ -81,8 +81,8 @@ window.onload = function(){
   tl.to(selectedRectang, .5, {top:150, autoAlpha:0}, "+=1");
 
   //Bucket Appears
-  tl.from(introBucketStage, .5, {scale:0, autoAlpha:0}, "-=1");
-  tl.to(introBucketEyes, .1, {autoAlpha:0}, "-=.5");
+  tl.from(introBucketStage, .5, {right:-200, autoAlpha:0}, "-=1");
+  tl.to(introBucketEyes, .2, {autoAlpha:0}, "+=.2");
   // tl.to()
 
   //Enter Button Appears
