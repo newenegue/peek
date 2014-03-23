@@ -123,8 +123,28 @@ Intro Animation
 }
 
 #introBucketStage {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   overflow: auto;
   position: relative;
   height: 100%;
 }
+
+#closedEyesIntro {
+  opacity: 0;
+}
+
+#happy {
+  opacity: 1;
+}
+
+#openEyesIntro:hover { 
+  opacity: 0;
+}
+
+#openEyesIntro {
+-webkit-animation: happyTrans 4s steps(30, start);
+}
+
+  @-webkit-keyframes happyTrans {
+    to { visibility: hidden; }
+  }

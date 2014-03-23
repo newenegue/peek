@@ -44,7 +44,8 @@ window.onload = function(){
     staticArticle2 = document.getElementById("staticArticle2"),
     selectedRectang = document.getElementById("movingRect"),
     pointer = document.getElementById("pointer"),
-    introBucketStage = document.getElementById("introBucketStage");
+    introBucketStage = document.getElementById("introBucketStage"),
+    introBucketEyes = document.getElementById("openEyesIntro"),
     enterButton = document.getElementsByClassName("closeIntroButton");
 
 
@@ -79,8 +80,10 @@ window.onload = function(){
   //Drop Selected Rectangle
   tl.to(selectedRectang, .5, {top:150, autoAlpha:0}, "+=1");
 
-  //FIX THIS SHIT
+  //Bucket Appears
   tl.from(introBucketStage, .5, {scale:0, autoAlpha:0}, "-=1");
+  tl.to(introBucketEyes, .1, {autoAlpha:0}, "-=.5");
+  // tl.to()
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
