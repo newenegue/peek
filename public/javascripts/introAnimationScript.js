@@ -2,7 +2,7 @@
 // Intro Animation
 // ===========================================================
 
-$(document).ready(function(){
+window.onload = function(){
 
 // ------------------------------------------
 // Set Kinetic Stage for Animation
@@ -40,32 +40,30 @@ $(document).ready(function(){
   //Create Timeline Instance
   var tl = new TimelineLite(),
     bothStaticRectangles = document.getElementsByClassName("staticRectangles"),
-    //bezier
-    quantity = 30,
-    duration = 3,
-    path = [{x:0, y:0}, {x:50, y:100}, {x:300, y:20}, {x:400, y:200}, {x:500, y:0}],
-    position = {x:path[0].x, y:[path[0].y]},
-    tween = TweenMax.to(position, quantity, {bezier:path, ease: Linear.easeNone}),
-    tl2 = new TimelineMax({repeat:-1, yoyo:true}),
-    i, dot;
+    staticArticle = document.getElementById("staticArticle"),
+    staticArticle2 = document.getElementById("staticArticle2"),
+    selectedRectang = document.getElementById("movingRect"),
+    pointer = document.getElementById("pointer"),
+    enterButton = document.getElementsByClassName("closeIntroButton");
 
-// ------------------------------------------
-// Bezier test
-// ------------------------------------------
-path.shift();
-
-    for (i = 0; i < quantity; i++) {
-      tween.time(i); //jumps to the appropriate time in the tween, causing position.x and position.y to be updated accordingly.
-      dot = $("<div />", {id:"dot"+i}).addClass("dot").css({left:position.x+"px", top:position.y+"px"}).appendTo(".intro_animation"); //create a new dot, add the .dot class, set the position, and add it to the body.
-      tl2.set(dot, {visibility:"visible"}, i * (duration / quantity)); //toggle the visibility on at the appropriate time.
-    }
 
 // ------------------------------------------
 // Append action to Static Rectangles
 // ------------------------------------------
+  
+  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.5");
+  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.5");
+  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.5");
+  // tl.to(pointer, .5, {left: "300px", scale:0, autoAlpha:0}, "+=.5");
+
+  //Figure out how to fade in and move to the left to select article
+  tl.from(pointer, 3, {autoAlpha:0}, "+=.5");
+  debugger;
+  //Select Rectangle
+  tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.5"); 
 
   //Shift Static Rects Diagonally (down/left)
-  tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=1.2");
+  tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
 
   //Drift Static Rects to the Left
   tl.to(bothStaticRectangles, 2, {right:"600px", ease:Circ.easeIn}, "+=.3");
@@ -73,17 +71,13 @@ path.shift();
   //Make Static Rects Fade Away
   tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=1.5" );
 
-// ------------------------------------------
-// Append action to Selected Rectangle
-// ------------------------------------------
+  //Shift Selected Rectangle Back
+  tl.to(selectedRectang, 1, {scaleX: 0.6, scaleY: 0.6}, "+=.2");
 
-  // GSAP moving rec
-  var selectedRectang = document.getElementById("movingRect");
-  TweenLite.to(selectedRectang, .5, {backgroundColor:"red", delay: 1});
-  TweenLite.to(selectedRectang, 1, {scaleX: 0.6, scaleY: 0.6, delay: 3});
-  TweenLite.to(selectedRectang,.5, {top:150, autoAlpha:0, delay: 5.5});
+  //Drop Selected Rectangle
+  tl.to(selectedRectang, .5, {top:150, autoAlpha:0}, "+=1");
 
-  var enterButton = document.getElementsByClassName("closeIntroButton");
-  TweenLite.from(enterButton,.5, {autoAlpha:0, delay: 5.5});
+  //Enter Button Appears
+  tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
 
-});
+};

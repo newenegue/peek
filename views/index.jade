@@ -5,9 +5,13 @@ block content
   div.intro_animation
     div.staticRectangles(id='staticArticle')
     div(id='movingRect')
-      img(id='heart' src='images/pointer.png')
+      img(id='pointer' src='images/pointer.png')
     div.staticRectangles(id='staticArticle2')
-    div(id='bucketYo')
+    .intro_bucket
+      div(id="introBucketStage")
+    .intro_shadow_bucket
+      div(id="introShadowStage")
+      //- img(id='heart' src='images/heart.svg')
     div.closeIntroButton Enter
   h1.test= title
   p Welcome to #{title}

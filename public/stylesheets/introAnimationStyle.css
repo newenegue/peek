@@ -3,13 +3,15 @@ Intro Animation
 -----------------------------------------*/
 .intro_animation {
   position: fixed;
+  /*
   background: -moz-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(118,194,187,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
-  background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
-  background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
-  background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+  /* background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(118,194,187,1)), color-stop(100%, rgba(0,0,0,1))); /* safari4+,chrome */
+  /* background:-webkit-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* safari5.1+,chrome10+ */
+  /* background: -o-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* opera 11.10+ */
+  /* background: -ms-radial-gradient(center, ellipse cover, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* ie10+ */
+  /* background:radial-gradient(ellipse at center, rgba(0,255,255,1) 0%, rgba(0,0,0,1) 100%); /* w3c */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+  background-color: white;
   top: 0;
   left: 0;
   width: 100%;
@@ -60,6 +62,7 @@ Intro Animation
   text-align: center;
   padding-top: 5%;
   font-size: 2em;
+  border: 3px solid white;
 }
 
 #bucketYo {
@@ -83,10 +86,11 @@ Intro Animation
 }
 
 #pointer {
-/*  border: 1px solid black;*/
+  border: 1px solid black;
   height: 40px;
   float: right;
-  margin: 20px;
+  margin-top: -40px;
+  margin-right: 20px;
   -webkit-transform:rotate(-30deg);
 }
 
@@ -107,19 +111,6 @@ Intro Animation
   padding-top: 1%;
   cursor: pointer;
   margin: 0 auto;
+  margin-bottom: 20%;
   border-radius: 10px;
-}
-
-/*bezier test*/
-.dot {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #91e600;
-  border-radius: 50%;
-  visibility: hidden;
-}
-
-body {
-  background-color: black;
 }
