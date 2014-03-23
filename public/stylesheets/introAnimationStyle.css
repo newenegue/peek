@@ -29,6 +29,9 @@ Intro Animation
   z-index: -50;
 }
 
+/*-----------------------------------------
+Articles
+-----------------------------------------*/
 .staticRectangles {
   height: 75px;
   width: 260px;
@@ -65,6 +68,10 @@ Intro Animation
   border: 3px solid white;
 }
 
+/*-----------------------------------------
+Bucket
+-----------------------------------------*/
+
 #bucketYo {
   height: 200px;
   width: 600px;
@@ -85,36 +92,6 @@ Intro Animation
   background-position: center;
 }
 
-#pointer {
-  border: 1px solid black;
-  height: 40px;
-  float: right;
-  margin-top: -40px;
-  margin-right: 20px;
-  position: relative;
-  -webkit-transform:rotate(-30deg);
-}
-
-#merp {
-  font-size: 6em;
-  width: 1000px;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
-  height: 200px;
-  margin: 0 auto;
-  margin-top: 10%;
-}
-
-.closeIntroButton {
-  height: 50px;
-  width: 100px;
-  background-color: yellow;
-  padding-top: 1%;
-  cursor: pointer;
-  margin: 0 auto;
-  margin-bottom: 20%;
-  border-radius: 10px;
-}
 
 .intro_bucket {
   position: relative;
@@ -158,4 +135,42 @@ Intro Animation
 
 #openEyesIntro {
   opacity: 1;
+}
+
+/*-----------------------------------------
+Pointer Cursor
+-----------------------------------------*/
+
+#pointer {
+  border: 1px solid black;
+  height: 40px;
+  float: right;
+  margin-top: -40px;
+  margin-right: 20px;
+  position: relative;
+  -webkit-transform:rotate(-30deg);
+}
+
+#merp {
+  font-size: 6em;
+  width: 1000px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+/*-----------------------------------------
+Enter Button
+-----------------------------------------*/
+.closeIntroButton {
+  height: 50px;
+  width: 100px;
+  background-color: yellow;
+  padding-top: 1%;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-bottom: 20%;
+  border-radius: 10px;
 }
