@@ -129,6 +129,20 @@ Intro Animation
   height: 100%;
 }
 
+#IntroLayer_1 {
+  height: 100%;
+  /*position: absolute;*/
+  /*top: 20%;*/
+  width: 100%;
+}
+
+#introMouth {
+  opacity: 1;
+}
+
+#introGrin {
+  opacity: 0;
+}
 #closedEyesIntro {
   opacity: 0;
 }

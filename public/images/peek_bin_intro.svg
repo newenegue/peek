@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="IntroLayer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="576px" height="432px" viewBox="0 0 576 432" enable-background="new 0 0 576 432" xml:space="preserve">
 <g class="wholeBucket">
 	<g id="XMLID_1_">
@@ -28,10 +28,10 @@
 				c0.383-0.363,0.745-0.746,1.068-1.109L529.034,89.85z"/>
 		</g>
 	</g>
-	<path id="mouth" fill="none" stroke="#010101" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="
+	<path id="introMouth" fill="none" stroke="#010101" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="
 		M269.855,290.908c6.048,19.152,33.264,21.168,39.312,2.016"/>
 	
-		<path id="grin" fill="#58585B" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		<path id="introGrin" fill="#58585B" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 		M266.275,286.208c8.598,30.54,39.415,32.021,44.426,0.692L266.275,286.208z"/>
 	<g id="closedEyesIntro">
 		<path fill="none" stroke="#010101" stroke-width="7.4393" stroke-linecap="round" stroke-linejoin="round" d="M158.865,237.852
@@ -50,7 +50,7 @@
 			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="418" y1="246.999" x2="397.75" y2="222.001"/>
 	</g>
 	<g id="openEyesIntro">
-		<g id="leftEyeFull">
+		<g id="introLeftEyeFull">
 			<circle id="leftCircle" fill="#010101" cx="184.177" cy="239.922" r="29.231"/>
 			<g id="leftPupil">
 				<path id="bottomLeft" fill="#FFFFFF" d="M169.416,227.779c1.63,4.145,6.619,1.723,11.58-0.23
@@ -59,7 +59,7 @@
 				<circle id="topLeft" fill="#FFFFFF" cx="178.634" cy="236.898" r="3.78"/>
 			</g>
 		</g>
-		<g id="rightEyeFull">
+		<g id="introRightEyeFull">
 			<circle id="rightCircle" fill="#010101" cx="397.621" cy="239.922" r="29.231"/>
 			<g id="rightPupil">
 				<path id="bottomRight" fill="#FFFFFF" d="M382.855,227.779c1.634,4.145,6.614,1.723,11.571-0.23
