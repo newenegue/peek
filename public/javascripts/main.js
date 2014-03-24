@@ -183,6 +183,7 @@ function svgLoaded(response) {
 function deleteAll() {
   bucketArray = [];
   // TODO: Clear bucket in DB
+  removeAll();
   refreshBucket();
 }
 
