@@ -26,6 +26,8 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
 
+  bucketContent += '<div class="delete_all glyphicon glyphicon-trash"></div>';
+
   bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
 
   return bucketContent;
@@ -53,9 +55,9 @@ function updateItemsInBucket() {
       items += '<div class="bucket_title" style="position: initial;">' + bucketArray[i].title + '</div>';
     }
     items += '<div class="moreInfo">';
+    items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '<div class="bucket_teaser">' + bucketArray[i].teaser + '</div>';
-    items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     items += '</div></div></div>';
   }

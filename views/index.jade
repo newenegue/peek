@@ -27,12 +27,13 @@ block content
   //- Main Page
   div(id="navbar")
     h1.test= title
-    p.search Search: 
+    p.search.glyphicon.glyphicon-search 
       input(ng-model="search")
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     .bucket
       h4.bucket_name BUCKET
+      div.delete_all.glyphicon.glyphicon-trash
       .bucket_item_holder 
         strong Drag to add article
   //- Animated Bucket
@@ -67,10 +68,8 @@ block content
         span#back {{back}}
     br
     button#restart(onclick='restart()') Restart
-    button#rewind(onclick='rewind()') Rewind
-    button#submit(onclick='read()') Play
+    //- button#submit(onclick='read()') Play
     h2.glyphicon.glyphicon-play(id='submit', onclick='read()')
-    button#forward(onclick='forward()') FastForward
     
     select#wpm
       option(value='100') 100 WPM

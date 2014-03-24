@@ -1,3 +1,7 @@
+var count = 0;
+var play = 0;
+var readerTimer, text, words;
+
 var makeToChars = function(paragraph) {
   var words = [];
   var wordArray = paragraph.split(' ');
@@ -63,15 +67,54 @@ var combineParagraphs = function(paragraph) {
   return text;
 };
 
+var setID = function(id){
+  article_id = id;
+}
+
 var read = function(paragraph) {
-  var text = combineParagraphs(paragraph);
-  var words = breakUpWord(makeToChars(text));
-    i =0;
-    readerTimer = setInterval(function(){
-      printWord(words, i);
-      i++;
-      console.log(i);
-    }, 100);
+
+  //starts the reading at pause and toggles between states
+  if (play == 0) {
+    text = combineParagraphs(paragraph);
+    words = breakUpWord(makeToChars(text));
+    play = 2;
+  }
+  else if (play == 1) {
+    play = 2;
+  }
+  else if (play == 2) {
+    play = 1;
+  }
+
+  //pause
+  if (play == 2) {
+    $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-play");
+    clearInterval(readerTimer);
+    $('#wpm').css("display", "inline-block");
+  }
+
+  //play
+  if (play == 1) {
+    $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
+    var speed = 60000/$('#wpm').val();
+    readerTimer = setInterval(function () {
+      console.log(words);
+      printWord(words, count);
+      $('#wpm').css("display", "none");  
+
+      if (count < words.frontPart.length - 1) {
+        count ++;
+      }
+      else {
+        $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-repeat");
+        clearInterval(readerTimer);
+        $('#wpm').css("display", "inline-block");
+        play = 2;
+        count = 0;
+      }
+    }, speed);
+  }
+
 // popularity++;
 // console.log(popularity);
 };

@@ -6,13 +6,7 @@ $(document).ready(function() {
   // Close intro
   $(document.body).on('click', '.closeIntroButton', closeIntro);
 
-  // Close intro shortcut (press 'esc' key to exit intro prematurely)
-  $(document.body).keydown(function( e ) {
-    if ( e.which == 27 ) {
-      e.preventDefault();  
-      closeIntro();
-    }
-  });
+
 
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
@@ -22,6 +16,9 @@ $(document).ready(function() {
 
   // Click remove button
   $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
+
+  // Delete all from bucket
+  $(document.body).on('click', '.delete_all', deleteAll);  
 
   // Main animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
@@ -38,7 +35,72 @@ $(document).ready(function() {
   // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
+
+  $(document.body).on('click', '.glyphicon-search', toggleSearch);
+
+  // Key down listener
+  // $(document).keydown(keyHandlers(e));
+  $(document).keydown(function(e){
+
+    // ESC - close animation or peek reader
+    if(e.keyCode == 27) {
+      clearSearch();
+      if( isReaderOpen() )
+        closeArticle();
+      if( isIntroOpen() )
+        closeIntro();
+    }
+
+    // SPACE - toggle peek reader play/pause
+    if(e.keyCode == 32) {
+      console.log("hit space: should toggle peek reader to play/pause");
+    }
+
+    // Start search on key press
+    if((e.keyCode <= 90 && e.keyCode >= 65) || (e.keyCode <= 57 && e.keyCode >= 48)) {
+      openSearch();
+    }
+  });
 });
+
+// ------------------------------------------
+// Clear and hide search
+// ------------------------------------------
+function clearSearch() {
+  if($("input").hasClass("show_input")){
+    $("input").blur();
+    $("input").removeClass("show_input");
+    $('input').val('');
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+// ------------------------------------------
+// Start searching articles
+// ------------------------------------------
+function openSearch() {
+  $("input").addClass("show_input");
+  $("input").focus();
+}
+
+// ------------------------------------------
+// Toggle search
+// ------------------------------------------
+function toggleSearch() {
+  if(!clearSearch()) {
+    openSearch();
+  }
+}
+
+// ------------------------------------------
+// Check if intro is running
+// ------------------------------------------
+function isIntroOpen() {
+  return !$(".intro_animation").hasClass("end_intro");
+}
 
 // ------------------------------------------
 // Close intro
@@ -70,7 +132,8 @@ function hideMoreInfo() {
 function readArticle() {
 
   var article_id = $(this).parents(".bucket_item").attr('data-id');
-  var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+  // var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
+  var paragraph = bucketArray[locateItem(article_id)]["paragraph"];
   var link = $("#" + article_id).attr('data-article-link');
   $("a.link_to_article").attr("href", link);
 
@@ -82,6 +145,13 @@ function readArticle() {
   setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
   setTimeout( function() {$(".wholeBucket").attr("class", "wholeBucket");}, 700 );
   setTimeout( function() {$(".shadow").attr("class", "shadow");}, 700 );
+}
+
+// ------------------------------------------
+// Check if reader is open
+// ------------------------------------------
+function isReaderOpen() {
+  return $(".article_container").hasClass("peek_article");
 }
 
 // ------------------------------------------
@@ -102,6 +172,15 @@ function svgLoaded(response) {
   if(!response){
     console.log("Error loading SVG!");
   }
+}
+
+// ------------------------------------------
+// Delete all articles from bucket
+// ------------------------------------------
+function deleteAll() {
+  bucketArray = [];
+  // TODO: Clear bucket in DB
+  refreshBucket();
 }
 
 // ------------------------------------------
@@ -269,6 +348,7 @@ peekApp.filter('getMainImage', function(){
       // Local variables
       var images = input.image;
       var mainImage = images[0];
+      // If mainImage is not primary, go look for it
       if(mainImage.type != "primary") {
         for(var i = 0; i < images.length; i++){
           // The article has a primary image
@@ -280,20 +360,6 @@ peekApp.filter('getMainImage', function(){
       else {
         mainImage = findSquareImage(mainImage);
       }
-
-      
-
-      // // Loop through all the images of article
-      // for(var i = 0; i < images.length; i++){
-      //   // The article has a primary image
-      //   if(images[i].type == "primary") {
-      //     mainImage = findSquareImage(images[i]);
-      //   }
-      //   // No primary image exists, so use the first available image
-      //   if(i === 0) {
-      //     mainImage = findSquareImage(images[i]);
-      //   }
-      // }
       return mainImage.src;
     }
     // If the NPR doesn't have images, look through the html, use the first image
@@ -316,6 +382,8 @@ peekApp.filter('getMainImage', function(){
   };
 });
 
+
+// REFACTOR WITH MAIN IMAGE!!!!!
 peekApp.filter("getThumbnail", function() {
   return function(input) {
     if(input.image){
