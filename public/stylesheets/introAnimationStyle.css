@@ -125,13 +125,16 @@ Bucket
   opacity: 1;
 }
 
+#openEyesIntro {
+  opacity: 1;
+  position: relative;
+}
+
 #openEyesIntro:hover { 
   opacity: 0;
 }
 
-#openEyesIntro {
-  opacity: 1;
-}
+
 
 /*-----------------------------------------
 Pointer Cursor
