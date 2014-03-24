@@ -33,18 +33,22 @@ Intro div shot positioning
 }
 
 .newIntroShot {
-  /*height: 500px;*/
-  /*width: 500px;*/
   border: 1px solid pink;
   position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
-  /*overflow: hidden;*/
 }
 
-#shot1 {
-
+#shot2 {
+  background-color: cyan;
+  top: 110%;
+  border: 5px solid orange;
+  padding-top: 5%;
+  /* make sure you need this top margin */
+  /*margin-top: 5%;*/
+  height: 100%;
+  width: 100%;
 }
 
 /*-----------------------------------------

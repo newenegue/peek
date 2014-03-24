@@ -46,6 +46,7 @@ window.onload = function(){
     pointer = document.getElementById("pointer"),
     introBucketStage = document.getElementById("introBucketStage"),
     introBucketEyes = document.getElementById("openEyesIntro"),
+    shot2 = document.getElementById("shot2"),
     enterButton = document.getElementsByClassName("closeIntroButton");
 
 
@@ -84,6 +85,9 @@ window.onload = function(){
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
   tl.to(introBucketEyes, .2, {autoAlpha:0}, "+=.2");
   // tl.to()
+
+  //Switch to Second Shot
+  tl.set(shot2, {top:0}, "+=.5");
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
