@@ -79,8 +79,6 @@ exports.articlesByPop = function(db) {
 
     collection.find({},{},function(err, docs){
       if(docs){
-        //got a bunch of articles id's 
-        var articleArray = [];
         res.json("test", {
           articles: docs
         });
