@@ -34,6 +34,11 @@ $(document).ready(function() {
         closeArticle();
       if( isIntroOpen() )
         closeIntro();
+
+      // hide input and clear it
+      $("input").blur();
+      $("input").removeClass("show_input");
+      $('input').val('');
     }
 
     // SPACE - toggle peek reader play/pause
@@ -44,6 +49,8 @@ $(document).ready(function() {
     // Start search on key press
     if((e.keyCode <= 90 && e.keyCode >= 65) || (e.keyCode <= 57 && e.keyCode >= 48)) {
       console.log("open search: start filtering articles");
+      $("input").addClass("show_input");
+      $("input").focus();
     }
       
   });

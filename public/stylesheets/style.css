@@ -81,6 +81,16 @@ p.search {
   top: 10px;
 }
 
+input {
+  display: none;
+  z-index: -10;
+}
+
+input.show_input {
+  display: block;
+  z-index: 10;
+}
+
 @-webkit-keyframes rotate {
   from {
     -webkit-transform: rotate(0deg);
