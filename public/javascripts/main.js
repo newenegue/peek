@@ -110,7 +110,6 @@ function isIntroOpen() {
 // Close intro
 // ------------------------------------------
 function closeIntro() {
-  console.log("tried to close intro");
   $(".intro_animation_screen").addClass("end_intro");
 }
 
@@ -142,6 +141,7 @@ function readArticle() {
   $("a.link_to_article").attr("href", link);
 
   read(paragraph);
+  increasePop(article_id);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".shadow").attr("class", "shadow animated rubberBand");
@@ -174,7 +174,6 @@ function closeArticle() {
 function svgLoaded(response) {
   $(this).addClass("svgLoaded");
   if(!response){
-    console.log("Error loading SVG!");
   }
 }
 
@@ -337,11 +336,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       refreshBucket();
     }
   };
-
-  // $scope.makePopular = function() {
-  //   popularity++;
-  //   console.log(popularity);
-  // };
 });
 
 // ------------------------------------------
