@@ -258,21 +258,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     $scope.getArticlesByPop();
   }
   else {
-    $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
-      .then(function(res){
-        //this targets the stories from the NPR JSON list
-        $scope.articles = res.data.list.story;
-        //loop through each new article
-        for(var article in $scope.articles){
-          var text = $scope.articles[article].teaser.$text;
-          $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
-          for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
-            $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
-          }
-        }
-        //return only 9 articles to the scope
-        $scope.articles = $scope.articles.slice(0, 8);
-      });
+    loadArticles();
   }
 
   // var popularity = 0;
@@ -352,18 +338,36 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     else {
       $scope.show_articles = 'Popular';
       // SWITCH BACK TO NPR LATEST ARTICLES
+      loadArticles();
     }
   };
   $scope.getArticlesByPop = function() {
     console.log("inside get Articles by pop");
-  $http({
-    url: "/articles/pop/",
-    method: "GET"
-  }).success(function(data) {
-    $scope.articles = data.articles;
-    console.log($scope.articles);
-  });
-};
+    $http({
+      url: "/articles/pop/",
+      method: "GET"
+    }).success(function(data) {
+      $scope.articles = data.articles;
+      console.log($scope.articles);
+    });
+  };
+  function loadArticles() {
+    $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
+    .then(function(res){
+      //this targets the stories from the NPR JSON list
+      $scope.articles = res.data.list.story;
+      //loop through each new article
+      for(var article in $scope.articles){
+        var text = $scope.articles[article].teaser.$text;
+        $scope.articles[article].teaser.$text = $sce.trustAsHtml(text);
+        for(var j=0; j < $scope.articles[article].text.paragraph.length; j++){
+          $scope.articles[article].text.paragraph[j].text = $scope.articles[article].text.paragraph[j].$text;
+        }
+      }
+      //return only 9 articles to the scope
+      $scope.articles = $scope.articles.slice(0, 8);
+    });
+  };
 });
 
 
