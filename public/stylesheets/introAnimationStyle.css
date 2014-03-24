@@ -51,6 +51,15 @@ Intro div shot positioning
   width: 100%;
 }
 
+#shot3 {
+  background-color: white;
+  top: 110%;
+  border: 5px solid orange;
+  padding-top: 5%;
+  height: 100%;
+  width: 100%;
+}
+
 /*-----------------------------------------
 Articles
 -----------------------------------------*/

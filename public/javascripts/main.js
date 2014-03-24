@@ -37,7 +37,7 @@ $(document).ready(function() {
 // ------------------------------------------
 function closeIntro() {
   console.log("tried to close intro");
-  $(".intro_animation").addClass("end_intro");
+  $(".intro_animation_screen").addClass("end_intro");
 }
 
 // ------------------------------------------

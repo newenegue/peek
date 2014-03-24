@@ -89,6 +89,9 @@ window.onload = function(){
   //Switch to Second Shot
   tl.set(shot2, {top:0}, "+=.5");
 
+  //Switch to Third Shot
+  tl.set(shot3, {top:0}, "+=2");
+
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
 
