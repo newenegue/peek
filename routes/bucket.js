@@ -73,6 +73,22 @@ exports.getArticles = function(db) {
   )}
 }
 
+exports.articlesByPop = function(db) {
+  return function(req, res) {
+    var collection = db.get('articles');
+
+    collection.find({},{},function(err, docs){
+      if(docs){
+        //got a bunch of articles id's 
+        var articleArray = [];
+        res.json("test", {
+          articles: docs
+        });
+      }
+    }
+  )}
+}
+
 
 
 exports.addArticle = function(db) {
