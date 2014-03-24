@@ -5,35 +5,6 @@
 window.onload = function(){
 
 // ------------------------------------------
-// Set Kinetic Stage for Animation
-// ------------------------------------------
-
-  // var stage = new Kinetic.Stage({
-  //   container: 'animationContainer',
-  //   width: 578,
-  //   height: 200 
-  // });
-
-// ------------------------------------------
-// Create Layer for Static Articles
-// ------------------------------------------
-
-  // var staticRectsLayer = new Kinetic.Layer();
-
-// ------------------------------------------
-// Set Group for Static Articles
-// ------------------------------------------
-
-  // var staticRectsGroup = new Kinetic.Group({
-  //   x: 220,
-  //   y: 40
-  // });
-
-// ------------------------------------------
-// Create Static Rectangles
-// ------------------------------------------
-
-// ------------------------------------------
 // Create Timeline for Animation to Run On
 // ------------------------------------------
   
@@ -85,7 +56,7 @@ window.onload = function(){
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
-  tl.set(shot2, {top:0}, "-=.5");
+  tl.set(shot2, {top:0, onComplete:introTextContent}, "-=.5");
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
@@ -95,4 +66,14 @@ window.onload = function(){
 
   //TO DO: Time bucket so that it becomes happy the exact fraction of a second that the article is dropped into it. Similar to blinking, but only 1x at the precise time instead of every 4 seconds x infinitely
 
+};
+
+function introTextContent() {
+  var introFront = document.getElementById("introFront");
+  var introCenter = document.getElementById("introCenter");
+  var introBack = document.getElementById("introBack");
+
+  introFront.innerHTML = "Wel";
+  introCenter.innerHTML = "c";
+  introBack.innerHTML = "ome";
 };
