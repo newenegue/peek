@@ -26,6 +26,8 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
 
+  bucketContent += '<div class="delete_all glyphicon glyphicon-trash"></div>';
+
   bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
 
   return bucketContent;

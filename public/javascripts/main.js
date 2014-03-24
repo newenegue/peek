@@ -17,6 +17,9 @@ $(document).ready(function() {
   // Click remove button
   $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
 
+  // Delete all from bucket
+  $(document.body).on('click', '.delete_all', deleteAll);  
+
   // Main animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
 
@@ -169,6 +172,15 @@ function svgLoaded(response) {
   if(!response){
     console.log("Error loading SVG!");
   }
+}
+
+// ------------------------------------------
+// Delete all articles from bucket
+// ------------------------------------------
+function deleteAll() {
+  bucketArray = [];
+  // TODO: Clear bucket in DB
+  refreshBucket();
 }
 
 // ------------------------------------------
