@@ -54,3 +54,10 @@ function removeArticleFromBucket(id) {
     console.log(response);
   }});
 }
+
+function removeAll() {
+  //run an ajax call while passing in the article id
+  $.ajax({type: 'DELETE', url: '/article/del/', success: function(response){
+    console.log(response);
+  }});
+}
