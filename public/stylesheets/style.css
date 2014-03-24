@@ -1,7 +1,7 @@
 /*-----------------------------------------
 Fonts
 -----------------------------------------*/
-@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700|Raleway:400,300,700);
 
 body {
   padding: 50px;
@@ -9,7 +9,10 @@ body {
 }
 
 body.main {
-  background-color: rgba(218, 237, 238, 1);
+  background-color: rgba(245, 245, 245, 1);
+  border: 20px solid rgba(255, 255, 255, 1);
+/*  border-width: 3%;
+  border-color:rgba(255, 255, 255, 1); */
 }
 
 a {
@@ -18,6 +21,20 @@ a {
 
 .test {
   color: #999;
+  font-family: 'Raleway', sans-serif;
+  position: absolute;
+  margin-left: 5%;
+  z-index: 150;
+}
+
+#navbar {
+  z-index: 149;
+  height: 80px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .8);
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 /*-----------------------------------------
@@ -27,8 +44,8 @@ Newsfeed
   width: 80%;
 }
 .article {
-  /*border: 2px solid #ddd;*/
-  background-color: white;
+  border: 1px solid #6a6a65;
+  background-color: #d1d1d1;
   cursor: pointer;
   padding: 5px;
   margin-bottom: 10px;
@@ -40,7 +57,9 @@ Newsfeed
 }
 
 .article:hover {
-  border: 4px solid #ee6557;
+  /*border: 4px solid #ee6557;*/
+  background-color: #16a6b6;
+  border: 1px solid #16a6b6;
 }
 
 .article_container {
@@ -54,11 +73,14 @@ Newsfeed
 
 .article_in_bucket:hover {
   border: 2px solid #e0e0e0;
+  background-color: #e0e0e0;
   cursor: auto;
 }
 
 .title {
   font-size: 1.6em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
 }
 
 .article_content {
@@ -117,13 +139,13 @@ Bucket: Content
   z-index: 3;
   font-family: 'Quicksand';
   width: 15%;
-  height: 65%;
+  height: 55%;
   padding: 3px;
   background: white;
   border-radius: 10px;
   border: gray solid 4px;
   right: 3%;
-  top: 5%;
+  top: 137px;
 }
 
 .bucket_selected {

@@ -6,6 +6,14 @@ $(document).ready(function() {
   // Close intro
   $(document.body).on('click', '.closeIntroButton', closeIntro);
 
+  // Close intro shortcut (press 'esc' key to exit intro prematurely)
+  $(document.body).keydown(function( e ) {
+    if ( e.which == 27 ) {
+      e.preventDefault();  
+      closeIntro();
+    }
+  });
+
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
 
