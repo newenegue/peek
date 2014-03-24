@@ -248,6 +248,8 @@ var peekApp = angular.module('PeekApp', []);
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.articles = [];
   $scope.loading = false;
+  $scope.show_articles = 'Popular';
+  $scope.show_popular = false;
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
@@ -309,9 +311,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
         // hide loading img
         $scope.loading = false;
       });
-
-    
-
   };
 
   // ------------------------------------------
@@ -334,6 +333,16 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
       // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
+    }
+  };
+
+  $scope.togglePopular = function() {
+    $scope.show_popular = !$scope.show_popular;
+    if($scope.show_popular) {
+      $scope.show_articles = 'Latest';
+    }
+    else {
+      $scope.show_articles = 'Popular';
     }
   };
 });
