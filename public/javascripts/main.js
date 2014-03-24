@@ -351,6 +351,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     }
     else {
       $scope.show_articles = 'Popular';
+      // SWITCH BACK TO NPR LATEST ARTICLES
     }
   };
   $scope.getArticlesByPop = function() {
@@ -445,8 +446,8 @@ peekApp.filter("getThumbnail", function() {
 // ------------------------------------------
 peekApp.filter("removeTopStories", function() {
   return function(input) {
-
-    if(!$scope.show_articles) {
+    console.log(input[0].title);
+    if(input[0].title != null && input[0].link[0] != null) {
       for(var i = 0; i < input.length; i++){
         // Remove all Top Stories article
         if(input[i].title.$text.indexOf("Top Stories:") >= 0){
