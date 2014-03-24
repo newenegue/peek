@@ -27,14 +27,6 @@ $(document).ready(function(){
   setCookie().done(getBucket().done(getArticles()));
 });
 
-function getArticlesByPop() {
-  $.ajax({type: 'GET', url: '/articles/pop/', success: function(response){
-    var popularArticles = JSON.parse(response);
-    console.log(popularArticles);
-  }});
-}
-
-
 
 function addArticleToDatabase(article) {
   //run an ajax call while passing in the article id
