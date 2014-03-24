@@ -38,7 +38,44 @@ $(document).ready(function() {
   // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
+
+  // Key down listener
+  $(document).keydown(function(e){
+
+    // ESC - close animation or peek reader
+    if(e.keyCode == 27) {
+      if( isReaderOpen() )
+        closeArticle();
+      if( isIntroOpen() )
+        closeIntro();
+
+      // hide input and clear it
+      $("input").blur();
+      $("input").removeClass("show_input");
+      $('input').val('');
+    }
+
+    // SPACE - toggle peek reader play/pause
+    if(e.keyCode == 32) {
+      console.log("hit space: should toggle peek reader to play/pause");
+    }
+
+    // Start search on key press
+    if((e.keyCode <= 90 && e.keyCode >= 65) || (e.keyCode <= 57 && e.keyCode >= 48)) {
+      console.log("open search: start filtering articles");
+      $("input").addClass("show_input");
+      $("input").focus();
+    }
+      
+  });
 });
+
+// ------------------------------------------
+// Check if intro is running
+// ------------------------------------------
+function isIntroOpen() {
+  return !$(".intro_animation").hasClass("end_intro");
+}
 
 // ------------------------------------------
 // Close intro
@@ -83,6 +120,13 @@ function readArticle() {
   setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
   setTimeout( function() {$(".wholeBucket").attr("class", "wholeBucket");}, 700 );
   setTimeout( function() {$(".shadow").attr("class", "shadow");}, 700 );
+}
+
+// ------------------------------------------
+// Check if reader is open
+// ------------------------------------------
+function isReaderOpen() {
+  return $(".article_container").hasClass("peek_article");
 }
 
 // ------------------------------------------
@@ -270,6 +314,7 @@ peekApp.filter('getMainImage', function(){
       // Local variables
       var images = input.image;
       var mainImage = images[0];
+      // If mainImage is not primary, go look for it
       if(mainImage.type != "primary") {
         for(var i = 0; i < images.length; i++){
           // The article has a primary image
@@ -281,20 +326,6 @@ peekApp.filter('getMainImage', function(){
       else {
         mainImage = findSquareImage(mainImage);
       }
-
-      
-
-      // // Loop through all the images of article
-      // for(var i = 0; i < images.length; i++){
-      //   // The article has a primary image
-      //   if(images[i].type == "primary") {
-      //     mainImage = findSquareImage(images[i]);
-      //   }
-      //   // No primary image exists, so use the first available image
-      //   if(i === 0) {
-      //     mainImage = findSquareImage(images[i]);
-      //   }
-      // }
       return mainImage.src;
     }
     // If the NPR doesn't have images, look through the html, use the first image
@@ -317,6 +348,8 @@ peekApp.filter('getMainImage', function(){
   };
 });
 
+
+// REFACTOR WITH MAIN IMAGE!!!!!
 peekApp.filter("getThumbnail", function() {
   return function(input) {
     if(input.image){
