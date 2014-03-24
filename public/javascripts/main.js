@@ -6,13 +6,7 @@ $(document).ready(function() {
   // Close intro
   $(document.body).on('click', '.closeIntroButton', closeIntro);
 
-  // Close intro shortcut (press 'esc' key to exit intro prematurely)
-  $(document.body).keydown(function( e ) {
-    if ( e.which == 27 ) {
-      e.preventDefault();  
-      closeIntro();
-    }
-  });
+
 
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
@@ -40,19 +34,16 @@ $(document).ready(function() {
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 
   // Key down listener
+  // $(document).keydown(keyHandlers(e));
   $(document).keydown(function(e){
 
     // ESC - close animation or peek reader
     if(e.keyCode == 27) {
+      clearSearch();
       if( isReaderOpen() )
         closeArticle();
       if( isIntroOpen() )
         closeIntro();
-
-      // hide input and clear it
-      $("input").blur();
-      $("input").removeClass("show_input");
-      $('input').val('');
     }
 
     // SPACE - toggle peek reader play/pause
@@ -62,13 +53,29 @@ $(document).ready(function() {
 
     // Start search on key press
     if((e.keyCode <= 90 && e.keyCode >= 65) || (e.keyCode <= 57 && e.keyCode >= 48)) {
-      console.log("open search: start filtering articles");
-      $("input").addClass("show_input");
-      $("input").focus();
+      openSearch();
     }
-      
   });
 });
+
+// ------------------------------------------
+// Clear and hide search
+// ------------------------------------------
+function clearSearch() {
+  if($("input").hasClass("show_input")){
+    $("input").blur();
+    $("input").removeClass("show_input");
+    $('input').val('');
+  }
+}
+
+// ------------------------------------------
+// Start searching articles
+// ------------------------------------------
+function openSearch() {
+  $("input").addClass("show_input");
+  $("input").focus();
+}
 
 // ------------------------------------------
 // Check if intro is running
