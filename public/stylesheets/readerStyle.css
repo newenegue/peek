@@ -29,10 +29,18 @@ Article peek
   width: 85%;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
-  height: 42%;
+  height: 200px;
   margin: 0 auto;
   margin-top: 10%;
   /*position: relative;*/
+}
+
+#wordWhiteBackground {
+  background-color: white;
+  width: 100%;
+  border: 1px solid green;
+  height: 20%;
+  margin-top: 35%;
 }
 
 /*.fullReaderWord {
