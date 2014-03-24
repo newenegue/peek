@@ -54,9 +54,8 @@ function updateItemsInBucket() {
     }
     items += '<div class="moreInfo">';
     items += '<button class="read btn btn-default">Read</button>';
-    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
-    // items += '<div class="bucket_teaser">' + bucketArray[i].teaser + '</div>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
+    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '</div></div></div>';
   }
   
@@ -78,20 +77,21 @@ function validId(id) {
 // ------------------------------------------
 function createItem(id) {
   // Set local variables
-  var title, thumbnail, article_id, teaser, item;
+  var title, thumbnail, article_id, teaser, item, link;
 
   // Extract data from DOM by id
   title = $("#" + id + " .title b")[0].innerHTML;
   teaser = $("#" + id + " .text")[0].innerHTML;
   thumbnail = $("#" + id +" img").first().data("thumb");
   paragraph = $("#" + id).first().data("paragraph");
+  link = $("#" + id).attr('data-article-link');
   // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
   }
 
   // Return article object
-  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph};
+  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph, "link": link};
 }
 
 // ------------------------------------------

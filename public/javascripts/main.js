@@ -137,7 +137,7 @@ function readArticle() {
   var article_id = $(this).parents(".bucket_item").attr('data-id');
   // var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var paragraph = bucketArray[locateItem(article_id)]["paragraph"];
-  var link = $("#" + article_id).attr('data-article-link');
+  var link = bucketArray[locateItem(article_id)]["link"];
   $("a.link_to_article").attr("href", link);
 
   read(paragraph);

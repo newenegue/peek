@@ -304,11 +304,8 @@ Bucket: Content
 Drag placeholder and selector
 -----------------------------------------*/
 .sortable-dragging {
-  background-color: rgba(0,255,0,0.2);
 }
 .sortable-placeholder {
-  /*margin: 2%;*/
-  /*padding-bottom: 2%;*/
   margin-bottom: 3px;
   border: 2px dashed red;
   width: 100%;

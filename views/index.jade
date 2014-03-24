@@ -27,6 +27,7 @@ block content
   //- Main Page
   div(id="navbar")
     h1.test= title
+    div.popular_articles(ng-click="togglePopular()") {{Popular}}
     div.search
       p.glyphicon.glyphicon-search 
       input(ng-model="search")
@@ -45,7 +46,17 @@ block content
   //- Articles list
   .articles
     div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
+      //- Latest Articles from NPR
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
+        //- find primary image and show those images.  only show src if it exists?  what is the main error?
+        img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
+        .article_content
+          .title 
+            b {{article.title.$text}}
+          br
+          div.text(ng-bind-html="article.teaser.$text")
+      //- Popular Ariticles from PEEK DB
+      //- div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
         img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
