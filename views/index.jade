@@ -27,12 +27,12 @@ block content
   //- Main Page
   div(id="navbar")
     h1.test= title
-    p.search.glyphicon.glyphicon-search 
+    div.search
+      p.glyphicon.glyphicon-search 
       input(ng-model="search")
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     .bucket
-      h4.bucket_name BUCKET
       div.delete_all.glyphicon.glyphicon-trash
       .bucket_item_holder 
         strong Drag to add article
@@ -47,7 +47,6 @@ block content
     div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       div(id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        //- {{article.image[0].src}}
         img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
           .title 

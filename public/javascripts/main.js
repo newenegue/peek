@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     // SPACE - toggle peek reader play/pause
     if(e.keyCode == 32) {
-      console.log("hit space: should toggle peek reader to play/pause");
+      read();
     }
 
     // Start search on key press
@@ -71,9 +71,10 @@ $(document).ready(function() {
 // ------------------------------------------
 function clearSearch() {
   if($("input").hasClass("show_input")){
+    $('input').val("");
     $("input").blur();
     $("input").removeClass("show_input");
-    $('input').val('');
+    
     return true;
   }
   else {

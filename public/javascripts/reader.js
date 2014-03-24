@@ -100,7 +100,7 @@ var read = function(paragraph) {
     readerTimer = setInterval(function () {
       console.log(words);
       printWord(words, count);
-      $('#wpm').css("display", "none");  
+      $('#wpm').css("display", "none"); 
 
       if (count < words.frontPart.length - 1) {
         count ++;
