@@ -55,6 +55,7 @@ window.onload = function(){
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
   // tl.from(introBucketEyes, .5, {autoAlpha:0}, "+=.2");
   tl.to(introBucketEyes, .1, {autoAlpha:0}, "+=.2");
+  console.log(introBucketEyes);
   // tl.to(introRightEyeFull, .1, {css:{display:hidden}}, "+=.2");
 
   //Switch to Second Shot
