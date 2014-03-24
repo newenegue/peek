@@ -338,6 +338,17 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   };
 });
 
+
+$scope.getArticlesByPop = function() {
+  $http({
+    url: "/articles/pop/",
+    method: "GET"
+  }).success(function(data) {
+    $scope.articles = JSON.parse(data);
+    console.log($scope.articles);
+  });
+}
+
 // ------------------------------------------
 // Main image filter
 // - searches through APR JSON
