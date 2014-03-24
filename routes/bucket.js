@@ -150,3 +150,21 @@ exports.removeArticle = function(db) {
     }); 
   }
 }
+
+exports.deleteAll = function(db) {
+  return function(req, res) {
+    var collection = db.get('articlebucket');
+    var bucketID = parseCookies(req.headers.cookie);
+    bucketID = decodeURI(bucketID).trim();
+    bucketID = bucketID.substr(3,(bucketID.length - 4));
+
+    collection.remove({bucket_id: bucketID}, function(err){
+      if(err) {
+        console.log("could not remove relationship");
+      }
+      else {
+        console.log("relationship removed")
+      }
+    }); 
+  }
+}

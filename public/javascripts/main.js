@@ -6,8 +6,6 @@ $(document).ready(function() {
   // Close intro
   $(document.body).on('click', '.closeIntroButton', closeIntro);
 
-
-
   // Collapse articles toggle
   $(document.body).on('click', '.read', readArticle);
 
@@ -18,7 +16,7 @@ $(document).ready(function() {
   $(document.body).on('click', '.remove_bucket_item', removeSelectedItem);
 
   // Delete all from bucket
-  $(document.body).on('click', '.delete_all', deleteAll);  
+  $(document.body).on('click', '.delete_all', deleteAll);
 
   // Main animated bucket
   $("#stage").load('images/peek_bin.svg', svgLoaded);
@@ -29,6 +27,10 @@ $(document).ready(function() {
   // Intro Animated bucket
   $("#introBucketStage").load('images/peek_bin_intro.svg', svgLoaded);
 
+  // EASTER EGGS
+  // Click bucket to get random article
+  $(document.body).on('click', '.wholeBucket', getRandomArticle);
+
   // Intro Animated bucket: shadow
   // $("#introShadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
@@ -36,6 +38,7 @@ $(document).ready(function() {
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 
+  // Toggle article search
   $(document.body).on('click', '.glyphicon-search', toggleSearch);
 
   // Key down listener
@@ -180,6 +183,7 @@ function svgLoaded(response) {
 function deleteAll() {
   bucketArray = [];
   // TODO: Clear bucket in DB
+  removeAll();
   refreshBucket();
 }
 
@@ -228,6 +232,10 @@ function findSquareImage(img) {
   }
   // Use original image, if not square found
   return img;
+}
+
+function getRandomArticle() {
+  console.log("give me a random article");
 }
 
 
