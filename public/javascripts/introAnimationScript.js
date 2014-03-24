@@ -81,13 +81,13 @@ window.onload = function(){
 
   //Bucket Appears
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
-  tl.to(introBucketEyes, .2, {autoAlpha:0}, "+=.2");
+  tl.to(introBucketEyes, .1, {autoAlpha:0}, "+=.2");
   // tl.to()
 
   //Switch to Second Shot
-  tl.set(shot2, {top:0}, "+=.5");
-  tl.from(shot2, .5, {autoAlpha:0}, "-=.5");
-
+  tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
+  tl.set(shot2, {top:0}, "-=.5");
+  
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
 
