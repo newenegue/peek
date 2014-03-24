@@ -24,9 +24,7 @@ function refreshBucket() {
 // Update bucket content
 // ------------------------------------------
 function updateBucketContent() {
-  var bucketContent = '<h4 class="bucket_name">BUCKET</h4>';
-
-  bucketContent += '<div class="delete_all glyphicon glyphicon-trash"></div>';
+  var bucketContent = '';
 
   bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
 
@@ -37,7 +35,7 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  var items = "";
+  var items = bucketArray.length >= 2 ? '<div class="delete_all glyphicon glyphicon-trash"></div>' : '';
 
   // Show latest bucket article
   for(var i = bucketArray.length - 1; i >= 0; i--) {
@@ -56,9 +54,8 @@ function updateItemsInBucket() {
     }
     items += '<div class="moreInfo">';
     items += '<button class="read btn btn-default">Read</button>';
-    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
-    items += '<div class="bucket_teaser">' + bucketArray[i].teaser + '</div>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
+    items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '</div></div></div>';
   }
   
@@ -80,20 +77,21 @@ function validId(id) {
 // ------------------------------------------
 function createItem(id) {
   // Set local variables
-  var title, thumbnail, article_id, teaser, item;
+  var title, thumbnail, article_id, teaser, item, link;
 
   // Extract data from DOM by id
   title = $("#" + id + " .title b")[0].innerHTML;
   teaser = $("#" + id + " .text")[0].innerHTML;
   thumbnail = $("#" + id +" img").first().data("thumb");
   paragraph = $("#" + id).first().data("paragraph");
+  link = $("#" + id).attr('data-article-link');
   // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
   }
 
   // Return article object
-  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph};
+  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph, "link": link};
 }
 
 // ------------------------------------------

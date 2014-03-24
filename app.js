@@ -71,6 +71,8 @@ app.post('/bucketlist/add', bucket.addBucket(db));
 app.post('/article/add/:id', bucket.addArticle(db));
 app.del('/article/del/:id', bucket.removeArticle(db));
 app.del('/article/del/', bucket.deleteAll(db));
+app.put('/article/pop/', bucket.increasePop(db));
+app.get('/article/pop/', bucket.articlesByPop(db));
 
 
 http.createServer(app).listen(app.get('port'), function(){

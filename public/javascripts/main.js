@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     // SPACE - toggle peek reader play/pause
     if(e.keyCode == 32) {
-      console.log("hit space: should toggle peek reader to play/pause");
+      read();
     }
 
     // Start search on key press
@@ -71,9 +71,10 @@ $(document).ready(function() {
 // ------------------------------------------
 function clearSearch() {
   if($("input").hasClass("show_input")){
+    $('input').val("");
     $("input").blur();
     $("input").removeClass("show_input");
-    $('input').val('');
+    
     return true;
   }
   else {
@@ -109,7 +110,6 @@ function isIntroOpen() {
 // Close intro
 // ------------------------------------------
 function closeIntro() {
-  console.log("tried to close intro");
   $(".intro_animation_screen").addClass("end_intro");
 }
 
@@ -137,10 +137,11 @@ function readArticle() {
   var article_id = $(this).parents(".bucket_item").attr('data-id');
   // var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var paragraph = bucketArray[locateItem(article_id)]["paragraph"];
-  var link = $("#" + article_id).attr('data-article-link');
+  var link = bucketArray[locateItem(article_id)]["link"];
   $("a.link_to_article").attr("href", link);
 
   read(paragraph);
+  increasePop(article_id);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".shadow").attr("class", "shadow animated rubberBand");
@@ -173,7 +174,6 @@ function closeArticle() {
 function svgLoaded(response) {
   $(this).addClass("svgLoaded");
   if(!response){
-    console.log("Error loading SVG!");
   }
 }
 
@@ -336,11 +336,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       refreshBucket();
     }
   };
-
-  // $scope.makePopular = function() {
-  //   popularity++;
-  //   console.log(popularity);
-  // };
 });
 
 // ------------------------------------------
