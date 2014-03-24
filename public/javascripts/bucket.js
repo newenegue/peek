@@ -55,9 +55,9 @@ function updateItemsInBucket() {
       items += '<div class="bucket_title" style="position: initial;">' + bucketArray[i].title + '</div>';
     }
     items += '<div class="moreInfo">';
+    items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '<div class="bucket_teaser">' + bucketArray[i].teaser + '</div>';
-    items += '<button class="read btn btn-default">Read</button>';
     items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
     items += '</div></div></div>';
   }
