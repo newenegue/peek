@@ -69,15 +69,17 @@ function readArticle() {
   read(paragraph);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
+  $(".shadow").attr("class", "shadow animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
   setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
+  setTimeout( function() {$(".wholeBucket").attr("class", "wholeBucket");}, 700 );
+  setTimeout( function() {$(".shadow").attr("class", "shadow");}, 700 );
 }
 
 // ------------------------------------------
 // Close article
 // ------------------------------------------
 function closeArticle() {
-  $(".wholeBucket").attr("class", "wholeBucket");
   $(".article_container").removeClass("peek_article");
   $(".article").removeClass("fadeOutLeft");
   $(".article").addClass("fadeInLeft");

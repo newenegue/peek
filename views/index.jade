@@ -4,6 +4,7 @@ block content
   //- Intro Animation
   div.intro_animation_screen
     div.introAnimationStage
+      //- Intro Shot 1 - Drag & Drop Articles
       div.newIntroShot(id='shot1')
         div.staticRectangles(id='staticArticle')
         div(id='movingRect')
@@ -14,7 +15,14 @@ block content
         //- .intro_shadow_bucket
         //-   div(id="introShadowStage")
           //- img(id='heart' src='images/heart.svg')
+      //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
+        div(id="peekIntroText")
+        #introReader
+          div.introVerticalLine
+            span#introFront {{introFront}}
+            span#introCenter {{introCenter}}
+            span#introBack {{introBack}}
       div.newIntroShot(id='shot3')
         div.closeIntroButton Enter
   h1.test= title

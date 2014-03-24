@@ -48,12 +48,10 @@ window.onload = function(){
     introBucketEyes = document.getElementById("openEyesIntro"),
     shot2 = document.getElementById("shot2"),
     enterButton = document.getElementsByClassName("closeIntroButton");
-
-
 // ------------------------------------------
 // Append action to Static Rectangles
 // ------------------------------------------
-  
+
   tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.1");
   tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");
   tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.1");
@@ -76,7 +74,7 @@ window.onload = function(){
   tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=.5" );
 
   //Shift Selected Rectangle Back
-  tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "+=.2");
+  tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
 
   //Drop Selected Rectangle
   tl.to(selectedRectang, 1, {top:150, autoAlpha:0}, "+=1");
@@ -90,7 +88,7 @@ window.onload = function(){
   tl.set(shot2, {top:0}, "+=.5");
 
   //Switch to Third Shot
-  tl.set(shot3, {top:0}, "+=2");
+  tl.set(shot3, {top:0}, "+=3");
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");

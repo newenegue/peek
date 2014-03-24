@@ -446,7 +446,7 @@ Bucket: Animated
   /*border: 1px solid black;*/
 }
 
-#bucketShadow {
+.bucketShadow {
   height: 100%;
   position: absolute;
   top: 20%;
@@ -458,7 +458,7 @@ Bucket: Animated
   filter: blur(4px);
 }
 
-#shadow {
+.shadow {
   -webkit-transform-origin: 50% 50%;
   -webkit-animation: shrink 3s ease-out infinite;
   -moz-animation: shrink 3s ease-out infinite;

@@ -45,8 +45,6 @@ Intro div shot positioning
   top: 110%;
   border: 5px solid orange;
   padding-top: 5%;
-  /* make sure you need this top margin */
-  /*margin-top: 5%;*/
   height: 100%;
   width: 100%;
 }
@@ -165,6 +163,53 @@ Pointer Cursor
   height: 200px;
   margin: 0 auto;
   margin-top: 10%;
+}
+
+/*-----------------------------------------
+Peek Reader Intro
+-----------------------------------------*/
+#peekIntroText{
+  position:relative;
+  width:800px;
+  height:300px;
+}
+
+#introReader {
+  font-size: 6em;
+  width: 1000px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+#introFront {
+  position: absolute;
+  margin-top: 2%;
+  background-color: white;
+}
+
+#introCenter {
+  color: red;
+  position: absolute;
+  left: 47%;
+  margin-top: 2%;
+  background-color: white;
+}
+
+.introVerticalLine {
+  width: 47%;
+  height: 197px;
+  border-right: 3px solid black;
+  z-index: -47;
+  overflow: visible;
+}
+
+#introBack {
+  position: absolute;
+  margin-top: 2%;
+  background-color: white;
 }
 
 /*-----------------------------------------
