@@ -27,7 +27,7 @@ block content
   //- Main Page
   div(id="navbar")
     h1.test= title
-    p.search Search: 
+    p.search.glyphicon.glyphicon-search 
       input(ng-model="search")
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 

@@ -33,6 +33,8 @@ $(document).ready(function() {
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
   $(document.body).on('mouseleave', '.bucket_item', hideMoreInfo);
 
+  $(document.body).on('click', '.glyphicon-search', toggleSearch);
+
   // Key down listener
   // $(document).keydown(keyHandlers(e));
   $(document).keydown(function(e){
@@ -66,6 +68,10 @@ function clearSearch() {
     $("input").blur();
     $("input").removeClass("show_input");
     $('input').val('');
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
@@ -75,6 +81,15 @@ function clearSearch() {
 function openSearch() {
   $("input").addClass("show_input");
   $("input").focus();
+}
+
+// ------------------------------------------
+// Toggle search
+// ------------------------------------------
+function toggleSearch() {
+  if(!clearSearch()) {
+    openSearch();
+  }
 }
 
 // ------------------------------------------
