@@ -53,12 +53,11 @@ block content
     img(id='heart' src='images/heart.svg')
   //- Articles list
   .articles
-    //- {{show_popular}}
-    div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
+    div.article(ng-repeat="article in articles | removeTopStories:this | filter:search | orderBy:'-popularity'"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       //- Latest Articles from NPR
       div(ng-if="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
+        img.main_image(ng-src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
           .title 
             b {{article.title.$text}}
@@ -66,7 +65,8 @@ block content
           div.text(ng-bind-html="article.teaser.$text")
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
-        img.main_image(src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
+        {{article.popularity}}
+        img.main_image(ng-src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
             b {{article.article.title}}
@@ -85,9 +85,8 @@ block content
       span#center {{center}}
       span#back {{back}}
     br
-    button#restart(onclick='restart()') Restart
     h2.glyphicon.glyphicon-play(id='submit', onclick='read()')
-    
+    br
     select#wpm
       option(value='100') 100 WPM
       option(value='200') 200 WPM
@@ -100,4 +99,5 @@ block content
       option(value='900') 900 WPM
 
     br
+    div#slider
     a.link_to_article(href="http://www.npr.org" target="_blank") Read the full article

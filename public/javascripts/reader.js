@@ -40,11 +40,13 @@ var breakUpWord = function(words) {
 
 
 var printWord = function(words, i) {
+  $('#center').css({left: ($('#center').offset().left + $('#center').outerWidth() / 3)});
   $('#front').html(words.frontPart[i]);
   $('#center').html(words.centerPart[i]);
   $('#back').html(words.backPart[i]);
   
   //this combines the letters in the correct position
+  $('#center').css({left: ($('#center').offset().left - $('#center').outerWidth() / 3)});
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
 
@@ -67,8 +69,13 @@ var combineParagraphs = function(paragraph) {
   return text;
 };
 
-var setID = function(id){
-  article_id = id;
+var resetReader = function() {
+  count = 0;
+  clearInterval(readerTimer);
+  play = 0;
+  $('#front').html("");
+  $('#center').html("");
+  $('#back').html("");
 }
 
 var read = function(paragraph) {
@@ -78,6 +85,17 @@ var read = function(paragraph) {
     text = combineParagraphs(paragraph);
     words = breakUpWord(makeToChars(text));
     play = 2;
+    $( "#slider" ).slider({ 
+      min: 0,
+      max: words.frontPart.length - 1,
+      value: 0,
+      slide: function(event, ui){
+        count = ui.value;
+        play = 1;
+        read();
+        read();
+      }
+    });
   }
   else if (play == 1) {
     play = 2;
@@ -98,12 +116,12 @@ var read = function(paragraph) {
     $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
     var speed = 60000/$('#wpm').val();
     readerTimer = setInterval(function () {
-      console.log(words);
       printWord(words, count);
       $('#wpm').css("display", "none"); 
 
       if (count < words.frontPart.length - 1) {
         count ++;
+        $("#slider").slider({ value: count });
       }
       else {
         $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-repeat");
@@ -111,6 +129,7 @@ var read = function(paragraph) {
         $('#wpm').css("display", "inline-block");
         play = 2;
         count = 0;
+        $("#slider").slider({ value: count });
       }
     }, speed);
   }

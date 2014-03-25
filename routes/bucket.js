@@ -15,9 +15,14 @@ exports.getBucket = function(db) {
     cookie = decodeURI(cookie).trim();
     cookie = cookie.substr(3,(cookie.length - 4));
     collection.findById(cookie,function(err, docs){
-      res.json('buckets', {
-        bucket: docs
-      });
+      if (!err){
+        res.json({
+          bucket: docs
+        });
+      }
+      else {
+        res.end();
+      }
     });
   }
 }
@@ -63,9 +68,14 @@ exports.getArticles = function(db) {
         }
         var collection = db.get("articles");
         collection.find({_id: {$in:articleArray}}, function(err, docs) {
-          res.json("test", {
-             bucket: docs
-           });
+          if (!err){
+            res.json({
+              bucket: docs
+            });
+          }
+          else {
+            res.end();
+          }
         });
     
       }
@@ -80,7 +90,7 @@ exports.articlesByPop = function(db) {
 
     collection.find({},{},function(err, docs){
       if(docs){
-        res.json("test", {
+        res.json({
           articles: docs
         });
       }
@@ -139,6 +149,7 @@ exports.removeArticle = function(db) {
     bucketID = bucketID.substr(3,(bucketID.length - 4));
 
     collection.remove({bucket_id: bucketID, article_id: articleID}, function(err){
+      res.end();
     }); 
   }
 }
@@ -151,6 +162,7 @@ exports.deleteAll = function(db) {
     bucketID = bucketID.substr(3,(bucketID.length - 4));
 
     collection.remove({bucket_id: bucketID}, function(err){
+      res.end();
     }); 
   }
 }
@@ -163,6 +175,7 @@ exports.increasePop = function(db) {
     collection.findById(articleID, function(err, docs){
       var pop = docs.popularity + 2;
       collection.findAndModify({ _id: articleID}, { $set: {popularity: pop} }, function(err, doc){
+          res.end();  
         });
     });
   }

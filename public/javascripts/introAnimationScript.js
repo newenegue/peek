@@ -4,8 +4,8 @@
 
 var animation = function() {
 
-  // $(window).load(function(){
-    $(document).ready(function(){
+  $(window).load(function(){ 
+    // $(document).ready(function(){
 
 // ------------------------------------------
 // Create Timeline for Animation to Run On

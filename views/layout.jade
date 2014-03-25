@@ -2,23 +2,28 @@ doctype html
 html(ng-app="PeekApp")
   head
     title= title
-    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
-    script(src="/javascripts/introAnimationScript.js")
+
     link(rel='stylesheet', href='/stylesheets/introAnimationStyle.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/animate.css')
     link(rel='stylesheet', href='/stylesheets/readerStyle.css')
     link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
+     
+  body(class="main" ng-controller="PeekCtrl")
+    block content
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
-    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js")
     script(src="/javascripts/jquery.sortable.min.js")
+    script(src="http://code.jquery.com/ui/1.10.4/jquery-ui.js")    
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
+    script(src="/javascripts/introAnimationScript.js")    
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")   
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
     script(src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.1.min.js")
     script(src="/javascripts/bucket.js")
     script(src="/javascripts/drag.js")
     script(src="/javascripts/main.js")   
     script(src="/javascripts/infinite-scroll.js")
     script(src="/javascripts/reader.js")
-    script(src="/javascripts/bucketHandler.js")     
-  body(class="main" ng-controller="PeekCtrl")
-    block content
+    script(src="/javascripts/bucketHandler.js")
