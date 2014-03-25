@@ -2,7 +2,7 @@
 // Intro Animation
 // ===========================================================
 
-window.onload = function(){
+var animation = function(){
 
 // ------------------------------------------
 // Create Timeline for Animation to Run On

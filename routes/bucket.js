@@ -33,7 +33,7 @@ exports.addBucket = function(db) {
         }
         else {
           res.cookie("session_id", doc._id, {maxAge: 2100000000});
-          res.end("cookie created" + doc._id);
+          res.end("true");
         }
       });
     }
@@ -41,7 +41,7 @@ exports.addBucket = function(db) {
       collection.findOne({_id: cookie},{}, function(err, docs){
         cookie = decodeURI(cookie).trim();
         cookie = cookie.substr(3,(cookie.length - 4));
-        res.end("cookie exists = " + cookie);
+        res.end("false");
       });
     }
   }
