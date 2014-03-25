@@ -2,7 +2,7 @@
 // Intro Animation
 // ===========================================================
 
-var animation = function(){
+var animation = function() {
 
 // ------------------------------------------
 // Create Timeline for Animation to Run On
@@ -64,16 +64,17 @@ var animation = function(){
 
   //Speech Bubble
   tl.from(speechbubble, 1, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
-  tl.from(pointer2, 1, {bottom:-100, autoAlpha:0}, "+=.5");
+  tl.from(pointer2, 1, {left:-100, autoAlpha:0}, "+=.5");
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
+  console.log(introTextContent.innerHTML);
   tl.set(shot2, {top:0, onComplete: introTextContent}, "-=.5");
-  tl.set(shot2, {top:1, onComplete: introTextContent2}, "+=.5");
-  tl.set(shot2, {top:2, onComplete: introTextContent3}, "+=.5");
-  tl.set(shot2, {top:3, onComplete: introTextContent4}, "+=.8");
-  tl.set(shot2, {top:2, onComplete: introTextContent5}, "+=.5");
-  tl.set(shot2, {top:1, onComplete: introTextContent6}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent2}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent3}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent4}, "+=.8");
+  tl.set(shot2, {top:0, onComplete: introTextContent5}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent6}, "+=.5");
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");

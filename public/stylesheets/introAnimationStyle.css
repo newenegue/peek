@@ -162,7 +162,7 @@ Pointer Cursor
   margin-right: 20px;
   position: absolute;
   margin-top: -4%;
-  -webkit-transform:rotate(-30deg);
+  /*-webkit-transform:rotate(-30deg);*/
 }
 
 #pointer2 {
