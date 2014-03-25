@@ -33,8 +33,7 @@ function allowDrop(ev) {
 function drop(ev) {
   ev.preventDefault();
   var article_id = ev.dataTransfer.getData("article_id");
-  // var dragIcon;
-  // ev.dataTransfer.setDragImage(dragIcon, 10, 10);
+
   // Add to bucket
   if(validId(article_id)) {
     addItemToBucket(article_id);
@@ -46,9 +45,6 @@ function drop(ev) {
     });
 
     dropFace("animated bounce");
-
-    // // Increase popularity of ID HERE ****************
-    // // Notify database to increase popularity of article with article_id
     
     refreshBucket();
   }
@@ -56,7 +52,6 @@ function drop(ev) {
     console.log("article is already in bucket");
   }
   bucketFace('default_eyes', '0');
-
 }
 
 // ------------------------------------------
