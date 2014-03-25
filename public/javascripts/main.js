@@ -182,7 +182,7 @@ function svgLoaded(response) {
 // ------------------------------------------
 function deleteAll() {
   bucketArray = [];
-  // TODO: Clear bucket in DB
+  $(".article_in_bucket").removeClass("article_in_bucket");
   removeAll();
   refreshBucket();
 }
@@ -474,7 +474,6 @@ peekApp.filter("getThumbnail", function() {
 // ------------------------------------------
 peekApp.filter("removeTopStories", function() {
   return function(input) {
-    console.log(input[0].title);
     if(input[0].title != null && input[0].link[0] != null) {
       for(var i = 0; i < input.length; i++){
         // Remove all Top Stories article

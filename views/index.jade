@@ -48,8 +48,7 @@ block content
     img(id='heart' src='images/heart.svg')
   //- Articles list
   .articles
-    //- {{show_popular}}
-    div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
+    div.article(ng-repeat="article in articles | removeTopStories | filter:search | orderBy:'-popularity'"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       //- Latest Articles from NPR
       div(ng-if="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
@@ -61,6 +60,7 @@ block content
           div.text(ng-bind-html="article.teaser.$text")
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
+        {{article.popularity}}
         img.main_image(src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
