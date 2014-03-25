@@ -91,7 +91,6 @@ var read = function(paragraph) {
       value: 0,
       slide: function(event, ui){
         count = ui.value;
-        console.log("count = " + count);
         play = 1;
         read();
         read();
