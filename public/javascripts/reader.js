@@ -85,6 +85,18 @@ var read = function(paragraph) {
     text = combineParagraphs(paragraph);
     words = breakUpWord(makeToChars(text));
     play = 2;
+    $( "#slider" ).slider({ 
+      min: 0,
+      max: words.frontPart.length - 1,
+      value: 0,
+      slide: function(event, ui){
+        count = ui.value;
+        console.log("count = " + count);
+        play = 1;
+        read();
+        read();
+      }
+    });
   }
   else if (play == 1) {
     play = 2;
@@ -105,12 +117,12 @@ var read = function(paragraph) {
     $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
     var speed = 60000/$('#wpm').val();
     readerTimer = setInterval(function () {
-      console.log(words);
       printWord(words, count);
       $('#wpm').css("display", "none"); 
 
       if (count < words.frontPart.length - 1) {
         count ++;
+        $("#slider").slider({ value: count });
       }
       else {
         $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-repeat");
@@ -118,6 +130,7 @@ var read = function(paragraph) {
         $('#wpm').css("display", "inline-block");
         play = 2;
         count = 0;
+        $("#slider").slider({ value: count });
       }
     }, speed);
   }
