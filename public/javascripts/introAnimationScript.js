@@ -2,7 +2,7 @@
 // Intro Animation
 // ===========================================================
 
-window.onload = function(){
+var animation = function(){
 
 // ------------------------------------------
 // Set Kinetic Stage for Animation

@@ -2,6 +2,12 @@ function setCookie() {
   return $.ajax({type: 'POST', url: '/bucketlist/add', success: function(response){
     //need to set response to true in the routes/bucket.js
     //can trigger the animation to run or not here
+    if (response == "true") {
+      animation();
+    }
+    else {
+      closeIntro();
+    }
 
   }});
 }
