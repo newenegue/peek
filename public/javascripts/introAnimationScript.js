@@ -55,7 +55,7 @@ var animation = function() {
   tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
 
   //Drop Selected Rectangle
-  tl.to(selectedRectang, 1, {top:150, autoAlpha:0}, "+=1");
+  tl.to(selectedRectang, 1, {top:300, autoAlpha:0}, "+=1");
 
   //Bucket Appears
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");

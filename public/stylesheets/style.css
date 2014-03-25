@@ -33,6 +33,7 @@ a {
   height: 80px;
   width: 100%;
   background-color: rgba(255, 255, 255, .8);
+  box-shadow: 0 0 15px black;
   position: fixed;
   top: 0;
   left: 0;
@@ -47,6 +48,7 @@ Newsfeed
 .article {
   border: 1px solid #6a6a65;
   background-color: #d1d1d1;
+  box-shadow: 0 0 15px black;
   cursor: pointer;
   padding: 5px;
   margin-bottom: 10px;
@@ -79,6 +81,7 @@ Newsfeed
   border: 2px solid #e0e0e0;
   background-color: #e0e0e0;
   color: rgba(151, 151, 151, 1);
+  box-shadow: 0 0 0;
 }
 
 .article_in_bucket:hover {
