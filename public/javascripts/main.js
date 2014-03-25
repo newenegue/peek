@@ -145,6 +145,7 @@ function readArticle() {
 
   read(paragraph);
   increasePop(article_id);
+  slider();
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".shadow").attr("class", "shadow animated rubberBand");

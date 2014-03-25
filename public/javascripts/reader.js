@@ -2,6 +2,24 @@ var count = 0;
 var play = 0;
 var readerTimer, text, words;
 
+
+var slider = function() {
+  console.log(words.frontPart.length); 
+
+  $('#slider').slider({
+    // console.log(words.frontPart.length); 
+    range: "max",
+    min: 0,
+    max: 100,
+    value: 0,
+    slide: function(event, ui) {
+      count = ui.value;
+      console.log(count);
+    }
+  });
+}
+slider();
+
 var makeToChars = function(paragraph) {
   var words = [];
   var wordArray = paragraph.split(' ');
@@ -121,10 +139,8 @@ var read = function(paragraph) {
       }
     }, speed);
   }
-
-// popularity++;
-// console.log(popularity);
 };
+
 
 exports._tests = {
   makeToChars: makeToChars,
@@ -133,3 +149,5 @@ exports._tests = {
   combineParagraphs: combineParagraphs,
   read: read
 }
+
+
