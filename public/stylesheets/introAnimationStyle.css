@@ -117,20 +117,34 @@ Bucket
 #introGrin {
   opacity: 0;
 }
+
 #closedEyesIntro {
   opacity: 0;
 }
 
-#happy {
+#happyIntro {
   opacity: 1;
+}
+
+#openEyesIntro {
+  opacity: 1;
+  position: relative;
 }
 
 #openEyesIntro:hover { 
   opacity: 0;
 }
 
-#openEyesIntro {
-  opacity: 1;
+/*-----------------------------------------
+Speech Bubble
+-----------------------------------------*/
+
+#speechbubble {
+  height: 200px;
+  /*position: absolute;*/
+/*  margin-right: 20px;
+  position: absolute;
+  margin-top: -4%;*/
 }
 
 /*-----------------------------------------
