@@ -15,9 +15,14 @@ exports.getBucket = function(db) {
     cookie = decodeURI(cookie).trim();
     cookie = cookie.substr(3,(cookie.length - 4));
     collection.findById(cookie,function(err, docs){
-      res.json('buckets', {
-        bucket: docs
-      });
+      if (!err){
+        res.json('buckets', {
+          bucket: docs
+        });
+      }
+      else {
+        res.end();
+      }
     });
   }
 }
@@ -63,9 +68,14 @@ exports.getArticles = function(db) {
         }
         var collection = db.get("articles");
         collection.find({_id: {$in:articleArray}}, function(err, docs) {
-          res.json("test", {
-             bucket: docs
-           });
+          if (!err){
+            res.json("test", {
+              bucket: docs
+            });
+          }
+          else {
+            res.end();
+          }
         });
     
       }
