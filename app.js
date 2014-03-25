@@ -11,8 +11,8 @@ var path = require('path');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/peektest');
-//var db = monk('mongodb://peek:keepachu@ds045907.mongolab.com:45907/heroku_app23343437');
+// var db = monk('localhost:27017/peektest');
+var db = monk('mongodb://peek:keepachu@ds045907.mongolab.com:45907/heroku_app23343437');
 
 var app = express();
 
