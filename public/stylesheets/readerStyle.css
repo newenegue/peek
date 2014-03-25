@@ -30,10 +30,10 @@ Article peek
   height: 200px;
   margin: 0 auto;
   margin-top: 10%;
-  position: relative;
+  /*position: relative;*/
 }
 
-#reader:before {
+/*#reader:before {
   content: '';
   position: absolute;
   left: 40%;
@@ -53,15 +53,16 @@ Article peek
   margin-left: -1px;
   bottom: 0;
   background-color: black;
-}
+}*/
 
 #fullWord {
   font-size: 1em;
-  width: 900px;
-  height: 180px;
+  width: 80%;
+  height: 220px;
   margin: 0 auto;
   border: 1px solid green;
   margin: 0 auto;
+  margin-top: 20px;
   /*position: relative;*/
 }
 
