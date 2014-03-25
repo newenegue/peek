@@ -92,6 +92,12 @@ Newsfeed
   cursor: auto;
 }
 
+.article_img_in_bucket {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 .title {
   font-size: 1.6em;
   font-family: 'Raleway', sans-serif;
