@@ -181,7 +181,7 @@ Bucket: Content
   font-family: 'Raleway';
   font-weight: 600;
   width: 15%;
-  height: 60%;
+  height: 54%;
   padding: 3px;
   background: white;
   border-radius: 10px;
@@ -348,7 +348,7 @@ Bucket: Animated
   width: 15%;
   height: 30%;
   right: 3%;
-  bottom: 5%;
+  bottom: 4%;
   /*border: 1px solid red;*/
 }
 
@@ -511,7 +511,7 @@ Bucket: Animated
   width: 15%;
   height: 30%;
   right: 3%;
-  bottom: -.2%;
+  bottom: 0%;
   /*border: 1px solid green;*/
   z-index: -5;
 }
