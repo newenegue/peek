@@ -182,7 +182,7 @@ function svgLoaded(response) {
 // ------------------------------------------
 function deleteAll() {
   bucketArray = [];
-  // TODO: Clear bucket in DB
+  $(".article_in_bucket").removeClass("article_in_bucket");
   removeAll();
   refreshBucket();
 }

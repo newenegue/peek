@@ -60,7 +60,7 @@ block content
           div.text(ng-bind-html="article.teaser.$text")
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
-        //- {{article.popularity}}
+        {{article.popularity}}
         img.main_image(src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
