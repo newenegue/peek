@@ -4,7 +4,8 @@
 
 var animation = function() {
 
-  $(window).load(function(){
+  // $(window).load(function(){
+    $(document).ready(function(){
 
 // ------------------------------------------
 // Create Timeline for Animation to Run On
@@ -72,11 +73,11 @@ var animation = function() {
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
-  console.log(introTextContent.innerHTML);
-  tl.set(shot2, {top:0, onComplete: introTextContent}, "-=.5");
-  tl.set(shot2, {top:0, onComplete: introTextContent2}, "+=.5");
+  
+  tl.set(shot2, {top:0, onComplete: introTextContent1}, "-=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent2}, "+=.2");
   tl.set(shot2, {top:0, onComplete: introTextContent3}, "+=.5");
-  tl.set(shot2, {top:0, onComplete: introTextContent4}, "+=.8");
+  tl.set(shot2, {top:0, onComplete: introTextContent4}, "+=1");
   tl.set(shot2, {top:0, onComplete: introTextContent5}, "+=.5");
   tl.set(shot2, {top:0, onComplete: introTextContent6}, "+=.5");
   
@@ -92,24 +93,17 @@ var animation = function() {
 
   //TO DO: Time bucket so that it becomes happy the exact fraction of a second that the article is dropped into it. Similar to blinking, but only 1x at the precise time instead of every 4 seconds x infinitely
 
+var introFront = document.getElementById("introFront");
+var introCenter = document.getElementById("introCenter");
+var introBack = document.getElementById("introBack");
 
-
-  function introTextContent() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
-
+  function introTextContent1() {   
     introFront.innerHTML = "Wel";
     introCenter.innerHTML = "c";
     introBack.innerHTML = "ome";
-
-    
   };
 
   function introTextContent2() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
 
     introFront.innerHTML = "";
     introCenter.innerHTML = "t";
@@ -117,9 +111,6 @@ var animation = function() {
   };
 
   function introTextContent3() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
 
     introFront.innerHTML = "Pe";
     introCenter.innerHTML = "e";
@@ -127,9 +118,6 @@ var animation = function() {
   };
 
   function introTextContent4() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
 
     introFront.innerHTML = "Re";
     introCenter.innerHTML = "a";
@@ -137,9 +125,6 @@ var animation = function() {
   };
 
     function introTextContent5() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
 
     introFront.innerHTML = "S";
     introCenter.innerHTML = "e";
@@ -147,9 +132,6 @@ var animation = function() {
   };
 
   function introTextContent6() {
-    var introFront = document.getElementById("introFront");
-    var introCenter = document.getElementById("introCenter");
-    var introBack = document.getElementById("introBack");
 
     introFront.innerHTML = "G";
     introCenter.innerHTML = "o";

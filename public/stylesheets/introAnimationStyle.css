@@ -140,16 +140,15 @@ Speech Bubble
 -----------------------------------------*/
 
 #speechbubble {
-  height: 300px;
+  height: 280px;
   background-image: url(../images/speechbubble.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  position: relative;
-/*  width: 32px;
-  height: 32px;
-  left: 50%;
-  position: relative;*/
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 
 /*-----------------------------------------
