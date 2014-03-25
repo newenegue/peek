@@ -346,7 +346,7 @@ Bucket: Animated
   width: 15%;
   height: 30%;
   right: 3%;
-  bottom: 5%;
+  bottom: 0%;
   /*border: 1px solid red;*/
 }
 
@@ -507,9 +507,9 @@ Bucket: Animated
 .shadow_container {
   position: fixed;
   width: 15%;
-  height: 30%;
+  height: 10%;
   right: 3%;
-  bottom: -.2%;
+  bottom: 0%;
   /*border: 1px solid green;*/
   z-index: -5;
 }
