@@ -11,20 +11,21 @@ var path = require('path');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/peektest');
+//var db = monk('localhost:27017/peektest');
+var db = monk('mongodb://peek:keepachu@ds045907.mongolab.com:45907/heroku_app23343437');
 
 var app = express();
 
-var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/mydb';
+// var mongoUri = process.env.MONGOLAB_URI ||
+//   process.env.MONGOHQ_URL ||
+//   'mongodb://localhost/peektest';
 
-mongo.Db.connect(mongoUri, function (err, db) {
-  db.collection('mydocs', function(er, collection) {
-    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-    });
-  });
-});
+// mongo.Db.connect(mongoUri, function (err, db) {
+//   db.collection('peek', function(er, collection) {
+//     collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+//     });
+//   });
+// });
 
 // all environments
 app.set('port', process.env.PORT || 3000);
