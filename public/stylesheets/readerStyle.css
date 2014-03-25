@@ -85,3 +85,8 @@ Article peek
 .close {
   margin: 5%;
 }
+
+#slider {
+  margin: 0 auto;
+  width: 300px;
+}
