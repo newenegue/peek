@@ -69,8 +69,13 @@ var combineParagraphs = function(paragraph) {
   return text;
 };
 
-var setID = function(id){
-  article_id = id;
+var resetReader = function() {
+  count = 0;
+  clearInterval(readerTimer);
+  play = 0;
+  $('#front').html("");
+  $('#center').html("");
+  $('#back').html("");
 }
 
 var read = function(paragraph) {

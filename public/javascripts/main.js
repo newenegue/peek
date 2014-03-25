@@ -165,7 +165,7 @@ function closeArticle() {
   $(".article_container").removeClass("peek_article");
   $(".article").removeClass("fadeOutLeft");
   $(".article").addClass("fadeInLeft");
-  clearInterval(readerTimer);
+  resetReader();
 }
 
 // ------------------------------------------
