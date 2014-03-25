@@ -441,7 +441,7 @@ peekApp.filter('getMainImage', function(){
     }
     // If the NPR doesn't have images, look through the html, use the first image
     else {
-      var npr_logo = "http://media.npr.org/chrome/news/npr-home.png";
+      var npr_logo = "/images/npr_logo.png";
       // If JSON has fullText, we will use that
       if(input.fullText){
         // Initialize local variables
@@ -478,6 +478,9 @@ peekApp.filter("getThumbnail", function() {
         }
       }
       return thumb.src;
+    }
+    else {
+      return "/images/npr_thumb.png";
     }
   };
 });
