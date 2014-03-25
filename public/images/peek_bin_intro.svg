@@ -50,7 +50,7 @@
 			<line fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="418" y1="246.999" x2="397.75" y2="222.001"/>
 	</g>
 	<g id="openEyesIntro">
-		<g id="introLeftEyeFullIntro">
+		<g id="leftEyeFullIntro">
 			<circle id="leftCircleIntro" fill="#010101" cx="184.177" cy="239.922" r="29.231"/>
 			<g id="leftPupilIntro">
 				<path id="bottomLeftIntro" fill="#FFFFFF" d="M169.416,227.779c1.63,4.145,6.619,1.723,11.58-0.23
@@ -59,7 +59,7 @@
 				<circle id="topLeftIntro" fill="#FFFFFF" cx="178.634" cy="236.898" r="3.78"/>
 			</g>
 		</g>
-		<g id="introRightEyeFullIntro">
+		<g id="rightEyeFullIntro">
 			<circle id="rightCircleIntro" fill="#010101" cx="397.621" cy="239.922" r="29.231"/>
 			<g id="rightPupilIntro">
 				<path id="bottomRightIntro" fill="#FFFFFF" d="M382.855,227.779c1.634,4.145,6.614,1.723,11.571-0.23

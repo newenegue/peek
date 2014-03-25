@@ -16,10 +16,11 @@ var animation = function(){
     selectedRectang = document.getElementById("movingRect"),
     pointer = document.getElementById("pointer"),
     speechbubble = document.getElementById("speechbubble"),
+    pointer2 = document.getElementById("pointer2"),
     introBucketStage = document.getElementById("introBucketStage"),
     openEyesIntro = document.getElementById("openEyesIntro"),
-    introLeftEyeFull = document.getElementById("introLeftEyeFull"),
-    introRightEyeFull = document.getElementById("introRightEyeFull"),
+    introLeftEyeFull = document.getElementById("leftEyeFullIntro"),
+    introRightEyeFull = document.getElementById("rightEyeFullIntro"),
     shot2 = document.getElementById("shot2"),
     enterButton = document.getElementsByClassName("closeIntroButton");
 // ------------------------------------------
@@ -55,20 +56,24 @@ var animation = function(){
   //Bucket Appears
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
 
-  tl.to(openEyesIntro, .5, {autoAlpha:0}, "+=.2");
+  tl.to(openEyesIntro, .1, {autoAlpha:0, overwrite: 2}, "+=.2");
 
   // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
   console.log(openEyesIntro);
-  // tl.to(introRightEyeFull, .1, {autoAlpha:0}, "+=.2");
-  // debugger;
 
 
   //Speech Bubble
-  tl.from(speechbubble, .5, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
+  tl.from(speechbubble, 1, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
+  tl.from(pointer2, 1, {bottom:-100, autoAlpha:0}, "+=.5");
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
   tl.set(shot2, {top:0, onComplete: introTextContent}, "-=.5");
+  tl.set(shot2, {top:1, onComplete: introTextContent2}, "+=.5");
+  tl.set(shot2, {top:2, onComplete: introTextContent3}, "+=.5");
+  tl.set(shot2, {top:3, onComplete: introTextContent4}, "+=.8");
+  tl.set(shot2, {top:2, onComplete: introTextContent5}, "+=.5");
+  tl.set(shot2, {top:1, onComplete: introTextContent6}, "+=.5");
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
@@ -81,18 +86,67 @@ var animation = function(){
 
 
 
-function introTextContent() {
-  var introFront = document.getElementById("introFront");
-  var introCenter = document.getElementById("introCenter");
-  var introBack = document.getElementById("introBack");
+  function introTextContent() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
 
-  introFront.innerHTML = "Wel";
-  introCenter.innerHTML = "c";
-  introBack.innerHTML = "ome";
+    introFront.innerHTML = "Wel";
+    introCenter.innerHTML = "c";
+    introBack.innerHTML = "ome";
 
-  
-};
+    
+  };
 
+  function introTextContent2() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
+
+    introFront.innerHTML = "";
+    introCenter.innerHTML = "t";
+    introBack.innerHTML = "o"; 
+  };
+
+  function introTextContent3() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
+
+    introFront.innerHTML = "Pe";
+    introCenter.innerHTML = "e";
+    introBack.innerHTML = "k."; 
+  };
+
+  function introTextContent4() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
+
+    introFront.innerHTML = "Re";
+    introCenter.innerHTML = "a";
+    introBack.innerHTML = "dy"; 
+  };
+
+    function introTextContent5() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
+
+    introFront.innerHTML = "S";
+    introCenter.innerHTML = "e";
+    introBack.innerHTML = "t"; 
+  };
+
+  function introTextContent6() {
+    var introFront = document.getElementById("introFront");
+    var introCenter = document.getElementById("introCenter");
+    var introBack = document.getElementById("introBack");
+
+    introFront.innerHTML = "G";
+    introCenter.innerHTML = "o";
+    introBack.innerHTML = "!"; 
+  };
 
 
 };
