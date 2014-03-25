@@ -4,6 +4,8 @@
 
 var animation = function() {
 
+  $(window).load(function(){
+
 // ------------------------------------------
 // Create Timeline for Animation to Run On
 // ------------------------------------------
@@ -22,6 +24,8 @@ var animation = function() {
     introLeftEyeFull = document.getElementById("leftEyeFullIntro"),
     introRightEyeFull = document.getElementById("rightEyeFullIntro"),
     shot2 = document.getElementById("shot2"),
+    welcomeText = document.getElementById("welcomeText"),
+    openEyesWelcome = document.getElementById("openEyesWelcome"),
     enterButton = document.getElementsByClassName("closeIntroButton");
 // ------------------------------------------
 // Append action to Static Rectangles
@@ -78,6 +82,9 @@ var animation = function() {
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
+  tl.from(shot3, .5, {autoAlpha:0}, "+=.5");
+  tl.to(openEyesWelcome, .2, {autoAlpha:0, overwrite: 2}, "+=.5");
+  tl.from(welcomeText, .5, {bottom:-100, scaleY: 0, autoAlpha: 0}, "+=.5");
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
@@ -149,5 +156,6 @@ var animation = function() {
     introBack.innerHTML = "!"; 
   };
 
+});
 
 };

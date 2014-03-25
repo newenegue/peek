@@ -91,7 +91,7 @@ Articles
 }
 
 /*-----------------------------------------
-Bucket
+Intro Bucket
 -----------------------------------------*/
 
 .intro_bucket {
@@ -222,6 +222,53 @@ Peek Reader Intro
   position: relative;
   background-color: white;
 }
+
+/*-----------------------------------------
+Welcome Bucket
+-----------------------------------------*/
+
+.welcome_bucket {
+  position: relative;
+  margin: 0 auto;
+}
+
+#welcomeBucketStage {
+  position: relative;
+  margin: 0 auto;
+}
+
+#WelcomeLayer_1 {
+  height: 25%;
+  width: 260px;
+  margin: 0 auto;
+}
+
+#closedEyesWelcome{
+  opacity: 0;
+}
+
+#happyWelcome {
+  opacity: 1;
+}
+
+#openEyesWelcome {
+  opacity: 1;
+  position: relative;
+}
+
+#openEyesWelcome:hover { 
+  opacity: 0;
+}
+
+#welcomeText {
+  /*opacity: 0;*/
+  height: 150px;
+  width: 150px;
+}
+
+/*#welcomeText:hover {
+  opacity: 1;
+}*/
 
 /*-----------------------------------------
 Enter Button
