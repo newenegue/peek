@@ -15,12 +15,12 @@ function setCookie() {
 }
 
 function getBucket() {
-    return $.ajax({type: 'GET', url: '/bucketlist', success: function(response){
+    return $.ajax({type: 'GET', url: '/bucketlist', dataType : 'json', success: function(response){
     }});
 }
 
 function getArticles() {
-  return $.ajax({type: 'GET', url: '/articles', success: function(response){
+  return $.ajax({type: 'GET', url: '/articles', dataType : 'json', success: function(response){
     var persistedBucket = [];
     
     for(var i=0; i < response.bucket.length; i++){

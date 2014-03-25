@@ -112,6 +112,7 @@ function addItemToBucket(id) {
   bucketArray.push(createItem(id));
   addArticleToDatabase(bucketArray[locateItem(id)]);
   $("#" + id).parent(".article").addClass("article_in_bucket");
+  $("#" + id).children(".main_image").addClass("article_img_in_bucket");
 
   return true;
 }
@@ -123,7 +124,7 @@ function removeItemFromBucket(id) {
   // Remove from bucketArray
   bucketArray.splice(locateItem(id),1);
   // Find article and remove it from bucketArray
-  removeArticleFromBucket(id)
+  removeArticleFromBucket(id);
 
   $("#" + id).parent(".article").removeClass("article_in_bucket");
 
