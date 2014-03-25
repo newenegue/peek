@@ -27,18 +27,10 @@ $(document).ready(function(){
   setCookie().done(getBucket().done(getArticles()));
 });
 
-function getArticlesByPop() {
-  $.ajax({type: 'GET', url: '/articles/pop/', success: function(response){
-    var popularArticles = JSON.parse(response);
-    console.log(popularArticles);
-  }});
-}
-
-
 
 function addArticleToDatabase(article) {
   //run an ajax call while passing in the article id
-  $.ajax({type: 'POST', url: '/article/add/' + article["id"], data: {id: article["id"], title: article["title"], teaser: article["teaser"], thumbnail: article["thumbnail"], paragraph: article["paragraph"], link: article["link"]}, success: function(response){
+  $.ajax({type: 'POST', url: '/article/add/' + article["id"], data: {id: article["id"], title: article["title"], teaser: article["teaser"], thumbnail: article["thumbnail"], paragraph: article["paragraph"], link: article["link"], mainImage: article["mainImage"]}, success: function(response){
   }});
 }
 

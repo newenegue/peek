@@ -77,7 +77,7 @@ function validId(id) {
 // ------------------------------------------
 function createItem(id) {
   // Set local variables
-  var title, thumbnail, article_id, teaser, item, link;
+  var title, thumbnail, article_id, teaser, item, link, mainImage;
 
   // Extract data from DOM by id
   title = $("#" + id + " .title b")[0].innerHTML;
@@ -85,13 +85,14 @@ function createItem(id) {
   thumbnail = $("#" + id +" img").first().data("thumb");
   paragraph = $("#" + id).first().data("paragraph");
   link = $("#" + id).attr('data-article-link');
+  mainImage = $("#" + id +" img").first().attr("src");
   // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
   }
 
   // Return article object
-  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph, "link": link};
+  return {"id": id, "title": title, "teaser": teaser, "thumbnail": thumbnail, "paragraph": paragraph, "link": link, "mainImage": mainImage};
 }
 
 // ------------------------------------------
