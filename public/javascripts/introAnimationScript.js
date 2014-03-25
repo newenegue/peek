@@ -2,7 +2,10 @@
 // Intro Animation
 // ===========================================================
 
-var animation = function(){
+var animation = function() {
+
+  // $(window).load(function(){
+    $(document).ready(function(){
 
 // ------------------------------------------
 // Create Timeline for Animation to Run On
@@ -16,11 +19,14 @@ var animation = function(){
     selectedRectang = document.getElementById("movingRect"),
     pointer = document.getElementById("pointer"),
     speechbubble = document.getElementById("speechbubble"),
+    pointer2 = document.getElementById("pointer2"),
     introBucketStage = document.getElementById("introBucketStage"),
     openEyesIntro = document.getElementById("openEyesIntro"),
-    introLeftEyeFull = document.getElementById("introLeftEyeFull"),
-    introRightEyeFull = document.getElementById("introRightEyeFull"),
+    introLeftEyeFull = document.getElementById("leftEyeFullIntro"),
+    introRightEyeFull = document.getElementById("rightEyeFullIntro"),
     shot2 = document.getElementById("shot2"),
+    welcomeText = document.getElementById("welcomeText"),
+    openEyesWelcome = document.getElementById("openEyesWelcome"),
     enterButton = document.getElementsByClassName("closeIntroButton");
 // ------------------------------------------
 // Append action to Static Rectangles
@@ -50,28 +56,36 @@ var animation = function(){
   tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
 
   //Drop Selected Rectangle
-  tl.to(selectedRectang, 1, {top:150, autoAlpha:0}, "+=1");
+  tl.to(selectedRectang, 1, {top:300, autoAlpha:0}, "+=1");
 
   //Bucket Appears
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
 
-  tl.to(openEyesIntro, .5, {autoAlpha:0}, "+=.2");
+  tl.to(openEyesIntro, .1, {autoAlpha:0, overwrite: 2}, "+=.2");
 
   // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
   console.log(openEyesIntro);
-  // tl.to(introRightEyeFull, .1, {autoAlpha:0}, "+=.2");
-  // debugger;
 
 
   //Speech Bubble
-  tl.from(speechbubble, .5, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
+  tl.from(speechbubble, 1, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
+  tl.from(pointer2, 1, {left:-100, autoAlpha:0}, "+=.5");
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");
-  tl.set(shot2, {top:0, onComplete: introTextContent}, "-=.5");
+  
+  tl.set(shot2, {top:0, onComplete: introTextContent1}, "-=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent2}, "+=.2");
+  tl.set(shot2, {top:0, onComplete: introTextContent3}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent4}, "+=1");
+  tl.set(shot2, {top:0, onComplete: introTextContent5}, "+=.5");
+  tl.set(shot2, {top:0, onComplete: introTextContent6}, "+=.5");
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
+  tl.from(shot3, .5, {autoAlpha:0}, "+=.5");
+  tl.to(openEyesWelcome, .2, {autoAlpha:0, overwrite: 2}, "+=.5");
+  tl.from(welcomeText, .5, {bottom:-100, scaleY: 0, autoAlpha: 0}, "+=.5");
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
@@ -79,20 +93,51 @@ var animation = function(){
 
   //TO DO: Time bucket so that it becomes happy the exact fraction of a second that the article is dropped into it. Similar to blinking, but only 1x at the precise time instead of every 4 seconds x infinitely
 
+var introFront = document.getElementById("introFront");
+var introCenter = document.getElementById("introCenter");
+var introBack = document.getElementById("introBack");
 
+  function introTextContent1() {   
+    introFront.innerHTML = "Wel";
+    introCenter.innerHTML = "c";
+    introBack.innerHTML = "ome";
+  };
 
-function introTextContent() {
-  var introFront = document.getElementById("introFront");
-  var introCenter = document.getElementById("introCenter");
-  var introBack = document.getElementById("introBack");
+  function introTextContent2() {
 
-  introFront.innerHTML = "Wel";
-  introCenter.innerHTML = "c";
-  introBack.innerHTML = "ome";
+    introFront.innerHTML = "";
+    introCenter.innerHTML = "t";
+    introBack.innerHTML = "o"; 
+  };
 
-  
-};
+  function introTextContent3() {
 
+    introFront.innerHTML = "Pe";
+    introCenter.innerHTML = "e";
+    introBack.innerHTML = "k."; 
+  };
 
+  function introTextContent4() {
+
+    introFront.innerHTML = "Re";
+    introCenter.innerHTML = "a";
+    introBack.innerHTML = "dy"; 
+  };
+
+    function introTextContent5() {
+
+    introFront.innerHTML = "S";
+    introCenter.innerHTML = "e";
+    introBack.innerHTML = "t"; 
+  };
+
+  function introTextContent6() {
+
+    introFront.innerHTML = "G";
+    introCenter.innerHTML = "o";
+    introBack.innerHTML = "!"; 
+  };
+
+});
 
 };

@@ -6,8 +6,9 @@ function setCookie() {
       animation();
     }
     else {
-      closeIntro();
-      //animation();
+      // ELLIE: CHANGE THIS BACK
+      // closeIntro();
+      animation();
     }
 
   }});
