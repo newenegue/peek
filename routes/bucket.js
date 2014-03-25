@@ -175,7 +175,7 @@ exports.increasePop = function(db) {
     collection.findById(articleID, function(err, docs){
       var pop = docs.popularity + 2;
       collection.findAndModify({ _id: articleID}, { $set: {popularity: pop} }, function(err, doc){
-          res.end();
+          res.end();  
         });
     });
   }
