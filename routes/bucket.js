@@ -149,6 +149,7 @@ exports.removeArticle = function(db) {
     bucketID = bucketID.substr(3,(bucketID.length - 4));
 
     collection.remove({bucket_id: bucketID, article_id: articleID}, function(err){
+      res.end();
     }); 
   }
 }
@@ -161,6 +162,7 @@ exports.deleteAll = function(db) {
     bucketID = bucketID.substr(3,(bucketID.length - 4));
 
     collection.remove({bucket_id: bucketID}, function(err){
+      res.end();
     }); 
   }
 }
