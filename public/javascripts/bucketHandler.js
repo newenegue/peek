@@ -7,6 +7,7 @@ function setCookie() {
     }
     else {
       closeIntro();
+      //animation();
     }
 
   }});
