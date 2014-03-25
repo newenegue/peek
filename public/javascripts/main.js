@@ -25,7 +25,10 @@ $(document).ready(function() {
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
   // Intro Animated bucket
-  $("#introBucketStage").load('images/peek_bin_intro.svg', svgLoaded);
+  $("#introBucketStage").load('images/peek_bin_intro.svg', introSvgLoaded);
+
+  // Intro Animated bucket
+  $("#welcomeBucketStage").load('images/peek_bin_welcome.svg', welcomeSvgLoaded);
 
   // EASTER EGGS
   // Click bucket to get random article
@@ -173,6 +176,18 @@ function closeArticle() {
 // ------------------------------------------
 function svgLoaded(response) {
   $(this).addClass("svgLoaded");
+  if(!response){
+  }
+}
+
+function introSvgLoaded(response) {
+  $(this).addClass("introSvgLoaded");
+  if(!response){
+  }
+}
+
+function welcomeSvgLoaded(response) {
+  $(this).addClass("welcomeSvgLoaded");
   if(!response){
   }
 }

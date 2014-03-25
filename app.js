@@ -12,7 +12,7 @@ var path = require('path');
 var mongo = require('mongodb');
 var monk = require('monk');
 
-var db = monk('localhost:27017/peektest');
+// var db = monk('localhost:27017/peektest');
 // var db = monk('mongodb://peek:keepachu@ds045907.mongolab.com:45907/heroku_app23343437');  //need to change this database
 var db = monk('mongodb://peek:peek123@ds029117.mongolab.com:29117/heroku_app23170618');
 
