@@ -1,3 +1,5 @@
+// var phantom=require('node-phantom');
+
 // ------------------------------------------
 // jQuery - on page load
 // ------------------------------------------
@@ -45,7 +47,6 @@ $(document).ready(function() {
   $(document.body).on('click', '.glyphicon-search', toggleSearch);
 
   // Key down listener
-  // $(document).keydown(keyHandlers(e));
   $(document).keydown(function(e){
 
     // ESC - close animation or peek reader
@@ -138,7 +139,6 @@ function hideMoreInfo() {
 function readArticle() {
 
   var article_id = $(this).parents(".bucket_item").attr('data-id');
-  // var paragraph = $.parseJSON($("#" + article_id).attr('data-paragraph'));
   var paragraph = bucketArray[locateItem(article_id)]["paragraph"];
   var link = bucketArray[locateItem(article_id)]["link"];
   $("a.link_to_article").attr("href", link);
@@ -208,8 +208,6 @@ function deleteAll() {
 function removeSelectedItem() {
   var article_id = $(this).parents(".bucket_item").attr("data-id");
   removeItemFromBucket(article_id);
-
-  // NOTIFY DB TO DECREASE POPULARITY ON ARTICLE_ID
   refreshBucket();
 }
 
@@ -265,6 +263,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.loading = false;
   $scope.show_articles = 'Popular';
   $scope.show_popular = false;
+  $scope.articles_loaded = false;
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
@@ -275,8 +274,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   else {
     loadArticles();
   }
-
-  // var popularity = 0;
 
   // ------------------------------------------
   // this adds more articles for infinite scroll REFACTOR!!!
@@ -362,12 +359,13 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.addToBucket = function(article) {
     if(validId(article.id)){
       addItemToBucket(article.id);
-
-      // NOTIFY DB TO INCREASE POPULARITY ON ARTICLE_ID
       refreshBucket();
     }
   };
 
+  // ------------------------------------------
+  // Toggle to show popular or npr articles
+  // ------------------------------------------
   $scope.togglePopular = function() {
     $scope.show_popular = !$scope.show_popular;
     if($scope.show_popular) {
@@ -376,10 +374,13 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     }
     else {
       $scope.show_articles = 'Popular';
-      // SWITCH BACK TO NPR LATEST ARTICLES
       loadArticles();
     }
   };
+
+  // ------------------------------------------
+  // Get popular articles from DB
+  // ------------------------------------------
   $scope.getArticlesByPop = function() {
     console.log("inside get Articles by pop");
     $http({
@@ -390,6 +391,10 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       console.log($scope.articles);
     });
   };
+
+  // ------------------------------------------
+  // Get NPR latest articles
+  // ------------------------------------------
   function loadArticles() {
     $http.get('http://api.npr.org/query?apiKey=MDEzMzc4NDYyMDEzOTQ3Nzk4NzVjODY2ZA001&startNum=0&numResults=15&requiredAssets=text&format=json')
     .then(function(res){
@@ -405,8 +410,9 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       }
       //return only 9 articles to the scope
       $scope.articles = $scope.articles.slice(0, 8);
+      $scope.articles_loaded = true;
     });
-  };
+  }
 });
 
 
@@ -419,7 +425,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 // ------------------------------------------
 peekApp.filter('getMainImage', function(){
   return function(input){
-    
+
     // If NPR article has images
     if(input.image){
       // Local variables
@@ -491,16 +497,18 @@ peekApp.filter("getThumbnail", function() {
 // - linked from sites other than npr.org
 // ------------------------------------------
 peekApp.filter("removeTopStories", function() {
-  return function(input) {
-    if(input[0].title != null && input[0].link[0] != null) {
-      for(var i = 0; i < input.length; i++){
-        // Remove all Top Stories article
-        if(input[i].title.$text.indexOf("Top Stories:") >= 0){
-          input.splice(i,1);
-        }
-        // Remove articles that are not from npr.org
-        if(input[i].link[0].$text.indexOf("npr.org") == -1){
-          input.splice(i,1);
+  return function(input, scope) {
+    if(scope.articles_loaded) {
+      if(input[0].title != null && input[0].link[0] != null) {
+        for(var i = 0; i < input.length; i++){
+          // Remove all Top Stories article
+          if(input[i].title.$text.indexOf("Top Stories:") >= 0){
+            input.splice(i,1);
+          }
+          // Remove articles that are not from npr.org
+          if(input[i].link[0].$text.indexOf("npr.org") == -1){
+            input.splice(i,1);
+          }
         }
       }
     }
