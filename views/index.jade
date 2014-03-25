@@ -48,7 +48,7 @@ block content
     //- {{show_popular}}
     div.article(ng-repeat="article in articles | removeTopStories | filter:search"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   
       //- Latest Articles from NPR
-      div(ng-show="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
+      div(ng-if="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
         img.main_image(src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
@@ -57,18 +57,13 @@ block content
           br
           div.text(ng-bind-html="article.teaser.$text")
       //- Popular Ariticles from PEEK DB
-      div(ng-show="show_popular")
-        {{article.id}}
-        {{article.popularity}}
-        
-      //- div(ng-show="show_popular" id='{{article.id}}' data-paragraph='{{article.paragraph}}' data-article-link="{{article.link}}")
-        //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        img.main_image(src="{{article.mainImage}}" data-thumb="{{article.thumbnail}}") 
+      div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
+        img.main_image(src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
-            b {{article.title}}
+            b {{article.article.title}}
           br
-          div.text(ng-bind-html="article.teaser")
+          div.text {{article.article.teaser}}
     .loading(ng-show="loading")
 
   
