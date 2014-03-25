@@ -15,8 +15,9 @@ window.onload = function(){
     staticArticle2 = document.getElementById("staticArticle2"),
     selectedRectang = document.getElementById("movingRect"),
     pointer = document.getElementById("pointer"),
+    speechbubble = document.getElementById("speechbubble"),
     introBucketStage = document.getElementById("introBucketStage"),
-    introBucketEyes = document.getElementById("openEyesIntro"),
+    openEyesIntro = document.getElementById("openEyesIntro"),
     introLeftEyeFull = document.getElementById("introLeftEyeFull"),
     introRightEyeFull = document.getElementById("introRightEyeFull"),
     shot2 = document.getElementById("shot2"),
@@ -53,10 +54,17 @@ window.onload = function(){
 
   //Bucket Appears
   tl.from(introBucketStage, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
-  // tl.from(introBucketEyes, .5, {autoAlpha:0}, "+=.2");
-  tl.to(introBucketEyes, .1, {autoAlpha:0}, "+=.2");
-  console.log(introBucketEyes);
-  // tl.to(introRightEyeFull, .1, {css:{display:hidden}}, "+=.2");
+
+  tl.to(openEyesIntro, .5, {autoAlpha:0}, "+=.2");
+
+  // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
+  console.log(openEyesIntro);
+  // tl.to(introRightEyeFull, .1, {autoAlpha:0}, "+=.2");
+  // debugger;
+
+
+  //Speech Bubble
+  tl.from(speechbubble, .5, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
 
   //Switch to Second Shot
   tl.from(shot2, .5, {autoAlpha:0}, "+=.5");

@@ -117,11 +117,12 @@ Bucket
 #introGrin {
   opacity: 0;
 }
+
 #closedEyesIntro {
   opacity: 0;
 }
 
-#happy {
+#happyIntro {
   opacity: 1;
 }
 
@@ -134,7 +135,17 @@ Bucket
   opacity: 0;
 }
 
+/*-----------------------------------------
+Speech Bubble
+-----------------------------------------*/
 
+#speechbubble {
+  height: 200px;
+  /*position: absolute;*/
+/*  margin-right: 20px;
+  position: absolute;
+  margin-top: -4%;*/
+}
 
 /*-----------------------------------------
 Pointer Cursor

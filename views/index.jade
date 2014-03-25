@@ -10,9 +10,11 @@ block content
         div(id='movingRect')
           img(id='pointer' src='images/pointer.png')
         div.staticRectangles(id='staticArticle2')
+        img(id='speechbubble' src='images/speechbubble.png')
         .intro_bucket
           div(id="introBucketStage")
-            div(id="openEyesIntro")
+          g(id="openEyesIntro")
+              //- g(id="introRightEyeFull")
       //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
         #introReader
@@ -73,8 +75,7 @@ block content
   div.article_container
     button.close.glyphicon.glyphicon-remove
     #reader
-      //- div#wordWhiteBackground
-      div.verticalLine
+      #fullWord
         span#front {{front}}
         span#center {{center}}
         span#back {{back}}

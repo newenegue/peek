@@ -54,7 +54,7 @@ function updateItemsInBucket() {
     }
     items += '<div class="moreInfo">';
     items += '<button class="read btn btn-default">Read</button>';
-    items += '<div class="handle glyphicon glyphicon-align-justify"></div>';
+    items += '<div class="handle"></div>';
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '</div></div></div>';
   }
