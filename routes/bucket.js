@@ -16,7 +16,7 @@ exports.getBucket = function(db) {
     cookie = cookie.substr(3,(cookie.length - 4));
     collection.findById(cookie,function(err, docs){
       if (!err){
-        res.json('buckets', {
+        res.json({
           bucket: docs
         });
       }
@@ -69,7 +69,7 @@ exports.getArticles = function(db) {
         var collection = db.get("articles");
         collection.find({_id: {$in:articleArray}}, function(err, docs) {
           if (!err){
-            res.json("test", {
+            res.json({
               bucket: docs
             });
           }
