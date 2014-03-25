@@ -10,8 +10,6 @@ Article peek
   background-color: rgba(255,255,255,1);
   top: 0;
   left: 0;
-  /*left: 2%;*/
-  /*top: 10%;*/
   width: 100%;
   height: 100%;
   display: none;
@@ -26,40 +24,62 @@ Article peek
 
 #reader {
   font-size: 6em;
-  width: 1000px;
+  width: 85%;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   height: 200px;
   margin: 0 auto;
   margin-top: 10%;
+  position: relative;
+}
+
+#reader:before {
+  content: '';
+  position: absolute;
+  left: 40%;
+  height: 1.2rem;
+  width: 3px;
+  margin-left: -1px;
+  top: 0;
+  background-color: black;
+}
+
+#reader:after {
+  content: '';
+  position: absolute;
+  left: 40%;
+  height: 1.2rem;
+  width: 3px;
+  margin-left: -1px;
+  bottom: 0;
+  background-color: black;
+}
+
+#fullWord {
+  font-size: 1em;
+  width: 900px;
+  height: 180px;
+  margin: 0 auto;
+  border: 1px solid green;
+  margin: 0 auto;
+  /*position: relative;*/
 }
 
 #front {
-  position: absolute;
-  margin-top: 2%;
   background-color: white;
+  position: absolute;
 }
 
 #center {
   color: red;
-  position: absolute;
-  left: 47%;
-  margin-top: 2%;
+  left: 37%;
   background-color: white;
-}
-
-.verticalLine {
-  width: 47%;
-  height: 197px;
-  border-right: 3px solid black;
-  z-index: -47;
-  overflow: visible;
+  position: absolute;
 }
 
 #back {
-  position: absolute;
-  margin-top: 2%;
   background-color: white;
+  position: absolute;
 }
 
 .close {

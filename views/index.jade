@@ -10,16 +10,19 @@ block content
         div(id='movingRect')
           img(id='pointer' src='images/pointer.png')
         div.staticRectangles(id='staticArticle2')
+        img(id='speechbubble' src='images/speechbubble.png')
         .intro_bucket
           div(id="introBucketStage")
+          g(id="openEyesIntro")
+              //- g(id="introRightEyeFull")
       //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
         #introReader
           div.introVerticalLine
             div.word
-              span#introFront Wel
-              span#introCenter c
-              span#introBack ome
+              span#introFront
+              span#introCenter
+              span#introBack
       //- Intro Shot 3 - Welcome Page
       div.newIntroShot(id='shot3')
         h1.introHeader peek.
@@ -72,13 +75,12 @@ block content
   div.article_container
     button.close.glyphicon.glyphicon-remove
     #reader
-      div.verticalLine
+      #fullWord
         span#front {{front}}
         span#center {{center}}
         span#back {{back}}
     br
     button#restart(onclick='restart()') Restart
-    //- button#submit(onclick='read()') Play
     h2.glyphicon.glyphicon-play(id='submit', onclick='read()')
     
     select#wpm
@@ -92,4 +94,5 @@ block content
       option(value='800') 800 WPM
       option(value='900') 900 WPM
 
+    br
     a.link_to_article(href="http://www.npr.org" target="_blank") Read the full article
