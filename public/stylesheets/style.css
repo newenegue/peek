@@ -43,6 +43,21 @@ a {
 Newsfeed
 -----------------------------------------*/
 
+.fadebottom {
+  width: 80%;
+  height: 15%;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  background: -webkit-gradient(
+  linear, top, bottom, from(rgba(255,255,255,0.0)),
+  color-stop(0.35, rgba(255,255,255,1)),
+  to(rgba(255,255,255,1))
+  );
+  z-index: 500;
+  background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .5) 35%, rgba(255,255, 255, .8));
+}
+
 .articles {
   width: 80%;
 }
