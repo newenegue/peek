@@ -34,13 +34,14 @@ block content
         div.closeIntroButton Enter
   div.options.latest(ng-class="{articles_selection: !show_popular}" ng-click="showLatest()") Latest
   div.options.popular(ng-class="{articles_selection: show_popular}" ng-click="showPopular()") Popular
+  div.search
+    p.glyphicon.glyphicon-search 
+    input(ng-model="search")
   //- Main Page
   div.fadebottom
-  div(id="navbar")
+  //- div(id="navbar")
     h1.test= title
-    div.search
-      p.glyphicon.glyphicon-search 
-      input(ng-model="search")
+    
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     .bucket

@@ -10,7 +10,7 @@ body {
 
 body.main {
   background-color: rgba(255, 255, 255, 1);
-  border: 20px solid rgba(200, 200, 200, 1);
+  border-left: 20px solid rgba(200, 200, 200, 1);
   /*background-image: url(../images/p5.png);*/
 /*  border-width: 3%;
   border-color:rgba(255, 255, 255, 1); */
@@ -55,7 +55,7 @@ Newsfeed
   to(rgba(255,255,255,1))
   );
   z-index: 500;
-  background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .5) 35%, rgba(255,255, 255, .8));
+  background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .12) 50%, rgba(255,255, 255, .25));
 }
 
 .articles {

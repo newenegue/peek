@@ -48,7 +48,7 @@ $(document).ready(function() {
 
     // ESC - close animation or peek reader
     if(e.keyCode == 27) {
-      clearSearch();
+      // clearSearch();
       if( isReaderOpen() )
         closeArticle();
       if( isIntroOpen() )
