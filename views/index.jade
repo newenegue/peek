@@ -32,10 +32,11 @@ block content
           div(id="welcomeBucketStage")
         h1.introHeader peek.
         div.closeIntroButton Enter
+  div.options.latest(ng-class="{articles_selection: !show_popular}" ng-click="showLatest()") Latest
+  div.options.popular(ng-class="{articles_selection: show_popular}" ng-click="showPopular()") Popular
   //- Main Page
   div(id="navbar")
     h1.test= title
-    div.btn.btn-primary.popular_articles(ng-click="togglePopular()") {{show_articles}}
     div.search
       p.glyphicon.glyphicon-search 
       input(ng-model="search")
@@ -66,7 +67,7 @@ block content
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
         {{article.popularity}}
-        img.main_image(ng-src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
+        img.main_image(ng-class-even="'main_image_right'" ng-src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
             b {{article.article.title}}

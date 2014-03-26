@@ -6,7 +6,15 @@
 //  pass article id to bucket
 // ------------------------------------------
 function onDragStart(ev) {
-  var article = $(ev.target).children()[0];
+  var article;
+  
+  // Works for when user drags image or article
+  if(ev.target.className == "main_image" || ev.target.className == "main_image main_image_right") {
+    article = $(ev.target).parent()[0];
+  }
+  else {
+    article = $(ev.target).children()[0];
+  }
 
   ev.dataTransfer.setData("article_id",article.id);
 
