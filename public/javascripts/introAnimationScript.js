@@ -60,6 +60,7 @@ function introTextContent4() {
   introFront.innerHTML = "Re";
   introCenter.innerHTML = "a";
   introBack.innerHTML = "dy"; 
+  debugger;
 };
 
 function introTextContent5() {
@@ -117,7 +118,7 @@ function doAfterPageLoad() {
   tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
 
   //Drop Selected Rectangle
-  tl.to(selectedRectang, 1, {top:300, autoAlpha:0}, "+=1");
+  tl.to(selectedRectang, 1, {top:100, autoAlpha:0}, "+=1");
 
   //Bucket Appears
   tl.from(regularIntroBucket, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
