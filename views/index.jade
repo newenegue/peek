@@ -42,7 +42,7 @@ block content
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     .bucket
-      div.delete_all.glyphicon.glyphicon-trash
+      //- div.delete_all.glyphicon.glyphicon-trash
       .bucket_item_holder 
         strong Drag to add article
   //- Animated Bucket
@@ -57,7 +57,7 @@ block content
       //- Latest Articles from NPR
       div(ng-if="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        img.main_image(ng-src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
+        img.main_image(ng-class-even="'main_image_right'" ng-src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
           .title 
             b {{article.title.$text}}
