@@ -90,6 +90,28 @@ Newsfeed
   color: white;
 }
 
+.articles_selection {
+  color: #ee6557;
+}
+
+.options {
+  cursor: pointer;
+  -webkit-transform:rotate(-90deg);
+  -webkit-transform-origin: 0 0;
+}
+
+.popular {
+  position: fixed;
+  left: 0;
+  top: 300px;
+}
+
+.latest {
+  position: fixed;
+  left: 0;
+  top: 200px;
+}
+
 .article_container {
   overflow: auto;
 }

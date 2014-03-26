@@ -356,17 +356,27 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
 
   // ------------------------------------------
   // Toggle to show popular or npr articles
-  // ------------------------------------------
-  $scope.togglePopular = function() {
-    $scope.show_popular = !$scope.show_popular;
-    if($scope.show_popular) {
-      $scope.show_articles = 'Latest';
-      $scope.getArticlesByPop();
-    }
-    else {
-      $scope.show_articles = 'Popular';
-      loadArticles();
-    }
+  // // ------------------------------------------
+  // $scope.togglePopular = function() {
+  //   $scope.show_popular = !$scope.show_popular;
+  //   if($scope.show_popular) {
+  //     $scope.show_articles = 'Latest';
+  //     $scope.getArticlesByPop();
+  //   }
+  //   else {
+  //     $scope.show_articles = 'Popular';
+  //     loadArticles();
+  //   }
+  // };
+
+  $scope.showPopular = function() {
+    $scope.show_popular = true;
+    $scope.getArticlesByPop();
+  };
+
+  $scope.showLatest = function() {
+    $scope.show_popular = false;
+    loadArticles();
   };
 
   // ------------------------------------------
@@ -475,9 +485,6 @@ peekApp.filter("getThumbnail", function() {
         }
       }
       return thumb.src;
-    }
-    else {
-      return "/images/npr_thumb.png";
     }
   };
 });

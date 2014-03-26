@@ -180,3 +180,12 @@ exports.increasePop = function(db) {
     });
   }
 }
+
+exports.decreasePop = function(db) {
+  return function(req, res) {
+    var collection = db.get('articles');
+    collection.update({ popularity: { $gte: 1 } }, { $inc : {popularity : -1} }, { multi: true }, function(err, docs) {
+      res.end("decreased popularity");
+    });
+  }
+}

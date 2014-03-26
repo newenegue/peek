@@ -12,12 +12,15 @@ var path = require('path');
 var mongo = require('mongodb');
 var monk = require('monk');
 
+
 // var db = monk('localhost:27017/peektest');
 // var db = monk('mongodb://peek:keepachu@ds045907.mongolab.com:45907/heroku_app23343437');  //need to change this database
 var db = monk('mongodb://peek:peek123@ds029117.mongolab.com:29117/heroku_app23170618');
 
 
 var app = express();
+
+require('./cronjobs.js');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -47,6 +50,7 @@ app.del('/article/del/:id', bucket.removeArticle(db));
 app.del('/article/del/', bucket.deleteAll(db));
 app.put('/article/pop/', bucket.increasePop(db));
 app.get('/articles/pop/', bucket.articlesByPop(db));
+app.put('/articles/decpop/', bucket.decreasePop(db));
 
 
 http.createServer(app).listen(app.get('port'), function(){

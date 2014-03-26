@@ -89,6 +89,8 @@ function createItem(id) {
   // If no thumbnail, use article main image as thumbnail
   if(thumbnail === null || thumbnail === '') {
     thumbnail = $("#" + id +" img").first().attr("src");
+    if(thumbnail == "/images/npr_logo.png")
+      thumbnail = "/images/npr_thumb.png";
   }
 
   // Return article object
