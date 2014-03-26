@@ -27,9 +27,6 @@ $(document).ready(function() {
   $("#shadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
   // Intro Animated bucket
-  $("#introBucketStage").load('images/peek_bin_intro.svg', introSvgLoaded);
-
-  // Intro Animated bucket
   $("#welcomeBucketStage").load('images/peek_bin_welcome.svg', welcomeSvgLoaded);
 
   // EASTER EGGS
@@ -176,12 +173,6 @@ function closeArticle() {
 // ------------------------------------------
 function svgLoaded(response) {
   $(this).addClass("svgLoaded");
-  if(!response){
-  }
-}
-
-function introSvgLoaded(response) {
-  $(this).addClass("introSvgLoaded");
   if(!response){
   }
 }

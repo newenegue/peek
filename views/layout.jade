@@ -10,7 +10,7 @@ html(ng-app="PeekApp")
     link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
     link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
      
-  body(class="main" ng-controller="PeekCtrl")
+  body(class="main" ng-controller="PeekCtrl" onload="doAfterPageLoad()")
     block content
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js")

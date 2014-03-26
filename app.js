@@ -19,7 +19,6 @@ var db = monk('mongodb://peek:peek123@ds029117.mongolab.com:29117/heroku_app2317
 
 var app = express();
 
-
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
