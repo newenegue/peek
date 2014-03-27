@@ -45,6 +45,7 @@ function drop(ev) {
   // Add to bucket
   if(validId(article_id)) {
     addItemToBucket(article_id);
+    // updatePop();
     console.log("heart animation");
     var heart = document.getElementById("heart");
     heart.style.opacity = "1";

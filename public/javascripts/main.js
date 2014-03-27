@@ -408,6 +408,17 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     });
   };
 
+  // window.updatePop = function() {
+  //   updatePopArt();
+  // }
+
+  // window.refreshPop = function(response) {
+
+  //   var length = $scope.articles.length;
+  //   $scope.articles = response.articles.slice(0, length);
+  //   console.log("length = " + length);
+  //   console.log("the new scope articles = " + $scope.articles);
+  // }
   // ------------------------------------------
   // Get NPR latest articles
   // ------------------------------------------
