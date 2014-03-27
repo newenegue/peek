@@ -3,6 +3,11 @@ Fonts
 -----------------------------------------*/
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700|Raleway:400,300,600);
 
+@font-face {
+  font-family: 'Brandon_light';
+  src: url(../fonts/Brandon_light.otf);
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -10,7 +15,7 @@ body {
 
 body.main {
   background-color: rgba(255, 255, 255, 1);
-  border-left: 20px solid rgba(200, 200, 200, 1);
+  border-left: 40px solid rgba(200, 200, 200, 1);
   /*background-image: url(../images/p5.png);*/
 /*  border-width: 3%;
   border-color:rgba(255, 255, 255, 1); */
@@ -48,7 +53,7 @@ Newsfeed
   height: 15%;
   position: fixed;
   bottom: 0;
-  left: 20px;
+  left: 40px;
   background: -webkit-gradient(
   linear, top, bottom, from(rgba(255,255,255,0.0)),
   color-stop(0.35, rgba(255,255,255,1)),
@@ -137,7 +142,7 @@ Newsfeed
 }
 
 .article_img_in_bucket {
-  -webkit-filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) opacity(0.4);
   -moz-filter: grayscale(100%);
   filter: grayscale(100%);
 }
@@ -246,47 +251,19 @@ Bucket: Content
   z-index: 3;
   font-family: 'Raleway';
   font-weight: 600;
-  width: 15%;
-  height: 54%;
+  width: 20%;
+  height: 100%;
   padding: 3px;
-  background: white;
-  border-radius: 10px;
+  /*background: white;*/
   border: gray solid 4px; /*16a6b6*/
-  right: 3%;
-  top: 100px;
+  top: 0;
+  right: 0;
 }
 
 .bucket_selected {
-  /*border: gold solid 4px;*/
   border-radius: 10px;
   border: 4px solid #ee6557;
   /*box-shadow: 0 0 5px 5px rgba(218, 165, 32, 0.4);*/
-}
-
-.bucket_container:after {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 15px 15px 0;
-  border-color: white transparent;
-  display: block;
-  width: 0;
-  z-index: 1;
-  bottom: -15px;
-  left: 50%;
-}
-
-.bucket_container:before {
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 18px 18px 0;
-  border-color: gray transparent;
-  display: block;
-  width: 0;
-  z-index: 0;
-  bottom: -22px;
-  left: 48.5%;
 }
 
 .bucket {
@@ -581,7 +558,7 @@ Bucket: Animated
   position: fixed;
   width: 15%;
   height: 10%;
-  right: 3%;
+  right: 0;
   bottom: 0%;
   /*border: 1px solid green;*/
   z-index: -5;
@@ -589,14 +566,14 @@ Bucket: Animated
 
 #shadowStage {
   position: relative;
-  height: 100%;
+  /*height: 100%;*/
   /*border: 1px solid black;*/
 }
 
 .bucketShadow {
-  height: 100%;
-  position: absolute;
-  top: 20%;
+  /*height: 100%;*/
+  /*position: absolute;*/
+  /*top: 20%;*/
   width: 100%;
   -webkit-filter: blur(4px);
   -moz-filter: blur(4px);
