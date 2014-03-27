@@ -418,7 +418,18 @@ Bucket: Content
   cursor: pointer;
 }
 
-.glyphicon-trash:hover {
+.trashcan {
+  top:0;
+  width: 100%;
+  height: 2em;
+  background-color: transparent;
+}
+
+.glyphicon.glyphicon-trash {
+  
+}
+
+.glyphicon.glyphicon-trash:hover {
   color: #ee6557;
   cursor: pointer;
 }

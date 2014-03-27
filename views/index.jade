@@ -42,8 +42,9 @@ block content
   //- Bucket for reading articles
   .full_bucket_side_panel
     .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
+      .trashcan
+        .delete_all.glyphicon.glyphicon-trash
       .bucket
-        //- div.delete_all.glyphicon.glyphicon-trash
         .bucket_item_holder 
           strong Drag to add article
     //- Animated Bucket
