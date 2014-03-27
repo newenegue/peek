@@ -28,6 +28,7 @@ var tl = new TimelineLite(),
   openEyesWelcome = document.getElementById("openEyesWelcome"),
   welcomeIntroBucket = document.getElementById("welcomeIntroBucket"),
   enterButton = document.getElementsByClassName("closeIntroButton"),
+  shot0 = document.getElementById("shot0"),
   shot1 = document.getElementById("shot1"); 
 
 var introFront = document.getElementById("introFront");
@@ -81,8 +82,10 @@ function introTextContent6() {
 
 function doAfterPageLoad() {
   console.log("inside");
-  // $("#shot1").css("visibility", "visible");
+  $("#shot1").css("visibility", "visible");
+  // tl.to(shot0, 0.1, {autoAlpha:0}, "+=.1");
   tl.set(shot1, {top:0}, "+=.1");
+  tl.from(shot1, .5, {autoAlpha:0}, "+=.5");
   tl.to(shot1, 2.0, {scale:0.9}, ".2");
   tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.1");
   tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");

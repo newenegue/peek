@@ -5,7 +5,7 @@ Fonts
 
 @font-face {
   font-family: 'Brandon_light';
-  src: url(../fonts/Brandon_light.otf);
+  src: url('../fonts/Brandon_light.woff') format('woff');
 }
 
 body {
@@ -45,45 +45,6 @@ a {
 }
 
 /*-----------------------------------------
-Tabs - Popular & Latest
------------------------------------------*/
-
-.ui-tabs-vertical { 
-  width: 55em; 
-}
-
-.ui-tabs-vertical .ui-tabs-nav { 
-  padding: .2em .1em .2em .2em; 
-  float: left; 
-  width: 12em; 
-}
-
-.ui-tabs-vertical .ui-tabs-nav li { 
-  clear: left; width: 100%; 
-  border-bottom-width: 1px !important; 
-  border-right-width: 0 !important; 
-  margin: 0 -1px .2em 0; 
-}
-
-.ui-tabs-vertical .ui-tabs-nav li a { 
-  display:block; 
-}
-
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { 
-  padding-bottom: 0; 
-  padding-right: .1em; 
-  border-right-width: 1px; 
-  border-right-width: 1px; 
-}
-
-.ui-tabs-vertical .ui-tabs-panel { 
-  padding: 1em; 
-  float: right; 
-  width: 40em;
-}
-
-
-/*-----------------------------------------
 Newsfeed
 -----------------------------------------*/
 
@@ -103,7 +64,8 @@ Newsfeed
 }
 
 .articles {
-  width: 70%;
+  width: 80%;
+  border: 1px solid black;
 }
 
 .article {
@@ -136,6 +98,7 @@ Newsfeed
 
 .articles_selection {
   color: #ee6557;
+  background-color: white;
 }
 
 .options_tab_panel {
@@ -153,28 +116,33 @@ Newsfeed
 }
 
 .popular {
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   padding-top: 5px;
-  width: 100px;
+  width: 200px;
   height: 40px;
   position: fixed;
   left: 0;
-  top: 350px;
-  border: 2px solid black;
+  top: 400px;
+  /*border-top: 2px solid black;*/
+  box-shadow: 5px -11px 15px black;
+  border-bottom: none;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .latest {
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   padding-top: 5px;
-  width: 100px;
-  height: 40px;
+  width: 200px;
+  height: 50px;
   position: fixed;
   left: 0;
   top: 200px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
+  box-shadow: 5px -11px 15px black;
+  border-bottom: none;
   border-radius: 5px;
 }
 
@@ -214,7 +182,7 @@ Newsfeed
 
 .title {
   font-size: 1.6em;
-  font-family: 'Raleway', sans-serif;
+  font-family: Brandon_light, 'Raleway', sans-serif;
   font-weight: 400;
 }
 
