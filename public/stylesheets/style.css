@@ -456,7 +456,7 @@ Bucket: Content
 
 .bucketfadebottom {
   width: 20%;
-  height: 20%;
+  height: 25%;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -466,7 +466,7 @@ Bucket: Content
   to(rgba(255,255,255,1))
   );
   z-index: 1;
-  background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .6));
+  background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .6));
 }
 
 /*-----------------------------------------
