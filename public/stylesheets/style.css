@@ -303,6 +303,10 @@ Bucket: Content
   padding: 3px;
   /*background: white;*/
   /*border: gray solid 4px;*/ /*16a6b6*/
+  background-color: #505759;
+  /*border: gray solid 4px;*/ /*16a6b6*/
+  top: 0;
+  right: 0;
 }
 
 .bucket_selected {
@@ -320,7 +324,7 @@ Bucket: Content
 
 .bucket_item {
   background-color: rgba(0, 0, 0, 0.2);
-  margin-bottom: 3px;
+  /*margin-bottom: 3px;*/
   width: 100%;
 }
 
@@ -371,6 +375,7 @@ Bucket: Content
   position: absolute;
   bottom: 0;
   padding: 5px;
+  color: rgba(118,194,187,1);
 }
 
 .white_overlay {
