@@ -35,6 +35,15 @@ Intro div shot positioning
   margin: 0 auto;
 }
 
+#shot0 {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 #shot1 {
   top: 110%;
   height: 100%;
@@ -45,8 +54,8 @@ Intro div shot positioning
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(../images/mountains.png);
-  background-size: 130% 120%;
+  background-image: url(../images/mountains.jpg);
+  background-size: 120% 120%;
   background-repeat: no-repeat;
 }
 
@@ -60,8 +69,7 @@ Intro div shot positioning
 #shot3 {
   background-color: white;
   top: 110%;
-  border: 5px solid orange;
-  padding-top: 10%;
+  background-image: url(../images/newyork.png);
   height: 100%;
   width: 100%;
 }
@@ -69,6 +77,32 @@ Intro div shot positioning
 /*-----------------------------------------
 Articles
 -----------------------------------------*/
+.moving_mountains {
+  -webkit-animation: pan 1s;
+}
+
+@-webkit-keyframes pan {
+      from {
+        top:0px;
+        right:0px;
+      }
+      to {
+        top: 0px;
+        right:-100px;
+      }
+    }
+
+ @keyframes pan {
+      from {
+        top:0px;
+        right:0px;
+      }
+      to {
+        top: 0px;
+        right:-100px;
+      }
+    }
+
 .staticRectangles {
   height: 75px;
   width: 260px;
@@ -183,6 +217,7 @@ Speech Bubble
   right: 0;
   left: 0;
   top: 0;
+  margin-bottom: 1%;
 }
 
 /*-----------------------------------------
@@ -295,8 +330,8 @@ Welcome Bucket
 
 #welcomeText {
   /*opacity: 0;*/
-  height: 150px;
-  width: 150px;
+  height: 300px;
+  width: 300px;
 }
 
 /*#welcomeText:hover {

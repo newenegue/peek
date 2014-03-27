@@ -98,7 +98,7 @@ Newsfeed
   color-stop(0.35, rgba(255,255,255,1)),
   to(rgba(255,255,255,1))
   );
-  z-index: 500;
+  z-index: 5;
   background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .12) 50%, rgba(255,255, 255, .25));
 }
 
@@ -153,15 +153,33 @@ Newsfeed
 }
 
 .popular {
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 5px;
+  width: 100px;
+  height: 40px;
   position: fixed;
   left: 0;
-  top: 300px;
+  top: 350px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .latest {
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 5px;
+  width: 100px;
+  height: 40px;
   position: fixed;
   left: 0;
   top: 200px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.active_tab {
+  background-color: white;
 }
 
 .article_container {
