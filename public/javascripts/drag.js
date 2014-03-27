@@ -87,11 +87,11 @@ function bucketFace(face, opc) {
 
   if(opc == "0"){
     // removes bucket container outer glow
-    $(".bucket_container").removeClass("bucket_selected");
+    $(".full_bucket_side_panel").removeClass("bucket_selected");
   }
   else {
     // adds bucket container outer glow
-    $(".bucket_container").addClass("bucket_selected");
+    $(".full_bucket_side_panel").addClass("bucket_selected");
   }
 }
 

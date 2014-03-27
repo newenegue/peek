@@ -33,7 +33,7 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '';
 
-  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag article to add to reading list</strong></div>' : updateItemsInBucket();
+  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder">Drag article <br>to add <br>to reading list</div>' : updateItemsInBucket();
 
   return bucketContent;
 }
