@@ -190,8 +190,9 @@ function welcomeSvgLoaded(response) {
 // ------------------------------------------
 function deleteAll() {
   bucketArray = [];
-  $(".article_in_bucket").removeClass("article_in_bucket");
   $(".article_in_bucket").children().children().removeClass("article_img_in_bucket");
+  $(".article_in_bucket").removeClass("article_in_bucket");
+  
   removeAll();
   refreshBucket();
 }
