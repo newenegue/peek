@@ -15,7 +15,6 @@ body {
 
 body.main {
   background-color: rgba(255, 255, 255, 1);
-  border-left: 40px solid rgba(200, 200, 200, 1);
   /*background-image: url(../images/p5.png);*/
 /*  border-width: 3%;
   border-color:rgba(255, 255, 255, 1); */
@@ -64,7 +63,8 @@ Newsfeed
 }
 
 .articles {
-  width: 80%;
+  margin-left: 40px;
+  width: 70%;
   border: 1px solid black;
 }
 
@@ -104,8 +104,10 @@ Newsfeed
 
 .options_tab_panel {
   height: 100%;
-  width: 10%;
+  width: 40px;
   position: fixed;
+  background-color: gray;
+  /*border-left: 40px solid rgba(200, 200, 200, 1);*/
   left: 0;
   top: 0;
 }
@@ -114,6 +116,7 @@ Newsfeed
   cursor: pointer;
   -webkit-transform:rotate(-90deg);
   -webkit-transform-origin: 0 0;
+  z-index: 2;
 }
 
 .popular {
@@ -130,6 +133,7 @@ Newsfeed
   border-bottom: none;
   border-radius: 5px;
   font-size: 14px;
+  z-index: 2;
 }
 
 .latest {
@@ -145,6 +149,7 @@ Newsfeed
   box-shadow: -3px -11px 12px black;
   border-bottom: none;
   border-radius: 5px;
+  z-index: 2;
 }
 
 .active_tab {
@@ -217,7 +222,7 @@ Newsfeed
 .glyphicon.glyphicon-search {
   position: absolute;
   top: 1em;
-  left: -25px;
+  left: 40px;
   z-index: 2;
 }
 
@@ -242,6 +247,7 @@ input {
 
 input:focus {
   outline: none;
+  margin-left: 65px;
 }
 
 input.show_input {
