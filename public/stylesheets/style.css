@@ -88,17 +88,10 @@ Newsfeed
   /*border: 3px solid #16a6b6;*/
   /*-webkit-transition: all .25s ease-in-out;*/
   background-color: rgba(118, 194, 187, 1);
-  border: 3px solid rgba(118, 194, 187, 1);
   -webkit-transition: all .15s ease-in-out;
   /*box-shadow: 1px 1px 15px black;*/
   z-index: 1;
   color: white;
-}
-
-.articles_selection {
-  color: #ee6557;
-  background-color: white;
-  box-shadow: 5px -15px 15px black;
 }
 
 .options_tab_panel {
@@ -106,7 +99,6 @@ Newsfeed
   width: 40px;
   position: fixed;
   background-color: gray;
-  /*border-left: 40px solid rgba(200, 200, 200, 1);*/
   left: 0;
   top: 0;
 }
@@ -115,6 +107,7 @@ Newsfeed
   cursor: pointer;
   -webkit-transform:rotate(-90deg);
   -webkit-transform-origin: 0 0;
+  background-color: rgba(100,100,100,1);
   z-index: 2;
 }
 
@@ -123,14 +116,18 @@ Newsfeed
   text-align: center;
   padding-top: 5px;
   width: 200px;
-  height: 40px;
+  height: 30px;
   position: fixed;
-  left: 0;
-  top: 400px;
+  left: 10px;
+  top: 403px;
   /*border-top: 2px solid black;*/
-  box-shadow: -11px -16px 22px black;
-  border-bottom: none;
-  border-radius: 5px;
+  /*background-color: yellow;*/
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   font-size: 14px;
   z-index: 2;
 }
@@ -140,15 +137,24 @@ Newsfeed
   text-align: center;
   padding-top: 5px;
   width: 200px;
-  height: 40px;
+  height: 30px;
   position: fixed;
-  left: 0;
+  left: 10px;
   top: 200px;
   /*border: 2px solid black;*/
-  box-shadow: -3px -11px 12px black;
-  border-bottom: none;
-  border-radius: 5px;
+  /*background-color: yellow;*/
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   z-index: 2;
+}
+
+.articles_selection {
+  color: #ee6557;
+  background-color: white;
 }
 
 .active_tab {
@@ -221,7 +227,7 @@ Newsfeed
 .glyphicon.glyphicon-search {
   position: absolute;
   top: 1em;
-  left: 40px;
+  left: 10px;
   z-index: 2;
 }
 
@@ -239,6 +245,7 @@ input {
   display: none;
   z-index: -10;
   background-color: rgba(255,255,255,0.65);
+  padding-left: 50px;
   height: 3em;
   width: 100%;
   z-index: 2;
@@ -246,7 +253,6 @@ input {
 
 input:focus {
   outline: none;
-  margin-left: 65px;
 }
 
 input.show_input {

@@ -11,6 +11,10 @@
     width: 100%;
     font-size: 0.8em;
   }
+
+  input {
+    width: 81%;
+  }
 }
 @media only screen and (min-width : 481px) and (max-width: 767px) {
   #navbar {
@@ -25,6 +29,10 @@
     width: 100%;
     font-size: 1em;
   }
+
+  input {
+    width: 94%;
+  }
 }
 @media only screen and (min-width : 768px) and (max-width: 1024px) {
   #navbar {
@@ -36,6 +44,10 @@
   .article_content {
     width: 70%;
     font-size: 1em;
+  }
+
+  input {
+    width: 95%;
   }
 }
 @media only screen and (min-width : 1025px) and (max-width: 1223px) {
