@@ -48,7 +48,7 @@ $(document).ready(function() {
 
     // ESC - close animation or peek reader
     if(e.keyCode == 27) {
-      // if( searchIsEmpty() )
+      if( searchIsEmpty() )
         clearSearch();
       if( isReaderOpen() )
         closeArticle();
@@ -85,8 +85,11 @@ function clearSearch() {
   }
 }
 
+// ------------------------------------------
+// Check if search field is empty
+// ------------------------------------------
 function searchIsEmpty() {
-  
+  return ($("input").val() == "" || $("input").val() == null) ? true : false;
 }
 
 // ------------------------------------------
@@ -335,6 +338,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
           for(var i=0; i < articles.length; i++){
             $scope.articles.push(articles[i]);
           }
+          $scope.loading = false;
         });
       }
     };
