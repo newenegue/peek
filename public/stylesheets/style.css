@@ -24,6 +24,16 @@ a {
   color: #00B7FF;
 }
 
+.peek {
+  color: rgba(118, 194, 187, 1);
+  cursor: pointer;
+}
+
+.peek:hover {
+  color: #ee6557;
+  text-decoration: none;
+}
+
 .test {
   color: #999;
   font-family: 'Raleway', sans-serif;

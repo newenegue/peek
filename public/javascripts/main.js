@@ -268,6 +268,7 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.show_articles = 'Popular';
   $scope.show_popular = false;
   $scope.articles_loaded = false;
+  $scope.peek = 'PEEK';
 
   // ------------------------------------------
   // this pulls in the first set of articles REFACTOR!!!
