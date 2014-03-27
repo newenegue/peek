@@ -60,7 +60,6 @@ function introTextContent4() {
   introFront.innerHTML = "Re";
   introCenter.innerHTML = "a";
   introBack.innerHTML = "dy"; 
-  debugger;
 };
 
 function introTextContent5() {

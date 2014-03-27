@@ -115,6 +115,7 @@ function addItemToBucket(id) {
   addArticleToDatabase(bucketArray[locateItem(id)]);
   $("#" + id).parent(".article").addClass("article_in_bucket");
   $("#" + id).children(".main_image").addClass("article_img_in_bucket");
+  $("#" + id).children(".main_image .main_image_right").addClass("article_img_in_bucket");
 
   return true;
 }
@@ -129,6 +130,8 @@ function removeItemFromBucket(id) {
   removeArticleFromBucket(id);
 
   $("#" + id).parent(".article").removeClass("article_in_bucket");
-
+  console.log($("#" + id).children().hasClass("article_img_in_bucket"));
+  $("#" + id).children().removeClass("article_img_in_bucket");
+  // $("#" + id).children(".main_image .main_image_right .article_img_in_bucket").removeClass("article_img_in_bucket");
   return true;
 }
