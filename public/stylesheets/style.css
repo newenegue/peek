@@ -99,6 +99,7 @@ Newsfeed
 .articles_selection {
   color: #ee6557;
   background-color: white;
+  box-shadow: 5px -15px 15px black;
 }
 
 .options_tab_panel {
@@ -125,7 +126,7 @@ Newsfeed
   left: 0;
   top: 400px;
   /*border-top: 2px solid black;*/
-  box-shadow: 5px -11px 15px black;
+  box-shadow: -11px -16px 22px black;
   border-bottom: none;
   border-radius: 5px;
   font-size: 14px;
@@ -136,12 +137,12 @@ Newsfeed
   text-align: center;
   padding-top: 5px;
   width: 200px;
-  height: 50px;
+  height: 40px;
   position: fixed;
   left: 0;
   top: 200px;
   /*border: 2px solid black;*/
-  box-shadow: 5px -11px 15px black;
+  box-shadow: -3px -11px 12px black;
   border-bottom: none;
   border-radius: 5px;
 }
