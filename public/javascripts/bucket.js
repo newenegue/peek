@@ -26,7 +26,7 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '';
 
-  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
+  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag article to add to reading list</strong></div>' : updateItemsInBucket();
 
   return bucketContent;
 }
