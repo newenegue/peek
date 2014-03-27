@@ -45,15 +45,54 @@ a {
 }
 
 /*-----------------------------------------
+Tabs - Popular & Latest
+-----------------------------------------*/
+
+.ui-tabs-vertical { 
+  width: 55em; 
+}
+
+.ui-tabs-vertical .ui-tabs-nav { 
+  padding: .2em .1em .2em .2em; 
+  float: left; 
+  width: 12em; 
+}
+
+.ui-tabs-vertical .ui-tabs-nav li { 
+  clear: left; width: 100%; 
+  border-bottom-width: 1px !important; 
+  border-right-width: 0 !important; 
+  margin: 0 -1px .2em 0; 
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a { 
+  display:block; 
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { 
+  padding-bottom: 0; 
+  padding-right: .1em; 
+  border-right-width: 1px; 
+  border-right-width: 1px; 
+}
+
+.ui-tabs-vertical .ui-tabs-panel { 
+  padding: 1em; 
+  float: right; 
+  width: 40em;
+}
+
+
+/*-----------------------------------------
 Newsfeed
 -----------------------------------------*/
 
 .fadebottom {
-  width: 80%;
+  width: 70%;
   height: 15%;
   position: fixed;
   bottom: 0;
-  left: 40px;
+  left: 10%;
   background: -webkit-gradient(
   linear, top, bottom, from(rgba(255,255,255,0.0)),
   color-stop(0.35, rgba(255,255,255,1)),
@@ -64,7 +103,7 @@ Newsfeed
 }
 
 .articles {
-  width: 80%;
+  width: 70%;
 }
 
 .article {
@@ -97,6 +136,14 @@ Newsfeed
 
 .articles_selection {
   color: #ee6557;
+}
+
+.options_tab_panel {
+  height: 100%;
+  width: 10%;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .options {
@@ -245,23 +292,29 @@ input.show_input {
 Bucket: Content
 -----------------------------------------*/
 
-.bucket_container {
+.full_bucket_side_panel {
   position: fixed;
+  height: 100%;
+  width: 20%;
+  top: 0;
+  right: 0;
+  background-color: rgba(80,87,89,1);
+}
+
+.bucket_container {
   text-align: center;
   z-index: 3;
   font-family: 'Raleway';
   font-weight: 600;
-  width: 20%;
+  width: 100%;
   height: 70%;
   padding: 3px;
   /*background: white;*/
-  border: gray solid 4px; /*16a6b6*/
-  top: 0;
-  right: 0;
+  /*border: gray solid 4px;*/ /*16a6b6*/
 }
 
 .bucket_selected {
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   border: 4px solid #ee6557;
   /*box-shadow: 0 0 5px 5px rgba(218, 165, 32, 0.4);*/
 }
@@ -282,8 +335,8 @@ Bucket: Content
 .bucket_item_holder {
   width: 100%;
   /*height: 20%;*/
-  border: 2px dotted rgba(0,0,0,0.2);
-  color: rgba(0,0,0,0.2);
+  border: 2px dotted rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.2);
   font-size: 1.2em;
   padding: 8%;
   overflow: auto;

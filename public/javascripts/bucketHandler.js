@@ -7,8 +7,8 @@ function setCookie() {
     }
     else {
       // ELLIE: CHANGE THIS BACK
-      closeIntro();
-      // animation();
+      // closeIntro();
+      animation();
     }
 
   }});

@@ -38,19 +38,38 @@ block content
     p.glyphicon.glyphicon-search 
     input(ng-model="search")
   //- Main Page
+  div.options_tab_panel
+  div(id="tabs")
+    ul
+      li
+        a(href='#tabs-1') Nunc tincidunt
+      li
+        a(href='#tabs-2') Proin dolor
+      li
+        a(href='#tabs-3') Aenean lacinia
+    div(id="tabs-1")
+      h2 Content heading 1
+      p Proin elit arcui sit amet mauris.
+    div(id="tabs-2")
+      h2 Content heading 2
+      p Morbi tincidunt
+    div(id="tabs-3")
+      h2 Content heading 3
+      p Mauris eleifend est et turpis.
   div.fadebottom  
   //- Bucket for reading articles
-  .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
-    .bucket
-      //- div.delete_all.glyphicon.glyphicon-trash
-      .bucket_item_holder 
-        strong Drag to add article
-  //- Animated Bucket
-  .animation_container
-    div(id="stage")
-  .shadow_container
-    div(id="shadowStage")
-    img(id='heart' src='images/heart.svg')
+  .full_bucket_side_panel
+    .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
+      .bucket
+        //- div.delete_all.glyphicon.glyphicon-trash
+        .bucket_item_holder 
+          strong Drag to add article
+    //- Animated Bucket
+    .animation_container
+      div(id="stage")
+    .shadow_container
+      div(id="shadowStage")
+      img(id='heart' src='images/heart.svg')
   //- Articles list
   .articles
     div.article(ng-repeat="article in articles | removeTopStories:this | filter:search | orderBy:'-popularity'"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   

@@ -27,7 +27,8 @@ var tl = new TimelineLite(),
   welcomeText = document.getElementById("welcomeText"),
   openEyesWelcome = document.getElementById("openEyesWelcome"),
   welcomeIntroBucket = document.getElementById("welcomeIntroBucket"),
-  enterButton = document.getElementsByClassName("closeIntroButton");
+  enterButton = document.getElementsByClassName("closeIntroButton"),
+  shot1 = document.getElementById("shot1"); 
 
 var introFront = document.getElementById("introFront");
 var introCenter = document.getElementById("introCenter");
@@ -108,10 +109,12 @@ function doAfterPageLoad() {
   tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
 
   //Drift Static Rects to the Left
-  tl.to(bothStaticRectangles, 1.5, {right:"600px", ease:Circ.easeIn}, "+=.3");
+  tl.to(bothStaticRectangles, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
   
   //Make Static Rects Fade Away
   tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=.5" );
+
+  tl.to(shot1, 2.0, {css:{backgroundPosition: "-300px 0px"}, ease:Quart.easeOut}, "5");
 
   //Shift Selected Rectangle Back
   tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");

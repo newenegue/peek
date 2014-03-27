@@ -39,8 +39,15 @@ Intro div shot positioning
   top: 110%;
   height: 100%;
   width: 100%;
-  margin-top: 5%;
-  background-color: white;
+  /*margin-top: 5%;*/
+  /*background-color: white;*/
+  padding: 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url(../images/mountains.png);
+  background-size: 130% 120%;
+  background-repeat: no-repeat;
 }
 
 #shot2 {

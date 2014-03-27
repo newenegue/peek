@@ -135,3 +135,11 @@ function removeItemFromBucket(id) {
   // $("#" + id).children(".main_image .main_image_right .article_img_in_bucket").removeClass("article_img_in_bucket");
   return true;
 }
+
+// ------------------------------------------
+// Vertical Tabs
+// ------------------------------------------
+$(function() {
+  $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+  $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+});
