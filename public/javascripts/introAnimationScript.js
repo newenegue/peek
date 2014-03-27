@@ -81,7 +81,6 @@ function introTextContent6() {
 
 
 function doAfterPageLoad() {
-  console.log("inside");
   $("#shot1").css("visibility", "visible");
   // tl.to(shot0, 0.1, {autoAlpha:0}, "+=.1");
   tl.set(shot1, {top:0}, "+=.1");
@@ -136,8 +135,6 @@ function doAfterPageLoad() {
 
   //Bucket Eyes get Happy
   // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
-
-  console.log(openEyesIntro);
 
   //Speech Bubble
   tl.from(speechbubble, 1, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");

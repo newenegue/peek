@@ -1,3 +1,6 @@
+
+
+
 @media only screen and (min-width : 320px) and (max-width: 480px) {
   #navbar {
     /*background-color: rgba(255, 0, 0, .8);*/
@@ -14,6 +17,9 @@
 
   input {
     width: 81%;
+  }
+    .bucket_title {
+    font-size: 0.6em;
   }
 }
 @media only screen and (min-width : 481px) and (max-width: 767px) {
@@ -33,6 +39,9 @@
   input {
     width: 94%;
   }
+    .bucket_title {
+    font-size: 0.7em;
+  }
 }
 @media only screen and (min-width : 768px) and (max-width: 1024px) {
   #navbar {
@@ -43,11 +52,14 @@
   }
   .article_content {
     width: 70%;
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   input {
     width: 95%;
+  }
+    .bucket_title {
+    font-size: 1em;
   }
 }
 @media only screen and (min-width : 1025px) and (max-width: 1223px) {
@@ -59,6 +71,10 @@
   }
   .article_content {
     width: 75%;
+  }
+
+  .bucket_title {
+    font-size: 1.1em;
   }
 }
 /* Desktops and laptops ----------- */
