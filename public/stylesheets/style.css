@@ -30,6 +30,9 @@ a {
 .peek {
   color: rgba(118, 194, 187, 1);
   cursor: pointer;
+  font-size: 2em;
+  margin-left: -75%;
+  position: relative;
 }
 
 .peek:hover {
@@ -461,15 +464,14 @@ Bucket: Content
 }
 
 .trashcan {
-  top:0;
-  width: 100%;
-  height: 2em;
+  top:3px;
+  right: 28px;
+  position: absolute;
   color: rgba(118,194,187,1);
   background-color: transparent;
 }
 
 .glyphicon.glyphicon-trash {
-  
 }
 
 .glyphicon.glyphicon-trash:hover {
@@ -479,7 +481,7 @@ Bucket: Content
 
 .bucketfadebottom {
   width: 20%;
-  height: 20%;
+  height: 25%;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -489,7 +491,7 @@ Bucket: Content
   to(rgba(255,255,255,1))
   );
   z-index: 1;
-  background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .6));
+  background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .6));
 }
 
 .read.btn.btn-default {
