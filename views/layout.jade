@@ -1,8 +1,7 @@
 doctype html
 html(ng-app="PeekApp")
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/introAnimationStyle.css')
+    title= title   
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/media-queries.css')
     link(rel='stylesheet', href='/stylesheets/animate.css')
@@ -13,10 +12,8 @@ html(ng-app="PeekApp")
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js")
     script(src="/javascripts/jquery.sortable.min.js")
     script(src="http://code.jquery.com/ui/1.10.4/jquery-ui.js")    
-    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
-    script(src="/javascripts/introAnimationScript.js")    
-    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")   
-    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")    
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")     
     script(src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.1.min.js")
     script(src="/javascripts/bucket.js")
     script(src="/javascripts/drag.js")
@@ -26,3 +23,7 @@ html(ng-app="PeekApp")
     script(src="/javascripts/bucketHandler.js") 
   body(class="main" ng-controller="PeekCtrl" onload="doAfterPageLoad()")
     block content
+    link(rel='stylesheet', href='/stylesheets/introAnimationStyle.css')
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js")
+    script(src="/javascripts/introAnimationScript.js")   
+    

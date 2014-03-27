@@ -38,10 +38,7 @@ block content
     p.glyphicon.glyphicon-search 
     input(ng-model="search")
   //- Main Page
-  div.fadebottom
-  //- div(id="navbar")
-    h1.test= title
-    
+  div.fadebottom  
   //- Bucket for reading articles
   .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
     .bucket
@@ -60,7 +57,7 @@ block content
       //- Latest Articles from NPR
       div(ng-if="!show_popular" id='{{article.id}}' data-paragraph='{{article.text.paragraph}}' data-article-link="{{article.link[0].$text}}")
         //- find primary image and show those images.  only show src if it exists?  what is the main error?
-        img.main_image(ng-class-even="'main_image_right'" ng-src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
+        img.main_image(ng-class="{article_img_in_bucket: inBucket(article)}" ng-class-even="'main_image_right'" ng-src="{{article | getMainImage}}" data-thumb="{{article | getThumbnail }}") 
         .article_content
           .title 
             b {{article.title.$text}}
