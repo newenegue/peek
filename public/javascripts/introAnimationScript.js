@@ -27,7 +27,9 @@ var tl = new TimelineLite(),
   welcomeText = document.getElementById("welcomeText"),
   openEyesWelcome = document.getElementById("openEyesWelcome"),
   welcomeIntroBucket = document.getElementById("welcomeIntroBucket"),
-  enterButton = document.getElementsByClassName("closeIntroButton");
+  enterButton = document.getElementsByClassName("closeIntroButton"),
+  shot0 = document.getElementById("shot0"),
+  shot1 = document.getElementById("shot1"); 
 
 var introFront = document.getElementById("introFront");
 var introCenter = document.getElementById("introCenter");
@@ -79,9 +81,11 @@ function introTextContent6() {
 
 
 function doAfterPageLoad() {
-  console.log("inside");
-  // $("#shot1").css("visibility", "visible");
+  $("#shot1").css("visibility", "visible");
+  // tl.to(shot0, 0.1, {autoAlpha:0}, "+=.1");
   tl.set(shot1, {top:0}, "+=.1");
+  tl.from(shot1, .5, {autoAlpha:0}, "+=.5");
+  tl.to(shot1, 2.0, {scale:0.9}, ".2");
   tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.1");
   tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");
   tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.1");
@@ -108,10 +112,12 @@ function doAfterPageLoad() {
   tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
 
   //Drift Static Rects to the Left
-  tl.to(bothStaticRectangles, 1.5, {right:"600px", ease:Circ.easeIn}, "+=.3");
+  tl.to(bothStaticRectangles, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
   
   //Make Static Rects Fade Away
-  tl.to(bothStaticRectangles, 1, {autoAlpha:0}, "-=.5" );
+  tl.to(bothStaticRectangles, .5, {autoAlpha:0}, "-=.5" );
+
+  tl.to(shot1, 1.0, {css:{backgroundPosition: "-100px 0px"}, ease:Quart.easeOut}, "+=0");
 
   //Shift Selected Rectangle Back
   tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
@@ -119,14 +125,16 @@ function doAfterPageLoad() {
   //Drop Selected Rectangle
   tl.to(selectedRectang, 1, {top:100, autoAlpha:0}, "+=1");
 
+  tl.set(shot1, {top:0, onComplete: pan}, "5.8");
+
+  // tl.to(shot1, 2.0, {css:{backgroundPosition: "-300px -100px"}, ease:Quart.easeOut}, "-.5");
+  // pan()
   //Bucket Appears
   tl.from(regularIntroBucket, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
   tl.to(regularIntroBucket, .01, {css:{backgroundPosition: "-304px -6px"}, ease:Circ.easeIn}, "+=1");
 
   //Bucket Eyes get Happy
   // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
-
-  console.log(openEyesIntro);
 
   //Speech Bubble
   tl.from(speechbubble, 1, {bottom:-100, scaleY: 0, autoAlpha:0}, "+=1");
@@ -144,8 +152,9 @@ function doAfterPageLoad() {
   
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
-  tl.from(shot3, .5, {autoAlpha:0}, "+=.5");
+  tl.from(shot3, .5, {bottom:-200, autoAlpha:0}, "+=.5");
   // tl.to(openEyesWelcome, .2, {autoAlpha:0, overwrite: 2}, "+=.5");
+  tl.from(welcomeIntroBucket, .5, {top:-200, autoAlpha:0}, "-=1.5");
   tl.to(welcomeIntroBucket, .01, {css:{backgroundPosition: "-304px -6px"}, ease:Circ.easeIn}, "+=1");
   // tl.to(welcomeIntroBucket, .2, {autoAlpha:0, overwrite: 2}, "+=.5");
   tl.from(welcomeText, .5, {bottom:-100, scaleY: 0, autoAlpha: 0}, "+=.5");
@@ -156,14 +165,15 @@ function doAfterPageLoad() {
 
 };
 
+function pan() {
+  $("shot1").addClass("fadeInLeft");
+}
+
 var animation = function() {
 
-  $(window).load(function(){ 
+  // $(window).load(function(){ 
 
 
-  //TO DO: Time bucket so that it becomes happy the exact fraction of a second that the article is dropped into it. Similar to blinking, but only 1x at the precise time instead of every 4 seconds x infinitely
-
-
-  });
+  // });
 
 };

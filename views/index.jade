@@ -14,7 +14,6 @@ block content
         div.staticRectangles(id='staticArticle2')
         div(id='speechbubble')
           img(id='pointer2' src='images/pointer2.png')
-        br
         #regularIntroBucket
       //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
@@ -32,25 +31,31 @@ block content
           //- div(id="welcomeBucketStage")
         h1.introHeader peek.
         div.closeIntroButton Enter
-  div.options.latest(ng-class="{articles_selection: !show_popular}" ng-click="showLatest()") Latest
-  div.options.popular(ng-class="{articles_selection: show_popular}" ng-click="showPopular()") Popular
+  div.options.latest(ng-class="{articles_selection: !show_popular}" ng-click="showLatest()") LATEST
+  div.options.popular(ng-class="{articles_selection: show_popular}" ng-click="showPopular()") POPULAR
   div.search
     p.glyphicon.glyphicon-search 
     input(ng-model="search")
   //- Main Page
+  .options_tab_panel
   div.fadebottom  
   //- Bucket for reading articles
-  .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
-    .bucket
-      //- div.delete_all.glyphicon.glyphicon-trash
-      .bucket_item_holder 
-        strong Drag to add article
-  //- Animated Bucket
-  .animation_container
-    div(id="stage")
-  .shadow_container
-    div(id="shadowStage")
-    img(id='heart' src='images/heart.svg')
+  .full_bucket_side_panel
+    .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
+      a.peek(href="https://github.com/newenegue/peek" target="_blank" ng-mouseover="peek = 'ピーク'" ng-mouseleave="peek = 'PEEK'") {{peek}}
+      .trashcan
+        h4.delete_all.glyphicon.glyphicon-trash
+      .bucket
+        .bucket_item_holder 
+          //- strong Drag to add article
+    //- Animated Bucket
+    .animation_container
+      div(id="stage")
+    .shadow_container
+      div(id="shadowStage")
+      img(id='heart' src='images/heart.svg')
+    //- Bucket Bottom Fade
+    .bucketfadebottom
   //- Articles list
   .articles
     div.article(ng-repeat="article in articles | removeTopStories:this | filter:search | orderBy:'-popularity'"  ng-dblclick="addToBucket(article, $event)" ng-class="{article_in_bucket: inBucket(article)}" draggable="true" ondragstart="onDragStart(event)")   

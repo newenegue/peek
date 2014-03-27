@@ -9,6 +9,13 @@ var bucketArray = [];
 function refreshBucket() {
   var bucketContent = updateBucketContent();
 
+  if(bucketArray.length == 0) {
+    $(".delete_all").css("display", "none");
+  }
+  else {
+    $(".delete_all").css("display", "inline-block");
+  }
+
   // Inject html with new bucket content
   $(".bucket").html(bucketContent);
 
@@ -26,7 +33,7 @@ function refreshBucket() {
 function updateBucketContent() {
   var bucketContent = '';
 
-  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder"><strong>Drag to add article</strong></div>' : updateItemsInBucket();
+  bucketContent += bucketArray.length === 0 ? '<div class="bucket_item_holder">Drag article <br>to add <br>to reading list</div>' : updateItemsInBucket();
 
   return bucketContent;
 }
@@ -35,7 +42,8 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  var items = bucketArray.length >= 2 ? '<div class="delete_all glyphicon glyphicon-trash"></div>' : '';
+  // var items = bucketArray.length >= 2 ? '<div class="trashcan"><div class="delete_all glyphicon glyphicon-trash"></div></div>' : '<div class="trashcan"></div>';
+  var items = '';
 
   // Show latest bucket article
   for(var i = bucketArray.length - 1; i >= 0; i--) {
