@@ -75,6 +75,7 @@ function clearSearch() {
     $('input').val("");
     $("input").blur();
     $("input").removeClass("show_input");
+    $("p.glyphicon-search").removeClass("search_open");
     
     return true;
   }
@@ -89,6 +90,7 @@ function clearSearch() {
 function openSearch() {
   $("input").addClass("show_input");
   $("input").focus();
+  $("p.glyphicon-search").addClass("search_open");
 }
 
 // ------------------------------------------
@@ -251,6 +253,7 @@ var peekApp = angular.module('PeekApp', []);
 
 peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   $scope.articles = [];
+  $scope.tests = [1,2,3,4,5];
   $scope.loading = false;
   $scope.show_articles = 'Popular';
   $scope.show_popular = false;
