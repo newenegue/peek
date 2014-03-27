@@ -44,7 +44,7 @@ block content
     .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
       a.peek(src="/" ng-mouseover="peek = 'ピーク'" ng-mouseleave="peek = 'PEEK'") {{peek}}
       .trashcan
-        .delete_all.glyphicon.glyphicon-trash
+        h4.delete_all.glyphicon.glyphicon-trash
       .bucket
         .bucket_item_holder 
           //- strong Drag to add article

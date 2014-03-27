@@ -15,6 +15,10 @@
   input {
     width: 81%;
   }
+
+  .peek {
+    display: none;
+  }
 }
 @media only screen and (min-width : 481px) and (max-width: 767px) {
   #navbar {
@@ -33,6 +37,15 @@
   input {
     width: 94%;
   }
+
+  .peek {
+  color: rgba(118, 194, 187, 1);
+  cursor: pointer;
+  font-size: 2em;
+  margin-left: -50%;
+  position: relative;
+  }
+
 }
 @media only screen and (min-width : 768px) and (max-width: 1024px) {
   #navbar {
@@ -49,6 +62,15 @@
   input {
     width: 95%;
   }
+
+  .peek {
+  color: rgba(118, 194, 187, 1);
+  cursor: pointer;
+  font-size: 2em;
+  margin-left: -55%;
+  position: relative;
+  }
+
 }
 @media only screen and (min-width : 1025px) and (max-width: 1223px) {
   #navbar {
@@ -59,6 +81,14 @@
   }
   .article_content {
     width: 75%;
+  }
+
+  .peek {
+  color: rgba(118, 194, 187, 1);
+  cursor: pointer;
+  font-size: 2em;
+  margin-left: -62%;
+  position: relative;
   }
 }
 /* Desktops and laptops ----------- */
