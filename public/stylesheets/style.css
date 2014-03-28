@@ -488,6 +488,12 @@ Bucket: Content
   background-image: url(../images/toggle_order_icon_lighter.png);
 }
 
+.add_space {
+  width: 100%;
+  height: 200px;
+  background-color: transparent
+}
+
 .trashcan {
   top:3px;
   right: 28px;
