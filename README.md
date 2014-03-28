@@ -1,4 +1,4 @@
-<html>P<span style="color: #ee6557;">E</span>EK</html>
+![peek](http://peekachu.herokuapp.com/images/peek.png)
 ====
 Speed read NPR stories through [Peek](http://peekachu.herokuapp.com/ "Peek").
 
