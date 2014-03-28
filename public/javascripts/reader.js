@@ -115,25 +115,55 @@ var read = function(paragraph) {
   if (play == 1) {
     $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
     var speed = 60000/$('#wpm').val();
-    readerTimer = setInterval(function () {
-      printWord(words, count);
-      $('#wpm').css("display", "none"); 
 
-      if (count < words.frontPart.length - 1) {
-        count ++;
-        $("#slider").slider({ value: count });
-      }
-      else {
-        $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-repeat");
-        clearInterval(readerTimer);
-        $('#wpm').css("display", "inline-block");
-        play = 2;
-        count = 0;
-        $("#slider").slider({ value: count });
-      }
-    }, speed);
+    //the delay before the read
+    if (count == 0) {
+      //displays the speed split up
+      $('#front').html(speed.toString().substring(0,1));
+      $('#center').html(speed.toString().substring(1,2));
+      $('#back').html(speed.toString().substring(2,1));
+
+      //positions the parts of the word
+      $('#center').css({left: ($('#center').offset().left - $('#center').outerWidth() / 3)});
+      $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
+      $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
+
+      //sets delay to start the reader
+      var animationTimer = setInterval(function () {
+        //animation goes here
+      }, 50);
+
+      setTimeout(function(){
+        clearInterval(animationTimer);
+        setTimer(speed);
+      }, 2000)
+    }
+    else {
+      setTimer(speed);
+    }
+    
   }
 
+
+function setTimer(speed) {
+  readerTimer = setInterval(function () {
+    printWord(words, count);
+    $('#wpm').css("display", "none"); 
+
+    if (count < words.frontPart.length - 1) {
+      count ++;
+      $("#slider").slider({ value: count });
+    }
+    else {
+      $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-repeat");
+      clearInterval(readerTimer);
+      $('#wpm').css("display", "inline-block");
+      play = 2;
+      count = 0;
+      $("#slider").slider({ value: count });
+    }
+  }, speed);
+}
 // popularity++;
 // console.log(popularity);
 };
