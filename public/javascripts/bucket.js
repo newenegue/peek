@@ -42,7 +42,6 @@ function updateBucketContent() {
 // Update items of bucket
 // ------------------------------------------
 function updateItemsInBucket() {
-  // var items = bucketArray.length >= 2 ? '<div class="trashcan"><div class="delete_all glyphicon glyphicon-trash"></div></div>' : '<div class="trashcan"></div>';
   var items = '';
 
   // Show latest bucket article
@@ -143,6 +142,5 @@ function removeItemFromBucket(id) {
   $("#" + id).parent(".article").removeClass("article_in_bucket");
   console.log($("#" + id).children().hasClass("article_img_in_bucket"));
   $("#" + id).children().removeClass("article_img_in_bucket");
-  // $("#" + id).children(".main_image .main_image_right .article_img_in_bucket").removeClass("article_img_in_bucket");
   return true;
 }
