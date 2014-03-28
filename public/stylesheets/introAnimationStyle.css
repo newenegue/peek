@@ -51,7 +51,6 @@ Intro div shot positioning
   /*margin-top: 5%;*/
   /*background-color: white;*/
   visibility: hidden;
-  padding: 5%;
   position: fixed;
   top: 0;
   left: 0;
@@ -70,9 +69,12 @@ Intro div shot positioning
 #shot3 {
   background-color: white;
   top: 110%;
-  background-image: url(../images/newyork.png);
+  background-image: url(../images/bg1.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 /*-----------------------------------------
@@ -85,21 +87,24 @@ Articles
   width: 500px;
   background-size: contain;
   background-repeat: no-repeat;
-  position: relative;
+  position: absolute;
   margin: 0 auto;
-  margin-top: -100px;
+  left: 0;
+  right: 0;
+  overflow: auto;
 }
 
 #newspaper_article {
   background-image: url(../images/newspaper-article.png);
   height: 454px;
   width: 500px;
-  right: 590px;
-  top: -19px;
   background-size: contain;
   background-repeat: no-repeat;
-  position: fixed;
+  position: absolute;
   margin: 0 auto;
+  overflow: auto;
+  left: 0;
+  right: 0;
 }
 
 .moving_mountains {
@@ -216,7 +221,7 @@ Intro Bucket
   background-repeat: no-repeat;
   position: relative;
   margin: 0 auto;
-  top: -150px;
+  margin-top: 350px;
   background-position: -6px -6px;
 }
 
@@ -234,7 +239,8 @@ Speech Bubble
 -----------------------------------------*/
 
 #speechbubble {
-  height: 280px;
+  height: 200px;
+  width: 200px;
   background-image: url(../images/speechbubble.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -243,7 +249,9 @@ Speech Bubble
   right: 0;
   left: 0;
   top: 0;
-  margin-bottom: 1%;
+  margin: 0 auto;
+  /*margin-bottom: 1%;*/
+  overflow: auto;
 }
 
 /*-----------------------------------------
@@ -260,11 +268,9 @@ Pointer Cursor
 
 #pointer2 {
   height: 60px;
-  /*float: right;*/
-  right: 120;
-  /*margin-right: 50%;*/
+  /*right: 120;*/
   position: absolute;
-  margin-top: 10%;
+  margin-top: 129px;
 }
 
 /*-----------------------------------------
@@ -332,7 +338,7 @@ Welcome Bucket
 
 #WelcomeLayer_1 {
   height: 25%;
-  width: 260px;
+  /*width: 260px;*/
   margin: 0 auto;
 }
 
@@ -354,37 +360,36 @@ Welcome Bucket
 }
 
 #welcomeText {
-  /*opacity: 0;*/
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin: 0 auto;
 }
-
-/*#welcomeText:hover {
-  opacity: 1;
-}*/
 
 /*-----------------------------------------
 Enter Button
 -----------------------------------------*/
 .closeIntroButton {
   height: 50px;
-  width: 200px;
+  width: 100px;
   background-color: #16a6b6;
-  font-family: 'Quicksand';
+  font-family: Brandon_light;
   color: white;
   padding-top: 5px;
   cursor: pointer;
   margin: 0 auto;
-  margin-bottom: 20%;
+  margin-bottom: 50%;
   border-radius: 10px;
-  font-size: 2em;
+  overflow: auto;
+  font-size: 14pt;
+  position: relative;
+  overflow: hidden;
 }
 
 /*-----------------------------------------
 Intro Header
 -----------------------------------------*/
 .introHeader {
-  margin-bottom: 2%;
-  font-family: 'Quicksand';
-  font-size: 5em;
+  font-family: Brandon_light;
+  font-size: 3em;
 }
