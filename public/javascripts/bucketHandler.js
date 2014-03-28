@@ -42,6 +42,12 @@ function addArticleToDatabase(article) {
   }});
 }
 
+// function updatePopArt() {
+//   $.ajax({type: "GET", url: "/articles/pop/", success: function(response) {
+//       refreshPop(response);
+//     }});
+// }
+
 function removeArticleFromBucket(id) {
   //run an ajax call while passing in the article id
   $.ajax({type: 'DELETE', url: '/article/del/' + id, success: function(response){

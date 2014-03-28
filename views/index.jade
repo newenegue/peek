@@ -72,7 +72,7 @@ block content
     div.fadebottom
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
-        {{article.popularity}}
+        //- {{article.popularity}}
         img.main_image(ng-class-even="'main_image_right'" ng-src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
@@ -107,4 +107,4 @@ block content
 
     br
     div#slider
-    a.link_to_article(href="http://www.npr.org" target="_blank") Read the full article
+    a.link_to_article(href="http://www.npr.org" target="_blank") Read on NPR

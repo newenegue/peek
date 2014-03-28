@@ -66,6 +66,9 @@ function updateItemsInBucket() {
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '</div></div></div>';
   }
+
+  // Add extra space at the bottom
+  items += '<div class="add_space"></div>';
   
   return items;
 }
