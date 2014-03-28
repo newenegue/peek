@@ -1,4 +1,4 @@
-PEEK
+![peek](http://peekachu.herokuapp.com/images/peek.png)
 ====
 Speed read NPR stories through [Peek](http://peekachu.herokuapp.com/ "Peek").
 
