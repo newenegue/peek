@@ -8,19 +8,18 @@ Fonts
 
 @font-face {
   font-family: Brandon_light;
-  src: url(../fonts/Brandon_light.otf) format("opentype");
+  src: url(../fonts/Brandon_Grotesque/Brandon_reg.otf) format("opentype");
 }
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*font-family: Brandon_light, 'Raleway', sans-serif;*/
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 body.main {
   background-color: rgba(255, 255, 255, 1);
-  /*background-image: url(../images/p5.png);*/
-/*  border-width: 3%;
-  border-color:rgba(255, 255, 255, 1); */
+  font-family: Brandon_light, 'Raleway', sans-serif;
 }
 
 a {
@@ -222,7 +221,7 @@ Newsfeed
 
 .title {
   font-size: 1.6em;
-  font-family: Brandon_light, 'Raleway', sans-serif;
+  /*font-family: Brandon_light, 'Raleway', sans-serif;*/
   font-weight: 400;
 }
 
@@ -339,7 +338,7 @@ Bucket: Content
 .bucket_container {
   text-align: center;
   z-index: 3;
-  font-family: 'Raleway';
+  /*font-family: Brandon_light, 'Raleway', sans-serif;*/
   font-weight: 600;
   width: 100%;
   height: 100%;
@@ -410,10 +409,11 @@ Bucket: Content
   margin: 10px;
   font-size: 1.1em;
   cursor: pointer;
+  color: rgba(225,225,225,1);
 }
 
 .remove_bucket_item:hover {
-  color: #ee6557;
+  color: white;
   -webkit-transition: all .12s ease-in-out;
 }
 
@@ -453,14 +453,18 @@ Bucket: Content
 }
 
 .handle {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url(../images/toggle_order_icon.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   margin: 0 auto;
   cursor: pointer;
+}
+
+.handle:hover {
+  background-image: url(../images/toggle_order_icon_lighter.png);
 }
 
 .trashcan {
@@ -495,13 +499,18 @@ Bucket: Content
 }
 
 .read.btn.btn-default {
- background-color: #ee6557; 
- border-color: #ee6557;
- color: rgba(225,225,225,1);
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: #ee6557; 
+  border-color: #ee6557;
+  color: rgba(225,225,225,1);
 }
 
 .read.btn.btn-default:hover {
+  background-color: #ff6e60; 
+  border-color: #ff6e60;
   color: white;
+  -webkit-transition: all .1s ease-in-out;
 }
 
 /*-----------------------------------------
