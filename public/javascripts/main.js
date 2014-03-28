@@ -162,7 +162,7 @@ function readArticle() {
   $(".shadow").attr("class", "shadow animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
   setTimeout( function() {$(".article_container").addClass("peek_article");left = $('#center').offset().left;
-  console.log(left);}, 1000 );
+  }, 1000 );
   setTimeout( function() {$(".wholeBucket").attr("class", "wholeBucket");}, 700 );
   setTimeout( function() {$(".shadow").attr("class", "shadow");}, 700 );
 }
