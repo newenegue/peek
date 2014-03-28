@@ -61,7 +61,7 @@ function updateItemsInBucket() {
       items += '<div class="bucket_title" style="position: initial;">' + bucketArray[i].title + '</div>';
     }
     items += '<div class="moreInfo">';
-    items += '<button class="read btn btn-default">Read</button>';
+    items += '<button class="read btn btn-default"><h4>Read</h4></button>';
     items += '<div class="handle"></div>';
     items += '<div class="remove_bucket_item glyphicon glyphicon-remove-circle" style="position: absolute;"></div>';
     items += '</div></div></div>';
