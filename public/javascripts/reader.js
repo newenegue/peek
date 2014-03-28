@@ -80,6 +80,7 @@ var resetReader = function() {
 };
 
 var read = function(paragraph) {
+  $('#counter').html('');
   if(!countdown) {
   //starts the reading at pause and toggles between states
     if (play == 0) {
@@ -121,7 +122,6 @@ var read = function(paragraph) {
         // set countdown slider width
         $('#countdown_left').css({width: '40%', left: '0'});
         $('#countdown_right').css({width: '60%'});
-
 
         //displays the speed split up
         $('#front').html($('#wpm').val().toString().substring(0,1));
@@ -171,6 +171,20 @@ function setTimer(speed) {
   readerTimer = setInterval(function () {
     printWord(words, count);
     $('#wpm').css("display", "none");
+    //this calculates time counter
+    var total_words = words.frontPart.length;
+    var min = Math.floor(((total_words-count) * (1/$('#wpm').val())));
+    var sec = function() {
+      var sub_sec = Math.round((total_words-count) * (1/$('#wpm').val())*60)%60;
+      console.log(sub_sec.toString().length);
+      if (sub_sec.toString().length == 1) {
+        return "0" + sub_sec
+      }
+      else {
+        return sub_sec;
+      }
+    }
+    $('#counter').html(min + ":" + sec());
 
     if (count < words.frontPart.length - 1) {
       count ++;
