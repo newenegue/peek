@@ -5,13 +5,15 @@ block content
   div.intro_animation_screen
     div.introAnimationStage
       //- Intro Shot 0 - Loading
-      div.newIntroShot(id='shot0')
+      //- div.newIntroShot(id='shot0')
       //- Intro Shot 1 - Drag & Drop Articles
       div.newIntroShot(id='shot1')
-        div.staticRectangles(id='staticArticle')
-        div(id='movingRect')
+        div(id='newspaper')
+        div(id='newspaper_article')
           img(id='pointer' src='images/pointer.png')
-        div.staticRectangles(id='staticArticle2')
+        //- div.staticRectangles(id='staticArticle')
+        //- div(id='movingRect')
+        //- div.staticRectangles(id='staticArticle2')
         div(id='speechbubble')
           img(id='pointer2' src='images/pointer2.png')
         #regularIntroBucket

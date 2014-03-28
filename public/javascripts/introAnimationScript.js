@@ -15,6 +15,7 @@ var tl = new TimelineLite(),
   staticArticle = document.getElementById("staticArticle"),
   staticArticle2 = document.getElementById("staticArticle2"),
   selectedRectang = document.getElementById("movingRect"),
+  newspaper = document.getElementById("newspaper"),
   pointer = document.getElementById("pointer"),
   speechbubble = document.getElementById("speechbubble"),
   pointer2 = document.getElementById("pointer2"),
@@ -52,9 +53,9 @@ function introTextContent2() {
 
 function introTextContent3() {
 
-  introFront.innerHTML = "Pe";
+  introFront.innerHTML = "P";
   introCenter.innerHTML = "e";
-  introBack.innerHTML = "k."; 
+  introBack.innerHTML = "ek."; 
 };
 
 function introTextContent4() {
@@ -85,10 +86,11 @@ function doAfterPageLoad() {
   // tl.to(shot0, 0.1, {autoAlpha:0}, "+=.1");
   tl.set(shot1, {top:0}, "+=.1");
   tl.from(shot1, .5, {autoAlpha:0}, "+=.5");
-  tl.to(shot1, 2.0, {scale:0.9}, ".2");
-  tl.from(staticArticle, .5, {scale:0, autoAlpha:0}, "+=.1");
-  tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");
-  tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.1");
+
+  tl.from(newspaper, .5, {scale:0, autoAlpha:0}, "+=.1");
+
+  // tl.from(selectedRectang, .5, {scale:0, autoAlpha:0}, "+=.1");
+  // tl.from(staticArticle2, .5, {scale:0, autoAlpha:0}, "+=.1");
 
 
 
@@ -103,29 +105,38 @@ function doAfterPageLoad() {
 // ------------------------------------------
 
   //Figure out how to fade in and move to the left to select article
-  tl.from(pointer, 1, {right:-400, autoAlpha:0}, "+=.5");
   
+  tl.from(pointer, .5, {right:-400, autoAlpha:0}, "+=.5");
+  tl.from(newspaper_article, .5, {scale: 0, autoAlpha: 0}, "+=.5");
+
+  tl.to(newspaper, .5, {right: "200px", top: "100px"}, "+=.1");
+  tl.to(newspaper, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
+  tl.to(newspaper, .5, {autoAlpha:0}, "-=.5" );
+
+  tl.to(newspaper_article, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
+  tl.to(newspaper_article, 1, {top:100, autoAlpha:0}, "+=.5"); 
+
   //Select Rectangle
-  tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.2"); 
+  // tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.2"); 
 
   //Shift Static Rects Diagonally (down/left)
-  tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
+  // tl.to(bothStaticRectangles, .5, {right: "100px", top: "50px"}, "+=.1");
 
   //Drift Static Rects to the Left
-  tl.to(bothStaticRectangles, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
+  // tl.to(bothStaticRectangles, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
   
   //Make Static Rects Fade Away
-  tl.to(bothStaticRectangles, .5, {autoAlpha:0}, "-=.5" );
+  // tl.to(bothStaticRectangles, .5, {autoAlpha:0}, "-=.5" );
 
-  tl.to(shot1, 1.0, {css:{backgroundPosition: "-100px 0px"}, ease:Quart.easeOut}, "+=0");
+  // tl.to(shot1, 1.0, {css:{backgroundPosition: "-100px 0px"}, ease:Quart.easeOut}, "+=0");
 
   //Shift Selected Rectangle Back
-  tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
+  // tl.to(selectedRectang, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
 
   //Drop Selected Rectangle
-  tl.to(selectedRectang, 1, {top:100, autoAlpha:0}, "+=1");
+  // tl.to(selectedRectang, 1, {top:100, autoAlpha:0}, "+=1");
 
-  tl.set(shot1, {top:0, onComplete: pan}, "5.8");
+  // tl.set(shot1, {top:0, onComplete: pan}, "5.8");
 
   // tl.to(shot1, 2.0, {css:{backgroundPosition: "-300px -100px"}, ease:Quart.easeOut}, "-.5");
   // pan()

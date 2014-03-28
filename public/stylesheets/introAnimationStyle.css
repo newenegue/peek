@@ -55,8 +55,8 @@ Intro div shot positioning
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(../images/mountains.jpg);
-  background-size: 120% 120%;
+  background-image: url(../images/bg1.jpg);
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
@@ -78,6 +78,30 @@ Intro div shot positioning
 /*-----------------------------------------
 Articles
 -----------------------------------------*/
+
+#newspaper {
+  background-image: url(../images/newspaper.png);
+  height: 500px;
+  width: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0 auto;
+  margin-top: -100px;
+}
+
+#newspaper_article {
+  background-image: url(../images/newspaper-article.png);
+  height: 454px;
+  width: 500px;
+  right: 590px;
+  top: -19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+  margin: 0 auto;
+}
+
 .moving_mountains {
   -webkit-animation: pan 1s;
 }
@@ -192,7 +216,9 @@ Intro Bucket
   background-repeat: no-repeat;
   position: relative;
   margin: 0 auto;
+  top: -150px;
   background-position: -6px -6px;
+  border: 1px solid red;
 }
 
 #welcomeIntroBucket {
@@ -226,11 +252,10 @@ Pointer Cursor
 -----------------------------------------*/
 
 #pointer {
-  height: 60px;
-  float: right;
-  margin-right: 20px;
+  height: 50px;
+  top: 200px;
+  right: 100px;
   position: absolute;
-  margin-top: -4%;
   /*-webkit-transform:rotate(-30deg);*/
 }
 
