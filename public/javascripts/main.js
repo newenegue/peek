@@ -1,5 +1,6 @@
 // var phantom=require('node-phantom');
 var originalDocumentWidth;
+var left;
 // ------------------------------------------
 // jQuery - on page load
 // ------------------------------------------
@@ -70,7 +71,8 @@ $(document).ready(function() {
 
 $( window ).resize(function() {
   var newWidth = $(document).width();
-  var newLeft = newWidth / originalDocumentWidth * 595;
+  var newLeft = newWidth / originalDocumentWidth * left;
+
   $('#center').css({left: newLeft + "px"});
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
@@ -157,14 +159,14 @@ function readArticle() {
   var paragraph = bucketArray[locateItem(article_id)]["paragraph"];
   var link = bucketArray[locateItem(article_id)]["link"];
   $("a.link_to_article").attr("href", link);
-
   read(paragraph);
   increasePop(article_id);
 
   $(".wholeBucket").attr("class", "wholeBucket animated rubberBand");
   $(".shadow").attr("class", "shadow animated rubberBand");
   $(".article").addClass("animated fadeOutLeft");
-  setTimeout( function() {$(".article_container").addClass("peek_article");}, 1000 );
+  setTimeout( function() {$(".article_container").addClass("peek_article");left = $('#center').offset().left;
+  console.log(left);}, 1000 );
   setTimeout( function() {$(".wholeBucket").attr("class", "wholeBucket");}, 700 );
   setTimeout( function() {$(".shadow").attr("class", "shadow");}, 700 );
 }
