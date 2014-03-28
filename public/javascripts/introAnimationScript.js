@@ -62,21 +62,21 @@ function introTextContent4() {
 
   introFront.innerHTML = "Re";
   introCenter.innerHTML = "a";
-  introBack.innerHTML = "dy"; 
+  introBack.innerHTML = "dy&nbsp; &nbsp;"; 
 };
 
 function introTextContent5() {
 
   introFront.innerHTML = "S";
   introCenter.innerHTML = "e";
-  introBack.innerHTML = "t"; 
+  introBack.innerHTML = "t &nbsp;"; 
 };
 
 function introTextContent6() {
 
   introFront.innerHTML = "G";
   introCenter.innerHTML = "o";
-  introBack.innerHTML = "!"; 
+  introBack.innerHTML = "!&nbsp; &nbsp;"; 
 };
 
 

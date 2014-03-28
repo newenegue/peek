@@ -239,8 +239,8 @@ Speech Bubble
 -----------------------------------------*/
 
 #speechbubble {
-  height: 200px;
-  width: 200px;
+  height: 240px;
+  width: 240px;
   background-image: url(../images/speechbubble.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -370,8 +370,8 @@ Welcome Bucket
 Enter Button
 -----------------------------------------*/
 .closeIntroButton {
-  height: 45px;
-  width: 100px;
+  height: 90px;
+  width: 200px;
   background-color: #ee6557;
   font-family: Brandon_light;
   color: white;
@@ -380,8 +380,9 @@ Enter Button
   margin: 0 auto;
   margin-bottom: 50%;
   border-radius: 10px;
+  padding-top: 20px;
   overflow: auto;
-  font-size: 14pt;
+  font-size: 21pt;
   position: relative;
   overflow: hidden;
 }
