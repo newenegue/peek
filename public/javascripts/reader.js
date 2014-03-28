@@ -117,8 +117,22 @@ var read = function(paragraph) {
     var speed = 60000/$('#wpm').val();
     readerTimer = setInterval(function () {
       printWord(words, count);
-      $('#wpm').css("display", "none"); 
-
+      $('#wpm').css("display", "none");
+      //this calculates time counter
+      var total_time = words.frontPart.length/$('#wpm').val();
+      var min = Math.floor((count * (1/$('#wpm').val())));
+      var sec = function() {
+        var sub_sec = Math.round(count * (1/$('#wpm').val())*60)%60;
+        console.log(sub_sec.toString().length);
+        if (sub_sec.toString().length == 1) {
+          return "0" + sub_sec
+        }
+        else {
+          return sub_sec;
+        }
+      }
+      $('#counter').html(min + ":" + sec());
+      //this calculates the slider value and position
       if (count < words.frontPart.length - 1) {
         count ++;
         $("#slider").slider({ value: count });
