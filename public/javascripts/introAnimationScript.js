@@ -143,6 +143,7 @@ function doAfterPageLoad() {
   //Bucket Appears
   tl.from(regularIntroBucket, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
   tl.to(regularIntroBucket, .01, {css:{backgroundPosition: "-304px -6px"}, ease:Circ.easeIn}, "+=1");
+  tl.to(regularIntroBucket, .01, {bottom:'10px', ease:Circ.easeIn}, "+=.5");
 
   //Bucket Eyes get Happy
   // tl.to(openEyesIntro, .1, {autoAlpha:0}, "+=.2");
