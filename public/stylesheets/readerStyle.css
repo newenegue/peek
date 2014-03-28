@@ -72,7 +72,8 @@ Article peek
 
 #center {
   color: red;
-  left: 40%;
+  left: 41%;
+  /*left: 590px;*/
   background-color: white;
   position: absolute;
 }
