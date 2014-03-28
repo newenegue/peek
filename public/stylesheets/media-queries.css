@@ -26,6 +26,10 @@
   .peek {
     display: none;
   }
+
+  .fadebottom {
+    width: 70%;
+  }
 }
 @media only screen and (min-width : 481px) and (max-width: 767px) {
   #navbar {
@@ -56,6 +60,10 @@
     position: relative;
   }
 
+  .fadebottom {
+    width: 70%;
+  }
+
 }
 @media only screen and (min-width : 768px) and (max-width: 1024px) {
   #navbar {
@@ -82,6 +90,9 @@
     margin-left: -55%;
     position: relative;
   }
+  .fadebottom {
+    width: 73%;
+  }
 }
 @media only screen and (min-width : 1025px) and (max-width: 1223px) {
   #navbar {
@@ -97,6 +108,7 @@
   .bucket_title {
     font-size: 1.1em;
   }
+
   .peek {
     color: rgba(118, 194, 187, 1);
     cursor: pointer;

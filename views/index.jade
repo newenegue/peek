@@ -40,7 +40,6 @@ block content
     input(ng-model="search")
   //- Main Page
   .options_tab_panel
-  div.fadebottom  
   //- Bucket for reading articles
   .full_bucket_side_panel
     .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
@@ -70,6 +69,7 @@ block content
             b {{article.title.$text}}
           br
           div.text(ng-bind-html="article.teaser.$text")
+    div.fadebottom
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
         {{article.popularity}}
