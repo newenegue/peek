@@ -70,7 +70,7 @@ $(document).ready(function() {
 
 $( window ).resize(function() {
   var newWidth = $(document).width();
-  var newLeft = newWidth / originalDocumentWidth * 500;
+  var newLeft = newWidth / originalDocumentWidth * 595;
   $('#center').css({left: newLeft + "px"});
   $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
   $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});

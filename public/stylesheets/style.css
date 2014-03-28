@@ -192,10 +192,31 @@ Newsfeed
 }
 
 .article_container h2.glyphicon {
-  border: 5px solid black;
+  border: 5px solid rgba(0,0,0,0.3);
   padding: 2px;
   border-radius: 10px;
 }
+
+.article_container h2.glyphicon:hover {
+  border: 5px solid rgba(0,0,0,0.7);
+}
+
+.glyphicon-play {
+  color: rgba(0,0,0,0.3);
+}
+
+.glyphicon-play:hover {
+  color:rgba(0,0,0,0.7);
+}
+
+.glyphicon-pause {
+  color: rgba(0,0,0,0.3);
+}
+
+.glyphicon-pause:hover {
+  color:rgba(0,0,0,0.7);
+}
+
 
 .article_in_bucket {
   border: 3px solid transparent;
