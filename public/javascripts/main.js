@@ -1,4 +1,3 @@
-// var phantom=require('node-phantom');
 var originalDocumentWidth;
 var left;
 // ------------------------------------------
@@ -33,9 +32,6 @@ $(document).ready(function() {
   // EASTER EGGS
   // Click bucket to get random article
   $(document.body).on('click', '.wholeBucket', getRandomArticle);
-
-  // Intro Animated bucket: shadow
-  // $("#introShadowStage").load('images/shadow_bucket.svg', svgLoaded);
 
   // Toggle more information of article in bucket
   $(document.body).on('mouseover', '.bucket_item', showMoreInfo);
@@ -355,10 +351,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
       }
     };
 
-
-
-
-
   // ------------------------------------------
   // Find if article is in bucket
   // ------------------------------------------
@@ -374,8 +366,15 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // Double click article to add to bucket
   // ------------------------------------------
   $scope.addToBucket = function(article) {
-    if(validId(article.id)){
-      addItemToBucket(article.id);
+    var id;
+    if($scope.show_popular){
+      id = article.article.id;
+    }
+    else {
+      id = article.id;
+    }
+    if(validId(id)){
+      addItemToBucket(id);
       refreshBucket();
     }
   };
@@ -383,18 +382,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
   // ------------------------------------------
   // Toggle to show popular or npr articles
   // // ------------------------------------------
-  // $scope.togglePopular = function() {
-  //   $scope.show_popular = !$scope.show_popular;
-  //   if($scope.show_popular) {
-  //     $scope.show_articles = 'Latest';
-  //     $scope.getArticlesByPop();
-  //   }
-  //   else {
-  //     $scope.show_articles = 'Popular';
-  //     loadArticles();
-  //   }
-  // };
-
   $scope.showPopular = function() {
     $scope.show_popular = true;
     $scope.getArticlesByPop();
@@ -452,9 +439,6 @@ peekApp.controller('PeekCtrl', function($scope, $http, $sce) {
     });
   }
 });
-
-
-
 
 // ------------------------------------------
 // Main image filter

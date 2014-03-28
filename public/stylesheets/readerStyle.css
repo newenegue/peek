@@ -54,6 +54,28 @@ Article peek
   background-color: black;
 }
 
+/*Reader*/
+#countdown_left {
+  background-color: rgba(118, 194, 187, 0.3);
+  /*width: 40%;*/
+  height: 140%;
+  top: -20%;
+  position: absolute;
+  z-index: 20;
+  /*display: none;*/
+}
+
+#countdown_right {
+  background-color: rgba(118, 194, 187, 0.3);
+  height: 140%;
+  /*width: 60%;*/
+  position: absolute;
+  left: 40%;
+  top: -20%;
+  z-index: 20;
+  /*display: none;*/
+}
+
 #fullWord {
   font-size: 1em;
   width: 80%;
