@@ -69,11 +69,7 @@ Newsfeed
   position: fixed;
   bottom: 0;
   left: 10%;
-  background: -webkit-gradient(
-  linear, top, bottom, from(rgba(255,255,255,0.0)),
-  color-stop(0.35, rgba(255,255,255,1)),
-  to(rgba(255,255,255,1))
-  );
+  border: 1px solid red;
   z-index: 5;
   background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .12) 50%, rgba(255,255, 255, .25));
 }
