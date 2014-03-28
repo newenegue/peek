@@ -56,20 +56,24 @@ Article peek
 
 /*Reader*/
 #countdown_left {
-  background-color: rgba(255,0,0,0.2);
-  width: 40%;
+  background-color: rgba(118, 194, 187, 0.3);
+  /*width: 40%;*/
   height: 140%;
   top: -20%;
   position: absolute;
+  z-index: 20;
+  /*display: none;*/
 }
 
 #countdown_right {
-  background-color: rgba(0,255,0,0.2);
+  background-color: rgba(118, 194, 187, 0.3);
   height: 140%;
-  width: 60%;
+  /*width: 60%;*/
   position: absolute;
   left: 40%;
   top: -20%;
+  z-index: 20;
+  /*display: none;*/
 }
 
 #fullWord {

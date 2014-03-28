@@ -1,6 +1,7 @@
 var count = 0;
 var play = 0;
 var readerTimer, text, words;
+var countdown = false;
 
 var makeToChars = function(paragraph) {
   var words = [];
@@ -54,7 +55,7 @@ var printWord = function(words, i) {
     clearInterval(readerTimer);
   }
 
-}
+};
 
 
 setTimeout(function(){ window.onscroll=triggerInfinite;}, 100);
@@ -62,7 +63,7 @@ setTimeout(function(){ window.onscroll=triggerInfinite;}, 100);
 
 
 var combineParagraphs = function(paragraph) {
-  var text = ""
+  var text = "";
   for(var i=0; i < paragraph.length; i++){
     text += " " + paragraph[i].text;
   }
@@ -76,79 +77,100 @@ var resetReader = function() {
   $('#front').html("");
   $('#center').html("");
   $('#back').html("");
-}
+};
 
 var read = function(paragraph) {
-
+  if(!countdown) {
   //starts the reading at pause and toggles between states
-  if (play == 0) {
-    text = combineParagraphs(paragraph);
-    words = breakUpWord(makeToChars(text));
-    play = 2;
-    $( "#slider" ).slider({ 
-      min: 0,
-      max: words.frontPart.length - 1,
-      value: 0,
-      slide: function(event, ui){
-        count = ui.value;
-        play = 1;
-        read();
-        read();
+    if (play == 0) {
+      text = combineParagraphs(paragraph);
+      words = breakUpWord(makeToChars(text));
+      play = 2;
+      $( "#slider" ).slider({
+        min: 0,
+        max: words.frontPart.length - 1,
+        value: 0,
+        slide: function(event, ui){
+          count = ui.value;
+          play = 1;
+          read();
+          read();
+        }
+      });
+    }
+    else if (play == 1) {
+      play = 2;
+    }
+    else if (play == 2) {
+      play = 1;
+    }
+
+    //pause
+    if (play == 2) {
+      $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-play");
+      clearInterval(readerTimer);
+      $('#wpm').css("display", "inline-block");
+    }
+
+    //play
+    if (play == 1) {
+      $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
+      var speed = 60000/$('#wpm').val();
+      //the delay before the read
+      if (count == 0) {
+        // set countdown slider width
+        $('#countdown_left').css({width: '40%', left: '0'});
+        $('#countdown_right').css({width: '60%'});
+
+
+        //displays the speed split up
+        $('#front').html($('#wpm').val().toString().substring(0,1));
+        $('#center').html($('#wpm').val().toString().substring(1,2));
+        $('#back').html($('#wpm').val().toString().substring(2,1));
+
+        //positions the parts of the word
+        $('#center').css({left: ($('#center').offset().left - $('#center').outerWidth() / 3)});
+        $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
+        $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
+
+
+        var originWidth_left = $('#countdown_left').outerWidth();
+        var originWidth_right = $('#countdown_right').outerWidth();
+        var subtract_left = originWidth_left * 0.0258;
+        var subtract_right = originWidth_right * 0.025;
+        var left_shift = subtract_left;
+
+        //sets delay to start the reader
+        var animationTimer = setInterval(function () {
+          countdown = true;
+          $('#countdown_left').css({width: ($('#countdown_left').outerWidth() - subtract_left) + "px", left: left_shift + "px"});
+          $('#countdown_right').css({width: ($('#countdown_right').outerWidth() - subtract_right) + "px"  });
+          left_shift += subtract_left;
+        }, 50);
+
+        setTimeout(function(){
+          clearInterval(animationTimer);
+          setTimer(speed);
+
+          countdown = false;
+
+          $('#countdown_left').css({width: '0%'});
+          $('#countdown_right').css({width: '0%'});
+
+        }, 2000);
       }
-    });
-  }
-  else if (play == 1) {
-    play = 2;
-  }
-  else if (play == 2) {
-    play = 1;
-  }
-
-  //pause
-  if (play == 2) {
-    $('#submit').removeClass("glyphicon glyphicon-pause").addClass("glyphicon glyphicon-play");
-    clearInterval(readerTimer);
-    $('#wpm').css("display", "inline-block");
-  }
-
-  //play
-  if (play == 1) {
-    $('#submit').removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
-    var speed = 60000/$('#wpm').val();
-
-    //the delay before the read
-    if (count == 0) {
-      //displays the speed split up
-      $('#front').html(speed.toString().substring(0,1));
-      $('#center').html(speed.toString().substring(1,2));
-      $('#back').html(speed.toString().substring(2,1));
-
-      //positions the parts of the word
-      $('#center').css({left: ($('#center').offset().left - $('#center').outerWidth() / 3)});
-      $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
-      $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
-
-      //sets delay to start the reader
-      var animationTimer = setInterval(function () {
-        //animation goes here
-      }, 50);
-
-      setTimeout(function(){
-        clearInterval(animationTimer);
+      else {
         setTimer(speed);
-      }, 2000)
+      }
+      
     }
-    else {
-      setTimer(speed);
-    }
-    
   }
 
 
 function setTimer(speed) {
   readerTimer = setInterval(function () {
     printWord(words, count);
-    $('#wpm').css("display", "none"); 
+    $('#wpm').css("display", "none");
 
     if (count < words.frontPart.length - 1) {
       count ++;
@@ -174,4 +196,4 @@ exports._tests = {
   printWord: printWord,
   combineParagraphs: combineParagraphs,
   read: read
-}
+};
