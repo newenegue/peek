@@ -71,16 +71,16 @@ block content
             b {{article.title.$text}}
           br
           div.text(ng-bind-html="article.teaser.$text")
-    div.fadebottom
+    
       //- Popular Ariticles from PEEK DB
       div(ng-if="show_popular" id='{{article.article.id}}' data-paragraph='{{article.article.paragraph}}' data-article-link="{{article.article.link}}")
-        //- {{article.popularity}}
         img.main_image(ng-class-even="'main_image_right'" ng-src="{{article.article.mainImage}}" data-thumb="{{article.article.thumbnail}}") 
         .article_content
           .title 
             b {{article.article.title}}
           br
           div.text {{article.article.teaser}}
+    div.fadebottom
     .loading(ng-show="loading")
 
   
