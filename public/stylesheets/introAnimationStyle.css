@@ -370,9 +370,9 @@ Welcome Bucket
 Enter Button
 -----------------------------------------*/
 .closeIntroButton {
-  height: 50px;
+  height: 45px;
   width: 100px;
-  background-color: #16a6b6;
+  background-color: #ee6557;
   font-family: Brandon_light;
   color: white;
   padding-top: 5px;

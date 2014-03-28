@@ -113,8 +113,8 @@ function doAfterPageLoad() {
   tl.to(newspaper, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
   tl.to(newspaper, .5, {autoAlpha:0}, "-=.5" );
 
-  tl.to(newspaper_article, 1, {scaleX: 0.7, scaleY: 0.7}, "-=.2");
-  tl.to(newspaper_article, 1, {top:100, autoAlpha:0}, "+=.5"); 
+  tl.to(newspaper_article, 1, {scaleX: 0.6, scaleY: 0.6}, "-=.2");
+  tl.to(newspaper_article, .5, {top:100, autoAlpha:0}, "+=.5"); 
 
   //Select Rectangle
   // tl.to(selectedRectang, .5, {backgroundColor:"red"}, "+=.2"); 
