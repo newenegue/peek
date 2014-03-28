@@ -1,10 +1,10 @@
 // var phantom=require('node-phantom');
-
+var originalDocumentWidth;
 // ------------------------------------------
 // jQuery - on page load
 // ------------------------------------------
 $(document).ready(function() {
-
+  originalDocumentWidth = $(document).width();
   // Close intro
   $(document.body).on('click', '.closeIntroButton', closeIntro);
 
@@ -66,6 +66,14 @@ $(document).ready(function() {
       openSearch();
     }
   });
+});
+
+$( window ).resize(function() {
+  var newWidth = $(document).width();
+  var newLeft = newWidth / originalDocumentWidth * 500;
+  $('#center').css({left: newLeft + "px"});
+  $('#front').css({left: ($('#center').offset().left  - $('#front').outerWidth()) + "px"});
+  $('#back').css({left: ($('#center').offset().left  + $('#center').outerWidth()) + "px"});
 });
 
 // ------------------------------------------
