@@ -113,3 +113,12 @@ Article peek
   margin: 0 auto;
   width: 300px;
 }
+
+#wpm {
+  background-color: mediumaquamarine;
+  margin-bottom: 10px;
+}
+
+.ui-widget-content {
+  background: rgba(118,194,187,1) !important;
+}
