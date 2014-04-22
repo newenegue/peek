@@ -127,10 +127,10 @@ Article peek
 
 .ui-widget-content {
   /*background: rgba(118,194,187,0.4) !important;*/
-  background: rgba(209,209,209,1) !important;
-  border: rgba(209,209,209,1) !important;
+  background: rgba(209,209,209,.7) !important;
+  border: rgba(209,209,209,.7) !important;
 }
 
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+.ui-slider-handle .ui-state-default .ui-corner-all {
   background: 1px solid rgba(238,101,87,0.4) !important;
 }
