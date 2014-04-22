@@ -24,6 +24,7 @@ var tl = new TimelineLite(),
   pointer2 = document.getElementById("pointer2"),
   introBucketStage = document.getElementById("introBucketStage"),
   regularIntroBucket = document.getElementById("regularIntroBucket"),
+  regularIntroBucket2 = document.getElementById("regularIntroBucket2"),
   openEyesIntro = document.getElementById("openEyesIntro"),
   introLeftEyeFull = document.getElementById("leftEyeFullIntro"),
   introRightEyeFull = document.getElementById("rightEyeFullIntro"),
@@ -31,7 +32,9 @@ var tl = new TimelineLite(),
   welcomeText = document.getElementById("welcomeText"),
   openEyesWelcome = document.getElementById("openEyesWelcome"),
   welcomeIntroBucket = document.getElementById("welcomeIntroBucket"),
+  welcomeIntroBucket2 = document.getElementById("welcomeIntroBucket2"),
   enterButton = document.getElementsByClassName("closeIntroButton"),
+  intro_animation_screen = document.getElementsByClassName("intro_animation_screen"),
   shot0 = document.getElementById("shot0"),
   shot1 = document.getElementById("shot1"); 
 
@@ -85,6 +88,7 @@ function introTextContent6() {
 
 
 function animation() {
+  $(".intro_animation_screen").css("visibility", "visible");
   $("#shot1").css("visibility", "visible");
   tl.set(shot1, {top:0}, "+=.1");
   tl.from(shot1, .5, {autoAlpha:0}, "+=.5");
@@ -99,7 +103,7 @@ function animation() {
   tl.from(pointer, .5, {right:-400, autoAlpha:0}, "+=.5");
   tl.from(newspaper_article, .5, {scale: 0, autoAlpha: 0}, "+=.5");
 
-  tl.to(newspaper, .5, {right: "200px", top: "100px"}, "+=.1");
+  tl.to(newspaper, .5, {right: "300px", top: "200px"}, "+=.1");
   tl.to(newspaper, 1, {right:"600px", ease:Circ.easeIn}, "+=.3");
   tl.to(newspaper, .5, {autoAlpha:0}, "-=.5" );
 
@@ -107,9 +111,10 @@ function animation() {
   tl.to(newspaper_article, .5, {top:100, autoAlpha:0}, "+=.5"); 
 
   //Bucket Appears
-  tl.from(regularIntroBucket, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
-  tl.to(regularIntroBucket, .01, {css:{backgroundPosition: "-304px -6px"}, ease:Circ.easeIn}, "+=1");
-  tl.to(regularIntroBucket, .5, {bottom:'100px', ease:Circ.easeIn}, "+=.5");
+  tl.from(regularIntroBucket2, .5, {bottom:-200, autoAlpha:0}, "-=1.5");
+  tl.set(regularIntroBucket2, {css:{backgroundPosition: "-108px -292px"}}, "+=1");
+  // tl.to(regularIntroBucket2, .01, {css:{backgroundPosition: "-108px -292px"}}, "+=1");
+  tl.to(regularIntroBucket2, .5, {bottom:'100px', ease:Circ.easeIn}, "+=.5");
 
 
   //Speech Bubble
@@ -129,16 +134,14 @@ function animation() {
   //Switch to Third Shot
   tl.set(shot3, {top:0}, "+=1");
   tl.from(shot3, .5, {bottom:-200, autoAlpha:0}, "+=.5");
-  tl.from(welcomeIntroBucket, .5, {top:-200, autoAlpha:0}, "-=1.5");
-  tl.to(welcomeIntroBucket, .01, {css:{backgroundPosition: "-304px -6px"}, ease:Circ.easeIn}, "+=1");
+  tl.from(welcomeIntroBucket2, .5, {top:-200, autoAlpha:0}, "-=1.5");
+  // tl.to(welcomeIntroBucket2, .01, {css:{backgroundPosition: "-108px -292px"}}, "+=1");
+  tl.set(welcomeIntroBucket2, {css:{backgroundPosition: "-108px -292px"}}, "+=1");
   tl.from(welcomeText, .5, {bottom:-100, scaleY: 0, autoAlpha: 0}, "+=.5");
 
   //Enter Button Appears
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
-  // tl.restart();
+  tl.to(intro_animation_screen, 1, {autoAlpha: 0}, "+=5");
+  tl.restart();
 
 };
-
-function pan() {
-  $("shot1").addClass("fadeInLeft");
-}

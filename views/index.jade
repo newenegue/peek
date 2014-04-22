@@ -4,8 +4,6 @@ block content
   //- Intro Animation
   div.intro_animation_screen
     div.introAnimationStage
-      //- Intro Shot 0 - Loading
-      //- div.newIntroShot(id='shot0')
       //- Intro Shot 1 - Drag & Drop Articles
       div.newIntroShot(id='shot1')
         div(id='newspaper')
@@ -13,7 +11,7 @@ block content
           img(id='pointer' src='images/pointer.png')
         div(id='speechbubble')
           img(id='pointer2' src='images/pointer2.png')
-        #regularIntroBucket
+        #regularIntroBucket2
       //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
         #introReader
@@ -26,7 +24,7 @@ block content
       div.newIntroShot(id='shot3')
         img(id='welcomeText' src='images/welcome.png')
         .welcome_bucket
-          #welcomeIntroBucket
+          #welcomeIntroBucket2
           //- div(id="welcomeBucketStage")
         h1.introHeader peek.
         div.closeIntroButton Enter
@@ -50,7 +48,7 @@ block content
           //- strong Drag to add article
     //- Animated Bucket
     .animation_container
-      div(id="stage")
+      div(id="stage" onclick='animation()')
     .shadow_container
       div(id="shadowStage")
       img(id='heart' src='images/heart.svg')
