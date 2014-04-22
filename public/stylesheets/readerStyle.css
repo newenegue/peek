@@ -115,10 +115,16 @@ Article peek
 }
 
 #wpm {
-  background-color: mediumaquamarine;
+  background-color: antiquewhite;
   margin-bottom: 10px;
 }
 
 .ui-widget-content {
-  background: rgba(118,194,187,1) !important;
+  /*background: rgba(118,194,187,0.4) !important;*/
+  background: rgba(200,200,200,0.4) !important;
+  border: none !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: rgba(238,101,87,0.4) !important;
 }
