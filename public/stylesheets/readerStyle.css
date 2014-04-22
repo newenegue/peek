@@ -132,5 +132,5 @@ Article peek
 }
 
 .ui-slider-handle .ui-state-default .ui-corner-all {
-  background: 1px solid rgba(238,101,87,0.4) !important;
+  background: rgba(238,101,87,0.4) !important;
 }
