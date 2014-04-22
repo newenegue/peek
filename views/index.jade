@@ -11,7 +11,7 @@ block content
           img(id='pointer' src='images/pointer.png')
         div(id='speechbubble')
           img(id='pointer2' src='images/pointer2.png')
-        #regularIntroBucket2
+        #regularIntroBucket
       //- Intro Shot 2 - Peek Text
       div.newIntroShot(id='shot2')
         #introReader
@@ -24,10 +24,27 @@ block content
       div.newIntroShot(id='shot3')
         img(id='welcomeText' src='images/welcome.png')
         .welcome_bucket
-          #welcomeIntroBucket2
+          #welcomeIntroBucket
           //- div(id="welcomeBucketStage")
         h1.introHeader peek.
         div.closeIntroButton Enter
+  //- Modal for Info Section
+  .modal.fade.peekInfo(tabindex="-1" role="dialog" aria-labelledby="peekInfoLabel" aria-hidden="true")
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          h3(type="button" class="close" data-dismiss="modal" aria-hidden="true")&times;
+          h2(class="modal-title" id="peekInfoLabel") PEEK
+        .modal-body
+          p.infoText 1) Drag article to reading list.
+          p.infoText 2) Select article to read.
+          p.infoText 3) Speed read like never before.
+          br
+          h4.creditsHeader Designed & Developed by:
+          a.infoText(href="https://github.com/patriciaho" target="_blank") Patricia Ho
+          a.infoText(href="http://newenegue.com/" target="_blank") Eugene Wen
+          a.infoText(href="http://elliehoshizaki.com/" target="_blank")  Ellie Hoshizaki
+          a.infoText(href="https://github.com/kparks29" target="_blank") Kendrick Parks
   div.options.latest(ng-class="{articles_selection: !show_popular}" ng-click="showLatest()") 
     b LATEST
   div.options.popular(ng-class="{articles_selection: show_popular}" ng-click="showPopular()") 
@@ -41,6 +58,8 @@ block content
   .full_bucket_side_panel
     .bucket_container(ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="onLeave()") 
       a.peek(href="https://github.com/newenegue/peek" target="_blank" ng-mouseover="peek = 'ピーク'" ng-mouseleave="peek = 'PEEK'") {{peek}}
+      .infoIcon
+        h4.glyphicon.glyphicon-question-sign(data-toggle="modal" data-target=".peekInfo")
       .trashcan
         h4.delete_all.glyphicon.glyphicon-trash
       .bucket
@@ -48,7 +67,7 @@ block content
           //- strong Drag to add article
     //- Animated Bucket
     .animation_container
-      div(id="stage" onclick='animation()')
+      div(id="stage")
     .shadow_container
       div(id="shadowStage")
       img(id='heart' src='images/heart.svg')
