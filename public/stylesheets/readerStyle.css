@@ -131,6 +131,6 @@ Article peek
   border: rgba(209,209,209,.7) !important;
 }
 
-.ui-slider-handle .ui-state-default .ui-corner-all {
-  background: rgba(238,101,87,0.4) !important;
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: rgba(188,51,37,0.7) !important;
 }
