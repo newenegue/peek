@@ -119,12 +119,18 @@ Article peek
   margin-bottom: 10px;
 }
 
+#counter {
+  font-size: 14pt;
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 10px;
+}
+
 .ui-widget-content {
   /*background: rgba(118,194,187,0.4) !important;*/
-  background: rgba(200,200,200,0.4) !important;
-  border: none !important;
+  background: rgba(209,209,209,1) !important;
+  border: rgba(209,209,209,1) !important;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-  background: rgba(238,101,87,0.4) !important;
+  background: 1px solid rgba(238,101,87,0.4) !important;
 }
