@@ -35,12 +35,15 @@ block content
         .modal-header
           h3(type="button" class="close" data-dismiss="modal" aria-hidden="true")&times;
           h2(class="modal-title" id="peekInfoLabel") PEEK
+          hr
+          button(type="button" class="btn btn-primary" id="replay" data-dismiss="modal" onclick="restartAnimation()") REPLAY INTRO
         .modal-body
+          h4.creditsHeader HOW TO PEEK:
           p.infoText 1) Drag article to reading list.
           p.infoText 2) Select article to read.
           p.infoText 3) Speed read like never before.
           br
-          h4.creditsHeader Designed & Developed by:
+          h4.creditsHeader DESIGNED & DEVELOPED BY:
           a.infoText(href="https://github.com/patriciaho" target="_blank") Patricia Ho
           a.infoText(href="http://newenegue.com/" target="_blank") Eugene Wen
           a.infoText(href="http://elliehoshizaki.com/" target="_blank")  Ellie Hoshizaki

@@ -485,6 +485,21 @@ Bucket: Content
   cursor: pointer;
 }
 
+button.btn.btn-primary {
+  background-color: rgba(118,194,187,0.8);
+  border-color: rgba(118,194,187,0.8);
+  margin-bottom: -20px;
+}
+
+button.btn.btn-primary:hover {
+  background-color: #ee6557;
+  border-color: #ee6557;
+}
+
+hr {
+  border: 1px dotted rgba(10,10,10,.4) !important;
+}
+
 #peekInfoLabel {
   color: rgba(118,194,187,1);
 }

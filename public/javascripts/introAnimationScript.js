@@ -2,10 +2,10 @@
 // Intro Animation
 // ===========================================================
 
-$(window).load(function(){ 
-
+$(document).ready(function(){ 
 
 });
+
 
 // ===========================================================
 // Global Variables
@@ -36,6 +36,7 @@ var tl = new TimelineLite(),
   shot0 = document.getElementById("shot0"),
   shot1 = document.getElementById("shot1"); 
 
+var replay = document.getElementById("replay");
 var introFront = document.getElementById("introFront");
 var introCenter = document.getElementById("introCenter");
 var introBack = document.getElementById("introBack");
@@ -141,6 +142,21 @@ function animation() {
   tl.from(enterButton, .5, {autoAlpha: 0}, "+=1");
   tl.to(intro_animation_screen, 1, {autoAlpha: 0}, "+=5");
   tl.set(intro_animation_screen, {css:{visibility: "hidden"}}, "+=.2");
-  // tl.restart();
+  tl.restart();
+
+
+  replay.onclick = function restartAnimation(){
+      
+      // animation();
+      // tl.restart();
+      $(".intro_animation_screen").removeClass("end_intro");
+      tl.pause(0, true);
+      tl.remove();
+      animation();
+      console.log("restart clicked");    
+  };
+
 
 };
+
+
